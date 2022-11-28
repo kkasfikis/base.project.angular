@@ -1,0 +1,46 @@
+<div *ngIf="isOnCreateMode" fxLayout="column">
+    <div fxFlex="100" fxLayoutAlign="center center">
+        <div fxFlex="95" fxLayoutAlign="center center">
+            <app-dynamic-form fxFlex="100"
+                [formFields]="createFormFields"
+                [formActions]="createFormActions"
+                (onFormChange)="handleFormChanges( 'create', $event )"
+                (onSubFormChange)="handleSubFormChanges( 'create', $event )"
+                (onFormSubmit)="crudCreateSubmit( $event )"
+            ></app-dynamic-form>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isOnUpdateMode" fxLayout="column">
+    <div fxFlex="100" fxLayoutAlign="center center">
+        <div fxFlex="95" fxLayoutAlign="center center">
+            <app-dynamic-form fxFlex="100"
+                [formFields]="updateFormFields"
+                [formActions]="updateFormActions"
+                (onFormChange)="handleFormChanges( 'update', $event )"
+                (onSubFormChange)="handleSubFormChanges( 'update', $event )"
+                (onFormSubmit)="crudUpdateSubmit( $event )"
+            ></app-dynamic-form>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isOnReadMode"  fxLayout="column">
+    <div fxFlex="100" fxLayoutAlign="center center">
+        <div fxFlex="95" fxLayoutAlign="flex-end" *ngIf="hasCreate">
+            <button mat-raised-button color="primary" (click)="crudCreate()"><mat-icon>add</mat-icon>&nbsp;Add New</button>
+        </div>
+    </div>
+    <br/>
+    <div fxFlex="100" fxLayoutAlign="center center">
+        <div fxFlex="95" fxLayoutAlign="center center">
+            <app-dynamic-table fxFlex="100"
+                [tableColumns]="tableColumnSubject"
+                [tableData]="tableDataSubject"
+                [hasActions]="true"
+            ></app-dynamic-table>
+        </div>
+    </div> 
+</div>
+

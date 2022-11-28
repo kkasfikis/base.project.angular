@@ -1,0 +1,37 @@
+<mat-card fxFlex="100" fxLayout="column">
+    <div fxFlex="100" fxLayout="column">
+        <mat-card-title fxFlex="100" fxLayoutAlign="center" *ngIf="title && title.length > 0">{{title}}</mat-card-title>
+        <mat-card-title fxFlex="100" fxLayoutAlign="center" *ngIf="subtitle && subtitle.length > 0">{{subtitle}}</mat-card-title>
+        <mat-divider></mat-divider>
+    </div>
+    <br/>
+    <form [formGroup]="form" fxFlex="100" fxLayout="column" [fxLayoutGap]="formGap" [fxLayoutAlign]="formAlign">
+        <mat-card-content fxFlex="100" fxLayout="row wrap">
+            <div *ngFor="let formField of sortByOrder(formFields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="formField.width" [fxLayoutAlign]="formField.align">
+                <app-dynamic-form-field *ngIf="!isFieldSubForm(formField)"
+                    [formField]="formField"
+                    [form]="form"
+                    [fxFlex]="formField.innerWidth"
+                    (onFieldChange)="handleFieldChange($event)"
+                ></app-dynamic-form-field>
+
+                <app-dynamic-sub-form fxFlex="100" *ngIf="isFieldSubForm(formField)"
+                    [title]="formField.title" 
+                    [subtitle]="formField.subtitle"
+                    [enabled]="formField.enabled"
+                    [formField]="formField"
+                    [formGap]="'10'"
+                    [formAlign]="'center center'"
+                    (onFieldChange)="handleSubFieldChange($any($event))"   
+                ></app-dynamic-sub-form>
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions fxFlex="100" fxLayoutAlign="flex-end" fxLayoutGap="5">
+            <button mat-raised-button *ngFor="let action of formActions" [ngStyle]="{'background-color' : action.color}" (click)="action.func(action.funcParams)">
+                <mat-icon>{{action.icon}}</mat-icon> &nbsp; {{action.text}}
+            </button> 
+            <button mat-raised-button [disabled]="disabled" (click)="handleFormSubmit()" color="primary">Submit</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

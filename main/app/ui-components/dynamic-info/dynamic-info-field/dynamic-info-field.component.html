@@ -1,0 +1,9 @@
+<div [ngSwitch]="infoField.type" fxFlex="100">
+    <div *ngSwitchCase="'text'" style="margin:10px">
+        <b fxFlex="25" fxLayoutAlign="flex-start">{{infoField.label}}</b>
+        <span fxFlex="75" fxLayoutAlign="center">{{value}}</span>
+    </div>
+    <div *ngSwitchCase="'array'" style="margin:10px">
+        
+    </div>
+</div>

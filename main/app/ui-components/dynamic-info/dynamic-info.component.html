@@ -1,0 +1,9 @@
+<div fxFlex="100" fxLayout="row wrap" [fxLayoutGap]="infoGap" [fxLayoutAlign]="infoAlign">
+    <div *ngFor="let infoField of sortByOrder(infoFields)" [fxFlex]="infoField.width" [fxLayoutAlign]="infoField.align">
+        <app-dynamic-info-field
+            [infoField]="infoField"
+            [value]="obj[infoField.key]"
+            [fxFlex]="infoField.innerWidth"
+        ></app-dynamic-info-field>
+    </div>
+</div>

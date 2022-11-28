@@ -1,0 +1,56 @@
+<div [formGroup]="form" fxLayout="column" fxFlex="100">
+    <div [ngSwitch]="formField.type" fxFlex="100">
+        
+        <mat-form-field *ngSwitchCase="localFormFieldType.TextBox" appearance="fill" fxFlex="100">
+            <mat-label>{{formField.label}}</mat-label>
+            <input matInput [formControlName]="formField.key" (change)="contentChange()">
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.Select" appearance="fill" fxFlex="100">
+            <mat-label>{{formField.label}}</mat-label>
+            <mat-select [formControlName]="formField.key" (selectionChange)="contentChange()">
+                <mat-option *ngFor="let opt of formField.options" [value]="opt.key">{{opt.value}}</mat-option>
+            </mat-select> 
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.MultiSelect" appearance="fill" fxFlex="100">
+            <mat-label>{{formField.label}}</mat-label>
+            <mat-select [formControlName]="formField.key" (selectionChange)="contentChange()" multiple>
+                <mat-option *ngFor="let opt of formField.options" [value]="opt.key">{{opt.value}}</mat-option>
+            </mat-select> 
+        </mat-form-field>
+
+        <section class="mySection" *ngSwitchCase="localFormFieldType.CheckBox" fxFlex="100">
+            <mat-checkbox [formControlName]="formField.key" (change)="contentChange()">{{formField.label}}</mat-checkbox>
+        </section>
+
+        <section class="mySection" *ngSwitchCase="localFormFieldType.RadioBox" fxLayout="column" fxFlex="100">
+            <mat-label>{{formField.label}}</mat-label>
+            <mat-radio-group fxLayoutGap="10" [formControlName]="formField.key" (change)="contentChange()">
+                <mat-radio-button *ngFor="let opt of formField.options" [value]="opt.key">{{opt.value}}</mat-radio-button>
+            </mat-radio-group>
+        </section>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.DatePicker" appearance="fill" fxFlex="100">
+            <mat-label>{{formField.label}}</mat-label>
+            <input matInput [matDatepicker]="picker" [formControlName]="formField.key" (dateChange)="contentChange()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+    <div fxLayoutAlign="center">
+        <mat-error *ngIf="form.controls[this.formField.key].errors?.['required']">
+            Field is Required
+        </mat-error>
+        <mat-error *ngIf="form.controls[this.formField.key].errors?.['maxLength']">
+            Field must be at most {{formField.minLength.getValue()}} characters long
+        </mat-error>
+        <mat-error *ngIf="form.controls[this.formField.key].errors?.['minLength']">
+            Field must be at least {{formField.minLength.getValue()}} characters long
+        </mat-error>
+        <mat-error *ngIf="form.controls[this.formField.key].errors?.['minLength']">
+            Field does not have the correct regex pattern : {{formField.regexPattern.getValue()}}
+        </mat-error>
+    </div>
+</div>

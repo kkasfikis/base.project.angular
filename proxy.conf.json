@@ -1,0 +1,10 @@
+{
+    "/Dummy":{
+        "target" : "https://localhost:7064/api/Dummy",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/Dummy" : ""
+        },
+        "changeOrigin" : true
+    }
+}

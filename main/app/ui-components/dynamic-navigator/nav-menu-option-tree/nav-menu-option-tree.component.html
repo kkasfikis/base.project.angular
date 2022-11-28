@@ -1,0 +1,25 @@
+<mat-menu #menu="matMenu" [overlapTrigger]="false">
+    <span *ngFor="let item of items">
+        <!-- menu has children -->
+        <span *ngIf="item.subMenus && item.subMenus.length > 0">
+            <button mat-menu-item color="primary" [matMenuTriggerFor]="childMenu.menu">
+                <mat-icon>{{item.icon}}</mat-icon>
+                <span>{{item.label}}</span>
+            </button>
+            <app-nav-menu-option-tree #childMenu [items]="item.subMenus"></app-nav-menu-option-tree>
+        </span>
+        <!-- leaf node -->
+        <span *ngIf="!item.subMenus || item.subMenus.length == 0">
+            <!-- option should call function on click -->
+            <button mat-menu-item *ngIf="item.isFunction" (click)="item.func(item.funcParams)">
+                <mat-icon>{{item.icon}}</mat-icon>
+                <span>{{item.label}}</span>
+            </button>
+            <!-- option is link to router page -->
+            <button mat-menu-item *ngIf="!item.isFunction" [routerLink]="item.link">
+                <mat-icon>{{item.icon}}</mat-icon>
+                <span>{{item.label}}</span>
+            </button>
+        </span>
+    </span>
+</mat-menu>

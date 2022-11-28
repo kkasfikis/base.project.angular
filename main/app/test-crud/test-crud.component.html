@@ -1,0 +1,44 @@
+
+<app-dynamic-crud
+    [hasCreate]="true"
+    [hasUpdate]="true"
+    [hasDelete]="true"
+    [hasInfo]="true"
+
+    [createEndpoint]="'/Dummy'"
+    [deleteEndpoint]="'/Dummy'"
+    [updateEndpoint]="'/Dummy'"
+    [readEndpoint]="'/Dummy'"
+    [infoEndpoint]="'/Dummy'"
+
+    [identifierKey]="'Id'"
+
+    [createFormFields]="createFormFields"
+    [updateFormFields]="updateFormFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+></app-dynamic-crud>
+
+<!-- @Input() hasCreate : boolean = true;
+@Input() hasUpdate : boolean = true;
+@Input() hasDelete : boolean =true;
+@Input() hasInfo : boolean = true;
+
+@Input() createFormFields : (FormFieldBase|SubForm)[] = [];
+@Input() updateFormFields : (FormFieldBase|SubForm)[] = [];
+
+@Input() tableColumns : TableColumn[] = [];
+
+@Input() infoFields : InfoField[] = [];
+
+@Input() identifierKey : string | number = '';
+
+@Input() readEndpoint : string = '';
+@Input() updateEndpoint : string = '';
+@Input() createEndpoint : string = '';
+@Input() deleteEndpoint : string = '';
+
+@Output() onFormChange : EventEmitter<any> = new EventEmitter<any>();
+@Output() onSubFormChange : EventEmitter<any> = new EventEmitter<any>(); -->

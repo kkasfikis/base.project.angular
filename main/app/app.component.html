@@ -1,0 +1,18 @@
+
+<app-dynamic-navigator
+  [title] = "'BaseProject'"
+  [subTitle] = "'Subtile'"
+  [isLoggedIn] = "loggedIn"
+  [drawerOptions] = "drawerOptions"
+  [navbarOptions] = "navbarOptions"
+  [isDrawerEnabled]= "true"
+  [isDrawerCategorized]= "true"
+  [isDrawerFixed]="true"
+  [userName] = "userName"
+  [photo] = "image"
+  [isThemeSelectEnabled]="true"
+  [isDrawerEnabled]="true"
+  (themeChanged)="toggleTheme($event)"
+  (loginSelected)="login()"
+></app-dynamic-navigator>
+
