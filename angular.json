@@ -14,24 +14,24 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "main",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/base.project.angular",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "index": "main/index.html",
+            "main": "main/main.ts",
+            "polyfills": "main/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "main/favicon.ico",
+              "main/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "main/styles.scss"
             ],
             "scripts": []
           },
@@ -51,8 +51,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "main/environments/environment.ts",
+                  "with": "main/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -89,17 +89,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "main": "main/test.ts",
+            "polyfills": "main/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "main/favicon.ico",
+              "main/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "main/styles.scss"
             ],
             "scripts": []
           }
@@ -107,5 +107,7 @@
       }
     }
   },
-  "defaultProject": "base.project.angular"
+  "cli": {
+    "analytics": "abf498c4-7b52-4eb8-800c-a0ea0f1ae19f"
+  }
 }
