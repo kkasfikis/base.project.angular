@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { InfoField } from './dynamic-info.models';
+import { InfoField, SubFormInfo } from './dynamic-info.models';
 
 @Component({
   selector: 'app-dynamic-info',
@@ -10,7 +10,7 @@ export class DynamicInfoComponent implements OnInit {
 
   @Input() infoGap : string = '';
   @Input() infoAlign : string = '';
-  @Input() infoFields : InfoField[] = [];
+  @Input() infoFields : (InfoField|SubFormInfo)[] = [];
   @Input() obj : any;
 
   constructor() { }

@@ -1,0 +1,12 @@
+<div fxFlex="100" fxLayoutAlign="center center">
+    <app-dynamic-form fxFlex="40"
+        [title]="'Test Dynamic Form'"
+        [subtitle]="'Test Dynamic Form Subtitle'"
+        [formFields]="loginFields"
+        [formAlign]="'center'"
+        [formGap]="'0'"
+        [enabled]="enabledSubject"
+        (onFormSubmit)="login($event)"
+    >
+    </app-dynamic-form>
+</div>

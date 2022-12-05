@@ -1,5 +1,5 @@
 import { BehaviorSubject } from "rxjs";
-import { InfoField } from "../dynamic-info/dynamic-info.models";
+import { InfoField, SubFormInfo } from "../dynamic-info/dynamic-info.models";
 import { TableColumn } from "../dynamic-table/dynamic-table.models";
 
 export enum FormFieldType{
@@ -10,6 +10,11 @@ export enum FormFieldType{
     RadioBox,
     CheckBox,
     Hidden
+}
+
+export enum FormClassName{
+    SubForm,
+    FormFieldBase
 }
 
 export class FormFieldBase{
@@ -28,22 +33,21 @@ export class FormFieldBase{
     innerWidth : number = 100;
     align : string = 'center';
 
-    constructor(public className = 'FormFieldBase') {}
+    constructor(public className = FormClassName.FormFieldBase) {}
 }
 
 export class SubForm{
     key : string = '';
-    title : string = '';
-    subtitle : string = '';
     order : number = 0;
     fields : FormFieldBase[] = [];
     tableData : any[] = [];
     tableColumns : TableColumn[] = [];
-    infoFields : InfoField[] = [];
+    infoFields : (InfoField|SubFormInfo)[] = [];
+    hasInfo : boolean = true;
     width : number = 100;
     innerWidth : number = 100;
     align : string = 'center';
-    constructor(public className = 'SubForm') {}
+    constructor(public className = FormClassName.SubForm) {}
 }
 
 export class FormAction{

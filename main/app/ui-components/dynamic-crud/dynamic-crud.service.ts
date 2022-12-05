@@ -24,15 +24,7 @@ export class DynamicCrudService {
     let options = {
       headers : new HttpHeaders({'Content-Type' : 'application/json'})
     }
-    let params = '?'
-    columns.forEach( (val,index) => {
-      if(index == 0){
-        params += 'columns=' + val.name;
-      } else {
-        params += '&columns=' + val.name;
-      }
-    });
-    return this.http.get(url + params, {...options} )
+    return this.http.get(url, {...options} )
   }
 
   update(url:string, item : any, identifier:string){

@@ -26,6 +26,29 @@
     </div>
 </div>
 
+<div *ngIf="isOnInfoMode"  fxLayout="column">
+    <div fxFlex="100" fxLayoutAlign="center center">
+        <div fxFlex="95" fxLayoutAlign="flex-end" *ngIf="hasCreate">
+            <button mat-raised-button color="warn" (click)="switchMode('read')"><mat-icon>cancel</mat-icon>&nbsp;Cancel</button>
+        </div>
+    </div>
+    <br/>
+    <div fxFlex="100" fxLayoutAlign="center center">
+        <div fxFlex="95" fxLayoutAlign="center center">
+            <mat-card fxFlex="100">
+                <mat-card-content>
+                    <mat-dialog-content>
+                        <app-dynamic-info
+                            [infoFields]="infoFields"
+                            [obj]="infoElement"
+                        ></app-dynamic-info>
+                    </mat-dialog-content>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div> 
+</div>
+
 <div *ngIf="isOnReadMode"  fxLayout="column">
     <div fxFlex="100" fxLayoutAlign="center center">
         <div fxFlex="95" fxLayoutAlign="flex-end" *ngIf="hasCreate">

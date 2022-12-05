@@ -1,9 +1,25 @@
 {
-    "/Dummy":{
-        "target" : "https://localhost:7064/api/Dummy",
+    "/login":{
+        "target" : "http://localhost:8081/login",
         "secure" : false,
         "pathRewrite" : {
-            "^/Dummy" : ""
+            "^/login" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/port":{
+        "target" : "http://localhost:8081/port",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/port" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/client":{
+        "target" : "http://localhost:8081/client",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/client" : ""
         },
         "changeOrigin" : true
     }

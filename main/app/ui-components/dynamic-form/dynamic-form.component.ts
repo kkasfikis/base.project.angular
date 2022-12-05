@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { FormAction, FormFieldBase, FormFieldType, SubForm } from './dynamic-form.models';
+import { FormAction, FormClassName, FormFieldBase, FormFieldType, SubForm } from './dynamic-form.models';
 import { DynamicFormService } from './dynamic-form.service';
 
 @Component({
@@ -32,7 +32,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   localFormFieldType : typeof FormFieldType = FormFieldType;
   
   ngOnInit(): void {
-    this.form = this.formService.toFormGroup(this.formFields.filter(x=>x.className === 'FormFieldBase') as FormFieldBase[]);
+    this.form = this.formService.toFormGroup(this.formFields.filter(x=>x.className === FormClassName.FormFieldBase) as FormFieldBase[]);
     this.enabledSub = this.enabled.subscribe({  
       next : (val) => {
         if(this.form){
@@ -71,7 +71,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   }
 
   isFieldSubForm(field : any){
-    return field.className === 'SubForm';
+    return field.className == FormClassName.SubForm;
   }
 
   sortByOrder(array:any)
@@ -87,7 +87,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   getFormData() : any {
     let obj : any = {};
     this.formFields.forEach( (field,index) => {
-      if(field.className == 'FormFieldBase'){
+      if(field.className == FormClassName.FormFieldBase){
         let fieldBase = field as FormFieldBase;
         obj[fieldBase.key] = this.form.getRawValue()[fieldBase.key];
       }

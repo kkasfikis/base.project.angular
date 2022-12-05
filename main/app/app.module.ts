@@ -29,9 +29,7 @@ import { MatTableModule} from '@angular/material/table'
 import { MatToolbarModule} from '@angular/material/toolbar'
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { TestCompComponent } from './test-comp/test-comp.component'  
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { TestComponent } from './test/test.component';
 import {MatSortModule} from '@angular/material/sort';
 import { ResponsiveDynamicTableModule } from './ui-components/dynamic-table/responsive-dynamic-table/responsive-dynamic-table.module';
 import { DynamicSubFormComponent } from './ui-components/dynamic-form/dynamic-sub-form/dynamic-sub-form.component';
@@ -40,11 +38,18 @@ import { DynamicInfoFieldComponent } from './ui-components/dynamic-info/dynamic-
 import { DynamicInfoDialogComponent } from './ui-components/dialogs/dynamic-info-dialog/dynamic-info-dialog.component'; 
 import {MatDialogModule} from '@angular/material/dialog';
 import { DynamicCrudComponent } from './ui-components/dynamic-crud/dynamic-crud.component';
-import { TestCrudComponent } from './test-crud/test-crud.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatRadioModule} from '@angular/material/radio'
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationDialogComponent } from './ui-components/dialogs/confirmation-dialog/confirmation-dialog.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { VesselComponent } from './administrator/vessel/vessel.component';
+import { PortComponent } from './administrator/port/port.component';
+import { UnauthorizedComponent } from './auth/unauthorized/unauthorized.component';
+import { AboutComponent } from './about/about.component';
+import { DynamicSubFormInfoComponent } from './ui-components/dynamic-info/dynamic-sub-form-info/dynamic-sub-form-info.component';
+import { ClientComponent } from './administrator/client/client.component';
 
 @NgModule({
   declarations: [
@@ -56,15 +61,19 @@ import { ConfirmationDialogComponent } from './ui-components/dialogs/confirmatio
     NavMenuOptionTreeComponent,
     SideMenuOptionTreeComponent,
     ThemeSelectorComponent,
-    TestCompComponent,
-    TestComponent,
     DynamicSubFormComponent,
     DynamicInfoComponent,
     DynamicInfoFieldComponent,
     DynamicInfoDialogComponent,
     DynamicCrudComponent,
-    TestCrudComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    LoginComponent,
+    VesselComponent,
+    PortComponent,
+    UnauthorizedComponent,
+    AboutComponent,
+    DynamicSubFormInfoComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +103,7 @@ import { ConfirmationDialogComponent } from './ui-components/dialogs/confirmatio
     ResponsiveDynamicTableModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [{ provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

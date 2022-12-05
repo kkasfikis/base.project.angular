@@ -1,5 +1,7 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { AfterViewInit, ChangeDetectorRef, Component, HostBinding, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './auth/auth.service';
 import { MenuOption, SideMenuCategory } from './ui-components/dynamic-navigator/dynamic-navigator.models';
 
 @Component({
@@ -9,7 +11,7 @@ import { MenuOption, SideMenuCategory } from './ui-components/dynamic-navigator/
 })
 export class AppComponent implements OnInit,AfterViewInit{
   title = 'base.project.angular';
-  userName = 'testUser'
+  userName = 'Not Logged In'
   loggedIn = false;
   image = './assets/images/user.jpg';
   drawerOptions : SideMenuCategory[] | MenuOption[] = [];
@@ -18,8 +20,26 @@ export class AppComponent implements OnInit,AfterViewInit{
 
   testFunc = this.testFunction.bind(this)
 
-  constructor(private overlay: OverlayContainer,private changeDetector : ChangeDetectorRef){
+  constructor(private overlay: OverlayContainer,private authService : AuthService, private router : Router){
     
+    this.authService.isLoggedIn.subscribe({
+      next : (val : boolean) =>{
+        this.loggedIn = val;
+        if(val){
+          let user : any = authService.getUser();
+          this.userName = user.username;
+        }
+        else{
+          this.userName = 'Not Logged In';
+        }
+      }
+    })
+
+    setInterval( () => {
+      if(this.loggedIn){
+        this.authService.isTokenExpired();
+      }
+    }, 10000)
   }
   
   ngAfterViewInit(): void {
@@ -28,252 +48,27 @@ export class AppComponent implements OnInit,AfterViewInit{
   
   ngOnInit(){
     this.overlay.getContainerElement().classList.add('darkMode')
+ 
     this.drawerOptions = [
       {
-        icon:'home',
-        label:'Category 1',
-        options:[
-          {
-            key:'Cat1_Option1',
-            label:'Option 1',
-            icon:'menu',
-            isFunction:false,
-            subMenus : [
-              {
-                key:'Option1_Sub1',
-                label:'Option1_Sub1',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [
-                  {
-                    key:'Option1_Sub1_Sub1',
-                    label:'Option1_Sub1_Sub1',
-                    icon:'Menu',
-                    isFunction:false,
-                    link:'/',
-                    func : {},
-                    subMenus : [] as MenuOption[]
-                  },
-                  {
-                    key:'Option1_Sub1_Sub2',
-                    label:'Option1_Sub1_Sub2(FUNC)',
-                    icon:'Menu',
-                    isFunction:true,
-                    link:'/',
-                    func : this.testFunc,
-                    funcParams : {test:'aaaaaa'},
-                    subMenus : [] as MenuOption[]
-                  }
-                ] as MenuOption[]
-              },
-              {
-                key:'Option1_Sub2',
-                label:'Option1_Sub2',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              }
-            ] as MenuOption[]
-          } as MenuOption,
-          {
-            key:'Cat1_Option2',
-            label:'Option 2',
-            icon:'menu',
-            isFunction:false,
-            subMenus : [
-              {
-                key:'Option2_Sub1',
-                label:'Option2_Sub1',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [
-                  {
-                    key:'Option2_Sub1_Sub1',
-                    label:'Option2_Sub1_Sub1',
-                    icon:'Menu',
-                    isFunction:false,
-                    subMenus : [] as MenuOption[]
-                  },
-                  {
-                    key:'Option2_Sub1_Sub2',
-                    label:'Option2_Sub1_Sub2',
-                    icon:'Menu',
-                    isFunction:false,
-                    subMenus : [] as MenuOption[]
-                  }
-                ] as MenuOption[]
-              },
-              {
-                key:'Option2_Sub2',
-                label:'Option2_Sub2',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              }
-            ] as MenuOption[]
-          } as MenuOption
-        ] as MenuOption[]
-      },
-      {
-        icon:'home',
-        label:'Category 2',
-        options:[
-          {
-            key:'Cat2_Option1',
-            label:'Option 1',
-            icon:'menu',
-            isFunction:false,
-            subMenus : [
-              {
-                key:'Option1_Sub1',
-                label:'Option1_Sub1',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [
-                  {
-                    key:'Option1_Sub1_Sub1',
-                    label:'Option1_Sub1_Sub1',
-                    icon:'Menu',
-                    isFunction:false,
-                    subMenus : [] as MenuOption[]
-                  },
-                  {
-                    key:'Option1_Sub1_Sub2',
-                    label:'Option1_Sub1_Sub2',
-                    icon:'Menu',
-                    isFunction:false,
-                    subMenus : [] as MenuOption[]
-                  }
-                ] as MenuOption[]
-              },
-              {
-                key:'Option1_Sub2',
-                label:'Option1_Sub2',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              }
-            ] as MenuOption[]
-          },
-          {
-            key:'Cat2_Option2',
-            label:'Option 2',
-            icon:'menu',
-            isFunction:false,
-            subMenus : [
-              {
-                key:'Option2_Sub1',
-                label:'Option2_Sub1',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [
-                  {
-                    key:'Option2_Sub1_Sub1',
-                    label:'Option2_Sub1_Sub1',
-                    icon:'Menu',
-                    isFunction:false,
-                    subMenus : [] as MenuOption[]
-                  },
-                  {
-                    key:'Option2_Sub1_Sub2',
-                    label:'Option2_Sub1_Sub2',
-                    icon:'Menu',
-                    isFunction:false,
-                    subMenus : [] as MenuOption[]
-                  }
-                ] as MenuOption[]
-              },
-              {
-                key:'Option2_Sub2',
-                label:'Option2_Sub2',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              }
-            ] as MenuOption[]
-          }
-        ] as MenuOption[]
-      }
-    ] as SideMenuCategory[]
-
-    this.navbarOptions = [
-      {
-        key:'Cat2_Option1',
-        label:'Option 1',
-        icon:'menu',
+        key:'Ports',
+        label:'Ports',
+        icon:'port',
         isFunction:false,
-        subMenus : [
-          {
-            key:'Option1_Sub1',
-            label:'Option1_Sub1',
-            icon:'Menu',
-            isFunction:false,
-            subMenus : [
-              {
-                key:'Option1_Sub1_Sub1',
-                label:'Option1_Sub1_Sub1',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              } as MenuOption,
-              {
-                key:'Option1_Sub1_Sub2',
-                label:'Option1_Sub1_Sub2(FUNC)',
-                icon:'Menu',
-                isFunction:true,
-                func : this.testFunc,
-                funcParams : {test:'bbbbbb'},
-                subMenus : [] as MenuOption[]
-              } as unknown as MenuOption
-            ] as MenuOption[]
-          },
-          {
-            key:'Option1_Sub2',
-            label:'Option1_Sub2',
-            icon:'Menu',
-            isFunction:false,
-            subMenus : [] as MenuOption[]
-          }
-        ] as MenuOption[]
-      },
+        link:'/port',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
       {
-        key:'Cat2_Option2',
-        label:'Option 2',
-        icon:'menu',
+        key:'Clients',
+        label:'Clients',
+        icon:'user',
         isFunction:false,
-        subMenus : [
-          {
-            key:'Option2_Sub1',
-            label:'Option2_Sub1',
-            icon:'Menu',
-            isFunction:false,
-            subMenus : [
-              {
-                key:'Option2_Sub1_Sub1',
-                label:'Option2_Sub1_Sub1',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-              {
-                key:'Option2_Sub1_Sub2',
-                label:'Option2_Sub1_Sub2',
-                icon:'Menu',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              }
-            ] as MenuOption[]
-          },
-          {
-            key:'Option2_Sub2',
-            label:'Option2_Sub2',
-            icon:'Menu',
-            isFunction:false,
-            subMenus : [] as MenuOption[]
-          }
-        ]
-      }
-    ] as MenuOption[]
+        link:'/client',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption
+    ]
   }
 
 
@@ -293,7 +88,7 @@ export class AppComponent implements OnInit,AfterViewInit{
   }
 
   login(){
-    this.loggedIn = true;
+    this.router.navigate(['/login']);
   }
 
   logout(){
