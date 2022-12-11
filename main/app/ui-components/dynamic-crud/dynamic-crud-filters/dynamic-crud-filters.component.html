@@ -1,0 +1,7 @@
+<app-dynamic-form
+    [title]="'Filters'"
+    [formFields]="[searchForm]"
+    [formActions]="[cancelFilterAction]"
+    (onSubFormChange)="onSubFormChange($event)"
+    (onFormSubmit)="onFormSubmit($event)"
+></app-dynamic-form>

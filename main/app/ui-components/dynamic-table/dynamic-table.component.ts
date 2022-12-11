@@ -1,12 +1,12 @@
 import { DataSource } from '@angular/cdk/collections';
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, EventEmitter, Component, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { TableAction, TableColumn } from './dynamic-table.models';
+import { BehaviorSubject, Subject, Subscription, takeUntil } from 'rxjs';
+import { TableAction, TableColumn, TableData } from './dynamic-table.models';
 
 @Component({
   selector: 'app-dynamic-table',
@@ -27,8 +27,12 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
   @Input() hasActions : boolean = false;
 
   @Input() tableColumns : BehaviorSubject<TableColumn[]> = new BehaviorSubject<TableColumn[]>([]);
-  @Input() tableData : BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  @Input() tableData : BehaviorSubject<TableData> = new BehaviorSubject<TableData>(new TableData(0,0,0,[]));
 
+  @Input() isPaginated : boolean = false;
+  @Output() pageChanged : EventEmitter<any> = new EventEmitter<any>();
+
+  private _unsubscribeSignal$: Subject<void> = new Subject();
 
   columns : TableColumn[] = []
 
@@ -46,7 +50,7 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
 
   ngAfterViewInit(): void {
     setTimeout(()=>{
-      this.columnSub = this.tableColumns.subscribe({
+      this.columnSub = this.tableColumns.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
         next : (val : TableColumn[]) => {
           this.columns = val;//.map(x=>x.name);
           if(this.hasActions){
@@ -72,10 +76,24 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
 
         }
       });
-      this.dataSub = this.tableData.subscribe({
-        next : (val : any[]) => {
+      this.dataSub = this.tableData.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
+        next : (val : TableData) => {
           if(val){
-            this.tableSource.data = val;
+            if(this.isPaginated){ 
+              let data = [];
+              for (let i = 0 ; i < val.page * val.size; i++){
+                data.push({});
+              }
+              data.push(...val.data);
+              this.tableSource = new MatTableDataSource<any>(data)
+              this.matPaginator.pageIndex = val.page;
+              this.matPaginator.pageSize = val.size;
+              this.tableSource.data.length = val.count; 
+            }
+            else{
+              this.tableSource.data = val.data;
+            }
+            this.tableSource._updateChangeSubscription();
             this.tableSource.paginator = this.matPaginator;
           }
           this.setColumnWidth();
@@ -86,8 +104,8 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.dataSub != undefined ){ this.dataSub.unsubscribe(); }
-    if(this.columnSub != undefined){ this.columnSub.unsubscribe(); }
+    this._unsubscribeSignal$.next();
+    this._unsubscribeSignal$.unsubscribe();
   }
 
 
@@ -114,7 +132,7 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
       let check = true;
       Object.keys(data).forEach((key : string)=>{
         if(searchTerms[key] && searchTerms[key] != '' &&  data[key].toString().toLowerCase().indexOf(searchTerms[key].toString()) == -1){
-          check =false;
+          check = false;
         }
       });
       return check;
@@ -130,12 +148,24 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
     let css = '@media (min-width:760px){'
     this.columns.forEach( (item : TableColumn )=>{
       css += '.mat-column-' + item.name + '{ min-width:' + item.width + '%; width:' + item.width + '%; padding-left:5px;padding-right:5px }';
-      
     });
     css += '}';
     this.headStyles = document.createElement('style');
     this.headStyles.appendChild(document.createTextNode(css));
     head.appendChild(this.headStyles)
+  }
+
+  pageChange(event:any){
+    if(this.isPaginated){
+      let previousIndex = event.previousPageIndex;
+      let previousSize = event.previousPageSize;
+      console.log('PREVIOUS PAGE SIZE : ' + previousSize)
+      let pageIndex = event.pageIndex;
+      let pageSize = event.pageSize;
+      this.pageChanged.emit({page : pageIndex, size: pageSize});
+      this.matPaginator.pageIndex = previousIndex;
+      this.matPaginator.pageSize = previousSize;
+    }
   }
 
 }

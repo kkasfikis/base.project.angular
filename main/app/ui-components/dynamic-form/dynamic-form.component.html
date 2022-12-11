@@ -7,11 +7,11 @@
     <br/>
     <form [formGroup]="form" fxFlex="100" fxLayout="column" [fxLayoutGap]="formGap" [fxLayoutAlign]="formAlign">
         <mat-card-content fxFlex="100" fxLayout="row wrap">
-            <div *ngFor="let formField of sortByOrder(formFields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="formField.width" [fxLayoutAlign]="formField.align">
+            <div *ngFor="let formField of sortByOrder(formFields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="isFieldSubForm(formField) ? formField.width : formField.getValue().width" [fxLayoutAlign]="isFieldSubForm(formField) ? formField.align : formField.getValue().align">
                 <app-dynamic-form-field *ngIf="!isFieldSubForm(formField)"
-                    [formField]="formField"
+                    [formFieldSubj]="formField"
                     [form]="form"
-                    [fxFlex]="formField.innerWidth"
+                    [fxFlex]="formField.getValue().innerWidth"
                     (onFieldChange)="handleFieldChange($event)"
                 ></app-dynamic-form-field>
 
@@ -22,7 +22,7 @@
                     [formField]="formField"
                     [formGap]="'10'"
                     [formAlign]="'center center'"
-                    (onFieldChange)="handleSubFieldChange($any($event))"   
+                    (onFormChange)="handleSubFieldChange($any($event))"   
                 ></app-dynamic-sub-form>
             </div>
         </mat-card-content>

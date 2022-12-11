@@ -4,6 +4,7 @@
             <app-dynamic-form fxFlex="100"
                 [formFields]="createFormFields"
                 [formActions]="createFormActions"
+                [enabled]="createEnabledSubj"
                 (onFormChange)="handleFormChanges( 'create', $event )"
                 (onSubFormChange)="handleSubFormChanges( 'create', $event )"
                 (onFormSubmit)="crudCreateSubmit( $event )"
@@ -18,6 +19,7 @@
             <app-dynamic-form fxFlex="100"
                 [formFields]="updateFormFields"
                 [formActions]="updateFormActions"
+                [enabled]="updateEnabledSubj"
                 (onFormChange)="handleFormChanges( 'update', $event )"
                 (onSubFormChange)="handleSubFormChanges( 'update', $event )"
                 (onFormSubmit)="crudUpdateSubmit( $event )"
@@ -51,6 +53,14 @@
 
 <div *ngIf="isOnReadMode"  fxLayout="column">
     <div fxFlex="100" fxLayoutAlign="center center">
+        <app-dynamic-crud-filters *ngIf="hasFilters && isPaginated" fxFlex="95"
+            [filterFields]="filterFields"
+            (onFilterSubmit)="filterSumbit($event)"
+            (onFilterCancel)="filterCancel()"
+        ></app-dynamic-crud-filters>
+    </div>
+    <br/>
+    <div fxFlex="100" fxLayoutAlign="center center">
         <div fxFlex="95" fxLayoutAlign="flex-end" *ngIf="hasCreate">
             <button mat-raised-button color="primary" (click)="crudCreate()"><mat-icon>add</mat-icon>&nbsp;Add New</button>
         </div>
@@ -62,6 +72,9 @@
                 [tableColumns]="tableColumnSubject"
                 [tableData]="tableDataSubject"
                 [hasActions]="true"
+                [defaultPageSize]="pageSize"
+                [isPaginated]="isPaginated"
+                (pageChanged)="onPageChange($event)"
             ></app-dynamic-table>
         </div>
     </div> 

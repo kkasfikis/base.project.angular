@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormClassName, FormFieldBase, FormFieldType } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
+import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
+import { FormFieldBase, FormFieldType } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { InfoClassName, InfoField, InfoType } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
 import { BehaviorSubject } from 'rxjs';
@@ -16,87 +17,82 @@ export class PortComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formFields : FormFieldBase[] = [
-    {
-      className : FormClassName.FormFieldBase,
-      value : new BehaviorSubject<any>(''),
+  formFields : BehaviorSubject<FormFieldBase>[] = [
+    new BehaviorSubject<FormFieldBase>({
+      value : '',
       type : FormFieldType.Hidden,
       key : '_id',
       label : 'ID',
       order : 0,
-      enabled : new BehaviorSubject<boolean>(true),
-      required : new BehaviorSubject<boolean>(false),
-      minLength : new BehaviorSubject<number>(3),
-      maxLength : new BehaviorSubject<number>(255),
-      regexPattern : new BehaviorSubject<string>(''),
+      enabled : true,
+      required : false,
+      minLength : 3,
+      maxLength : 255,
+      regexPattern : '',
       width : 100,
       innerWidth : 98,
       align : 'center center'
-    } as FormFieldBase,
-    {
-      className : FormClassName.FormFieldBase,
-      value : new BehaviorSubject<any>(''),
+    } as FormFieldBase),
+    new BehaviorSubject<FormFieldBase>({
+      value : '',
       type : FormFieldType.TextBox,
       key : 'name',
       label : 'Port Name',
       order : 0,
-      enabled : new BehaviorSubject<boolean>(true),
-      required : new BehaviorSubject<boolean>(true),
-      minLength : new BehaviorSubject<number>(3),
-      maxLength : new BehaviorSubject<number>(255),
-      regexPattern : new BehaviorSubject<string>(''),
+      enabled : true,
+      required : true,
+      minLength : 3,
+      maxLength : 255,
+      regexPattern : '',
       width : 50,
       innerWidth : 98,
       align : 'center center'
-    } as FormFieldBase,
-    {
-      className : FormClassName.FormFieldBase,
-      value : new BehaviorSubject<any>(''),
+    } as FormFieldBase),
+    new BehaviorSubject<FormFieldBase>({
+      value : '',
       type : FormFieldType.TextBox,
       key : 'anchorage',
       label : 'Anchorage',
       order : 1,
-      enabled : new BehaviorSubject<boolean>(true),
-      required : new BehaviorSubject<boolean>(false),
-      minLength : new BehaviorSubject<number>(3),
-      maxLength : new BehaviorSubject<number>(255),
-      regexPattern : new BehaviorSubject<string>(''),
+      enabled : true,
+      required : false,
+      minLength : 3,
+      maxLength : 255,
+      regexPattern : '',
       width : 50,
       innerWidth : 98,
       align : 'center center'
-    } as FormFieldBase,
-    {
-      className : FormClassName.FormFieldBase,
-      value : new BehaviorSubject<any>(''),
+    } as FormFieldBase),
+    new BehaviorSubject<FormFieldBase>({
+      value : '',
       type : FormFieldType.TextBox,
       key : 'notes',
       label : 'Notes',
       order : 1,
-      enabled : new BehaviorSubject<boolean>(true),
-      required : new BehaviorSubject<boolean>(false),
-      minLength : new BehaviorSubject<number>(3),
-      maxLength : new BehaviorSubject<number>(1000),
-      regexPattern : new BehaviorSubject<string>(''),
+      enabled : true,
+      required : false,
+      minLength : 3,
+      maxLength : 1000,
+      regexPattern : '',
       width : 100,
       innerWidth : 98,
       align : 'center center'
-    } as FormFieldBase,
-    {
-      className : FormClassName.FormFieldBase,
-      value : new BehaviorSubject<any>(''),
+    } as FormFieldBase),
+    new BehaviorSubject<FormFieldBase>({
+      value : '',
       type : FormFieldType.TextBox,
       key : 'weatherLink',
       label : 'Weather URL',
       order : 1,
-      enabled : new BehaviorSubject<boolean>(true),
-      required : new BehaviorSubject<boolean>(false),
-      minLength : new BehaviorSubject<number>(3),
-      maxLength : new BehaviorSubject<number>(255),
-      regexPattern : new BehaviorSubject<string>(''),
+      enabled : true,
+      required : false,
+      minLength : 3,
+      maxLength : 255,
+      regexPattern : '',
       width : 100,
       innerWidth : 98,
       align : 'center center'
-    } as FormFieldBase
+    } as FormFieldBase)
   ]
 
   tableColumns : TableColumn[] = [
@@ -151,4 +147,17 @@ export class PortComponent implements OnInit {
       align : 'center'
     }
   ]
+
+  filterFields = [
+    {
+      key : 'name',
+      label : 'Name',
+      fieldType : FormFieldType.TextBox
+    } as FilterField,
+    {
+      key : 'filter2',
+      label : 'Filter 2',
+      fieldType : FormFieldType.DatePicker
+    } as FilterField,
+  ] as FilterField[]
 }

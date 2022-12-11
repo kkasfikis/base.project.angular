@@ -1,5 +1,5 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { AfterViewInit, ChangeDetectorRef, Component, HostBinding, OnInit } from '@angular/core';
+import { AfterViewInit, NgZone , ChangeDetectorRef, Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth/auth.service';
 import { MenuOption, SideMenuCategory } from './ui-components/dynamic-navigator/dynamic-navigator.models';
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit,AfterViewInit{
 
   testFunc = this.testFunction.bind(this)
 
-  constructor(private overlay: OverlayContainer,private authService : AuthService, private router : Router){
+  constructor(private overlay: OverlayContainer,private authService : AuthService, private router : Router, private _zone: NgZone){
     
     this.authService.isLoggedIn.subscribe({
       next : (val : boolean) =>{
@@ -34,12 +34,14 @@ export class AppComponent implements OnInit,AfterViewInit{
         }
       }
     })
-
-    setInterval( () => {
-      if(this.loggedIn){
-        this.authService.isTokenExpired();
-      }
-    }, 10000)
+    this._zone.runOutsideAngular(() => {
+      setInterval( () => {
+        if(this.loggedIn){
+          console.log('checking token')
+          this.authService.isTokenExpired();
+        }
+      }, 10000)
+    })
   }
   
   ngAfterViewInit(): void {

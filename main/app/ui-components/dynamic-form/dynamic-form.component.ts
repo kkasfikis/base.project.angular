@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { FormAction, FormClassName, FormFieldBase, FormFieldType, SubForm } from './dynamic-form.models';
+import { BehaviorSubject, delay, Subject, Subscription, takeUntil } from 'rxjs';
+import { FormAction, FormFieldBase, FormFieldType, SubForm } from './dynamic-form.models';
 import { DynamicFormService } from './dynamic-form.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   @Input() title : string = '';
   @Input() subtitle : string = '';
   @Input() enabled : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  @Input() formFields : (FormFieldBase | SubForm)[] = [];
+  @Input() formFields : (BehaviorSubject<FormFieldBase> | SubForm)[] = [];
   @Input() formGap : string = '10px';
   @Input() formAlign : string = 'center';
   @Input() formActions : FormAction[] = [];
@@ -27,30 +27,31 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   disabled : boolean = false;
 
   enabledSub! : Subscription;
-  constructor (private formService : DynamicFormService) { }
-
+  constructor (private formService : DynamicFormService, private changeDetector : ChangeDetectorRef) { 
+    
+  }
+  private ngUnsubscribe = new Subject<void>();
   localFormFieldType : typeof FormFieldType = FormFieldType;
   
   ngOnInit(): void {
-    this.form = this.formService.toFormGroup(this.formFields.filter(x=>x.className === FormClassName.FormFieldBase) as FormFieldBase[]);
-    this.enabledSub = this.enabled.subscribe({  
-      next : (val) => {
-        if(this.form){
-          if(val){
-            this.disabled = false;
+    this.form = this.formService.toFormGroup(this.formFields)
+    console.log('initing')
+    this.enabledSub = this.enabled.pipe(takeUntil(this.ngUnsubscribe)).subscribe({
+      next : (enabled : boolean) => {
+          if(enabled){
             this.form.enable();
           }
           else{
-            this.disabled = true;
             this.form.disable();
           }
-        }
+          this.changeDetector.detectChanges();
       }
     })
   }
 
   ngOnDestroy(): void {
-    this.enabledSub.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   handleFormSubmit(){
@@ -67,33 +68,36 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   }
 
   handleSubFieldChange(item : {subform : string, key : string, value: string, form : FormGroup} ){
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaa')
+    console.log('form field',item)
     this.onSubFormChange.emit(item)
   }
 
   isFieldSubForm(field : any){
-    return field.className == FormClassName.SubForm;
+    //console.log('key: ', field instanceof SubForm)
+    return field instanceof SubForm;
   }
 
   sortByOrder(array:any)
   {
     return array.sort(function(a : any, b : any)
     {
-      var x = a['order']; 
-      var y = b['order'];
+      let x = (a instanceof SubForm) ? a.order : a.getValue().order;
+      let y = (b instanceof SubForm) ? b.order : b.getValue().order;
       return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-    }).filter( (z:any) => z.type != this.localFormFieldType.Hidden);
+    }).filter( (z:any) => z instanceof SubForm || (z instanceof BehaviorSubject<FormFieldBase> && z.getValue().type != this.localFormFieldType.Hidden));
   }
 
   getFormData() : any {
     let obj : any = {};
-    this.formFields.forEach( (field,index) => {
-      if(field.className == FormClassName.FormFieldBase){
-        let fieldBase = field as FormFieldBase;
-        obj[fieldBase.key] = this.form.getRawValue()[fieldBase.key];
+    this.formFields.forEach( (field : BehaviorSubject<FormFieldBase> | SubForm,index : number) => {
+      if(field instanceof  BehaviorSubject<FormFieldBase> ){
+        let fieldBase = field as BehaviorSubject<FormFieldBase>;
+        obj[fieldBase.getValue().key] = this.form.getRawValue()[fieldBase.getValue().key];
       }
       else{
         let subform = field as SubForm;
-        obj[subform.key] = subform.tableData;
+        obj[subform.key] = subform.tableData.getValue();
       }
     })    
     return obj;

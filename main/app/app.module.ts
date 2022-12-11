@@ -50,6 +50,8 @@ import { UnauthorizedComponent } from './auth/unauthorized/unauthorized.componen
 import { AboutComponent } from './about/about.component';
 import { DynamicSubFormInfoComponent } from './ui-components/dynamic-info/dynamic-sub-form-info/dynamic-sub-form-info.component';
 import { ClientComponent } from './administrator/client/client.component';
+import { DynamicCrudFiltersComponent } from './ui-components/dynamic-crud/dynamic-crud-filters/dynamic-crud-filters.component';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,8 @@ import { ClientComponent } from './administrator/client/client.component';
     UnauthorizedComponent,
     AboutComponent,
     DynamicSubFormInfoComponent,
-    ClientComponent
+    ClientComponent,
+    DynamicCrudFiltersComponent
   ],
   imports: [
     BrowserModule,
@@ -101,6 +104,7 @@ import { ClientComponent } from './administrator/client/client.component';
     MatDialogModule,
     MatRadioModule,
     ResponsiveDynamicTableModule,
+    MatNativeDateModule ,
     ToastrModule.forRoot()
   ],
   providers: [{ provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi: true}],

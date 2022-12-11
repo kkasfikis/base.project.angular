@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subject, Subscription, takeUntil } from 'rxjs';
 import { FormFieldBase, FormFieldType } from '../dynamic-form.models';
 
 @Component({
@@ -10,104 +10,42 @@ import { FormFieldBase, FormFieldType } from '../dynamic-form.models';
 })
 export class DynamicFormFieldComponent implements OnInit, OnDestroy {
 
-  @Input() formField! : FormFieldBase;
+  @Input() formFieldSubj! : BehaviorSubject<FormFieldBase>;
   @Input() form! : FormGroup;
 
   @Output() onFieldChange : EventEmitter<any> = new EventEmitter<any>();
 
-  enableSub! : Subscription;
-  requiredSub! : Subscription;
-  maxLengthSub! : Subscription;
-  minLengthSub! : Subscription;
-  regexSub! : Subscription;
-  valueSub! : Subscription;
-
+  formField! : FormFieldBase;
   localFormFieldType : typeof FormFieldType = FormFieldType
-
+  private ngUnsubscribe = new Subject<void>();
   constructor() { }
 
   ngOnInit(): void {
-
-
-    let enableObserver = {
-      next : (val : any) => {
-        if(val){
-          this.form.get(this.formField.key)?.enable();
-        }
-        else{
-          this.form.get(this.formField.key)?.disable();
-        }
+    this.formField = this.formFieldSubj.getValue();
+    //console.log(this.form.controls[this.formField.key]);
+    let formFieldObserver = {
+      next : (field : FormFieldBase) => {
+        this.formField = field;
+        //console.log('aaaaaaaaaaaa',this.formField)
+        this.form.clearValidators();
+        let validators : ValidatorFn[] = [];
+        if(field.required){ validators.push(Validators.required); }
+        if(field.maxLength > 0) { validators.push(Validators.maxLength(field.maxLength))}
+        if(field.minLength > 0) {validators.push(Validators.minLength(field.minLength))}
+        if(field.regexPattern && field.regexPattern != '') {validators.push(Validators.pattern(field.regexPattern))}
+        if(field.enabled) {this.form.get(this.formField.key)?.enable();} else { this.form.get(this.formField.key)?.disable(); }
+        this.form.get(this.formField.key)?.addValidators(validators);
+        this.form.controls[this.formField.key].patchValue(field.value, {onlySelf: false, emitEvent: true});
       }
     }
-    this.enableSub = this.formField.enabled.subscribe(enableObserver);
-
-    let requiredObserver = {
-      next : (val : boolean) => {
-        let validators : Validators = [Validators.required]
-        if(val){
-          this.form.get(this.formField.key)?.addValidators(validators as ValidatorFn[]);
-        }
-        else{
-          this.form.get(this.formField.key)?.removeValidators(validators as ValidatorFn[]);
-        }
-      }
-    }
-    this.requiredSub = this.formField.required.subscribe(requiredObserver);
-
-    let maxLengthObserver = {
-      next : (val : number) => {
-        let validators : Validators = [Validators.maxLength]
-        if(val > 0){
-          this.form.get(this.formField.key)?.addValidators(validators as ValidatorFn[]);
-        }
-        else{
-          this.form.get(this.formField.key)?.removeValidators(validators as ValidatorFn[]);
-        }
-      }
-    }
-    this.maxLengthSub = this.formField.maxLength.subscribe(maxLengthObserver)
-
-    let minLengthObserver = {
-      next : (val : number) => {
-        let validators : Validators = [Validators.minLength(val)]
-        if(val > 0){
-          this.form.get(this.formField.key)?.addValidators(validators as ValidatorFn[]);
-        }
-        else{
-          this.form.get(this.formField.key)?.removeValidators(validators as ValidatorFn[]);
-        }
-      }
-    }
-    this.minLengthSub = this.formField.minLength.subscribe(minLengthObserver);
-
-    let regexObserver = {
-      next : (val : string) => {
-        let validators : Validators = [Validators.pattern(val)]
-        if(val && val.length > 0){
-          this.form.get(this.formField.key)?.addValidators(validators as ValidatorFn[]);
-        }
-        else{
-          this.form.get(this.formField.key)?.removeValidators(validators as ValidatorFn[]);
-        }
-      }
-    }
-    this.regexSub = this.formField.regexPattern.subscribe(regexObserver);
-
-    let valueObserver = {
-      next : (val : any) => {
-        this.form.controls[this.formField.key].patchValue(val, {onlySelf: false, emitEvent: true});
-      }
-    }
-    this.valueSub = this.formField.value.subscribe(valueObserver)
+    this.formFieldSubj.pipe(
+      takeUntil(this.ngUnsubscribe)
+    ).subscribe(formFieldObserver);
   }
 
   ngOnDestroy(): void {
-    this.enableSub.unsubscribe();
-    this.requiredSub.unsubscribe();
-    this.maxLengthSub.unsubscribe();
-    this.minLengthSub.unsubscribe();
-    this.regexSub.unsubscribe();  
-    this.valueSub.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   contentChange(){

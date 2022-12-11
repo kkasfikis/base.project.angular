@@ -1,8 +1,9 @@
-<mat-card fxFlex="100">
-    <mat-card-header>
+<mat-card fxFlex="100" fxLayout="column">
+    <mat-card-header fxFlex="100" fxLayout="column">
         <h5>{{title}}</h5>
+        <mat-divider fxFlex="100"></mat-divider>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content  fxFlex="100" fxLayout="column">
         <div fxFlex="100" fxLayout="row wrap" fxLayoutAlign="center" *ngFor="let obj of objArray">
             <div *ngFor="let infoField of sortByOrder(infoFields)" [fxFlex]="infoField.width" [fxLayoutAlign]="infoField.align">
                 <app-dynamic-info-field
@@ -11,9 +12,8 @@
                     [fxFlex]="infoField.innerWidth"
                 ></app-dynamic-info-field>
             </div>
-            <mat-divider></mat-divider>
+            <mat-divider fxFlex="100"></mat-divider>
         </div>
-        <mat-divider></mat-divider>
     </mat-card-content>
 </mat-card>
 

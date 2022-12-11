@@ -20,19 +20,32 @@ export class DynamicCrudService {
     return this.http.post(url, data, {...options});
   }
 
-  read(url:string, columns : TableColumn[]){
+  read(url:string){
     let options = {
       headers : new HttpHeaders({'Content-Type' : 'application/json'})
     }
     return this.http.get(url, {...options} )
   }
 
+  paginatedRead(url:string, page :number, size:number){
+    let options = {
+      headers : new HttpHeaders({'Content-Type' : 'application/json'})
+    }
+    console.log('Reading data of page:' + page + ' of size:' + size)
+    return this.http.get(url + "/" + page + "/" + size, {...options} )
+  }
+
+  filter(url:string, page:number, size:number, payload:any){
+    let options = {
+      headers : new HttpHeaders({'Content-Type' : 'application/json'})
+    }
+    return this.http.post(url + '/' + page + '/' + size, payload, {...options});
+  }
+
   update(url:string, item : any, identifier:string){
     let options = {
       headers : new HttpHeaders({'Content-Type' : 'application/json'})
     }
-    
-    console.log('BBBB',JSON.stringify(item),identifier);
     return this.http.put(url + '/' + item[identifier], item, {...options});
   }
 
@@ -40,12 +53,14 @@ export class DynamicCrudService {
     let options = {
       headers : new HttpHeaders({'Content-Type' : 'application/json'})
     }
-    console.log('AAAAA',JSON.stringify(item),identifier);
     return this.http.delete(url + '/' + item[identifier], {...options});
   }
 
   info(url:string, item : any, identifier : string){
-
+    let options = {
+      headers : new HttpHeaders({'Content-Type' : 'application/json'})
+    }
+    return this.http.get(url  + '/' + item[identifier], {...options} )
   }
 
 }

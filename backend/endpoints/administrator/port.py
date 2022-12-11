@@ -16,9 +16,10 @@ class GetPostPort(Resource):
         try:
             ports = []
             for port in Port.objects:
-                tport = json.loads(port.to_json())
-                tport['_id'] = tport['_id']['$oid']
-                ports.append(tport)
+                for i in range(20):
+                    tport = json.loads(port.to_json())
+                    tport['_id'] = tport['_id']['$oid']
+                    ports.append(tport)
             
             return {
                 'read' : True,
@@ -56,7 +57,64 @@ class GetPostPort(Resource):
                 'message' : 'An error occured: ' + str(e)
             },200
 
+@api.route("/<int:page>/<int:size>", methods=['GET','POST'])
+class PaginatedPort(Resource):
+    @cross_origin()
+    def get(self,page,size):
+        try:
+            ports = []
+            count = Port.objects.count()
+            overflow = False
+            if(page * size > count * 20) :
+                overflow = True
+            for port in Port.objects: #.skip(page*size).limit(size):
+                for i in range(20):
+                    tport = json.loads(port.to_json())
+                    tport['_id'] = tport['_id']['$oid']
+                    tport['name'] = tport['name'] + "_" + str(i)
+                    ports.append(tport)
+            return {
+                'read' : True,
+                'data' : ports[page * size : page * size + size] if not overflow else ports[0:size],
+                'count' : count * 20,
+                'overflow' : overflow
+            }, 200
+        except svc.db.ValidationError as e:
+            return {
+                'read' : False,
+                'message' : 'There are validation errors: ' + str(e) 
+            }, 200
 
+    @cross_origin()
+    def post(self,page,size):
+        try:
+            ports = []
+            data = request.get_json()
+            print(data)
+            count = Port.objects.count()
+            overflow = False
+            if(page * size > count * 20) :
+                overflow = True
+            for port in Port.objects: #.skip(page*size).limit(size):
+                for i in range(20):
+                    tport = json.loads(port.to_json())
+                    tport['_id'] = tport['_id']['$oid']
+                    tport['name'] = tport['name'] + "_" + str(i)
+                    ports.append(tport)
+            ports1 = list(filter(lambda x: (data['search'][0]['value'] in x['name']), ports)) 
+            count = len(ports1)
+            ports1 = ports1[page * size : page * size + size] 
+            return {
+                'read' : True,
+                'data' : ports1,
+                'count' : count,
+                'overflow' : overflow
+            }, 200
+        except svc.db.ValidationError as e:
+            return {
+                'read' : False,
+                'message' : 'There are validation errors: ' + str(e) 
+            }, 200
     
 @api.route("/<string:id>", methods=['PUT','DELETE'])
 class PutDeletePort(Resource):

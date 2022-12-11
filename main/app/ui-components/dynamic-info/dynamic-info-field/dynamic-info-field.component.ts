@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { InfoField } from '../dynamic-info.models';
+import { InfoField, InfoType } from '../dynamic-info.models';
 
 @Component({
   selector: 'app-dynamic-info-field',
@@ -10,6 +10,8 @@ export class DynamicInfoFieldComponent implements OnInit, AfterViewInit {
 
   @Input() infoField! : InfoField;
   @Input() value : any | any[];
+
+  localInfoType : typeof InfoType = InfoType;
 
   constructor() { }
 

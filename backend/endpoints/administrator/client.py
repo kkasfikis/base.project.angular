@@ -8,6 +8,7 @@ import json
 
 api = Namespace('client',description = 'Port Crud Endpoints')
 
+
 @api.route("/", methods=['GET','POST'])
 class GetPostClient(Resource):
 
@@ -56,10 +57,43 @@ class GetPostClient(Resource):
                 'message' : 'An error occured: ' + str(e)
             }, 200
 
-
+@api.route("/<int:page>/<int:size>", methods=['GET'])
+class PaginatedGetClient(Resource):
+    @cross_origin()
+    def get(self,page,size):
+        try:
+            clients = []
+            for client in Client.objects.skip(page*size).limit(size):
+                tclient = json.loads(client.to_json())
+                tclient['_id'] = tclient['_id']['$oid']
+                clients.append(tclient)
+            
+            return {
+                'read' : True,
+                'data' : clients
+            }, 200
+        except svc.db.ValidationError as e:
+            return {
+                'read' : False,
+                'message' : 'There are validation errors: ' + str(e) 
+            }, 200
     
-@api.route("/<string:id>", methods=['PUT','DELETE'])
+@api.route("/<string:id>", methods=['GET','PUT','DELETE'])
 class PutDeleteClient(Resource):
+
+    @cross_origin()
+    def get(self,id):
+        try:
+            client = Client.objects(pk = id).first()
+            return {
+                'info' : True,
+                'data' : client
+            },200
+        except Exception as e:
+            return {
+                'info' : False,
+                'message' : 'An error occured: ' + str(e)
+            },200
 
     @cross_origin()
     def put(self, id):
