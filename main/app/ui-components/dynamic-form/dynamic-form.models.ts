@@ -39,12 +39,15 @@ export class SubForm{
     order : number = 0;
     fields : BehaviorSubject<FormFieldBase>[] = [];
     tableData : BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+    data : string[] | any[] = []
     tableColumns : TableColumn[] = [];
     infoFields : (InfoField|SubFormInfo)[] =[];
     hasInfo : boolean = true;
     width : number = 100;
     innerWidth : number = 100;
     align : string = 'center';
+    isTagged : boolean = false;
+    tagSeperator : string = ':';
     constructor(init?:Partial<SubForm>) {
         Object.assign(this, init);
     }

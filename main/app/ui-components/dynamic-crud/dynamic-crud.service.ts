@@ -27,19 +27,29 @@ export class DynamicCrudService {
     return this.http.get(url, {...options} )
   }
 
-  paginatedRead(url:string, page :number, size:number){
+  paginatedRead(url:string, page :number, size:number, sort:string = '', sortColumn:string=''){
     let options = {
       headers : new HttpHeaders({'Content-Type' : 'application/json'})
     }
     console.log('Reading data of page:' + page + ' of size:' + size)
-    return this.http.get(url + "/" + page + "/" + size, {...options} )
+    url += "/" + page + "/" + size
+    if (sort != ''){
+      url += '/' + sort + '/' + sortColumn;
+    }
+    console.log(url + '|' + sort);
+    return this.http.get( url , {...options} )
   }
 
-  filter(url:string, page:number, size:number, payload:any){
+  filter(url:string, page:number, size:number, payload:any, sort:string = '', sortColumn:string=''){
     let options = {
       headers : new HttpHeaders({'Content-Type' : 'application/json'})
     }
-    return this.http.post(url + '/' + page + '/' + size, payload, {...options});
+    url += "/" + page + "/" + size
+    if (sort != ''){
+      url += '/' + sort + '/' + sortColumn;
+    }
+    console.log(url + '|' + sort);
+    return this.http.post( url , payload, {...options});
   }
 
   update(url:string, item : any, identifier:string){

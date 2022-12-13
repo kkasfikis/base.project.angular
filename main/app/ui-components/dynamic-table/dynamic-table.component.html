@@ -1,11 +1,11 @@
-<div fxLayout="column" >
+<div fxLayout="column" style="width:100%;overflow:auto">
     <table fxFlex="100" mat-table matSort  (matSortChange)="sortData($event)" responsive-dynamic-table [dataSource]="tableSource" class="mat-elevation-z8">
         <ng-container *ngFor="let column of columns" [matColumnDef]="column.name">
             <ng-container *ngIf="column.isSortable">
                 <th mat-sort-header mat-header-cell *matHeaderCellDef>
                     <div fxLayout="column">
                         <p>{{column.text}}</p>
-                        <mat-form-field class="filter" *ngIf="column.isFilterable" floatLabel="never">
+                        <mat-form-field class="filter" *ngIf="!isPaginated && column.isFilterable" floatLabel="never">
                             <mat-label>Search</mat-label>
                             <input matInput [formControl]="filterInputs[column.name]">
                         </mat-form-field>
@@ -16,7 +16,7 @@
                 <th  mat-header-cell *matHeaderCellDef>
                     <div fxLayout="column">
                         <p>{{column.text}}</p>
-                        <mat-form-field class="filter" *ngIf="column.isFilterable" floatLabel="never">
+                        <mat-form-field class="filter" *ngIf="!isPaginated && column.isFilterable" floatLabel="never">
                             <mat-label>Search</mat-label>
                             <input matInput [formControl]="filterInputs[column.name]">
                         </mat-form-field>

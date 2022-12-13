@@ -1,6 +1,7 @@
-<mat-card fxFlex="100" fxLayout="column">
+<br *ngIf="objArray && objArray.length > 0"/>
+<mat-card fxFlex="100" fxLayout="column" *ngIf="objArray && objArray.length > 0">
     <mat-card-header fxFlex="100" fxLayout="column">
-        <h5>{{title}}</h5>
+        <h3>{{title}}</h3>
         <mat-divider fxFlex="100"></mat-divider>
     </mat-card-header>
     <mat-card-content  fxFlex="100" fxLayout="column">

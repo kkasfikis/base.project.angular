@@ -25,6 +25,8 @@ export class DynamicSubFormComponent implements OnInit {
   @Input() hasDelete : boolean = true;
   @Input() hasUpdate : boolean = true;
   @Input() identifierKey : string = '';
+  @Input() isTagged : boolean = false;
+  @Input() tagSeperator : string = '';
 
   @Output() onFormChange : EventEmitter<any> = new EventEmitter<any>();
 
@@ -46,6 +48,8 @@ export class DynamicSubFormComponent implements OnInit {
   
   private _unsubscribeSignal$: Subject<void> = new Subject();
 
+  tags : string[] = []
+
   constructor(private formService : DynamicFormService,public dialog : MatDialog) { }
 
   ngOnInit(): void {
@@ -53,8 +57,21 @@ export class DynamicSubFormComponent implements OnInit {
     this.columnSubject.next(this.formField.tableColumns);
     this.form = this.formService.toFormGroup(this.formField.fields as BehaviorSubject<FormFieldBase>[]);
     this.formField.tableData.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
-      next : () => {
-        this.dataSubject.next(this.mapData())
+      next : (val : string[] | any[]) => {
+        let notString = false;
+        val.forEach(function(item){
+          if(typeof item !== 'string'){
+             notString = true;
+          }
+        })
+        if(notString){
+          this.dataSubject.next(this.mapData())
+          this.formField.data = val;
+        }
+        else{
+          this.tags = val;
+          this.formField.data = val;
+        }
       }
     })
   }
@@ -142,16 +159,35 @@ export class DynamicSubFormComponent implements OnInit {
     if(this.form.invalid){
       return;
     }
-    if(this.editInternalId >= 0){
-      this.formField.tableData.getValue().splice(this.editInternalId,1);
-      this.formField.tableData.getValue().push(this.form.getRawValue())
+    if(this.editInternalId >= 0 && !this.isTagged){
+      let tData : any[] = this.formField.tableData.getValue();
+      tData = tData.splice(this.editInternalId,1);
+      tData.push(this.form.getRawValue());
+      this.formField.tableData.next(tData);
       this.dataSubject.next(this.mapData());
       this.editInternalId = -1;
       this.formActions = [];
     }
     else{
-      this.formField.tableData.getValue().push(this.form.getRawValue());
-      this.dataSubject.next(this.mapData());
+      if(!this.isTagged){
+        let tData : any[] = this.formField.tableData.getValue();
+        tData.push(this.form.getRawValue());
+        this.formField.tableData.next(tData);
+        this.dataSubject.next(this.mapData());
+      }
+      else{
+        let tData : string[] = this.formField.tableData.getValue();
+        let form = this.form.getRawValue()
+        let item : string = '';
+        console.log('FORMMMM:',form)
+        Object.keys(form).forEach( ( key : string) => {
+          console.log('Key:',key,' Value',form[key])
+          item += ( (item.length == 0) ? '' : this.tagSeperator) + form[key];
+        })
+        tData.push(item);
+        this.formField.tableData.next(tData);
+        this.dataSubject.next(this.mapData());
+      }
     }
     this.formField.fields.forEach( (field : BehaviorSubject<FormFieldBase>, index : number) => {
       let tField = field.getValue();
@@ -170,6 +206,11 @@ export class DynamicSubFormComponent implements OnInit {
     })
   }
 
+  deleteTag(tag:string){
+    this.tags = this.tags.filter(e => e !== tag);
+    this.formField.tableData.next(this.tags);
+  }
+
   handleFieldChange(item : {key:string,value:string,form:FormGroup}){
     console.log('INSIDE',{subform : this.formField.key, key : item.key , value : item.value, form : item.form })
     this.onFormChange.emit({subform : this.formField.key, key : item.key , value : item.value, form : item.form })
@@ -186,6 +227,7 @@ export class DynamicSubFormComponent implements OnInit {
         }
       })
   }
+
   sortByOrder(array:any)
   {
     return array.sort(function(a : any, b : any)

@@ -31,6 +31,7 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
 
   @Input() isPaginated : boolean = false;
   @Output() pageChanged : EventEmitter<any> = new EventEmitter<any>();
+  @Output() sortChanged : EventEmitter<any> = new EventEmitter<any>();
 
   private _unsubscribeSignal$: Subject<void> = new Subject();
 
@@ -61,18 +62,17 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
           }
           this.filterInputs = {}
           this.filterValues = {}
-          
-          this.tableSource.filterPredicate = this.createFilter();
-          this.columns.forEach((val)=>{
-            this.filterInputs[val.name] = new FormControl('');
-            
-            this.filterValues[val.name] = '';
-            
-            this.filterInputs[val.name].valueChanges.subscribe( (filterValue : string) => {
-                this.filterValues[val.name] = filterValue;
-                this.tableSource.filter = JSON.stringify(this.filterValues)
+          if (!this.isPaginated){
+            this.tableSource.filterPredicate = this.createFilter();
+            this.columns.forEach((val)=>{
+              this.filterInputs[val.name] = new FormControl('');
+              this.filterValues[val.name] = '';
+              this.filterInputs[val.name].valueChanges.subscribe( (filterValue : string) => {
+                  this.filterValues[val.name] = filterValue;
+                  this.tableSource.filter = JSON.stringify(this.filterValues)
+              })
             })
-          })
+          }
 
         }
       });
@@ -110,16 +110,21 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
 
 
   sortData(sort: Sort) {
-    const data = this.tableSource.data;
-    if (!sort.active || sort.direction === '') {
-      this.tableSource.data = data;
-      return;
+    if(!this.isPaginated){
+      let data = this.tableSource.data;
+      if (!sort.active || sort.direction === '') {
+        this.tableSource.data = data;
+        return;
+      }
+  
+      this.tableSource.data = data.sort((a, b) => {
+        const isAsc = sort.direction === 'asc';
+        return this.compare(a[sort.active],b[sort.active],isAsc);
+      });
     }
-
-    this.tableSource.data = data.sort((a, b) => {
-      const isAsc = sort.direction === 'asc';
-      return this.compare(a[sort.active],b[sort.active],isAsc);
-    });
+    else{
+      this.sortChanged.emit(sort)
+    }
   }
 
   compare(a: number | string, b: number | string, isAsc: boolean) {

@@ -18,7 +18,7 @@ export class DynamicCrudFiltersComponent implements OnInit {
   @Output() onFilterSubmit : EventEmitter<any> = new EventEmitter<any>();
   @Output() onFilterCancel : EventEmitter<any> = new EventEmitter<any>();
 
-  searchForm : SubForm = new SubForm({key : 'search', order : 0, hasInfo : false});
+  searchForm : SubForm = new SubForm({key : 'search', order : 0, hasInfo : false, isTagged : true, tagSeperator : ':'});
   cancelFilterFunc = this.filterCancel.bind(this);
 
   cancelFilterAction : FormAction = {

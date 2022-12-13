@@ -22,6 +22,8 @@
                     [formField]="formField"
                     [formGap]="'10'"
                     [formAlign]="'center center'"
+                    [isTagged]="formField.isTagged"
+                    [tagSeperator] = "':'"
                     (onFormChange)="handleSubFieldChange($any($event))"   
                 ></app-dynamic-sub-form>
             </div>

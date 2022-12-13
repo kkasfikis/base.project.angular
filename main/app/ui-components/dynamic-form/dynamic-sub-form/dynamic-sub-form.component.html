@@ -1,7 +1,6 @@
 <mat-card fxFlex="100" fxLayout="column">
     <div fxFlex="100" fxLayout="column">
-        <mat-card-title fxFlex="100" fxLayoutAlign="center" *ngIf="title && title.length > 0">{{title}}</mat-card-title>
-        <mat-card-title fxFlex="100" fxLayoutAlign="center" *ngIf="subtitle && subtitle.length > 0">{{subtitle}}</mat-card-title>
+        <h3>{{title}}</h3>
         <mat-divider></mat-divider>
     </div>
     <br/>
@@ -26,10 +25,15 @@
         <button mat-raised-button [disabled]="disabled" (click)="handleFormSubmit()" color="primary">Submit</button>
     </mat-card-actions>
     <br/>
-    <app-dynamic-table
+    <app-dynamic-table *ngIf="!isTagged"
         [tableColumns]="columnSubject"
         [tableData]="dataSubject"
         [hasActions]="true"
     ></app-dynamic-table>
+    <div *ngIf="isTagged && tags && tags.length > 0" fxFlex="100">
+        <div class="tags-input-wrapper" fxFlex="100">
+            <span *ngFor="let tag of tags" class="tag"><span class="tag-content">{{tag}}</span><a class="delete" (click)="deleteTag(tag)">×</a></span>
+        </div>
+    </div>
 </mat-card>
 

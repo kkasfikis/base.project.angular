@@ -97,7 +97,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
       }
       else{
         let subform = field as SubForm;
-        obj[subform.key] = subform.tableData.getValue();
+        obj[subform.key] = subform.data;
       }
     })    
     return obj;

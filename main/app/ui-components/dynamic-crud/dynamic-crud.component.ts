@@ -64,6 +64,8 @@ export class DynamicCrudComponent implements OnInit {
   private tableData : any[] = [];
   private page : number = 0;
   private size : number = 0;
+  private sort : string = '';
+  private sortColumn : string = '';
 
   private filterMode: boolean =false;
   private filterPayload : any;
@@ -184,6 +186,13 @@ export class DynamicCrudComponent implements OnInit {
     this.read();
   }
 
+  onSortChange(item : any){
+    this.sort = item.direction;
+    this.sortColumn = item.active;
+    console.log('Changed:' + this.sort + '||' + this.sortColumn)
+    this.read();
+  }
+
   read(){
     if(this.isPaginated){
       if(this.filterMode){
@@ -217,7 +226,7 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   paginatedRead(){
-    this.crudService.paginatedRead(this.endpoint,this.page,this.size).subscribe({
+    this.crudService.paginatedRead(this.endpoint,this.page,this.size,this.sort,this.sortColumn).subscribe({
       next : (resp : any) => {
         if(resp.read){
           if(resp.overflow){
@@ -243,7 +252,7 @@ export class DynamicCrudComponent implements OnInit {
 
   filterRead(){
     console.log('Filter Payload : ', this.filterPayload)
-    this.crudService.filter(this.endpoint,0,this.pageSize,this.filterPayload).subscribe({
+    this.crudService.filter(this.endpoint,this.page,this.pageSize,this.filterPayload,this.sort,this.sortColumn).subscribe({
       next : (resp : any) => {
         if(resp.read){
           if(resp.overflow){
@@ -278,7 +287,8 @@ export class DynamicCrudComponent implements OnInit {
             let sField = subfield.getValue();
             sField.value = '';
             subfield.next(sField);
-          })
+          });
+          (field as SubForm).tableData.next([])
         }
         else{
           let sField = (field as BehaviorSubject<FormFieldBase>).getValue();
@@ -294,7 +304,8 @@ export class DynamicCrudComponent implements OnInit {
             let sField = subfield.getValue();
             sField.value = '';
             subfield.next(sField);
-          })
+          });
+          (field as SubForm).tableData.next([])
         }
         else{
           let sField = (field as BehaviorSubject<FormFieldBase>).getValue();
@@ -323,35 +334,40 @@ export class DynamicCrudComponent implements OnInit {
 
   crudUpdate(payload : any){
     this.cleanForm(false);
-    let obj = this.tableData[payload.internalId];
-    Object.keys(obj).forEach( (key : string) => {
-      this.updateFormFields.forEach( (field : any, index : number) => {
-        
-          if(field instanceof SubForm){
-            if(field.key == key){
-              field.tableData.next([]);
-              let data = field.tableData.getValue();
-              let row : any = {};
-              obj[field.key].forEach( (value : any, index : number) => {
-                field.fields.forEach( (subfield : any) => {
-                  let tField = subfield.getValue();
-                  row[tField.key] = obj[field.key][index][tField.key]; 
-                })
-                data.push(row);
-              })
-              field.tableData.next(data);
-            }
-          }
-          else{
-            let sField = field.getValue();
-            if(sField.key == key){
-              sField.value = obj[key];
-              field.next(sField);
-            }
-          }
-      })
+    this.crudService.info(this.endpoint,this.tableData[payload.internalId],this.identifierKey).subscribe({
+      next : (resp : any) => {
+        let obj = resp.data;
+        Object.keys(obj).forEach( (key : string) => {
+          this.updateFormFields.forEach( (field : any, index : number) => {
+            
+              if(field instanceof SubForm){
+                if(field.key == key){
+                  field.tableData.next([]);
+                  let data = field.tableData.getValue();
+                  let row : any = {};
+                  obj[field.key].forEach( (value : any, index : number) => {
+                    field.fields.forEach( (subfield : any) => {
+                      let tField = subfield.getValue();
+                      row[tField.key] = obj[field.key][index][tField.key]; 
+                    })
+                    data.push(row);
+                  })
+                  field.tableData.next(data);
+                }
+              }
+              else{
+                let sField = field.getValue();
+                if(sField.key == key){
+                  sField.value = obj[key];
+                  field.next(sField);
+                }
+              }
+          })
+        })
+        this.switchMode('update')
+      } 
     })
-    this.switchMode('update')
+    
   }
 
   crudUpdateSubmit(payload : any){
@@ -444,6 +460,7 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   filterCancel(){
+    this.page = 0;
     this.filterMode = false;
     this.filterPayload = undefined;
     this.read();
