@@ -4,6 +4,7 @@ import { TableColumn } from "../dynamic-table/dynamic-table.models";
 
 export enum FormFieldType{
     TextBox,
+    TextArea,
     Select,
     MultiSelect,
     DatePicker,

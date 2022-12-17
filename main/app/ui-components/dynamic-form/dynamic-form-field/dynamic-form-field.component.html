@@ -6,6 +6,11 @@
             <input matInput [formControlName]="formField.key" (change)="contentChange()">
         </mat-form-field>
 
+        <mat-form-field *ngSwitchCase="localFormFieldType.TextArea" appearance="fill" fxFlex="100">
+            <mat-label>{{formField.label}}</mat-label>
+            <textarea matInput [formControlName]="formField.key" (change)="contentChange()"></textarea>
+        </mat-form-field>
+
         <mat-form-field *ngSwitchCase="localFormFieldType.Select" appearance="fill" fxFlex="100">
             <mat-label>{{formField.label}}</mat-label>
             <mat-select [formControlName]="formField.key" (selectionChange)="contentChange()">

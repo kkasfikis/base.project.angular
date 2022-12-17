@@ -27,7 +27,8 @@ export class DynamicFormService {
         if( formField.getValue().regexPattern && formField.getValue().regexPattern.length > 0 ){
           validators.push(Validators.pattern(formField.getValue().regexPattern));
         }
-        group[formField.getValue().key] = new FormControl(formField.getValue() || '',validators as ValidatorFn[])  
+        console.log('value',formField.getValue().value )
+        group[formField.getValue().key] = new FormControl(formField.getValue().value || '',validators as ValidatorFn[])  
       }
     })
     return new FormGroup(group);
