@@ -37,13 +37,17 @@ export class FormFieldBase{
 
 export class SubForm{
     key : string = '';
+    label : string = '';
     order : number = 0;
-    fields : BehaviorSubject<FormFieldBase>[] = [];
-    tableData : BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-    data : string[] | any[] = []
+    enabled : boolean = true;
+    fields : FormFieldBase[] = [];
+    tableData : string[] | any[] = [];  
     tableColumns : TableColumn[] = [];
-    infoFields : (InfoField|SubFormInfo)[] =[];
-    hasInfo : boolean = true;
+    infoFields : InfoField[] =[];
+    hasDelete : boolean = true;
+    hasUpdate : boolean = true;
+    hasInfo : boolean = true; 
+    identifierKey : string = '_id';
     width : number = 100;
     innerWidth : number = 100;
     align : string = 'center';

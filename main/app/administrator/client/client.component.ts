@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
-import { InfoClassName, InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
+import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
 import { BehaviorSubject } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ClientComponent implements OnInit {
 
-  formFields : (BehaviorSubject<FormFieldBase> | SubForm)[] = [
+  formFields : (BehaviorSubject<FormFieldBase> | BehaviorSubject<SubForm>)[] = [
     new BehaviorSubject<FormFieldBase>(new FormFieldBase({
       value : '',
       type : FormFieldType.Hidden,
@@ -297,11 +297,11 @@ export class ClientComponent implements OnInit {
       innerWidth : 98,
       align : 'center center'
     })),
-    new SubForm({
+    new BehaviorSubject<SubForm>(new SubForm({
       key : 'peopleInCharge',
       order : 18,
       fields : [
-        new BehaviorSubject<FormFieldBase>(new FormFieldBase({
+        new FormFieldBase({
           value : '',
           type : FormFieldType.TextBox,
           key : 'name',
@@ -315,8 +315,8 @@ export class ClientComponent implements OnInit {
           width : 50,
           innerWidth : 98,
           align : 'center center'
-        })),
-        new BehaviorSubject<FormFieldBase>(new FormFieldBase({
+        }),
+        new FormFieldBase({
           value : '',
           type : FormFieldType.TextBox,
           key : 'position',
@@ -330,8 +330,8 @@ export class ClientComponent implements OnInit {
           width : 50,
           innerWidth : 98,
           align : 'center center'
-        })),
-        new BehaviorSubject<FormFieldBase>(new FormFieldBase({
+        }),
+        new FormFieldBase({
           value : '',
           type : FormFieldType.TextBox,
           key : 'title',
@@ -345,8 +345,8 @@ export class ClientComponent implements OnInit {
           width : 50,
           innerWidth : 98,
           align : 'center center'
-        })),
-        new BehaviorSubject<FormFieldBase>(new FormFieldBase({
+        }),
+        new FormFieldBase({
           value : '',
           type : FormFieldType.TextBox,
           key : 'phone',
@@ -360,8 +360,8 @@ export class ClientComponent implements OnInit {
           width : 50,
           innerWidth : 98,
           align : 'center center'
-        })),
-        new BehaviorSubject<FormFieldBase>(new FormFieldBase({
+        }),
+        new FormFieldBase({
           value : '',
           type : FormFieldType.TextBox,
           key : 'mobile',
@@ -375,8 +375,8 @@ export class ClientComponent implements OnInit {
           width : 50,
           innerWidth : 98,
           align : 'center center'
-        })),
-        new BehaviorSubject<FormFieldBase>(new FormFieldBase({
+        }),
+        new FormFieldBase({
           value : '',
           type : FormFieldType.TextBox,
           key : 'fax',
@@ -390,8 +390,8 @@ export class ClientComponent implements OnInit {
           width : 50,
           innerWidth : 98,
           align : 'center center'
-        })),
-        new BehaviorSubject<FormFieldBase>(new FormFieldBase({
+        }),
+        new FormFieldBase({
           value : '',
           type : FormFieldType.TextBox,
           key : 'internalNumber',
@@ -405,8 +405,8 @@ export class ClientComponent implements OnInit {
           width : 50,
           innerWidth : 98,
           align : 'center center'
-        })),
-        new BehaviorSubject<FormFieldBase>(new FormFieldBase({
+        }),
+        new FormFieldBase({
           value : '',
           type : FormFieldType.TextBox,
           key : 'notes',
@@ -421,26 +421,26 @@ export class ClientComponent implements OnInit {
           width : 100,
           innerWidth : 98,
           align : 'center center'
-        })),
-      ] as BehaviorSubject<FormFieldBase>[],
-      tableData : new BehaviorSubject<any[]>([]),
+        })
+      ] as FormFieldBase[],
+      tableData : [],
       tableColumns : [
         {
-          name : 'title',
+          key : 'title',
           text : 'Title',
           isFilterable : true,
           isSortable : true,
           width : 10
         },
         {
-          name : 'name',
+          key : 'name',
           text : 'Name',
           isFilterable : true,
           isSortable : true,
           width : 40
         },
         {
-          name : 'position',
+          key : 'position',
           text : 'Position',
           isFilterable : true,
           isSortable : true,
@@ -449,8 +449,7 @@ export class ClientComponent implements OnInit {
       ] as TableColumn[],
       hasInfo : true,
       infoFields : [
-        {
-          className : InfoClassName.Field,
+        new InfoField({
           key : 'title',
           order : 0,
           label : 'Title',
@@ -458,8 +457,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'name',
           order : 1,
           label : 'Name',
@@ -467,8 +466,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'position',
           order : 2,
           label : 'Position',
@@ -476,8 +475,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'phone',
           order : 3,
           label : 'Phone Number',
@@ -485,8 +484,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'mobile',
           order : 4,
           label : 'Mobile Number',
@@ -494,8 +493,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'fax',
           order : 5,
           label : 'FAX',
@@ -503,8 +502,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'internalNumber',
           order : 6,
           label : 'Internal Phone Number',
@@ -512,8 +511,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'notes',
           order : 7,
           label : 'Notes',
@@ -521,20 +520,20 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },
-      ] as (InfoField|SubFormInfo)[],
+        })
+      ] as InfoField[],
       width : 100,
       innerWidth : 100,
       align : 'center'
-    }),
-    new SubForm({
+    })),
+    new BehaviorSubject<SubForm>(new SubForm({
       key : 'aliases',
       order : 19,
       fields : [
-        new BehaviorSubject<FormFieldBase>({
+        new FormFieldBase({
           value : '',
           type : FormFieldType.TextBox,
-          key : 'name',
+          key : 'alias',
           label : 'Alias',
           order : 0,
           options :[],
@@ -546,43 +545,78 @@ export class ClientComponent implements OnInit {
           width : 100,
           innerWidth : 98,
           align : 'center center'
-        } as FormFieldBase),
-      ] as BehaviorSubject<FormFieldBase>[],
-      tableData : new BehaviorSubject<any[]>([]),
+        }),
+        new FormFieldBase({
+          value : '',
+          type : FormFieldType.TextArea,
+          key : 'text',
+          label : 'Description',
+          order : 1,
+          options :[],
+          enabled : true,
+          required : false,
+          minLength : 3,
+          maxLength : 255,
+          regexPattern : '',
+          width : 100,
+          innerWidth : 98,
+          align : 'center center'
+        })
+      ] as FormFieldBase[],
+      tableData : [],
       tableColumns : [
         {
-          name : 'name',
+          key : 'alias',
           text : 'Alias',
           isFilterable : true,
           isSortable : true,
           width : 70
         },
       ] as TableColumn[],
-      hasInfo : false,
-      infoFields : [] as (InfoField|SubFormInfo)[],
+      hasInfo : true,
+      infoFields : [
+        new InfoField({
+          key : 'alias',
+          order : 0,
+          label : 'Alias',
+          type : InfoType.Text,
+          width : '100',
+          innerWidth : '100',
+          align : 'center'
+        }),
+        new InfoField({
+          key : 'text',
+          order : 5,
+          label : 'Description',
+          type : InfoType.Text,
+          width : '100',
+          innerWidth : '100',
+          align : 'center'
+        }),
+      ] as InfoField[],
       width : 100,
       innerWidth : 100,
       align : 'center'
-    }),
+    })),
   ]
 
   tableColumns : TableColumn[] = [
     {
-      name : 'name',
+      key : 'name',
       text : 'Port Name',
       isFilterable : true,
       isSortable : true,
       width : 25
     },
     {
-      name : 'category',
+      key : 'category',
       text : 'Category',
       isFilterable : true,
       isSortable : true,
       width : 25
     },
     {
-      name : 'status',
+      key : 'status',
       text : 'Status',
       isFilterable : true,
       isSortable : true,
@@ -591,8 +625,7 @@ export class ClientComponent implements OnInit {
   ]
 
   infoFields : (InfoField|SubFormInfo)[] = [
-    {
-      className : InfoClassName.Field,
+    new InfoField({
       key : 'name',
       order : 0,
       label : 'Name',
@@ -600,9 +633,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'category',
       order : 1,
       label : 'category',
@@ -610,9 +642,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'status',
       order : 2,
       label : 'Status',
@@ -620,9 +651,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'occupation',
       order : 3,
       label : 'Occupation',
@@ -630,9 +660,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'VAT',
       order : 4,
       label : 'VAT',
@@ -640,9 +669,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'VATpercentage',
       order : 4,
       label : 'VAT %',
@@ -650,9 +678,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'email',
       order : 4,
       label : 'Email',
@@ -660,9 +687,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'phone',
       order : 5,
       label : 'Phone',
@@ -670,9 +696,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'fax',
       order : 6,
       label : 'FAX',
@@ -680,9 +705,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'country',
       order : 7,
       label : 'Country',
@@ -690,9 +714,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'town',
       order : 8,
       label : 'Town',
@@ -700,9 +723,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'address',
       order : 9,
       label : 'Address',
@@ -710,9 +732,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'zip',
       order : 10,
       label : 'ZIP',
@@ -720,9 +741,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'priority',
       order : 11,
       label : 'Priority',
@@ -730,9 +750,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'paymentMethod',
       order : 12,
       label : 'Payment Method',
@@ -740,9 +759,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'bank',
       order : 13,
       label : 'Bank',
@@ -750,9 +768,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'account',
       order : 14,
       label : 'Account',
@@ -760,9 +777,8 @@ export class ClientComponent implements OnInit {
       width : '50',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'notes',
       order : 15,
       label : 'notes',
@@ -770,9 +786,8 @@ export class ClientComponent implements OnInit {
       width : '100',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.Field,
+    }),
+    new InfoField({
       key : 'notes',
       order : 16,
       label : 'notes',
@@ -780,15 +795,13 @@ export class ClientComponent implements OnInit {
       width : '100',
       innerWidth : '100',
       align : 'center'
-    },
-    {
-      className : InfoClassName.SubForm,
+    }),
+    new SubFormInfo({
       key : 'peopleInCharge',
       order : 17,
       label : 'People In Charge',
       fields : [
-        {
-          className : InfoClassName.Field,
+        new InfoField({
           key : 'title',
           order : 0,
           label : 'Title',
@@ -796,8 +809,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'name',
           order : 1,
           label : 'Name',
@@ -805,8 +818,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'position',
           order : 2,
           label : 'Position',
@@ -814,8 +827,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'phone',
           order : 3,
           label : 'Phone Number',
@@ -823,8 +836,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'mobile',
           order : 4,
           label : 'Mobile Number',
@@ -832,8 +845,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'fax',
           order : 5,
           label : 'FAX',
@@ -841,8 +854,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'internalNumber',
           order : 6,
           label : 'Internal Phone Number',
@@ -850,8 +863,8 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        },{
-          className : InfoClassName.Field,
+        }),
+        new InfoField({
           key : 'notes',
           order : 7,
           label : 'Notes',
@@ -859,27 +872,34 @@ export class ClientComponent implements OnInit {
           width : '50',
           innerWidth : '100',
           align : 'center'
-        }
+        })
       ]
-    },
-    {
-      className : InfoClassName.SubForm,
+    }),
+    new SubFormInfo({
       key : 'aliases',
       order : 18,
       label : 'Aliases',
       fields : [
         {
-          className : InfoClassName.Field,
-          key : 'name',
+          key : 'alias',
           order : 0,
-          label : 'Name',
+          label : 'Alias',
           type : InfoType.Text,
-          width : '50',
+          width : '100',
+          innerWidth : '100',
+          align : 'center'
+        },
+        {
+          key : 'text',
+          order : 0,
+          label : 'Desription',
+          type : InfoType.Text,
+          width : '100',
           innerWidth : '100',
           align : 'center'
         }
       ]
-    },
+    })
   ]
 
   enabledSubj : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);

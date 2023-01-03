@@ -69,6 +69,33 @@ export class AppComponent implements OnInit,AfterViewInit{
         link:'/client',
         func : {},
         subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'Agents',
+        label:'Agents',
+        icon:'user',
+        isFunction:false,
+        link:'/agent',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'Vessels',
+        label:'Vessels',
+        icon:'user',
+        isFunction:false,
+        link:'/vessel',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'Calls',
+        label:'Calls',
+        icon:'user',
+        isFunction:false,
+        link:'/call',
+        func : {},
+        subMenus : [] as MenuOption[]
       } as MenuOption
     ]
   }

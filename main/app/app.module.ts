@@ -52,6 +52,9 @@ import { DynamicSubFormInfoComponent } from './ui-components/dynamic-info/dynami
 import { ClientComponent } from './administrator/client/client.component';
 import { DynamicCrudFiltersComponent } from './ui-components/dynamic-crud/dynamic-crud-filters/dynamic-crud-filters.component';
 import {MatNativeDateModule} from '@angular/material/core';
+import { AgentComponent } from './administrator/agent/agent.component';
+import { CallComponent } from './administrator/call/call.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,10 @@ import {MatNativeDateModule} from '@angular/material/core';
     AboutComponent,
     DynamicSubFormInfoComponent,
     ClientComponent,
-    DynamicCrudFiltersComponent
+    DynamicCrudFiltersComponent,
+    AgentComponent,
+    CallComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
 import { FormFieldBase, FormFieldType } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
-import { InfoClassName, InfoField, InfoType } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
+import { InfoField, InfoType } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
 import { BehaviorSubject } from 'rxjs';
 
@@ -97,7 +97,7 @@ export class PortComponent implements OnInit {
 
   tableColumns : TableColumn[] = [
     {
-      name : 'name',
+      key : 'name',
       text : 'Port Name',
       isFilterable : true,
       isSortable : true,
@@ -107,7 +107,6 @@ export class PortComponent implements OnInit {
 
   infoFields : InfoField[] = [
     {
-      className : InfoClassName.Field,
       key : 'name',
       order : 0,
       label : 'Port Name',
@@ -117,7 +116,6 @@ export class PortComponent implements OnInit {
       align : 'center'
     },
     {
-      className : InfoClassName.Field,
       key : 'anchorage',
       order : 1,
       label : 'Anchorage',
@@ -127,7 +125,6 @@ export class PortComponent implements OnInit {
       align : 'center'
     },
     {
-      className : InfoClassName.Field,
       key : 'notes',
       order : 2,
       label : 'Notes',
@@ -137,7 +134,6 @@ export class PortComponent implements OnInit {
       align : 'center'
     },
     {
-      className : InfoClassName.Field,
       key : 'weatherLink',
       order : 2,
       label : 'Weather Link',

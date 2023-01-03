@@ -1,13 +1,13 @@
 <div fxFlex="100" fxLayout="row wrap" [fxLayoutGap]="infoGap" [fxLayoutAlign]="infoAlign">
-    <div *ngFor="let infoField of sortByOrder(infoFields)" [fxFlex]="(infoField.className.toString() == localInfoClassName.SubForm) ? '100' : infoField.width" [fxLayoutAlign]="infoField.align">
+    <div *ngFor="let infoField of sortByOrder(infoFields)" [fxFlex]="isSubForm(infoField) ? '100' : infoField.width" [fxLayoutAlign]="infoField.align">
         
-        <app-dynamic-info-field *ngIf="infoField.className.toString() == localInfoClassName.Field"
+        <app-dynamic-info-field *ngIf="!isSubForm(infoField)"
             [infoField]="infoField"
             [value]="obj[infoField.key]"
             [fxFlex]="infoField.innerWidth"
         ></app-dynamic-info-field>
 
-        <app-dynamic-sub-form-info *ngIf="infoField.className.toString() == localInfoClassName.SubForm" fxFlex="100"
+        <app-dynamic-sub-form-info *ngIf="isSubForm(infoField)" fxFlex="100"
             [title]="infoField.label"
             [infoFields]="infoField.fields"
             [objArray]="obj[infoField.key]"

@@ -26,8 +26,8 @@ export class DynamicCrudComponent implements OnInit {
 
   @Input() identifierKey : string = '';
 
-  @Input() createFormFields : (BehaviorSubject<FormFieldBase>|SubForm)[] = [];
-  @Input() updateFormFields : (BehaviorSubject<FormFieldBase>|SubForm)[] = [];
+  @Input() createFormFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = [];
+  @Input() updateFormFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = [];
   @Input() tableColumns : TableColumn[] = [];
   @Input() infoFields : (InfoField|SubFormInfo)[] = [];
 
@@ -180,7 +180,7 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   onPageChange(item : {page : number, size : number}){
-    console.log('Change page event with page : ' + item.page + ' and size : ' + item.size);
+    //console.log('Change page event with page : ' + item.page + ' and size : ' + item.size);
     this.page = item.page;
     this.size = item.size;
     this.read();
@@ -189,7 +189,7 @@ export class DynamicCrudComponent implements OnInit {
   onSortChange(item : any){
     this.sort = item.direction;
     this.sortColumn = item.active;
-    console.log('Changed:' + this.sort + '||' + this.sortColumn)
+    //console.log('Changed:' + this.sort + '||' + this.sortColumn)
     this.read();
   }
 
@@ -237,7 +237,7 @@ export class DynamicCrudComponent implements OnInit {
             
           }
           else{
-            console.log(resp.data)
+            //console.log(resp.data)
             this.tableData = resp.data;
             this.tableDataSubject.next(this.mapData(this.page,this.size,resp.count,resp.data));
           }
@@ -251,7 +251,7 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   filterRead(){
-    console.log('Filter Payload : ', this.filterPayload)
+    //console.log('Filter Payload : ', this.filterPayload)
     this.crudService.filter(this.endpoint,this.page,this.pageSize,this.filterPayload,this.sort,this.sortColumn).subscribe({
       next : (resp : any) => {
         if(resp.read){
@@ -262,7 +262,7 @@ export class DynamicCrudComponent implements OnInit {
             this.tableDataSubject.next(this.mapData(this.page,this.size,resp.count,resp.data));
           }
           else{
-            console.log(resp.data)
+            //console.log(resp.data)
             this.tableData = resp.data;
             this.tableDataSubject.next(this.mapData(this.page,this.size,resp.count,resp.data));
           }
@@ -282,13 +282,13 @@ export class DynamicCrudComponent implements OnInit {
   cleanForm(isCreate:boolean){
     if(isCreate){
       this.createFormFields.forEach( (field) => {
-        if(field instanceof SubForm){
-          (field as SubForm).fields.forEach( (subfield) => {
-            let sField = subfield.getValue();
-            sField.value = '';
-            subfield.next(sField);
+        if(field.getValue() instanceof SubForm){
+          let tfield = field.getValue() as SubForm;
+          //console.log(tfield,' formfields:', tfield.fields)
+          tfield.fields.forEach( (subfield) => {
+            subfield.value = '';
           });
-          (field as SubForm).tableData.next([])
+          tfield.tableData = []
         }
         else{
           let sField = (field as BehaviorSubject<FormFieldBase>).getValue();
@@ -299,13 +299,13 @@ export class DynamicCrudComponent implements OnInit {
     }
     else {
       this.updateFormFields.forEach( (field) => {
-        if(field instanceof SubForm){
-          (field as SubForm).fields.forEach( (subfield) => {
-            let sField = subfield.getValue();
-            sField.value = '';
-            subfield.next(sField);
+        if(field.getValue() instanceof SubForm){
+          let tfield = field.getValue() as SubForm ;
+          tfield.fields.forEach( (subfield) => {
+            subfield.value = '';
           });
-          (field as SubForm).tableData.next([])
+          tfield.tableData = [];
+          (field as BehaviorSubject<SubForm>).next(tfield);
         }
         else{
           let sField = (field as BehaviorSubject<FormFieldBase>).getValue();
@@ -334,25 +334,26 @@ export class DynamicCrudComponent implements OnInit {
 
   crudUpdate(payload : any){
     this.cleanForm(false);
+    //console.log('aaaaaaaaaaaaa : ',this.endpoint,this.tableData[payload.internalId],this.identifierKey)
     this.crudService.info(this.endpoint,this.tableData[payload.internalId],this.identifierKey).subscribe({
       next : (resp : any) => {
         let obj = resp.data;
         Object.keys(obj).forEach( (key : string) => {
           this.updateFormFields.forEach( (field : any, index : number) => {
-            
-              if(field instanceof SubForm){
-                if(field.key == key){
-                  field.tableData.next([]);
-                  let data = field.tableData.getValue();
-                  let row : any = {};
-                  obj[field.key].forEach( (value : any, index : number) => {
-                    field.fields.forEach( (subfield : any) => {
-                      let tField = subfield.getValue();
-                      row[tField.key] = obj[field.key][index][tField.key]; 
+              if(field.getValue() instanceof SubForm){
+                let tField = field.getValue() as SubForm;
+                if(tField.key == key){
+                  tField.tableData = [];
+                  let data : any[] = [];
+                  obj[tField.key].forEach( (value : any, index : number) => {
+                    let row : any = {};
+                    tField.fields.forEach( (subfield : any) => {
+                      row[subfield.key] = obj[tField.key][index][subfield.key]; 
                     })
                     data.push(row);
                   })
-                  field.tableData.next(data);
+                  tField.tableData = data;
+                  field.next(tField)
                 }
               }
               else{
@@ -364,6 +365,7 @@ export class DynamicCrudComponent implements OnInit {
               }
           })
         })
+        
         this.switchMode('update')
       } 
     })
@@ -371,6 +373,7 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   crudUpdateSubmit(payload : any){
+    console.log('UPDATE SUBMIT')
     this.crudService.update( this.endpoint, payload, this.identifierKey).subscribe({
       next: (response : any) => {
         if(!response.updated){

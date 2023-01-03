@@ -2,13 +2,8 @@ export enum InfoType{
     Text,
     Image
 }
-export enum InfoClassName{
-    Field,
-    SubForm
-}
 
 export class InfoField{
-    className : InfoClassName = InfoClassName.Field;
     key : string = ''; 
     order : number = 0;
     label : string = '';
@@ -17,15 +12,19 @@ export class InfoField{
     innerWidth : string = '';
     align : string = '';
 
-    constructor() {}
+    constructor(init?:Partial<InfoField>) {
+        Object.assign(this, init);
+
+    }
 }
 
 export class SubFormInfo{
-    className : InfoClassName = InfoClassName.SubForm;
     key : string = '';
     order : number = 0;
     label : string = '';
     fields : InfoField[] = [];
     
-    constructor() {}
+    constructor(init?:Partial<SubFormInfo>) {
+        Object.assign(this, init);
+    }
 }

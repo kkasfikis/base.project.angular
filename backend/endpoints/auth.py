@@ -2,7 +2,7 @@ import hashlib
 from flask import jsonify, request, current_app
 from flask_restx import Resource,Namespace,fields,reqparse
 from flask_cors import CORS, cross_origin
-from backend import svc
+from service import svc
 from models.user import User
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 
@@ -45,7 +45,7 @@ def register():
 @svc.app.route("/login", methods=["POST"])
 def login():
     login_details = request.get_json()
-    print(login_details)
+    print(login_details,hashlib.sha256("test1".encode("utf-8")).hexdigest())
     try:
         user = User.objects.get(username = login_details['username'], password = hashlib.sha256(login_details['password'].encode("utf-8")).hexdigest())
         print(user.username)

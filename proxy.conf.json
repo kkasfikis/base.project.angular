@@ -22,5 +22,29 @@
             "^/client" : ""
         },
         "changeOrigin" : true
+    },
+    "/agent":{
+        "target" : "http://localhost:8081/agent",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/agent" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/vessel":{
+        "target" : "http://localhost:8081/vessel",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/vessel" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/call":{
+        "target" : "http://localhost:8081/call",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/call" : ""
+        },
+        "changeOrigin" : true
     }
 }

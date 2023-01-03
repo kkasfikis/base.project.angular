@@ -1,16 +1,16 @@
 <mat-card fxFlex="100" fxLayout="column">
     <div fxFlex="100" fxLayout="column">
-        <h3>{{title}}</h3>
+        <h3>{{label}}</h3>
         <mat-divider></mat-divider>
     </div>
     <br/>
-    <form [formGroup]="form" [fxLayoutGap]="formGap" [fxLayoutAlign]="formAlign">
+    <form [formGroup]="form" [fxLayoutAlign]="formAlign">
         <mat-card-content fxFlex="100" fxLayout="row wrap">
-            <div *ngFor="let ff of sortByOrder(formField.fields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="ff.getValue().width" [fxLayoutAlign]="ff.getValue().align">
+            <div *ngFor="let ff of sortByOrder(formField.fields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="ff.width" [fxLayoutAlign]="ff.align">
                 <app-dynamic-form-field
-                    [formFieldSubj]="ff"
+                    [formField]="ff"
                     [form]="form"
-                    [fxFlex]="ff.getValue().innerWidth"
+                    [fxFlex]="ff.innerWidth"
                     (onFieldChange)="handleFieldChange($event)"
                 ></app-dynamic-form-field>
             </div>

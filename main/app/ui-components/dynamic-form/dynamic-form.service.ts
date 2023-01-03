@@ -10,25 +10,25 @@ export class DynamicFormService {
 
   constructor() { }
 
-  toFormGroup(formFields : (BehaviorSubject<FormFieldBase> | SubForm)[] ){
+  toFormGroup(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] | FormFieldBase[]){
     const group : any = {};
     formFields.forEach(formField => {
-      if(formField instanceof BehaviorSubject<FormFieldBase>){
+      if(formField instanceof BehaviorSubject<FormFieldBase> || formField instanceof FormFieldBase){
         let validators : Validators[] = [];
-        if( formField.getValue().required){
+        let field = ((formField instanceof FormFieldBase) ? formField : formField.getValue()) as FormFieldBase
+        if( field.required){
           validators.push(Validators.required);
         }
-        if( formField.getValue().maxLength){
-          validators.push(Validators.maxLength(formField.getValue().maxLength));
+        if( field.maxLength){
+          validators.push(Validators.maxLength(field.maxLength));
         }
-        if( formField.getValue().minLength){
-          validators.push(Validators.minLength(formField.getValue().minLength));
+        if( field.minLength){
+          validators.push(Validators.minLength(field.minLength));
         }
-        if( formField.getValue().regexPattern && formField.getValue().regexPattern.length > 0 ){
-          validators.push(Validators.pattern(formField.getValue().regexPattern));
+        if( field.regexPattern && field.regexPattern.length > 0 ){
+          validators.push(Validators.pattern(field.regexPattern));
         }
-        console.log('value',formField.getValue().value )
-        group[formField.getValue().key] = new FormControl(formField.getValue().value || '',validators as ValidatorFn[])  
+        group[field.key] = new FormControl(field.value || '',validators as ValidatorFn[])  
       }
     })
     return new FormGroup(group);

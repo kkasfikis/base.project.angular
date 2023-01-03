@@ -5,6 +5,10 @@ export class FilterField{
     label : string = '';
     order : number = 0;
     multiple : boolean = false;
+    isSub : boolean = false;
     fieldType : FormFieldType = FormFieldType.TextBox;
     options : {key:string, value:string}[] = [];
+    constructor(init?:Partial<FilterField>){
+        Object.assign(this, init);
+    }
 }

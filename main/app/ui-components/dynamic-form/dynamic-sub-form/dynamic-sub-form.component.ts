@@ -16,20 +16,21 @@ import { DynamicFormService } from '../dynamic-form.service';
 export class DynamicSubFormComponent implements OnInit {
 
 
-  @Input() title : string = '';
-  @Input() subtitle : string = '';
-  @Input() enabled : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  @Input() formField! : any;
-  @Input() formGap : string = '10px';
-  @Input() formAlign : string = 'center';
-  @Input() hasDelete : boolean = true;
-  @Input() hasUpdate : boolean = true;
-  @Input() identifierKey : string = '';
-  @Input() isTagged : boolean = false;
-  @Input() tagSeperator : string = '';
+  @Input() subformField! : BehaviorSubject<SubForm>;
+  
+  
+  label : string = '';
+  enabled : boolean = true
+  formAlign : string = 'center';
+  hasDelete : boolean = true;
+  hasUpdate : boolean = true;
+  isTagged : boolean = false;
+  tagSeperator : string = '';
+  identifierKey : string = '';
 
   @Output() onFormChange : EventEmitter<any> = new EventEmitter<any>();
 
+  formField! : SubForm;
   formActions : FormAction[] = [];
 
   form! : FormGroup;
@@ -53,25 +54,35 @@ export class DynamicSubFormComponent implements OnInit {
   constructor(private formService : DynamicFormService,public dialog : MatDialog) { }
 
   ngOnInit(): void {
-    this.dataSubject.next(this.mapData());
-    this.columnSubject.next(this.formField.tableColumns);
-    this.form = this.formService.toFormGroup(this.formField.fields as BehaviorSubject<FormFieldBase>[]);
-    this.formField.tableData.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
-      next : (val : string[] | any[]) => {
-        let notString = false;
-        val.forEach(function(item){
-          if(typeof item !== 'string'){
-             notString = true;
-          }
-        })
-        if(notString){
-          this.dataSubject.next(this.mapData())
-          this.formField.data = val;
-        }
-        else{
-          this.tags = val;
-          this.formField.data = val;
-        }
+    let subform = this.subformField.getValue() as SubForm;
+    this.label = subform.label ? subform.label : '';
+    this.enabled = subform.enabled;
+    this.formAlign = subform.align ? subform.align : 'center center';
+    this.hasDelete = subform.hasDelete;
+    this.hasUpdate = subform.hasUpdate;
+    this.isTagged = subform.isTagged;
+    this.tagSeperator = subform.tagSeperator;
+    this.identifierKey = subform.identifierKey ? subform.identifierKey : '';
+    console.log('Mapped Data1',this.mapData)
+    this.dataSubject.next(this.mapData(subform));
+    this.columnSubject.next(subform.tableColumns);
+    this.form = this.formService.toFormGroup(subform.fields as FormFieldBase[]);
+    this.formField = subform;
+    this.subformField.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
+      next : (field : SubForm) => {
+        this.label = field.label ? subform.label : '';
+        this.enabled = field.enabled;
+        this.formAlign = field.align ? field.align : 'center center';
+        this.hasDelete = field.hasDelete;
+        this.hasUpdate = field.hasUpdate;
+        this.isTagged = field.isTagged;
+        this.tagSeperator = field.tagSeperator;
+        this.identifierKey = field.identifierKey ? field.identifierKey : '';
+        console.log('SUBFORM',field.tableColumns)
+        this.columnSubject.next(field.tableColumns)
+        this.formField = field;
+        this.form = this.formService.toFormGroup(field.fields as FormFieldBase[]);
+        this.dataSubject.next(this.mapData(field));
       }
     })
   }
@@ -82,11 +93,11 @@ export class DynamicSubFormComponent implements OnInit {
     this._unsubscribeSignal$.unsubscribe();
   }
 
-  mapData(){
-    return new TableData(0,0,0,this.formField.tableData.getValue().map((item :any,index: number)=>{
+  mapData(subform : SubForm){
+    return new TableData(0,0,0,subform.tableData.map((item :any,index: number)=>{
       let newItem = Object.assign({},item);
       let actions : TableAction[] = [];
-      if(this.hasDelete){
+      if(subform.hasDelete){
         actions.push(
           {
             icon : 'cancel',
@@ -96,7 +107,7 @@ export class DynamicSubFormComponent implements OnInit {
             tooltip :'Delete'
           } as TableAction)
       }
-      if(this.hasUpdate){
+      if(subform.hasUpdate){
         actions.push(
           {
             icon : 'edit',
@@ -106,7 +117,7 @@ export class DynamicSubFormComponent implements OnInit {
             tooltip :'Update'
           } as TableAction)
       }
-      if(this.formField.hasInfo){
+      if(subform.hasInfo){
         actions.push(
           {
             icon : 'info',
@@ -123,15 +134,16 @@ export class DynamicSubFormComponent implements OnInit {
   }
 
   updateSubRecord(item : {internalId : number}){
-    let obj = this.formField.tableData.getValue()[item.internalId];
+    let subform = this.subformField.getValue() as SubForm;
+    let obj = subform.tableData[item.internalId];
+    console.log('SUBFORM:',subform,obj)
     Object.keys(obj).forEach( (key : string) => {
-      this.formField.fields.forEach( (field : BehaviorSubject<FormFieldBase>, index : number) => {
-        let tField = field.getValue();
-        if(tField.key == key){
-          tField.value = obj[key];
-          field.next(tField);
+      subform.fields.forEach( (field : FormFieldBase) => {
+        if(field.key == key){
+          field.value = obj[key];
         }
       })
+      this.subformField.next(subform);
     })
     this.editInternalId = item.internalId;
     this.formActions = [
@@ -147,73 +159,83 @@ export class DynamicSubFormComponent implements OnInit {
   }
 
   deleteSubRecord(item : {internalId : number}){
-    this.formField.tableData.getValue().splice(item.internalId,1)
-    this.dataSubject.next(this.mapData());
+    let subform = this.subformField.getValue() as SubForm;
+    subform.tableData.splice(item.internalId,1)
+    this.subformField.next(subform);
   }
 
   infoSubRecord(item : {internalId : number}){
-    this.openInfoDialog('10ms','10ms',this.formField.tableData.getValue()[item.internalId],this.formField.infoFields)
+    let subform = this.subformField.getValue() as SubForm;
+    this.openInfoDialog('10ms', '10ms', subform.tableData[item.internalId], subform.infoFields)
   }
 
   handleFormSubmit(){
     if(this.form.invalid){
       return;
     }
+    let subform = this.subformField.getValue() as SubForm;
     if(this.editInternalId >= 0 && !this.isTagged){
-      let tData : any[] = this.formField.tableData.getValue();
-      tData = tData.splice(this.editInternalId,1);
+      let tData : any[] = subform.tableData;
+      if(tData.length > 1){
+        tData = tData.splice(this.editInternalId,1);
+      }
+      else{
+        if(this.editInternalId == 0){
+          tData = [];
+        }
+        else{
+          return;
+        }
+      }
       tData.push(this.form.getRawValue());
-      this.formField.tableData.next(tData);
-      this.dataSubject.next(this.mapData());
+      subform.tableData = tData;
       this.editInternalId = -1;
       this.formActions = [];
     }
     else{
       if(!this.isTagged){
-        let tData : any[] = this.formField.tableData.getValue();
+        let tData : any[] = subform.tableData;
+        console.log('TABLE DATA BEFORE ADD:',tData)
         tData.push(this.form.getRawValue());
-        this.formField.tableData.next(tData);
-        this.dataSubject.next(this.mapData());
+        subform.tableData = tData;
       }
       else{
-        let tData : string[] = this.formField.tableData.getValue();
+        let tData : string[] =subform.tableData;
         let form = this.form.getRawValue()
         let item : string = '';
-        console.log('FORMMMM:',form)
         Object.keys(form).forEach( ( key : string) => {
-          console.log('Key:',key,' Value',form[key])
           item += ( (item.length == 0) ? '' : this.tagSeperator) + form[key];
         })
         tData.push(item);
-        this.formField.tableData.next(tData);
-        this.dataSubject.next(this.mapData());
+        subform.tableData = tData;
       }
     }
-    this.formField.fields.forEach( (field : BehaviorSubject<FormFieldBase>, index : number) => {
-      let tField = field.getValue();
-      tField.value = '';
-      field.next(tField);
+    subform.fields.forEach( (field : FormFieldBase, index : number) => {
+      field.value = '';
     })
+    this.subformField.next(subform);
   }
 
   cancelUpdate(){
+    let subform = this.subformField.getValue() as SubForm;
     this.editInternalId = -1;
     this.formActions = [];
-    this.formField.fields.forEach( (field : BehaviorSubject<FormFieldBase>, index : number) => {
-      let tField = field.getValue();
-      tField.value = '';
-      field.next(tField);
+    subform.fields.forEach( (field : FormFieldBase, index : number) => {
+      field.value = '';
     })
+    this.subformField.next(subform);
   }
 
   deleteTag(tag:string){
+    let subform = this.subformField.getValue() as SubForm;
     this.tags = this.tags.filter(e => e !== tag);
-    this.formField.tableData.next(this.tags);
+    subform.tableData = this.tags; 
+    this.subformField.next(subform);
   }
 
   handleFieldChange(item : {key:string,value:string,form:FormGroup}){
-    console.log('INSIDE',{subform : this.formField.key, key : item.key , value : item.value, form : item.form })
-    this.onFormChange.emit({subform : this.formField.key, key : item.key , value : item.value, form : item.form })
+    let subform = this.subformField.getValue() as SubForm;
+    this.onFormChange.emit({subform : subform.key, key : item.key , value : item.value, form : item.form })
   }
 
   openInfoDialog(enterAnimationDuration : string , exitAnimationDuration : string,
@@ -232,9 +254,9 @@ export class DynamicSubFormComponent implements OnInit {
   {
     return array.sort(function(a : any, b : any)
     {
-      let x = a.getValue().order;
-      let y = b.getValue().order;
+      let x = a.order;
+      let y = b.order;
       return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-    }).filter( (z:any) => z.getValue().type != FormFieldType.Hidden);
+    }).filter( (z:any) => z.type != FormFieldType.Hidden);
   } 
 }

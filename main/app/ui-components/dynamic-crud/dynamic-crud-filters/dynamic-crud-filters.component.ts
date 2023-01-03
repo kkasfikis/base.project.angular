@@ -18,7 +18,7 @@ export class DynamicCrudFiltersComponent implements OnInit {
   @Output() onFilterSubmit : EventEmitter<any> = new EventEmitter<any>();
   @Output() onFilterCancel : EventEmitter<any> = new EventEmitter<any>();
 
-  searchForm : SubForm = new SubForm({key : 'search', order : 0, hasInfo : false, isTagged : true, tagSeperator : ':'});
+  searchForm : BehaviorSubject<SubForm>= new BehaviorSubject<SubForm>( new SubForm({key : 'search', order : 0, hasInfo : false, isTagged : true, tagSeperator : ':'}));
   cancelFilterFunc = this.filterCancel.bind(this);
 
   cancelFilterAction : FormAction = {
@@ -37,13 +37,13 @@ export class DynamicCrudFiltersComponent implements OnInit {
   }
 
   changeFilter(field : FilterField){
-    this.searchForm.fields = [];
-
+    let sform = this.searchForm.getValue()
+    sform.fields = [];
     let filterOptions : {key : string, value:string}[] = [];
     this.filterFields.forEach( (filter) => {
       filterOptions.push({key : filter.key, value: filter.label});
     })
-    this.searchForm.fields.push( new BehaviorSubject<FormFieldBase>(new FormFieldBase({
+    sform.fields.push( new FormFieldBase({
       key : 'filter',
       label : 'Filter',
       value : field.key,
@@ -53,9 +53,9 @@ export class DynamicCrudFiltersComponent implements OnInit {
       width : 30,
       innerWidth : 98,
       align : 'center'
-    })));
+    }));
     
-    this.searchForm.fields.push( new BehaviorSubject<FormFieldBase>(new FormFieldBase({
+    sform.fields.push( new FormFieldBase({
       key : 'value',
       label : 'Filter Value',
       order : 2,
@@ -63,30 +63,31 @@ export class DynamicCrudFiltersComponent implements OnInit {
       width : 70,
       innerWidth : 98,
       align : 'center'
-    })));
+    }));
     
-    this.searchForm.tableColumns = [];
+    sform.tableColumns = [];
 
-    this.searchForm.tableColumns.push({
-      name : 'filter',
+    sform.tableColumns.push({
+      key : 'filter',
       text : 'Filter',
       isFilterable : false,
       isSortable : false,
       width : 20
     } as TableColumn)
 
-    this.searchForm.tableColumns.push({
-      name : 'value',
+    sform.tableColumns.push({
+      key : 'value',
       text : 'Filter Value',
       isFilterable : false,
       isSortable : false,
       width : 50
     } as TableColumn)
 
+    this.searchForm.next(sform);
   }
 
   onSubFormChange(item : {subform : string, key : string, value: string, form : FormGroup} ){
-    console.log('Subform change :' + item.key + "|" + item.value)
+    //console.log('Subform change :' + item.key + "|" + item.value)
     if(item.key == 'filter'){
       let filter = this.filterFields.filter(x=>x.key == item.value)[0];
       this.changeFilter(filter);
@@ -100,6 +101,8 @@ export class DynamicCrudFiltersComponent implements OnInit {
   
   filterCancel(){
     this.onFilterCancel.emit();
-    this.searchForm.tableData.next([]);
+    let sform = this.searchForm.getValue();
+    sform.tableData = [];
+    this.searchForm.next(sform);
   }
 }

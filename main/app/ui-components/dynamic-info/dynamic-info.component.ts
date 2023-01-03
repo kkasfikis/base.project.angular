@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { InfoClassName, InfoField, SubFormInfo } from './dynamic-info.models';
+import { InfoField, SubFormInfo } from './dynamic-info.models';
 
 @Component({
   selector: 'app-dynamic-info',
@@ -13,13 +13,15 @@ export class DynamicInfoComponent implements OnInit {
   @Input() infoFields : (InfoField|SubFormInfo)[] = [];
   @Input() obj : any;
 
-  localInfoClassName : typeof InfoClassName = InfoClassName;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  isSubForm(infoField : InfoField|SubFormInfo){
+    return (infoField instanceof SubFormInfo);
+  } 
   
   sortByOrder(array:any)
   {

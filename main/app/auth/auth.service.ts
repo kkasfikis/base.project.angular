@@ -54,8 +54,8 @@ export class AuthService {
       return user;
     }
     catch(e:any){
-      console.log('error token : ',  token)
-      console.log('could not parse token: ' + JSON.stringify(e))
+      //console.log('error token : ',  token)
+      //console.log('could not parse token: ' + JSON.stringify(e))
       return undefined
     }
   }
@@ -68,7 +68,7 @@ export class AuthService {
       username : username,
       password : password
     }
-    console.log(data)
+    //console.log(data)
     return this.http.post('/login', data, {...options});
   }
 

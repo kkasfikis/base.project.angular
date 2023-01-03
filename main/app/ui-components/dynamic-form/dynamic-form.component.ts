@@ -14,7 +14,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   @Input() title : string = '';
   @Input() subtitle : string = '';
   @Input() enabled : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  @Input() formFields : (BehaviorSubject<FormFieldBase> | SubForm)[] = [];
+  @Input() formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = [];
   @Input() formGap : string = '10px';
   @Input() formAlign : string = 'center';
   @Input() formActions : FormAction[] = [];
@@ -35,7 +35,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   
   ngOnInit(): void {
     this.form = this.formService.toFormGroup(this.formFields)
-    console.log('initing')
+    //console.log('initing')
     this.enabledSub = this.enabled.pipe(takeUntil(this.ngUnsubscribe)).subscribe({
       next : (enabled : boolean) => {
           if(enabled){
@@ -56,6 +56,16 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
 
   handleFormSubmit(){
     if(this.form.invalid){
+      const invalid = [];
+      const controls = this.form.controls;
+      for (const name in controls) {
+          if (controls[name].invalid) {
+              invalid.push(name);
+          }
+      }
+
+      console.log('VALIDATION ERROR !',invalid,this.form)
+      
       return;
     }
     console.log('Submitted Data : ', JSON.stringify(this.getFormData()))
@@ -68,14 +78,11 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   }
 
   handleSubFieldChange(item : {subform : string, key : string, value: string, form : FormGroup} ){
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaa')
-    console.log('form field',item)
     this.onSubFormChange.emit(item)
   }
 
   isFieldSubForm(field : any){
-    //console.log('key: ', field instanceof SubForm)
-    return field instanceof SubForm;
+    return field.getValue() instanceof SubForm;
   }
 
   sortByOrder(array:any)
@@ -85,19 +92,19 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
       let x = (a instanceof SubForm) ? a.order : a.getValue().order;
       let y = (b instanceof SubForm) ? b.order : b.getValue().order;
       return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-    }).filter( (z:any) => z instanceof SubForm || (z instanceof BehaviorSubject<FormFieldBase> && z.getValue().type != this.localFormFieldType.Hidden));
+    }).filter( (z:any) => z.getValue().type != this.localFormFieldType.Hidden);
   }
 
   getFormData() : any {
     let obj : any = {};
-    this.formFields.forEach( (field : BehaviorSubject<FormFieldBase> | SubForm,index : number) => {
-      if(field instanceof  BehaviorSubject<FormFieldBase> ){
-        let fieldBase = field as BehaviorSubject<FormFieldBase>;
-        obj[fieldBase.getValue().key] = this.form.getRawValue()[fieldBase.getValue().key];
+    this.formFields.forEach( (field : BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>) => {
+      if(field.getValue() instanceof  FormFieldBase){
+        let fieldBase = field.getValue() as FormFieldBase;
+        obj[fieldBase.key] = this.form.getRawValue()[fieldBase.key];
       }
       else{
-        let subform = field as SubForm;
-        obj[subform.key] = subform.data;
+        let subform = (field as BehaviorSubject<SubForm>).getValue() as SubForm;
+        obj[subform.key] = subform.tableData;
       }
     })    
     return obj;

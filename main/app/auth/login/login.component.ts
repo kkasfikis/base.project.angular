@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
   login(data : any){
     this.authService.login(data['username'],data['password']).subscribe({
       next : (resp : any) => {
-        console.log(JSON.stringify(resp))
+        //console.log(JSON.stringify(resp))
         if (resp && resp.login){
           if(!this.authService.setUser(resp.token)){
             this.toastr.error('Failed to decode JWT', 'error');

@@ -1,11 +1,15 @@
 
 
 export class TableColumn{
-    name : string = '';
+    key : string = '';
     text : string = '';
     isFilterable : boolean = false;
     isSortable : boolean = false;
     width : number = 0
+
+    constructor(init?:Partial<TableColumn>) {
+        Object.assign(this, init);
+    }
 }
 
 export class TableData{
