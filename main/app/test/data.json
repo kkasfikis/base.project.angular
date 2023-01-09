@@ -1,0 +1,259 @@
+{
+    "fields":[
+        {
+            "key":"NAME",
+            "order":0,
+            "type":"TextBox",
+            "label":"Name",
+            "options":[],
+            "enabled":true,
+            "required":false,
+            "minLength":5,
+            "maxLength":255,
+            "regexPattern":"",
+            "width":100,
+            "innerWidth":100,
+            "align":"center center"
+            },
+            {
+            "key":"ENTRYDATE",
+            "order":1,
+            "type":"DatePicker",
+            "label":"Date",
+            "options":[],
+            "enabled":true,
+            "required":false,
+            "minLength":5,
+            "maxLength":255,
+            "regexPattern":"",
+            "width":100,
+            "innerWidth":100,
+            "align":"center center"
+            },
+            {
+            "key":"AMOUNT",
+            "order":2,
+            "type":"TextBox",
+            "label":"Amount",
+            "options":[],
+            "enabled":true,
+            "required":false,
+            "minLength":5,
+            "maxLength":255,
+            "regexPattern":"",
+            "width":100,
+            "innerWidth":100,
+            "align":"center center"
+            }
+    ],
+    "subforms":[
+        {
+            "key":"adr",
+            "title":"adr",
+            "fields": [
+            {
+            "key":"NAME",
+            "order":0,
+            "type":"TextBox",
+            "label":"Name",
+            "options":[],
+            "enabled":true,
+            "required":false,
+            "minLength":5,
+            "maxLength":255,
+            "regexPattern":"",
+            "width":100,
+            "innerWidth":100,
+            "align":"center center"
+            },
+            {
+            "key":"ENTRYDATE",
+            "order":1,
+            "type":"DatePicker",
+            "label":"Date",
+            "options":[],
+            "enabled":true,
+            "required":false,
+            "minLength":5,
+            "maxLength":255,
+            "regexPattern":"",
+            "width":100,
+            "innerWidth":100,
+            "align":"center center"
+            },
+            {
+            "key":"AMOUNT",
+            "order":2,
+            "type":"TextBox",
+            "label":"Amount",
+            "options":[],
+            "enabled":true,
+            "required":false,
+            "minLength":5,
+            "maxLength":255,
+            "regexPattern":"",
+            "width":100,
+            "innerWidth":100,
+            "align":"center center"
+            }],
+            "tableColumns": [
+            {
+            "key":"NAME",
+            "text":"NAME",
+            "isFilterable":false,
+            "isSortable":true,
+            "width":20
+            },
+            {
+            "key":"ENTRYDATE",
+            "text":"ENTRYDATE",
+            "isFilterable":false,
+            "isSortable":true,
+            "width":20
+            },
+            {
+            "key":"AMOUNT",
+            "text":"AMOUNT",
+            "isFilterable":false,
+            "isSortable":true,
+            "width":20
+            }],
+            "infoFields": [
+            {
+            "key":"NAME",
+            "order":0,
+            "label":"Name",
+            "type":"Text",
+            "width":100,
+            "innerwidth":100,
+            "align":"center center"
+            },
+            {
+            "key":"ENTRYDATE",
+            "order":1,
+            "label":"Entry Date",
+            "type":"Text",
+            "width":100,
+            "innerwidth":100,
+            "align":"center center"
+            },
+            {
+            "key":"AMOUNT",
+            "order":2,
+            "label":"Amount",
+            "type":"Text",
+            "width":100,
+            "innerwidth":100,
+            "align":"center center"
+            }],
+            "hasInfo":true,
+            "width":100,
+            "innerWidth":100,
+            "align":"center center",
+            "isTagged":false,
+            "tagSeparator":""
+            }
+    ],
+    "filters":[
+        {
+            "key":"NAME",
+            "label":"Name",
+            "order":0,
+            "fieldType":"TextBox",
+            "options":[]
+        },
+        {
+            "key" : "addresses",
+            "label" : "addresses",
+            "order": 4,
+            "isSub": true   
+        }
+    ],
+    "infos":[
+        {
+            "key":"NAME",
+            "order":0,
+            "label":"Name",
+            "type":"Text",
+            "width":100,
+            "innerwidth":100,
+            "align":"center center"
+            },
+            {
+            "key":"ENTRYDATE",
+            "order":1,
+            "label":"Entry Date",
+            "type":"Text",
+            "width":100,
+            "innerwidth":100,
+            "align":"center center"
+            },
+            {
+            "key":"AMOUNT",
+            "order":2,
+            "label":"Amount",
+            "type":"Text",
+            "width":100,
+            "innerwidth":100,
+            "align":"center center"
+            }
+    ],
+    "subinfos":[
+        {
+            "key":"",
+            "order":4,
+            "label":"Addresses",
+            "fields": [
+            {
+            "key":"NAME",
+            "order":0,
+            "label":"Name",
+            "type":"TextBox",
+            "width":100,
+            "innerwidth":100,
+            "align":"center center"
+            },
+            {
+            "key":"ENTRYDATE",
+            "order":1,
+            "label":"Entry Date",
+            "type":"DatePicker",
+            "width":100,
+            "innerwidth":100,
+            "align":"center center"
+            },
+            {
+            "key":"AMOUNT",
+            "order":2,
+            "label":"Amount",
+            "type":"TextBox",
+            "width":100,
+            "innerwidth":100,
+            "align":"center center"
+            }]
+            }
+    ],
+    "columns":[
+        {
+            "key":"NAME",
+            "text":"name",
+            "isFilterable":false,
+            "isSortable":true,
+            "width":20
+            },
+            {
+            "key":"ENTRYDATE",
+            "text":"entrydate",
+            "isFilterable":false,
+            "isSortable":true,
+            "width":20
+            },
+            {
+            "key":"AMOUNT",
+            "text":"amount",
+            "isFilterable":false,
+            "isSortable":true,
+            "width":30
+            }
+    ]
+}

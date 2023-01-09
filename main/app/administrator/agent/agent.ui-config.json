@@ -1,0 +1,513 @@
+{
+    "fields": [
+        {
+            "key": "agent_name",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Agent Name",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 90,
+            "align": "center center"
+        },
+        {
+            "key": "port_name",
+            "order": 20,
+            "type": "TextBox",
+            "label": "Port",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 90,
+            "align": "center center"
+        },
+        {
+            "key": "notes",
+            "order": 60,
+            "type": "TextArea",
+            "label": "Notes",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 10000,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 100,
+            "align": "center center"
+        },
+        {
+            "key": "phone",
+            "order": 30,
+            "type": "TextBox",
+            "label": "Phone",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 90,
+            "align": "center center"
+        },
+        {
+            "key": "fax",
+            "order": 40,
+            "type": "TextBox",
+            "label": "Fax",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 90,
+            "align": "center center"
+        },
+        {
+            "key": "mail",
+            "order": 50,
+            "type": "TextBox",
+            "label": "eMail",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 90,
+            "align": "center center"
+        }
+    ],
+    "subforms": [
+        {
+            "key": "agent_pic",
+            "title": "People In Charge",
+            "fields": [
+                {
+                    "key": "pic_name",
+                    "order": 30,
+                    "type": "TextBox",
+                    "label": "PiC Name",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 50,
+                    "innerWidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "position",
+                    "order": 40,
+                    "type": "TextBox",
+                    "label": "Position",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 30,
+                    "innerWidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "title",
+                    "order": 20,
+                    "type": "TextBox",
+                    "label": "Title",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 20,
+                    "innerWidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "phone",
+                    "order": 50,
+                    "type": "TextBox",
+                    "label": "Phone",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 40,
+                    "innerWidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "mobile",
+                    "order": 60,
+                    "type": "TextBox",
+                    "label": "Mobile",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 40,
+                    "innerWidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "email",
+                    "order": 70,
+                    "type": "TextBox",
+                    "label": "eMail",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 60,
+                    "innerWidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "fax",
+                    "order": 80,
+                    "type": "TextBox",
+                    "label": "Fax",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 40,
+                    "innerWidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "internal_number",
+                    "order": 55,
+                    "type": "TextBox",
+                    "label": "Int. No",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 20,
+                    "innerWidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "notes",
+                    "order": 100,
+                    "type": "TextArea",
+                    "label": "Notes",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 10000,
+                    "regexPattern": "",
+                    "width": 100,
+                    "innerWidth": 90,
+                    "align": "center center"
+                }
+            ],
+            "tableColumns": [
+                {
+                    "key": "pic_name",
+                    "text": "PiC Name",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 30
+                },
+                {
+                    "key": "position",
+                    "text": "Position",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 30
+                },
+                {
+                    "key": "title",
+                    "text": "Title",
+                    "isFilterable": false,
+                    "isSortable": true,
+                    "width": 20
+                }
+            ],
+            "infoFields": [
+                {
+                    "key": "pic_name",
+                    "order": 30,
+                    "label": "PiC Name",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "position",
+                    "order": 40,
+                    "label": "Position",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "title",
+                    "order": 20,
+                    "label": "Title",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "phone",
+                    "order": 50,
+                    "label": "Phone",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "mobile",
+                    "order": 60,
+                    "label": "Mobile",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "email",
+                    "order": 70,
+                    "label": "eMail",
+                    "type": "Text",
+                    "width": 60,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "fax",
+                    "order": 80,
+                    "label": "Fax",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "internal_number",
+                    "order": 55,
+                    "label": "Int. No",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "notes",
+                    "order": 100,
+                    "label": "Notes",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 90,
+                    "align": "center center"
+                }
+            ],
+            "hasInfo": true,
+            "width": 100,
+            "innerWidth": 100,
+            "align": "center center",
+            "isTagged": false,
+            "tagSeparator": ""
+        }
+    ],  
+    "filters": [
+        {
+            "key": "agent_name",
+            "label": "Agent Name",
+            "order": 10,
+            "fieldType": "TextBox",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "agent_name",
+            "order": 10,
+            "label": "Agent Name",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 90,
+            "align": "center center"
+        },
+        {
+            "key": "port_name",
+            "order": 20,
+            "label": "Port",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 90,
+            "align": "center center"
+        },
+        {
+            "key": "note",
+            "order": 60,
+            "label": "Notes",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 100,
+            "align": "center center"
+        },
+        {
+            "key": "phone",
+            "order": 30,
+            "label": "Phone",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 90,
+            "align": "center center"
+        },
+        {
+            "key": "fax",
+            "order": 40,
+            "label": "Fax",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 90,
+            "align": "center center"
+        },
+        {
+            "key": "mail",
+            "order": 50,
+            "label": "eMail",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 90,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [
+        {
+            "key": "",
+            "order": 100,
+            "label": "People In Charge",
+            "fields": [
+                {
+                    "key": "pic_name",
+                    "order": 30,
+                    "label": "PiC Name",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "position",
+                    "order": 40,
+                    "label": "Position",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "title",
+                    "order": 20,
+                    "label": "Title",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "phone",
+                    "order": 50,
+                    "label": "Phone",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "mobile",
+                    "order": 60,
+                    "label": "Mobile",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "email",
+                    "order": 70,
+                    "label": "eMail",
+                    "type": "Text",
+                    "width": 60,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "fax",
+                    "order": 80,
+                    "label": "Fax",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "internal_number",
+                    "order": 55,
+                    "label": "Int. No",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 90,
+                    "align": "center center"
+                },
+                {
+                    "key": "notes",
+                    "order": 100,
+                    "label": "Notes",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 90,
+                    "align": "center center"
+                }
+            ]
+        }
+    ],
+    "columns": [
+        {
+            "key": "agent_name",
+            "text": "Agent Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 80
+        }
+    ]
+}
