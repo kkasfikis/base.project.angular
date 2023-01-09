@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService : AuthService, private toastr : ToastrService, private router : Router) { }
   enabledSubject : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   loginFields : BehaviorSubject<FormFieldBase>[] =[
-    new BehaviorSubject<FormFieldBase>({
+    new BehaviorSubject<FormFieldBase>(new FormFieldBase({
       value : '',
       type : FormFieldType.TextBox,
       key : 'username',
@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
       width : 100,
       innerWidth : 98,
       align : 'center center'
-    } as FormFieldBase),
-    new BehaviorSubject<FormFieldBase>({
+    } as FormFieldBase)),
+    new BehaviorSubject<FormFieldBase>(new FormFieldBase({
       value : '',
       type : FormFieldType.TextBox,
       key : 'password',
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       width : 100,
       innerWidth : 98,
       align : 'center center'
-    } as FormFieldBase)
+    } as FormFieldBase))
   ] as BehaviorSubject<FormFieldBase>[]
 
   ngOnInit(): void {

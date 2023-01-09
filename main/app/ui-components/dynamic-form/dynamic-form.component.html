@@ -1,5 +1,5 @@
 <mat-card fxFlex="100" fxLayout="column">
-    <div fxFlex="100" fxLayout="column">
+    <div fxFlex="100" fxLayout="column" *ngIf="(title && title.length > 0) || (subtitle && subtitle.length > 0)">
         <mat-card-title fxFlex="100" fxLayoutAlign="center" *ngIf="title && title.length > 0">{{title}}</mat-card-title>
         <mat-card-title fxFlex="100" fxLayoutAlign="center" *ngIf="subtitle && subtitle.length > 0">{{subtitle}}</mat-card-title>
         <mat-divider></mat-divider>

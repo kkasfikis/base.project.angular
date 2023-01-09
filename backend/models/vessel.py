@@ -1,24 +1,24 @@
 from service import svc
 class Vessel(svc.db.Document):
-    name = svc.db.StringField(required = True, min_length=3, max_length= 255)#
-    exName = svc.db.StringField(min_length=3, max_length= 255)
-    flag = svc.db.StringField(min_length=3, max_length=255)#
-    phone = svc.db.StringField(min_length=3, max_length=255)##########
-    fax = svc.db.StringField( min_length=3, max_length=255)##########
-    telex  = svc.db.StringField( min_length=3, max_length=255)
-    email  = svc.db.EmailField()#########
-    SCID = svc.db.StringField( min_length=3, max_length=255)
-    DWT  = svc.db.StringField( min_length=3, max_length=255)#capacity
-    NRT  = svc.db.StringField( min_length=3, max_length=255)
-    BLT  = svc.db.StringField( min_length=3, max_length=255)#year created
-    SCNRT = svc.db.StringField( min_length=3, max_length=255)
-    LOA  = svc.db.StringField( min_length=3, max_length=255)
-    DRAFT = svc.db.StringField( min_length=3, max_length=255)
-    BEAM = svc.db.StringField( min_length=3, max_length=255)
-    SCNT  = svc.db.StringField( min_length=3, max_length=255)
-    SCGT  = svc.db.StringField( min_length=3, max_length=255)
-    type  = svc.db.StringField( min_length=3, max_length=255)#
-    pilots = svc.db.StringField( min_length=3, max_length=255)#number
-    notes = svc.db.StringField( min_length=3, max_length=255)
-    image = svc.db.StringField(min_length=3,max_length=255)########################
-    tonrate = svc.db.StringField( min_length=3, max_length=255)#number
+    vessel_name = svc.db.StringField(required = True, min_length=3, max_length= 255)      #	T
+    ex_name = svc.db.StringField(min_length=3, max_length= 255)          #		T
+    flag = svc.db.StringField(required = True, min_length=3, max_length= 255)           #	T   Selected from PRLIST > value for PRLIST > list = “Vessel Flags”
+    phone = svc.db.StringField(min_length=3, max_length= 255)           #		T
+    sat_fax = svc.db.StringField(min_length=3, max_length= 255)          #		T
+    sat_tlx = svc.db.StringField(min_length=3, max_length= 255)          #		T
+    email = svc.db.StringField(min_length=3, max_length= 255)           #		T
+    scid = svc.db.StringField(min_length=3, max_length= 255)            #		N
+    dwt = svc.db.StringField(min_length=3, max_length= 255)             #		N
+    grt = svc.db.StringField(min_length=3, max_length= 255)             #		N
+    nrt = svc.db.StringField(min_length=3, max_length= 255)             #		N
+    blt = svc.db.StringField(min_length=3, max_length= 255)             #		N
+    scnrt = svc.db.StringField(min_length=3, max_length= 255)           #		N
+    loa = svc.db.StringField(min_length=3, max_length= 255)             #		N
+    draft = svc.db.StringField(min_length=3, max_length= 255)           #		N
+    beam = svc.db.StringField(min_length=3, max_length= 255)            #		n
+    scnt = svc.db.StringField(min_length=3, max_length= 255)            #		N
+    scgt = svc.db.StringField(min_length=3, max_length= 255)            #		n
+    vessel_type = svc.db.StringField(min_length=3, max_length= 255)            #		T   Selected from PRLIST > value for PRLIST > list = “Vessel Types”
+    pilots = svc.db.StringField(min_length=3, max_length= 255)          #		N
+    note = svc.db.StringField(min_length=3, max_length= 255)            #		T
+    ton_rate = svc.db.StringField(min_length=3, max_length= 255)         #		N

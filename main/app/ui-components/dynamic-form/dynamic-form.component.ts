@@ -98,6 +98,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   getFormData() : any {
     let obj : any = {};
     this.formFields.forEach( (field : BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>) => {
+      console.log(field,field.getValue(), field.getValue() instanceof FormFieldBase)
       if(field.getValue() instanceof  FormFieldBase){
         let fieldBase = field.getValue() as FormFieldBase;
         obj[fieldBase.key] = this.form.getRawValue()[fieldBase.key];

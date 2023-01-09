@@ -19,8 +19,8 @@ class Client(svc.db.Document):
     category = svc.db.StringField(min_length=3, max_length= 255) #
     status = svc.db.StringField(min_length=3, max_length=255) #
     occupation = svc.db.StringField(min_length=3, max_length=255) 
-    VAT = svc.db.StringField( min_length=3, max_length=255) 
-    VATpercentage  = svc.db.StringField( min_length=3, max_length=255)
+    vat = svc.db.StringField( min_length=3, max_length=255) 
+    vat_percentage  = svc.db.StringField( min_length=3, max_length=255)
     email  = svc.db.EmailField()
     phone = svc.db.StringField( min_length=3, max_length=255) #
     fax  = svc.db.StringField( min_length=3, max_length=255) 
@@ -29,12 +29,12 @@ class Client(svc.db.Document):
     address = svc.db.StringField( min_length=3, max_length=255)
     zip  = svc.db.StringField( min_length=3, max_length=255)
     priority = svc.db.StringField( min_length=3, max_length=255) #
-    paymentMethod = svc.db.StringField( min_length=3, max_length=255)
+    payment_method = svc.db.StringField( min_length=3, max_length=255)
     bank  = svc.db.StringField( min_length=3, max_length=255)
     account  = svc.db.StringField( min_length=3, max_length=255)
     entryDate  = svc.db.DateTimeField()
     notes = svc.db.StringField( min_length=3, max_length=255)
-    peopleInCharge = svc.db.ListField(svc.db.EmbeddedDocumentField(PersonInCharge))
+    people_in_charge = svc.db.ListField(svc.db.EmbeddedDocumentField(PersonInCharge))
     aliases = svc.db.ListField(svc.db.EmbeddedDocumentField(Alias)) 
 
 
