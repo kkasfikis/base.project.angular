@@ -1,0 +1,398 @@
+{
+    "fields": [
+        {
+            "key": "cat",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Category",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "sub",
+            "order": 20,
+            "type": "TextBox",
+            "label": "Subcategory",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "desc",
+            "order": 30,
+            "type": "TextBox",
+            "label": "Description",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "amount",
+            "order": 40,
+            "type": "TextBox",
+            "label": "Amount",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 20,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "ref_inv",
+            "order": 50,
+            "type": "TextBox",
+            "label": "Ref. Invoice No",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 20,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_date",
+            "order": 60,
+            "type": "DatePicker",
+            "label": "Invoice Date",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 20,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_s_no",
+            "order": 70,
+            "type": "TextBox",
+            "label": "Inv. Seria - No",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_company",
+            "order": 80,
+            "type": "TextBox",
+            "label": "Issued By",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 35,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "bank",
+            "order": 90,
+            "type": "TextBox",
+            "label": "Bank",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "account_no",
+            "order": 100,
+            "type": "TextBox",
+            "label": "Account No",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "deposit_withdrawal",
+            "order": 110,
+            "type": "Select",
+            "label": "Deposit/Withdrawal",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 20,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "currency",
+            "order": 120,
+            "type": "Select",
+            "label": "Currency",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subforms": [],
+    "filters": [
+        {
+            "key": "cat",
+            "label": "Category",
+            "order": 10,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "sub",
+            "label": "Subcategory",
+            "order": 20,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "bank",
+            "label": "Bank",
+            "order": 90,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "account_no",
+            "label": "Account No",
+            "order": 100,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "deposit_withdrawal",
+            "label": "Deposit/Withdrawal",
+            "order": 110,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "currency",
+            "label": "Currency",
+            "order": 120,
+            "fieldType": "TextBox",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "cat",
+            "order": 10,
+            "label": "Category",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "sub",
+            "order": 20,
+            "label": "Subcategory",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "desc",
+            "order": 30,
+            "label": "Description",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "amount",
+            "order": 40,
+            "label": "Amount",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "ref_inv",
+            "order": 50,
+            "label": "Ref. Invoice No",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_date",
+            "order": 60,
+            "label": "Invoice Date",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_s_no",
+            "order": 70,
+            "label": "Inv. Seria - No",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_company",
+            "order": 80,
+            "label": "Issued By",
+            "type": "Text",
+            "width": 35,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "bank",
+            "order": 90,
+            "label": "Bank",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "account_no",
+            "order": 100,
+            "label": "Account No",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "deposit_withdrawal",
+            "order": 110,
+            "label": "Deposit/Withdrawal",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "currency",
+            "order": 120,
+            "label": "Currency",
+            "type": "Text",
+            "width": 10,
+            "innerwidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [],
+    "columns": [
+        {
+            "key": "cat",
+            "text": "Category",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 25
+        },
+        {
+            "key": "sub",
+            "text": "Subcategory",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 25
+        },
+        {
+            "key": "desc",
+            "text": "Description",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        },
+        {
+            "key": "amount",
+            "text": "Amount",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 20
+        },
+        {
+            "key": "bank",
+            "text": "Bank",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        },
+        {
+            "key": "account_no",
+            "text": "Account No",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 40
+        },
+        {
+            "key": "deposit_withdrawal",
+            "text": "Deposit/Withdrawal",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 20
+        },
+        {
+            "key": "currency",
+            "text": "Currency",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 10
+        }
+    ]
+}

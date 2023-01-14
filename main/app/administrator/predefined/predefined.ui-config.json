@@ -1,0 +1,143 @@
+{
+    "fields": [
+        {
+            "key": "list_name",
+            "order": 10,
+            "type": "textbox",
+            "label": "List Name",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "value",
+            "order": 20,
+            "type": "textbox",
+            "label": "Value",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "forecolor",
+            "order": 30,
+            "type": "textbox",
+            "label": "Text Color",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 15,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "backcolor",
+            "order": 40,
+            "type": "textbox",
+            "label": "Background Color",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 15,
+            "innerWidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subforms": [],
+    "filters": [
+        {
+            "key": "list_name",
+            "label": "List Name",
+            "order": 10,
+            "fieldType": "textbox",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "list_name",
+            "order": 10,
+            "label": "List Name",
+            "type": "",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "value",
+            "order": 20,
+            "label": "Value",
+            "type": "",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "forecolor",
+            "order": 30,
+            "label": "Text Color",
+            "type": "",
+            "width": 15,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "backcolor",
+            "order": 40,
+            "label": "Background Color",
+            "type": "",
+            "width": 15,
+            "innerwidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [],
+    "columns": [
+        {
+            "key": "list_name",
+            "text": "List Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 40
+        },
+        {
+            "key": "value",
+            "text": "Value",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        },
+        {
+            "key": "forecolor",
+            "text": "Text Color",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 15
+        },
+        {
+            "key": "backcolor",
+            "text": "Background Color",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 15
+        }
+    ]
+}

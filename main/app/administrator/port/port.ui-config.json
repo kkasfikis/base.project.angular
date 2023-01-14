@@ -1,0 +1,146 @@
+{
+    "fields": [
+        {
+            "key": "port_name",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Port Name",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "center center"
+        },
+        {
+            "key": "port_anch",
+            "order": 20,
+            "type": "TextArea",
+            "label": "Anchorages",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 10000,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 100,
+            "align": "center center"
+        },
+        {
+            "key": "port_rem",
+            "order": 40,
+            "type": "TextArea",
+            "label": "Notes",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 10000,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 100,
+            "align": "center center"
+        },
+        {
+            "key": "port_agent",
+            "order": 30,
+            "type": "TextBox",
+            "label": "Agent in Port",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "center center"
+        },
+        {
+            "key": "wheather_link",
+            "order": 50,
+            "type": "TextBox",
+            "label": "Port Wheather",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 1000,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 100,
+            "align": "center center"
+        }
+    ],
+    "subforms": [],
+    "filters": [
+        {
+            "key": "port_name",
+            "label": "Port Name",
+            "order": 10,
+            "fieldType": "Select",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "port_name",
+            "order": 10,
+            "label": "Port Name",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 50,
+            "align": "center center"
+        },
+        {
+            "key": "port_anch",
+            "order": 20,
+            "label": "Anchorages",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 100,
+            "align": "center center"
+        },
+        {
+            "key": "port_rem",
+            "order": 40,
+            "label": "Notes",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 100,
+            "align": "center center"
+        },
+        {
+            "key": "port_agent",
+            "order": 30,
+            "label": "Agent in Port",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 50,
+            "align": "center center"
+        },
+        {
+            "key": "wheather_link",
+            "order": 50,
+            "label": "Port Wheather",
+            "type": "image",
+            "width": 100,
+            "innerwidth": 100,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [],
+    "columns": [
+        {
+            "key": "port_name",
+            "text": "Port Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 100
+        }
+    ]
+}

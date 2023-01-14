@@ -1,0 +1,260 @@
+{
+    "fields": [
+        {
+            "key": "staff_name",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Name",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 60,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_educ",
+            "order": 20,
+            "type": "TextBox",
+            "label": "Education",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_id_card_no",
+            "order": 50,
+            "type": "TextBox",
+            "label": "ID Card No",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_soc_sec_no",
+            "order": 60,
+            "type": "TextBox",
+            "label": "Social Sec. No",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_position",
+            "order": 30,
+            "type": "Select",
+            "label": "Position",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_dept",
+            "order": 40,
+            "type": "TextBox",
+            "label": "Department",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_mob",
+            "order": 11,
+            "type": "TextBox",
+            "label": "Mobile",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "notes",
+            "order": 80,
+            "type": "TextArea",
+            "label": "Notes",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 10000,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subforms": [],
+    "filters": [
+        {
+            "key": "staff_name",
+            "label": "Name",
+            "order": 10,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "staff_educ",
+            "label": "Education",
+            "order": 20,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "staff_position",
+            "label": "Position",
+            "order": 30,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "staff_dept",
+            "label": "Department",
+            "order": 40,
+            "fieldType": "TextBox",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "staff_name",
+            "order": 10,
+            "label": "Name",
+            "type": "Text",
+            "width": 60,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_educ",
+            "order": 20,
+            "label": "Education",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_id_card_no",
+            "order": 50,
+            "label": "ID Card No",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_soc_sec_no",
+            "order": 60,
+            "label": "Social Sec. No",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_position",
+            "order": 30,
+            "label": "Position",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_dept",
+            "order": 40,
+            "label": "Department",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "staff_mob",
+            "order": 11,
+            "label": "Mobile",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "notes",
+            "order": 80,
+            "label": "Notes",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [],
+    "columns": [
+        {
+            "key": "staff_name",
+            "text": "Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 60
+        },
+        {
+            "key": "staff_educ",
+            "text": "Education",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 50
+        },
+        {
+            "key": "staff_position",
+            "text": "Position",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 50
+        },
+        {
+            "key": "staff_dept",
+            "text": "Department",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 40
+        }
+    ]
+}

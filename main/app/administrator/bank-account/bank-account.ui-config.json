@@ -1,0 +1,370 @@
+{
+    "fields": [
+        {
+            "key": "bank",
+            "order": 5,
+            "type": "TextBox",
+            "label": "Bank Name",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "account_no",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Bank Account No",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 55,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "bank_address",
+            "order": 20,
+            "type": "TextBox",
+            "label": "Address",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "country",
+            "order": 30,
+            "type": "TextBox",
+            "label": "Country",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 60,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "phone",
+            "order": 40,
+            "type": "TextBox",
+            "label": "Phone",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "mail",
+            "order": 50,
+            "type": "TextBox",
+            "label": "eMail",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "fax",
+            "order": 60,
+            "type": "TextBox",
+            "label": "Fax",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "pic_name",
+            "order": 70,
+            "type": "TextBox",
+            "label": "RSP Name",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "pic_position",
+            "order": 80,
+            "type": "TextBox",
+            "label": "RSP Position",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 20,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "pic_mobile",
+            "order": 90,
+            "type": "TextBox",
+            "label": "RSP Mobile",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "pic_intr_no",
+            "order": 100,
+            "type": "TextBox",
+            "label": "RSP Int No",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 20,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "currency",
+            "order": 15,
+            "type": "Select",
+            "label": "Currency",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 15,
+            "innerWidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subforms": [],
+    "filters": [
+        {
+            "key": "bank",
+            "label": "Bank Name",
+            "order": 5,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "account_no",
+            "label": "Bank Account No",
+            "order": 10,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "country",
+            "label": "Country",
+            "order": 30,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "currency",
+            "label": "Currency",
+            "order": 15,
+            "fieldType": "TextBox",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "bank",
+            "order": 5,
+            "label": "Bank Name",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "account_no",
+            "order": 10,
+            "label": "Bank Account No",
+            "type": "Text",
+            "width": 55,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "bank_address",
+            "order": 20,
+            "label": "Address",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "country",
+            "order": 30,
+            "label": "Country",
+            "type": "Text",
+            "width": 60,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "phone",
+            "order": 40,
+            "label": "Phone",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "mail",
+            "order": 50,
+            "label": "eMail",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "fax",
+            "order": 60,
+            "label": "Fax",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "pic_name",
+            "order": 70,
+            "label": "RSP Name",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "pic_position",
+            "order": 80,
+            "label": "RSP Position",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "pic_mobile",
+            "order": 90,
+            "label": "RSP Mobile",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "pic_intr_no",
+            "order": 100,
+            "label": "RSP Int No",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "currency",
+            "order": 15,
+            "label": "Currency",
+            "type": "Text",
+            "width": 15,
+            "innerwidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [],
+    "columns": [
+        {
+            "key": "bank",
+            "text": "Bank Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        },
+        {
+            "key": "account_no",
+            "text": "Bank Account No",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 55
+        },
+        {
+            "key": "country",
+            "text": "Country",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 60
+        },
+        {
+            "key": "pic_name",
+            "text": "RSP Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        },
+        {
+            "key": "pic_mobile",
+            "text": "RSP Mobile",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        },
+        {
+            "key": "currency",
+            "text": "Currency",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 15
+        }
+    ]
+}
