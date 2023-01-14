@@ -96,6 +96,15 @@ export class AppComponent implements OnInit,AfterViewInit{
         link:'/call',
         func : {},
         subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'Suppliers',
+        label:'Suppliers',
+        icon:'user',
+        isFunction:false,
+        link:'/supplier',
+        func : {},
+        subMenus : [] as MenuOption[]
       } as MenuOption
     ]
   }

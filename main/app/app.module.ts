@@ -55,6 +55,12 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { AgentComponent } from './administrator/agent/agent.component';
 import { CallComponent } from './administrator/call/call.component';
 import { TestComponent } from './test/test.component';
+import { SupplierComponent } from './administrator/supplier/supplier.component';
+import { BankAccountComponent } from './administrator/bank-account/bank-account.component';
+import { ExpenseComponent } from './administrator/expense/expense.component';
+import { StaffComponent } from './administrator/staff/staff.component';
+import { PredefinedComponent } from './administrator/predefined/predefined.component';
+import { ChargeComponent } from './administrator/charge/charge.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +88,13 @@ import { TestComponent } from './test/test.component';
     DynamicCrudFiltersComponent,
     AgentComponent,
     CallComponent,
-    TestComponent
+    TestComponent,
+    SupplierComponent,
+    BankAccountComponent,
+    ExpenseComponent,
+    StaffComponent,
+    PredefinedComponent,
+    ChargeComponent
   ],
   imports: [
     BrowserModule,

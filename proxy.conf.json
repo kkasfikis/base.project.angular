@@ -46,5 +46,13 @@
             "^/call" : ""
         },
         "changeOrigin" : true
+    },
+    "/supplier":{
+        "target" : "http://localhost:8081/supplier",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/supplier" : ""
+        },
+        "changeOrigin" : true
     }
 }

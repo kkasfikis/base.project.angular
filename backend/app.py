@@ -6,6 +6,7 @@ from endpoints.administrator.client import api as client
 from endpoints.administrator.agent import api as agent
 from endpoints.administrator.vessel import api as vessel
 from endpoints.administrator.call import api as call
+from endpoints.administrator.supplier import api as supplier
 
 
 if __name__ == '__main__':
@@ -14,5 +15,6 @@ if __name__ == '__main__':
     svc.api.add_namespace(client)
     svc.api.add_namespace(vessel)
     svc.api.add_namespace(call)
+    svc.api.add_namespace(supplier)
     svc.app.run(port=8081, debug=True)
 
