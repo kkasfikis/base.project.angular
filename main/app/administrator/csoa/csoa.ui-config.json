@@ -1,0 +1,548 @@
+{
+    "fields": [
+        {
+            "key": "csoa_type",
+            "order": 10,
+            "type": "Select",
+            "label": "Type",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "csoa_date",
+            "order": 20,
+            "type": "DatePicker",
+            "label": "Date",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "csoa_seria",
+            "order": 30,
+            "type": "TextBox",
+            "label": "Seria",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 20,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "csoa_no",
+            "order": 40,
+            "type": "TextBox",
+            "label": "No",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "csoa_title",
+            "order": 70,
+            "type": "TextBox",
+            "label": "Title",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_client_name",
+            "order": 80,
+            "type": "Select",
+            "label": "Client Name",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 60,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_client_info",
+            "order": 100,
+            "type": "TextBox",
+            "label": "General Info",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_debit_amount",
+            "order": 110,
+            "type": "TextBox",
+            "label": "Debit",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_credit_tamount",
+            "order": 120,
+            "type": "TextBox",
+            "label": "Credit",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_balance_amount",
+            "order": 130,
+            "type": "TextBox",
+            "label": "Balance",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subforms": [
+        {
+            "key": "csoa_item",
+            "title": "CONSOLIDATED SOA ITEM DESCRIPTION",
+            "order":1000,
+            "fields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "type": "TextBox",
+                    "label": "Date",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 20,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_soa_description",
+                    "order": 20,
+                    "type": "TextBox",
+                    "label": "Description",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 30,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_debit",
+                    "order": 30,
+                    "type": "TextBox",
+                    "label": "Price",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 10,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_credit",
+                    "order": 40,
+                    "type": "TextBox",
+                    "label": "Debit",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 20,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_balance",
+                    "order": 50,
+                    "type": "TextBox",
+                    "label": "Credit",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 20,
+                    "innerWidth": 98,
+                    "align": "center center"
+                }
+            ],
+            "tableColumns": [
+                {
+                    "key": "item_date",
+                    "text": "Date",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 20
+                },
+                {
+                    "key": "item_soa_description",
+                    "text": "Description",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 30
+                },
+                {
+                    "key": "item_debit",
+                    "text": "Price",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 10
+                },
+                {
+                    "key": "item_credit",
+                    "text": "Debit",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 20
+                },
+                {
+                    "key": "item_balance",
+                    "text": "Credit",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 20
+                }
+            ],
+            "infoFields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "label": "Date",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_soa_description",
+                    "order": 20,
+                    "label": "Description",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_debit",
+                    "order": 30,
+                    "label": "Price",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_credit",
+                    "order": 40,
+                    "label": "Debit",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_balance",
+                    "order": 50,
+                    "label": "Credit",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ],
+            "hasInfo": true,
+            "width": 100,
+            "innerWidth": 100,
+            "align": "center center",
+            "isTagged": false,
+            "tagSeparator": ""
+        }
+    ],
+    "filters": [
+        {
+            "key": "csoa_type",
+            "label": "Type",
+            "order": 10,
+            "fieldType": "Select",
+            "options": []
+        },
+        {
+            "key": "csoa_date",
+            "label": "Date",
+            "order": 20,
+            "fieldType": "Select",
+            "options": []
+        },
+        {
+            "key": "csoa_seria",
+            "label": "Seria",
+            "order": 30,
+            "fieldType": "Select",
+            "options": []
+        },
+        {
+            "key": "csoa_title",
+            "label": "Title",
+            "order": 70,
+            "fieldType": "Select",
+            "options": []
+        },
+        {
+            "key": "inv_client_info",
+            "label": "General Info",
+            "order": 100,
+            "fieldType": "Select",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "csoa_type",
+            "order": 10,
+            "label": "Type",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "csoa_date",
+            "order": 20,
+            "label": "Date",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "csoa_seria",
+            "order": 30,
+            "label": "Seria",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "csoa_no",
+            "order": 40,
+            "label": "No",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "csoa_title",
+            "order": 70,
+            "label": "Title",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_client_name",
+            "order": 80,
+            "label": "Client Name",
+            "type": "Text",
+            "width": 60,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_client_info",
+            "order": 100,
+            "label": "General Info",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_debit_amount",
+            "order": 110,
+            "label": "Debit",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_credit_tamount",
+            "order": 120,
+            "label": "Credit",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inv_balance_amount",
+            "order": 130,
+            "label": "Balance",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [
+        {
+            "key": "",
+            "order": 1000,
+            "label": "CONSOLIDATED SOA ITEM DESCRIPTION",
+            "fields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "label": "Date",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_soa_description",
+                    "order": 20,
+                    "label": "Description",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_debit",
+                    "order": 30,
+                    "label": "Price",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_credit",
+                    "order": 40,
+                    "label": "Debit",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_balance",
+                    "order": 50,
+                    "label": "Credit",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        }
+    ],
+    "columns": [
+        {
+            "key": "csoa_type",
+            "text": "Type",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 100
+        },
+        {
+            "key": "csoa_date",
+            "text": "Date",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 40
+        },
+        {
+            "key": "csoa_seria",
+            "text": "Seria",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 20
+        },
+        {
+            "key": "csoa_title",
+            "text": "Title",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 100
+        },
+        {
+            "key": "inv_client_info",
+            "text": "General Info",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 40
+        }
+    ]
+}

@@ -1,9 +1,14 @@
 {
     "fields": [
         {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
             "key": "list_name",
             "order": 10,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "List Name",
             "options": [],
             "enabled": true,
@@ -18,7 +23,7 @@
         {
             "key": "value",
             "order": 20,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Value",
             "options": [],
             "enabled": true,
@@ -33,7 +38,7 @@
         {
             "key": "forecolor",
             "order": 30,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Text Color",
             "options": [],
             "enabled": true,
@@ -48,7 +53,7 @@
         {
             "key": "backcolor",
             "order": 40,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Background Color",
             "options": [],
             "enabled": true,
@@ -67,7 +72,7 @@
             "key": "list_name",
             "label": "List Name",
             "order": 10,
-            "fieldType": "textbox",
+            "fieldType": "TextBox",
             "options": []
         }
     ],
@@ -76,8 +81,8 @@
             "key": "list_name",
             "order": 10,
             "label": "List Name",
-            "type": "",
-            "width": 40,
+            "type": "Text",
+            "width": 50,
             "innerwidth": 98,
             "align": "center center"
         },
@@ -85,8 +90,8 @@
             "key": "value",
             "order": 20,
             "label": "Value",
-            "type": "",
-            "width": 30,
+            "type": "Text",
+            "width": 50,
             "innerwidth": 98,
             "align": "center center"
         },
@@ -94,8 +99,8 @@
             "key": "forecolor",
             "order": 30,
             "label": "Text Color",
-            "type": "",
-            "width": 15,
+            "type": "Text",
+            "width": 50,
             "innerwidth": 98,
             "align": "center center"
         },
@@ -103,8 +108,8 @@
             "key": "backcolor",
             "order": 40,
             "label": "Background Color",
-            "type": "",
-            "width": 15,
+            "type": "Text",
+            "width": 50,
             "innerwidth": 98,
             "align": "center center"
         }
@@ -116,28 +121,28 @@
             "text": "List Name",
             "isFilterable": true,
             "isSortable": true,
-            "width": 40
+            "width": 30
         },
         {
             "key": "value",
             "text": "Value",
             "isFilterable": true,
             "isSortable": true,
-            "width": 30
+            "width": 25
         },
         {
             "key": "forecolor",
             "text": "Text Color",
             "isFilterable": true,
             "isSortable": true,
-            "width": 15
+            "width": 10
         },
         {
             "key": "backcolor",
             "text": "Background Color",
             "isFilterable": true,
             "isSortable": true,
-            "width": 15
+            "width": 10
         }
     ]
 }

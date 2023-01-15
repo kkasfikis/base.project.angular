@@ -21,12 +21,12 @@ export class VesselComponent implements OnInit {
   filterFields : FilterField[] = []
 
   ngOnInit(): void {
+    console.log('Converting Vessel fields from JSON ....')
     this.convertFromJson();
   }
 
   convertFromJson(){
     let obj = data as any;
-    console.log('OBJECT', obj)
     this.tableColumns = obj.columns;
     
     if(obj.filters && obj.filters.length > 0){
@@ -74,7 +74,6 @@ export class VesselComponent implements OnInit {
         let tinfos :InfoField[] = []
         value.infoFields.forEach((subvalue : any) => {
           subvalue.type = InfoType[subvalue.type];
-          console.log(subvalue.type)
           tinfos.push(new InfoField(subvalue));
         });
         value.fields = tfields;

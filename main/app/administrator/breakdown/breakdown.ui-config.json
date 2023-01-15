@@ -1,0 +1,807 @@
+{
+    "fields": [
+        {
+            "key": "break_entry",
+            "order": 10,
+            "type": "DatePicker",
+            "label": "Entry Date",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_status",
+            "order": 20,
+            "type": "Select",
+            "label": "Status",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_comment",
+            "order": 30,
+            "type": "TextArea",
+            "label": "General Info",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_info",
+            "order": 40,
+            "type": "TextBox",
+            "label": "Breakdown Info",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_debit_amount",
+            "order": 50,
+            "type": "TextBox",
+            "label": "Debit",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_credit_amount",
+            "order": 60,
+            "type": "TextBox",
+            "label": "Credit",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 30,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_actual_amount",
+            "order": 70,
+            "type": "TextBox",
+            "label": "Actual",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 40,
+            "innerWidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subforms": [
+        {
+            "key": "break_item",
+            "title": "ITEM DESCRIPTION",
+            "order":1000,
+            "fields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "type": "TextBox",
+                    "label": "Date",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 30,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_status",
+                    "order": 20,
+                    "type": "TextBox",
+                    "label": "Status",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 30,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_category",
+                    "order": 30,
+                    "type": "TextBox",
+                    "label": "Category",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 30,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_subcategory",
+                    "order": 40,
+                    "type": "TextBox",
+                    "label": "Subcategory",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 30,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_description",
+                    "order": 50,
+                    "type": "TextBox",
+                    "label": "Description",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 40,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_order",
+                    "order": 60,
+                    "type": "TextBox",
+                    "label": "Order",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 10,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_price",
+                    "order": 70,
+                    "type": "TextBox",
+                    "label": "Price",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 20,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_remark",
+                    "order": 80,
+                    "type": "TextBox",
+                    "label": "Remarks",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 40,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_credit",
+                    "order": 90,
+                    "type": "TextBox",
+                    "label": "Credit",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 20,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_debit",
+                    "order": 100,
+                    "type": "TextBox",
+                    "label": "Debit",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 20,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_qty",
+                    "order": 110,
+                    "type": "TextBox",
+                    "label": "QTY",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 10,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_amount",
+                    "order": 120,
+                    "type": "TextBox",
+                    "label": "Amount",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 30,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_actual",
+                    "order": 130,
+                    "type": "TextBox",
+                    "label": "Actual",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 30,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_link",
+                    "order": 140,
+                    "type": "TextBox",
+                    "label": "Relative Documents",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 40,
+                    "innerWidth": 98,
+                    "align": "center center"
+                }
+            ],
+            "tableColumns": [
+                {
+                    "key": "item_date",
+                    "text": "Date",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 30
+                },
+                {
+                    "key": "item_status",
+                    "text": "Status",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 30
+                },
+                {
+                    "key": "item_category",
+                    "text": "Category",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 30
+                },
+                {
+                    "key": "item_subcategory",
+                    "text": "Subcategory",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 30
+                },
+                {
+                    "key": "item_description",
+                    "text": "Description",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 40
+                },
+                {
+                    "key": "item_order",
+                    "text": "Order",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 10
+                },
+                {
+                    "key": "item_price",
+                    "text": "Price",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 20
+                },
+                {
+                    "key": "item_remark",
+                    "text": "Remarks",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 40
+                },
+                {
+                    "key": "item_credit",
+                    "text": "Credit",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 20
+                },
+                {
+                    "key": "item_debit",
+                    "text": "Debit",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 20
+                },
+                {
+                    "key": "item_qty",
+                    "text": "QTY",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 10
+                },
+                {
+                    "key": "item_amount",
+                    "text": "Amount",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 30
+                },
+                {
+                    "key": "item_actual",
+                    "text": "Actual",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 30
+                },
+                {
+                    "key": "item_link",
+                    "text": "Relative Documents",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 40
+                }
+            ],
+            "infoFields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "label": "Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_status",
+                    "order": 20,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_category",
+                    "order": 30,
+                    "label": "Category",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_subcategory",
+                    "order": 40,
+                    "label": "Subcategory",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_description",
+                    "order": 50,
+                    "label": "Description",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_order",
+                    "order": 60,
+                    "label": "Order",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_price",
+                    "order": 70,
+                    "label": "Price",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_remark",
+                    "order": 80,
+                    "label": "Remarks",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_credit",
+                    "order": 90,
+                    "label": "Credit",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_debit",
+                    "order": 100,
+                    "label": "Debit",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_qty",
+                    "order": 110,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_amount",
+                    "order": 120,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_actual",
+                    "order": 130,
+                    "label": "Actual",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_link",
+                    "order": 140,
+                    "label": "Relative Documents",
+                    "type": "Image",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ],
+            "hasInfo": true,
+            "width": 100,
+            "innerWidth": 100,
+            "align": "center center",
+            "isTagged": false,
+            "tagSeparator": ""
+        }
+    ],
+    "filters": [],
+    "infos": [
+        {
+            "key": "break_entry",
+            "order": 10,
+            "label": "Entry Date",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_status",
+            "order": 20,
+            "label": "Status",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_comment",
+            "order": 30,
+            "label": "General Info",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_info",
+            "order": 40,
+            "label": "Breakdown Info",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_debit_amount",
+            "order": 50,
+            "label": "Debit",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_credit_amount",
+            "order": 60,
+            "label": "Credit",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_actual_amount",
+            "order": 70,
+            "label": "Actual",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [
+        {
+            "key": "",
+            "order": 1000,
+            "label": "ITEM DESCRIPTION",
+            "fields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "label": "Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_status",
+                    "order": 20,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_category",
+                    "order": 30,
+                    "label": "Category",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_subcategory",
+                    "order": 40,
+                    "label": "Subcategory",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_description",
+                    "order": 50,
+                    "label": "Description",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_order",
+                    "order": 60,
+                    "label": "Order",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_price",
+                    "order": 70,
+                    "label": "Price",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_remark",
+                    "order": 80,
+                    "label": "Remarks",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_credit",
+                    "order": 90,
+                    "label": "Credit",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_debit",
+                    "order": 100,
+                    "label": "Debit",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_qty",
+                    "order": 110,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_amount",
+                    "order": 120,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_actual",
+                    "order": 130,
+                    "label": "Actual",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_link",
+                    "order": 140,
+                    "label": "Relative Documents",
+                    "type": "Image",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        }
+    ],
+    "columns": [
+        {
+            "key": "break_entry",
+            "text": "Entry Date",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        },
+        {
+            "key": "break_status",
+            "text": "Status",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 40
+        },
+        {
+            "key": "break_info",
+            "text": "Breakdown Info",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 100
+        },
+        {
+            "key": "break_debit_amount",
+            "text": "Debit",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        },
+        {
+            "key": "break_credit_amount",
+            "text": "Credit",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        },
+        {
+            "key": "break_actual_amount",
+            "text": "Actual",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 40
+        }
+    ]
+}

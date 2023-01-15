@@ -63,7 +63,6 @@ export class DynamicSubFormComponent implements OnInit {
     this.isTagged = subform.isTagged;
     this.tagSeperator = subform.tagSeperator;
     this.identifierKey = subform.identifierKey ? subform.identifierKey : '';
-    console.log('Mapped Data1',this.mapData)
     this.dataSubject.next(this.mapData(subform));
     this.columnSubject.next(subform.tableColumns);
     this.form = this.formService.toFormGroup(subform.fields as FormFieldBase[]);
@@ -78,7 +77,6 @@ export class DynamicSubFormComponent implements OnInit {
         this.isTagged = field.isTagged;
         this.tagSeperator = field.tagSeperator;
         this.identifierKey = field.identifierKey ? field.identifierKey : '';
-        console.log('SUBFORM',field.tableColumns)
         this.columnSubject.next(field.tableColumns)
         this.formField = field;
         this.form = this.formService.toFormGroup(field.fields as FormFieldBase[]);
@@ -136,7 +134,6 @@ export class DynamicSubFormComponent implements OnInit {
   updateSubRecord(item : {internalId : number}){
     let subform = this.subformField.getValue() as SubForm;
     let obj = subform.tableData[item.internalId];
-    console.log('SUBFORM:',subform,obj)
     Object.keys(obj).forEach( (key : string) => {
       subform.fields.forEach( (field : FormFieldBase) => {
         if(field.key == key){
@@ -195,7 +192,6 @@ export class DynamicSubFormComponent implements OnInit {
     else{
       if(!this.isTagged){
         let tData : any[] = subform.tableData;
-        console.log('TABLE DATA BEFORE ADD:',tData)
         tData.push(this.form.getRawValue());
         subform.tableData = tData;
       }

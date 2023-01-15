@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
-import { FormFieldBase, FormFieldType } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
-import { InfoField, InfoType } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
+import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
+import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
 import { BehaviorSubject } from 'rxjs';
+import * as data from './port.ui-config.json'
 
 @Component({
   selector: 'app-port',
@@ -13,147 +14,77 @@ import { BehaviorSubject } from 'rxjs';
 export class PortComponent implements OnInit {
 
   constructor() { }
+  formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
+
+  tableColumns : TableColumn[] = []
+
+  infoFields : (InfoField|SubFormInfo)[] = []
+
+  filterFields : FilterField[] = []
 
   ngOnInit(): void {
+    console.log('Converting Port fields from JSON ....')
+    this.convertFromJson();
   }
 
-  formFields : BehaviorSubject<FormFieldBase>[] = [
-    new BehaviorSubject<FormFieldBase>({
-      value : '',
-      type : FormFieldType.Hidden,
-      key : '_id',
-      label : 'ID',
-      order : 0,
-      enabled : true,
-      required : false,
-      minLength : 3,
-      maxLength : 255,
-      regexPattern : '',
-      width : 100,
-      innerWidth : 98,
-      align : 'center center'
-    } as FormFieldBase),
-    new BehaviorSubject<FormFieldBase>({
-      value : '',
-      type : FormFieldType.TextBox,
-      key : 'name',
-      label : 'Port Name',
-      order : 0,
-      enabled : true,
-      required : true,
-      minLength : 3,
-      maxLength : 255,
-      regexPattern : '',
-      width : 50,
-      innerWidth : 98,
-      align : 'center center'
-    } as FormFieldBase),
-    new BehaviorSubject<FormFieldBase>({
-      value : '',
-      type : FormFieldType.TextBox,
-      key : 'anchorage',
-      label : 'Anchorage',
-      order : 1,
-      enabled : true,
-      required : false,
-      minLength : 3,
-      maxLength : 255,
-      regexPattern : '',
-      width : 50,
-      innerWidth : 98,
-      align : 'center center'
-    } as FormFieldBase),
-    new BehaviorSubject<FormFieldBase>({
-      value : '',
-      type : FormFieldType.TextBox,
-      key : 'notes',
-      label : 'Notes',
-      order : 1,
-      enabled : true,
-      required : false,
-      minLength : 3,
-      maxLength : 1000,
-      regexPattern : '',
-      width : 100,
-      innerWidth : 98,
-      align : 'center center'
-    } as FormFieldBase),
-    new BehaviorSubject<FormFieldBase>({
-      value : '',
-      type : FormFieldType.TextBox,
-      key : 'weatherLink',
-      label : 'Weather URL',
-      order : 1,
-      enabled : true,
-      required : false,
-      minLength : 3,
-      maxLength : 255,
-      regexPattern : '',
-      width : 100,
-      innerWidth : 98,
-      align : 'center center'
-    } as FormFieldBase)
-  ]
-
-  tableColumns : TableColumn[] = [
-    {
-      key : 'name',
-      text : 'Port Name',
-      isFilterable : true,
-      isSortable : true,
-      width : 70
-    },
-  ]
-
-  infoFields : InfoField[] = [
-    {
-      key : 'name',
-      order : 0,
-      label : 'Port Name',
-      type : InfoType.Text,
-      width : '50',
-      innerWidth : '100',
-      align : 'center'
-    },
-    {
-      key : 'anchorage',
-      order : 1,
-      label : 'Anchorage',
-      type : InfoType.Text,
-      width : '50',
-      innerWidth : '100',
-      align : 'center'
-    },
-    {
-      key : 'notes',
-      order : 2,
-      label : 'Notes',
-      type : InfoType.Text,
-      width : '100',
-      innerWidth : '100',
-      align : 'center'
-    },
-    {
-      key : 'weatherLink',
-      order : 2,
-      label : 'Weather Link',
-      type : InfoType.Text,
-      width : '100',
-      innerWidth : '100',
-      align : 'center'
+  convertFromJson(){
+    let obj = data as any;
+    this.tableColumns = obj.columns;
+    
+    if(obj.filters && obj.filters.length > 0){
+      obj.filters.forEach( (value:any) => {
+        value.fieldType = FormFieldType[value.fieldType];
+        this.filterFields.push(new FilterField(value));
+      })
     }
-  ]
+    
+    if(obj.infos && obj.infos.length > 0){
+      obj.infos.forEach((value:any, index:number) => {
+        value.type = InfoType[value.type];
+        this.infoFields.push(new InfoField(value));
+      })
+    }
 
-  filterFields = [
-    {
-      key : 'name',
-      label : 'Name',
-      fieldType : FormFieldType.TextBox
-    } as FilterField,
-    {
-      key : 'filter2',
-      label : 'Filter 2',
-      fieldType : FormFieldType.DatePicker
-    } as FilterField,
-  ] as FilterField[]
+    if(obj.subinfos && obj.subinfos.length > 0){
+      obj.subinfos.forEach((value:any, index:number) => {
+        value.fields.forEach((subvalue:any)=>{
+          subvalue.type = InfoType[subvalue.type];
+        })
+        this.infoFields.push(new SubFormInfo(value))
+      })
+    }
+
+    if(obj.fields && obj.fields.length > 0){
+      obj.fields.forEach( (value : any) => {
+        value.type = FormFieldType[value.type]; 
+        this.formFields.push(new BehaviorSubject<FormFieldBase>(new FormFieldBase(value)))
+        
+      })
+    }
+     
+    if(obj.subforms && obj.subforms.length > 0){
+      obj.subforms.forEach( (value : any) => {
+        let tfields:FormFieldBase[] = []
+        value.fields.forEach((subvalue : any) => {
+          subvalue.type = FormFieldType[subvalue.type]
+          tfields.push(new FormFieldBase(subvalue));
+        });
+        let tcolumns:TableColumn[] = []
+        value.tableColumns.forEach((subvalue : any) => {
+          tcolumns.push(new TableColumn(subvalue));
+        });
+        let tinfos :InfoField[] = []
+        value.infoFields.forEach((subvalue : any) => {
+          subvalue.type = InfoType[subvalue.type];
+          tinfos.push(new InfoField(subvalue));
+        });
+        value.fields = tfields;
+        value.tableColumns = tcolumns;
+        value.infoFields = tinfos;
+        let subj = new BehaviorSubject<SubForm>(new SubForm(value))
+        this.formFields.push(subj);
+      })
+    }
+    
+  }
 }

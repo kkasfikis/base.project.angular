@@ -108,7 +108,7 @@
         {
             "key": "port_anch",
             "order": 80,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Anchorage",
             "options": [],
             "enabled": true,
@@ -183,7 +183,7 @@
         {
             "key": "saf_man",
             "order": 130,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Safety Manual",
             "options": [],
             "enabled": true,
@@ -198,7 +198,7 @@
         {
             "key": "saf_eq_cert",
             "order": 140,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Safety Equipment Certficate",
             "options": [],
             "enabled": true,
@@ -213,7 +213,7 @@
         {
             "key": "itc",
             "order": 150,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "ITC",
             "options": [],
             "enabled": true,
@@ -228,7 +228,7 @@
         {
             "key": "rfg",
             "order": 160,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "RFG",
             "options": [],
             "enabled": true,
@@ -243,7 +243,7 @@
         {
             "key": "ssec",
             "order": 170,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "SSEC",
             "options": [],
             "enabled": true,
@@ -258,7 +258,7 @@
         {
             "key": "nrt",
             "order": 180,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "NRT",
             "options": [],
             "enabled": true,
@@ -273,7 +273,7 @@
         {
             "key": "ert",
             "order": 190,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "ERT",
             "options": [],
             "enabled": true,
@@ -288,7 +288,7 @@
         {
             "key": "dwt",
             "order": 200,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "DWT",
             "options": [],
             "enabled": true,
@@ -303,7 +303,7 @@
         {
             "key": "bredth",
             "order": 210,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "BREDTH",
             "options": [],
             "enabled": true,
@@ -318,7 +318,7 @@
         {
             "key": "draft",
             "order": 220,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "DRAFT",
             "options": [],
             "enabled": true,
@@ -333,7 +333,7 @@
         {
             "key": "user",
             "order": 230,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "USER",
             "options": [],
             "enabled": true,
@@ -348,7 +348,7 @@
         {
             "key": "cma",
             "order": 240,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "CMA",
             "options": [],
             "enabled": true,
@@ -363,7 +363,7 @@
         {
             "key": "last_rscr",
             "order": 250,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Last RSCR",
             "options": [],
             "enabled": true,
@@ -378,7 +378,7 @@
         {
             "key": "arvl_draft",
             "order": 260,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Arrival DRAFT",
             "options": [],
             "enabled": true,
@@ -393,7 +393,7 @@
         {
             "key": "fw_bob_arvl",
             "order": 270,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "FW BOB Arrival",
             "options": [],
             "enabled": true,
@@ -408,7 +408,7 @@
         {
             "key": "sludges_arvl",
             "order": 280,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Sludges Arrival",
             "options": [],
             "enabled": true,
@@ -423,7 +423,7 @@
         {
             "key": "upd_prospect_link",
             "order": 290,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Updated Prospectus Link",
             "options": [],
             "enabled": true,
@@ -438,7 +438,7 @@
         {
             "key": "updated_lineup",
             "order": 300,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Update Lineup",
             "options": [],
             "enabled": true,
@@ -453,7 +453,7 @@
         {
             "key": "indbound_bob",
             "order": 310,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Inbound BOB",
             "options": [],
             "enabled": true,
@@ -468,7 +468,7 @@
         {
             "key": "outbound_fob",
             "order": 320,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Outbound FOB",
             "options": [],
             "enabled": true,
@@ -498,7 +498,7 @@
         {
             "key": "anchorage_waiting_pilot",
             "order": 340,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Anchorage waiting Pilot",
             "options": [],
             "enabled": true,
@@ -573,7 +573,7 @@
         {
             "key": "terminal_pisch",
             "order": 390,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Terminal Pisch",
             "options": [],
             "enabled": true,
@@ -588,7 +588,7 @@
         {
             "key": "terminal_specs",
             "order": 400,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Terminal Specs",
             "options": [],
             "enabled": true,
@@ -603,7 +603,7 @@
         {
             "key": "terminal_maint_sched",
             "order": 410,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Terminal Maint. Schedule",
             "options": [],
             "enabled": true,
@@ -618,7 +618,7 @@
         {
             "key": "port_recent_accident",
             "order": 420,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Port Recent Accident",
             "options": [],
             "enabled": true,
@@ -633,7 +633,7 @@
         {
             "key": "pilots_availability",
             "order": 430,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Pilots Availability",
             "options": [],
             "enabled": true,
@@ -648,7 +648,7 @@
         {
             "key": "other_new_port_restrict",
             "order": 440,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Other New Port Restrictions",
             "options": [],
             "enabled": true,
@@ -663,7 +663,7 @@
         {
             "key": "military_exercises",
             "order": 450,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Military Exercises",
             "options": [],
             "enabled": true,
@@ -678,7 +678,7 @@
         {
             "key": "warehouse_conditions",
             "order": 460,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Warehouse Conditions",
             "options": [],
             "enabled": true,
@@ -693,7 +693,7 @@
         {
             "key": "ice_concentration",
             "order": 470,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Ice Concentration",
             "options": [],
             "enabled": true,
@@ -708,7 +708,7 @@
         {
             "key": "fog_status",
             "order": 480,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Fog Status",
             "options": [],
             "enabled": true,
@@ -723,7 +723,7 @@
         {
             "key": "typhoons_expected",
             "order": 490,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Typhoons Expected",
             "options": [],
             "enabled": true,
@@ -738,7 +738,7 @@
         {
             "key": "holidays",
             "order": 500,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Holidays",
             "options": [],
             "enabled": true,
@@ -753,7 +753,7 @@
         {
             "key": "port_pdf_link",
             "order": 510,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Port Map",
             "options": [],
             "enabled": true,
@@ -768,7 +768,7 @@
         {
             "key": "fishing_boat_risk_status",
             "order": 471,
-            "type": "textbox",
+            "type": "TextBox",
             "label": "Fishing boat Risk Status",
             "options": [],
             "enabled": true,
@@ -785,6 +785,7 @@
         {
             "key": "inq1",
             "title": "OWNERS REPRESENTATIVES LOG",
+            "order":1000,
             "fields": [
                 {
                     "key": "position",
@@ -804,7 +805,7 @@
                 {
                     "key": "name",
                     "order": 20,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Name",
                     "options": [],
                     "enabled": true,
@@ -864,7 +865,7 @@
                 {
                     "key": "details_first",
                     "order": 60,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Details",
                     "options": [],
                     "enabled": true,
@@ -879,7 +880,7 @@
                 {
                     "key": "room_first",
                     "order": 51,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Room",
                     "options": [],
                     "enabled": true,
@@ -894,7 +895,7 @@
                 {
                     "key": "phone_first",
                     "order": 52,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Phone",
                     "options": [],
                     "enabled": true,
@@ -954,7 +955,7 @@
                 {
                     "key": "details_second",
                     "order": 80,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Details",
                     "options": [],
                     "enabled": true,
@@ -969,7 +970,7 @@
                 {
                     "key": "room_second",
                     "order": 71,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Room",
                     "options": [],
                     "enabled": true,
@@ -984,7 +985,7 @@
                 {
                     "key": "phone_second",
                     "order": 72,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Phone",
                     "options": [],
                     "enabled": true,
@@ -1044,7 +1045,7 @@
                 {
                     "key": "pass_image",
                     "order": 90,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Passport image",
                     "options": [],
                     "enabled": true,
@@ -1089,7 +1090,7 @@
                 {
                     "key": "depart_details",
                     "order": 120,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Departure Details",
                     "options": [],
                     "enabled": true,
@@ -1104,7 +1105,7 @@
                 {
                     "key": "comments",
                     "order": 130,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Comments",
                     "options": [],
                     "enabled": true,
@@ -1362,8 +1363,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -1372,11 +1373,12 @@
         {
             "key": "inq2",
             "title": "CREW CHANGES",
+            "order":2000,
             "fields": [
                 {
                     "key": "name",
                     "order": 10,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Name",
                     "options": [],
                     "enabled": true,
@@ -1421,7 +1423,7 @@
                 {
                     "key": "details",
                     "order": 40,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Details",
                     "options": [],
                     "enabled": true,
@@ -1466,7 +1468,7 @@
                 {
                     "key": "pass_link",
                     "order": 70,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Passport Image",
                     "options": [],
                     "enabled": true,
@@ -1481,7 +1483,7 @@
                 {
                     "key": "visa_link",
                     "order": 80,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Visa Image",
                     "options": [],
                     "enabled": true,
@@ -1511,7 +1513,7 @@
                 {
                     "key": "visa_details",
                     "order": 100,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Visa Details",
                     "options": [],
                     "enabled": true,
@@ -1541,7 +1543,7 @@
                 {
                     "key": "details",
                     "order": 111,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Details",
                     "options": [],
                     "enabled": true,
@@ -1556,7 +1558,7 @@
                 {
                     "key": "room",
                     "order": 112,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Room",
                     "options": [],
                     "enabled": true,
@@ -1571,7 +1573,7 @@
                 {
                     "key": "phone",
                     "order": 140,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Phone",
                     "options": [],
                     "enabled": true,
@@ -1815,8 +1817,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -1825,6 +1827,7 @@
         {
             "key": "inq3",
             "title": "TECHS / SURVEYORS",
+            "order":3000,
             "fields": [
                 {
                     "key": "ts_type",
@@ -1859,7 +1862,7 @@
                 {
                     "key": "eq_surveys",
                     "order": 30,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Equipment / Surveys",
                     "options": [],
                     "enabled": true,
@@ -1889,7 +1892,7 @@
                 {
                     "key": "details",
                     "order": 71,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Details",
                     "options": [],
                     "enabled": true,
@@ -1904,7 +1907,7 @@
                 {
                     "key": "rooms",
                     "order": 60,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Rooms",
                     "options": [],
                     "enabled": true,
@@ -1919,7 +1922,7 @@
                 {
                     "key": "phone",
                     "order": 70,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Phone",
                     "options": [],
                     "enabled": true,
@@ -1934,7 +1937,7 @@
                 {
                     "key": "By",
                     "order": 80,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Arranged By",
                     "options": [],
                     "enabled": true,
@@ -1949,7 +1952,7 @@
                 {
                     "key": "By_text",
                     "order": 90,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Arragement Info",
                     "options": [],
                     "enabled": true,
@@ -2009,7 +2012,7 @@
                 {
                     "key": " arvl_flight",
                     "order": 130,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Arrival Flight",
                     "options": [],
                     "enabled": true,
@@ -2039,7 +2042,7 @@
                 {
                     "key": "depart_flight",
                     "order": 150,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Departure Flight",
                     "options": [],
                     "enabled": true,
@@ -2054,7 +2057,7 @@
                 {
                     "key": "attendance",
                     "order": 160,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Attendance",
                     "options": [],
                     "enabled": true,
@@ -2251,8 +2254,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -2261,6 +2264,7 @@
         {
             "key": "inq4",
             "title": "MEDICAL ASSISTANCE",
+            "order":4000,
             "fields": [
                 {
                     "key": "position",
@@ -2280,7 +2284,7 @@
                 {
                     "key": "name",
                     "order": 20,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Name",
                     "options": [],
                     "enabled": true,
@@ -2488,8 +2492,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -2498,11 +2502,12 @@
         {
             "key": "inq5",
             "title": "OFFLAND FORWARDING",
+            "order":5000,
             "fields": [
                 {
                     "key": "po",
                     "order": 10,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "P.O.",
                     "options": [],
                     "enabled": true,
@@ -2532,7 +2537,7 @@
                 {
                     "key": "desc_details",
                     "order": 30,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Description Details",
                     "options": [],
                     "enabled": true,
@@ -2607,7 +2612,7 @@
                 {
                     "key": "destination",
                     "order": 80,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Destination",
                     "options": [],
                     "enabled": true,
@@ -2828,8 +2833,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -2838,11 +2843,12 @@
         {
             "key": "inq6",
             "title": "FW SUPPLY",
+            "order":6000,
             "fields": [
                 {
                     "key": "pw_supply",
                     "order": 10,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Fresh Water Supply",
                     "options": [],
                     "enabled": true,
@@ -2857,7 +2863,7 @@
                 {
                     "key": "qty",
                     "order": 20,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "QTY",
                     "options": [],
                     "enabled": true,
@@ -3010,8 +3016,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -3020,6 +3026,7 @@
         {
             "key": "inq7",
             "title": "DOMESTIC SHIPMENT",
+            "order":7000,
             "fields": [
                 {
                     "key": "ds_type",
@@ -3039,7 +3046,7 @@
                 {
                     "key": "tracking_no",
                     "order": 20,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Tracking No",
                     "options": [],
                     "enabled": true,
@@ -3069,7 +3076,7 @@
                 {
                     "key": "po",
                     "order": 31,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "P.O.",
                     "options": [],
                     "enabled": true,
@@ -3199,8 +3206,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -3209,6 +3216,7 @@
         {
             "key": "inq8",
             "title": "OVERSEAS SHIPMENT",
+            "order":8000,
             "fields": [
                 {
                     "key": "oss_type",
@@ -3228,7 +3236,7 @@
                 {
                     "key": "tracking_no",
                     "order": 20,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Tracking No",
                     "options": [],
                     "enabled": true,
@@ -3258,7 +3266,7 @@
                 {
                     "key": "po",
                     "order": 21,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "P.O.",
                     "options": [],
                     "enabled": true,
@@ -3388,8 +3396,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -3398,6 +3406,7 @@
         {
             "key": "inq9",
             "title": "STORE PROVISIONS",
+            "order":9000,
             "fields": [
                 {
                     "key": "sp_type",
@@ -3417,7 +3426,7 @@
                 {
                     "key": "qty",
                     "order": 20,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "QTY",
                     "options": [],
                     "enabled": true,
@@ -3432,7 +3441,7 @@
                 {
                     "key": "supplier",
                     "order": 30,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Supplier",
                     "options": [],
                     "enabled": true,
@@ -3608,8 +3617,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -3618,6 +3627,7 @@
         {
             "key": "inq10",
             "title": "BUNKERS",
+            "order":10000,
             "fields": [
                 {
                     "key": "bunkers_type",
@@ -3637,7 +3647,7 @@
                 {
                     "key": "qty",
                     "order": 20,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "QTY",
                     "options": [],
                     "enabled": true,
@@ -3682,7 +3692,7 @@
                 {
                     "key": "details",
                     "order": 50,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Details",
                     "options": [],
                     "enabled": true,
@@ -3828,8 +3838,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -3838,11 +3848,12 @@
         {
             "key": "inq11",
             "title": "POLLUTANTS",
+            "order":11000,
             "fields": [
                 {
                     "key": "service",
                     "order": 10,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Service",
                     "options": [],
                     "enabled": true,
@@ -3857,7 +3868,7 @@
                 {
                     "key": "qty",
                     "order": 20,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "QTY",
                     "options": [],
                     "enabled": true,
@@ -3962,8 +3973,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -3972,11 +3983,12 @@
         {
             "key": "inq12",
             "title": "VARIOUS INQUIRIES",
+            "order":12000,
             "fields": [
                 {
                     "key": "description",
                     "order": 10,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Description",
                     "options": [],
                     "enabled": true,
@@ -3991,7 +4003,7 @@
                 {
                     "key": "dates",
                     "order": 20,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Dates",
                     "options": [],
                     "enabled": true,
@@ -4006,7 +4018,7 @@
                 {
                     "key": "qty",
                     "order": 30,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "QTY",
                     "options": [],
                     "enabled": true,
@@ -4120,8 +4132,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -4130,11 +4142,12 @@
         {
             "key": "inq13",
             "title": "CASH TO MASTER",
+            "order":13000,
             "fields": [
                 {
                     "key": "ctm_oper",
                     "order": 10,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Operation",
                     "options": [],
                     "enabled": true,
@@ -4149,7 +4162,7 @@
                 {
                     "key": "amount",
                     "order": 20,
-                    "type": "textbox",
+                    "type": "TextBox",
                     "label": "Amount",
                     "options": [],
                     "enabled": true,
@@ -4247,8 +4260,8 @@
                 }
             ],
             "hasInfo": true,
-            "width": 50,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center",
             "isTagged": false,
             "tagSeparator": ""
@@ -4259,56 +4272,56 @@
             "key": "client_name",
             "label": "Client Name",
             "order": 30,
-            "fieldType": "textbox",
+            "fieldType": "TextBox",
             "options": []
         },
         {
             "key": "alias_name",
             "label": "Client Alias",
             "order": 40,
-            "fieldType": "textbox",
+            "fieldType": "TextBox",
             "options": []
         },
         {
             "key": "vsl_name",
             "label": "Vessel Name",
             "order": 11,
-            "fieldType": "textbox",
+            "fieldType": "TextBox",
             "options": []
         },
         {
             "key": "vsl_flag",
             "label": "Vessel Flag",
             "order": 12,
-            "fieldType": "textbox",
+            "fieldType": "TextBox",
             "options": []
         },
         {
             "key": "port_name",
             "label": "Port",
             "order": 70,
-            "fieldType": "textbox",
+            "fieldType": "TextBox",
             "options": []
         },
         {
             "key": "agent_name",
             "label": "Agent Name",
             "order": 90,
-            "fieldType": "textbox",
+            "fieldType": "TextBox",
             "options": []
         },
         {
             "key": "call_status",
             "label": "Status",
             "order": 110,
-            "fieldType": "textbox",
+            "fieldType": "TextBox",
             "options": []
         },
         {
             "key": "call_type",
             "label": "Call Type",
             "order": 120,
-            "fieldType": "textbox",
+            "fieldType": "TextBox",
             "options": []
         }
     ],
@@ -4990,7 +5003,7 @@
         },
         {
             "key": "",
-            "order": 1010,
+            "order": 2000,
             "label": "CREW CHANGES",
             "fields": [
                 {
@@ -5150,7 +5163,7 @@
         },
         {
             "key": "",
-            "order": 1020,
+            "order": 3000,
             "label": "TECHS / SURVEYORS",
             "fields": [
                 {
@@ -5301,7 +5314,7 @@
         },
         {
             "key": "",
-            "order": 1030,
+            "order": 4000,
             "label": "MEDICAL ASSISTANCE",
             "fields": [
                 {
@@ -5380,7 +5393,7 @@
         },
         {
             "key": "",
-            "order": 1040,
+            "order": 5000,
             "label": "OFFLAND FORWARDING",
             "fields": [
                 {
@@ -5495,7 +5508,7 @@
         },
         {
             "key": "",
-            "order": 1050,
+            "order": 6000,
             "label": "FW SUPPLY",
             "fields": [
                 {
@@ -5556,7 +5569,7 @@
         },
         {
             "key": "",
-            "order": 1060,
+            "order": 7000,
             "label": "DOMESTIC SHIPMENT",
             "fields": [
                 {
@@ -5617,7 +5630,7 @@
         },
         {
             "key": "",
-            "order": 1070,
+            "order": 8000,
             "label": "OVERSEAS SHIPMENT",
             "fields": [
                 {
@@ -5678,7 +5691,7 @@
         },
         {
             "key": "",
-            "order": 1080,
+            "order": 9000,
             "label": "STORE PROVISIONS",
             "fields": [
                 {
@@ -5748,7 +5761,7 @@
         },
         {
             "key": "",
-            "order": 1090,
+            "order": 10000,
             "label": "BUNKERS",
             "fields": [
                 {
@@ -5818,7 +5831,7 @@
         },
         {
             "key": "",
-            "order": 1100,
+            "order": 11000,
             "label": "POLLUTANTS",
             "fields": [
                 {
@@ -5861,7 +5874,7 @@
         },
         {
             "key": "",
-            "order": 1110,
+            "order": 12000,
             "label": "VARIOUS INQUIRIES",
             "fields": [
                 {
@@ -5913,7 +5926,7 @@
         },
         {
             "key": "",
-            "order": 1120,
+            "order": 13000,
             "label": "CASH TO MASTER",
             "fields": [
                 {

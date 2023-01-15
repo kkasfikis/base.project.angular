@@ -31,12 +31,10 @@ export class DynamicCrudService {
     let options = {
       headers : new HttpHeaders({'Content-Type' : 'application/json'})
     }
-    //console.log('Reading data of page:' + page + ' of size:' + size)
     url += "/" + page + "/" + size
     if (sort != ''){
       url += '/' + sort + '/' + sortColumn;
     }
-    //console.log(url + '|' + sort);
     return this.http.get( url , {...options} )
   }
 
@@ -48,7 +46,6 @@ export class DynamicCrudService {
     if (sort != ''){
       url += '/' + sort + '/' + sortColumn;
     }
-    //console.log(url + '|' + sort);
     return this.http.post( url , payload, {...options});
   }
 
@@ -56,7 +53,6 @@ export class DynamicCrudService {
     let options = {
       headers : new HttpHeaders({'Content-Type' : 'application/json'})
     }
-    //console.log('update Id : ', item[identifier])
     return this.http.put(url + '/' + item[identifier], item, {...options});
   }
 

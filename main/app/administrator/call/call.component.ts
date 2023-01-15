@@ -24,12 +24,12 @@ export class CallComponent implements OnInit {
   filterFields : FilterField[] = []
 
   ngOnInit(): void {
+    console.log('Converting Call fields from JSON ....')
     this.convertFromJson();
   }
 
   convertFromJson(){
     let obj = data as any;
-    console.log('OBJECT', obj)
     this.tableColumns = obj.columns;
     
     if(obj.filters && obj.filters.length > 0){
@@ -77,13 +77,11 @@ export class CallComponent implements OnInit {
         let tinfos :InfoField[] = []
         value.infoFields.forEach((subvalue : any) => {
           subvalue.type = InfoType[subvalue.type];
-          console.log(subvalue.type)
           tinfos.push(new InfoField(subvalue));
         });
         value.fields = tfields;
         value.tableColumns = tcolumns;
         value.infoFields = tinfos;
-        console.log('value info fields : ', value.infoFields)
         let subj = new BehaviorSubject<SubForm>(new SubForm(value))
         this.formFields.push(subj);
       })

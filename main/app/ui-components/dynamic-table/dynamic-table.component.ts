@@ -53,7 +53,6 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
     setTimeout(()=>{
       this.columnSub = this.tableColumns.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
         next : (val : TableColumn[]) => {
-          console.log('TABLE COLUMNS:',val)
           this.columns = val;//.map(x=>x.name);
           if(this.hasActions){
             this.displayedColumns = [...this.columns.map(x=>x.key),'actions']
@@ -61,12 +60,10 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
           else{
             this.displayedColumns = [...this.columns.map(x=>x.key)]
           }
-          console.log('DISPLAYED COLUMNS',this.displayedColumns)
           this.filterInputs = {}
           this.filterValues = {}
           if (!this.isPaginated){
             this.tableSource.filterPredicate = this.createFilter();
-            console.log('Columns', this.columns);
             this.columns.forEach((val)=>{
               this.filterInputs[val.key] = new FormControl('');
               this.filterValues[val.key] = '';
@@ -88,14 +85,12 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
                 data.push({});
               }
               data.push(...val.data);
-              //console.log('DATAAAAAA:',val.data,' PAGE:',val.page,' Size:',val.size,' COUNT:',val.count)
               this.tableSource = new MatTableDataSource<any>(data)
               this.matPaginator.pageIndex = val.page;
               this.matPaginator.pageSize = val.size;
               this.tableSource.data.length = val.count; 
             }
             else{
-              console.log('VAL DATA:',val.data)
               this.tableSource.data = val.data;
             }
             this.tableSource._updateChangeSubscription();
@@ -169,7 +164,6 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
     if(this.isPaginated){
       let previousIndex = event.previousPageIndex;
       let previousSize = event.previousPageSize;
-      //console.log('PREVIOUS PAGE SIZE : ' + previousSize)
       let pageIndex = event.pageIndex;
       let pageSize = event.pageSize;
       this.pageChanged.emit({page : pageIndex, size: pageSize});

@@ -37,7 +37,6 @@ export class AppComponent implements OnInit,AfterViewInit{
     this._zone.runOutsideAngular(() => {
       setInterval( () => {
         if(this.loggedIn){
-          console.log('checking token')
           this.authService.isTokenExpired();
         }
       }, 10000)
@@ -103,6 +102,87 @@ export class AppComponent implements OnInit,AfterViewInit{
         icon:'user',
         isFunction:false,
         link:'/supplier',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'Expenses',
+        label:'Expenses',
+        icon:'user',
+        isFunction:false,
+        link:'/expense',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'Predefined',
+        label:'Predefined',
+        icon:'user',
+        isFunction:false,
+        link:'/predefined',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'Charges',
+        label:'Charges',
+        icon:'user',
+        isFunction:false,
+        link:'/charge',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'BankAccount',
+        label:'Bank Accounts',
+        icon:'user',
+        isFunction:false,
+        link:'/bankAccount',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'Staff',
+        label:'Staff',
+        icon:'user',
+        isFunction:false,
+        link:'/staff',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'SOA',
+        label:'Statements Of Account',
+        icon:'user',
+        isFunction:false,
+        link:'/soa',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'CSOA',
+        label:'Consolidated Statements Of Account',
+        icon:'user',
+        isFunction:false,
+        link:'/csoa',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'Breakdown',
+        label:'Breakdown Lists',
+        icon:'user',
+        isFunction:false,
+        link:'/breakdown',
+        func : {},
+        subMenus : [] as MenuOption[]
+      } as MenuOption,
+      {
+        key:'Invoice',
+        label:'Invoice',
+        icon:'user',
+        isFunction:false,
+        link:'/invoice',
         func : {},
         subMenus : [] as MenuOption[]
       } as MenuOption

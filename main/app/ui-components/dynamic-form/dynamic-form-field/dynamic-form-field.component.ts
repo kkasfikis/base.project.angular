@@ -22,9 +22,7 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if(!(this.formField instanceof FormFieldBase)){
-      console.log('000000',this.formField)
       this.localFormField = this.formField.getValue();
-      console.log('aaaaa',this.localFormField)
       let formFieldObserver = {
         next : (field : FormFieldBase) => {
           this.localFormField = field;

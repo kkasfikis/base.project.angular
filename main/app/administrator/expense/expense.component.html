@@ -1,1 +1,23 @@
-<p>expense works!</p>
+<app-dynamic-crud
+    [hasCreate]="true"
+    [hasUpdate]="true"
+    [hasDelete]="true"
+    [hasInfo]="true"
+
+    [endpoint]="'/expense'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+    
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="true"
+    [filterFields]="filterFields"
+></app-dynamic-crud>

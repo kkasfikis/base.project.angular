@@ -43,7 +43,6 @@ export class AdminGuard implements CanActivate{
     }
 
     private checkIsUserAdmin(){
-        console.log(JSON.stringify(this.authService.getUser()))
         if(this.authService.getUser().roles.includes('administrator')){
             return true;
         }

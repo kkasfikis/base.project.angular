@@ -80,6 +80,7 @@
         {
             "key": "port_charges",
             "title": "PORT CHARGES",
+            "order":1000,
             "fields": [
                 {
                     "key": "ch_desc",
@@ -253,7 +254,7 @@
     "subinfos": [
         {
             "key": "",
-            "order": 100,
+            "order": 1000,
             "label": "PORT CHARGES",
             "fields": [
                 {

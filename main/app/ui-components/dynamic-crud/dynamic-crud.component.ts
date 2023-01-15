@@ -180,7 +180,6 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   onPageChange(item : {page : number, size : number}){
-    //console.log('Change page event with page : ' + item.page + ' and size : ' + item.size);
     this.page = item.page;
     this.size = item.size;
     this.read();
@@ -189,7 +188,6 @@ export class DynamicCrudComponent implements OnInit {
   onSortChange(item : any){
     this.sort = item.direction;
     this.sortColumn = item.active;
-    //console.log('Changed:' + this.sort + '||' + this.sortColumn)
     this.read();
   }
 
@@ -237,7 +235,6 @@ export class DynamicCrudComponent implements OnInit {
             
           }
           else{
-            //console.log(resp.data)
             this.tableData = resp.data;
             this.tableDataSubject.next(this.mapData(this.page,this.size,resp.count,resp.data));
           }
@@ -251,7 +248,6 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   filterRead(){
-    //console.log('Filter Payload : ', this.filterPayload)
     this.crudService.filter(this.endpoint,this.page,this.pageSize,this.filterPayload,this.sort,this.sortColumn).subscribe({
       next : (resp : any) => {
         if(resp.read){
@@ -262,7 +258,6 @@ export class DynamicCrudComponent implements OnInit {
             this.tableDataSubject.next(this.mapData(this.page,this.size,resp.count,resp.data));
           }
           else{
-            //console.log(resp.data)
             this.tableData = resp.data;
             this.tableDataSubject.next(this.mapData(this.page,this.size,resp.count,resp.data));
           }
@@ -284,7 +279,6 @@ export class DynamicCrudComponent implements OnInit {
       this.createFormFields.forEach( (field) => {
         if(field.getValue() instanceof SubForm){
           let tfield = field.getValue() as SubForm;
-          //console.log(tfield,' formfields:', tfield.fields)
           tfield.fields.forEach( (subfield) => {
             subfield.value = '';
           });
@@ -334,7 +328,6 @@ export class DynamicCrudComponent implements OnInit {
 
   crudUpdate(payload : any){
     this.cleanForm(false);
-    //console.log('aaaaaaaaaaaaa : ',this.endpoint,this.tableData[payload.internalId],this.identifierKey)
     this.crudService.info(this.endpoint,this.tableData[payload.internalId],this.identifierKey).subscribe({
       next : (resp : any) => {
         let obj = resp.data;
@@ -373,7 +366,6 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   crudUpdateSubmit(payload : any){
-    console.log('UPDATE SUBMIT')
     this.crudService.update( this.endpoint, payload, this.identifierKey).subscribe({
       next: (response : any) => {
         if(!response.updated){

@@ -1,0 +1,23 @@
+<app-dynamic-crud
+    [hasCreate]="true"
+    [hasUpdate]="true"
+    [hasDelete]="true"
+    [hasInfo]="true"
+
+    [endpoint]="'/breakdown'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="true"
+    [filterFields]="filterFields"
+></app-dynamic-crud>

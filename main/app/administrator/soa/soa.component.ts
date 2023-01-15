@@ -1,31 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
+import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
+import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
+import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
 import { BehaviorSubject } from 'rxjs';
-import { FilterField } from '../ui-components/dynamic-crud/dynamic-crud.models';
-import { FormFieldBase, FormFieldType, SubForm } from '../ui-components/dynamic-form/dynamic-form.models';
-import { InfoField, InfoType, SubFormInfo } from '../ui-components/dynamic-info/dynamic-info.models';
-import { TableColumn } from '../ui-components/dynamic-table/dynamic-table.models';
-import * as data from './data.json';
+import * as data from './soa.ui-config.json'
+
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  selector: 'app-soa',
+  templateUrl: './soa.component.html',
+  styleUrls: ['./soa.component.scss']
 })
-export class TestComponent implements OnInit {
+export class SOAComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.convertFromJson()
-  }
-
+  
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
-  infoFields : (InfoField|SubFormInfo)[] = [];
-  filterFields : FilterField[] = [];
-  tableColumns : TableColumn[] = [];
+
+  tableColumns : TableColumn[] = []
+
+  infoFields : (InfoField|SubFormInfo)[] = []
+
+  filterFields : FilterField[] = []
+
+  ngOnInit(): void {
+    console.log('Converting Invoice fields from JSON ....')
+    this.convertFromJson();
+  }
 
   convertFromJson(){
     let obj = data as any;
-    console.log('OBJECT', obj)
     this.tableColumns = obj.columns;
     
     if(obj.filters && obj.filters.length > 0){
@@ -73,18 +78,15 @@ export class TestComponent implements OnInit {
         let tinfos :InfoField[] = []
         value.infoFields.forEach((subvalue : any) => {
           subvalue.type = InfoType[subvalue.type];
-          console.log(subvalue.type)
           tinfos.push(new InfoField(subvalue));
         });
         value.fields = tfields;
         value.tableColumns = tcolumns;
         value.infoFields = tinfos;
-        console.log('value info fields : ', value.infoFields)
         let subj = new BehaviorSubject<SubForm>(new SubForm(value))
         this.formFields.push(subj);
       })
     }
     
   }
-
 }

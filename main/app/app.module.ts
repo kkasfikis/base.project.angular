@@ -54,13 +54,16 @@ import { DynamicCrudFiltersComponent } from './ui-components/dynamic-crud/dynami
 import {MatNativeDateModule} from '@angular/material/core';
 import { AgentComponent } from './administrator/agent/agent.component';
 import { CallComponent } from './administrator/call/call.component';
-import { TestComponent } from './test/test.component';
 import { SupplierComponent } from './administrator/supplier/supplier.component';
 import { BankAccountComponent } from './administrator/bank-account/bank-account.component';
 import { ExpenseComponent } from './administrator/expense/expense.component';
 import { StaffComponent } from './administrator/staff/staff.component';
 import { PredefinedComponent } from './administrator/predefined/predefined.component';
 import { ChargeComponent } from './administrator/charge/charge.component';
+import { SOAComponent } from './administrator/soa/soa.component';
+import { CSOAComponent } from './administrator/csoa/csoa.component';
+import { BreakdownComponent } from './administrator/breakdown/breakdown.component';
+import { InvoiceComponent } from './administrator/invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -88,13 +91,16 @@ import { ChargeComponent } from './administrator/charge/charge.component';
     DynamicCrudFiltersComponent,
     AgentComponent,
     CallComponent,
-    TestComponent,
     SupplierComponent,
     BankAccountComponent,
     ExpenseComponent,
     StaffComponent,
     PredefinedComponent,
-    ChargeComponent
+    ChargeComponent,
+    SOAComponent,
+    CSOAComponent,
+    BreakdownComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

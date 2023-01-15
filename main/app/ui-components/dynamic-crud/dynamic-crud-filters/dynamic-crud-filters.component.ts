@@ -87,7 +87,6 @@ export class DynamicCrudFiltersComponent implements OnInit {
   }
 
   onSubFormChange(item : {subform : string, key : string, value: string, form : FormGroup} ){
-    //console.log('Subform change :' + item.key + "|" + item.value)
     if(item.key == 'filter'){
       let filter = this.filterFields.filter(x=>x.key == item.value)[0];
       this.changeFilter(filter);

@@ -1,6 +1,11 @@
 {
     "fields": [
         {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
             "key": "agent_name",
             "order": 10,
             "type": "TextBox",
@@ -95,6 +100,7 @@
         {
             "key": "agent_pic",
             "title": "People In Charge",
+            "order": 1000,
             "fields": [
                 {
                     "key": "pic_name",
@@ -414,7 +420,7 @@
     "subinfos": [
         {
             "key": "",
-            "order": 100,
+            "order": 1000,
             "label": "People In Charge",
             "fields": [
                 {
