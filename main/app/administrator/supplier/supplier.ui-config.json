@@ -11,9 +11,9 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 100,
-            "innerWidth": 96,
-            "align": "center center"
+            "width": 65,
+            "innerWidth": 98,
+            "align": "left"
         },
         {
             "key": "category",
@@ -26,8 +26,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 45,
-            "innerWidth": 41,
+            "width": 20,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -41,8 +41,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 36,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -56,8 +56,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 36,
+            "width": 20,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -71,8 +71,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 16,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -86,8 +86,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 16,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -101,9 +101,9 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 16,
-            "align": "center center"
+            "width": 50,
+            "innerWidth": 10,
+            "align": "left"
         },
         {
             "key": "mail",
@@ -116,8 +116,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 36,
+            "width": 30,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -132,7 +132,7 @@
             "maxLength": 255,
             "regexPattern": "",
             "width": 30,
-            "innerWidth": 26,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -146,9 +146,9 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
-            "innerWidth": 26,
-            "align": "center center"
+            "width": 40,
+            "innerWidth": 50,
+            "align": "left"
         },
         {
             "key": "country",
@@ -161,8 +161,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 36,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -176,8 +176,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 36,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -192,7 +192,7 @@
             "maxLength": 255,
             "regexPattern": "",
             "width": 100,
-            "innerWidth": 96,
+            "innerWidth": 100,
             "align": "center center"
         },
         {
@@ -206,8 +206,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 16,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -221,8 +221,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 100,
-            "innerWidth": 96,
+            "width": 20,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -236,8 +236,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 50,
-            "innerWidth": 46,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -251,8 +251,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 50,
-            "innerWidth": 46,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -266,8 +266,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
-            "innerWidth": 26,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -281,8 +281,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 70,
-            "innerWidth": 66,
+            "width": 30,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -296,8 +296,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 15,
-            "innerWidth": 11,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -311,8 +311,8 @@
             "minLength": 3,
             "maxLength": 10000,
             "regexPattern": "",
-            "width": 100,
-            "innerWidth": 96,
+            "width": 50,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -326,19 +326,20 @@
             "minLength": 3,
             "maxLength": 10000,
             "regexPattern": "",
-            "width": 100,
-            "innerWidth": 96,
+            "width": 50,
+            "innerWidth": 98,
             "align": "center center"
         }
     ],
     "subforms": [
         {
             "key": "supplier_pic",
-            "title": "Supplier People In Charge",
+            "label": "Supplier People In Charge",
+            "order": 1000,
             "fields": [
                 {
                     "key": "pic_name",
-                    "order": 30,
+                    "order": 300,
                     "type": "TextBox",
                     "label": "PiC Name",
                     "options": [],
@@ -347,13 +348,13 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 50,
-                    "innerWidth": 95,
+                    "width": 15,
+                    "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "position",
-                    "order": 40,
+                    "order": 400,
                     "type": "TextBox",
                     "label": "Position",
                     "options": [],
@@ -362,13 +363,13 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 30,
-                    "innerWidth": 95,
+                    "width": 10,
+                    "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "title",
-                    "order": 20,
+                    "order": 299,
                     "type": "TextBox",
                     "label": "Title",
                     "options": [],
@@ -377,13 +378,13 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 20,
-                    "innerWidth": 95,
+                    "width": 5,
+                    "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "phone",
-                    "order": 50,
+                    "order": 500,
                     "type": "TextBox",
                     "label": "Phone",
                     "options": [],
@@ -392,13 +393,13 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 40,
-                    "innerWidth": 95,
+                    "width": 10,
+                    "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "mobile",
-                    "order": 60,
+                    "order": 600,
                     "type": "TextBox",
                     "label": "Mobile",
                     "options": [],
@@ -407,13 +408,13 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 40,
-                    "innerWidth": 95,
+                    "width": 10,
+                    "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "email",
-                    "order": 70,
+                    "order": 700,
                     "type": "TextBox",
                     "label": "eMail",
                     "options": [],
@@ -422,13 +423,13 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 60,
-                    "innerWidth": 95,
+                    "width": 10,
+                    "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "fax",
-                    "order": 80,
+                    "order": 800,
                     "type": "TextBox",
                     "label": "Fax",
                     "options": [],
@@ -437,13 +438,13 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 40,
-                    "innerWidth": 95,
+                    "width": 10,
+                    "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "internal_number",
-                    "order": 55,
+                    "order": 550,
                     "type": "TextBox",
                     "label": "Int. No",
                     "options": [],
@@ -452,13 +453,13 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 20,
-                    "innerWidth": 95,
+                    "width": 5,
+                    "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "notes",
-                    "order": 100,
+                    "order": 900,
                     "type": "TextArea",
                     "label": "Notes",
                     "options": [],
@@ -467,8 +468,8 @@
                     "minLength": 3,
                     "maxLength": 10000,
                     "regexPattern": "",
-                    "width": 100,
-                    "innerWidth": 95,
+                    "width": 25,
+                    "innerWidth": 98,
                     "align": "center center"
                 }
             ],
@@ -478,21 +479,21 @@
                     "text": "PiC Name",
                     "isFilterable": true,
                     "isSortable": true,
-                    "width": 50
+                    "width": 10
                 },
                 {
                     "key": "position",
                     "text": "Position",
                     "isFilterable": true,
                     "isSortable": true,
-                    "width": 30
+                    "width": 10
                 },
                 {
                     "key": "title",
                     "text": "Title",
                     "isFilterable": true,
                     "isSortable": true,
-                    "width": 20
+                    "width": 10
                 }
             ],
             "infoFields": [
@@ -591,6 +592,13 @@
             "key": "supplier_name",
             "label": "Supplier Name",
             "order": 10,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "country",
+            "label": "Country",
+            "order": 20,
             "fieldType": "TextBox",
             "options": []
         }

@@ -1,4 +1,6 @@
 <app-dynamic-crud
+    [title]="'Clients'"
+
     [hasCreate]="true"
     [hasUpdate]="true"
     [hasDelete]="true"
@@ -14,5 +16,10 @@
     [tableColumns]="tableColumns"
 
     [infoFields]="infoFields"
+    
+    [isPaginated]="true"
+    [pageSize]="10"
 
+    [hasFilters]="true"
+    [filterFields]="filterFields"
 ></app-dynamic-crud>

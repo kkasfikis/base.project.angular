@@ -11,9 +11,9 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 60,
-            "innerWidth": 98,
-            "align": "center center"
+            "width": 50,
+            "innerWidth": 50,
+            "align": "right"
         },
         {
             "key": "staff_educ",
@@ -26,9 +26,9 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 50,
-            "innerWidth": 98,
-            "align": "center center"
+            "width": 100,
+            "innerWidth": 25,
+            "align": "left"
         },
         {
             "key": "staff_id_card_no",
@@ -41,9 +41,9 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
-            "innerWidth": 98,
-            "align": "center center"
+            "width": 100,
+            "innerWidth": 25,
+            "align": "left"
         },
         {
             "key": "staff_soc_sec_no",
@@ -56,24 +56,24 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
-            "innerWidth": 98,
-            "align": "center center"
+            "width": 100,
+            "innerWidth": 25,
+            "align": "left"
         },
         {
             "key": "staff_position",
             "order": 30,
-            "type": "Select",
+            "type": "TextBox",
             "label": "Position",
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 50,
-            "innerWidth": 98,
-            "align": "center center"
+            "width": 100,
+            "innerWidth": 25,
+            "align": "left"
         },
         {
             "key": "staff_dept",
@@ -86,9 +86,9 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 98,
-            "align": "center center"
+            "width": 100,
+            "innerWidth": 25,
+            "align": "left"
         },
         {
             "key": "staff_mob",
@@ -101,9 +101,9 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 98,
-            "align": "center center"
+            "width": 50,
+            "innerWidth": 50,
+            "align": "left"
         },
         {
             "key": "notes",
@@ -116,41 +116,20 @@
             "minLength": 3,
             "maxLength": 10000,
             "regexPattern": "",
-            "width": 100,
-            "innerWidth": 98,
-            "align": "center center"
+            "width": 50,
+            "innerWidth": 100,
+            "align": "left"
         }
     ],
     "subforms": [],
-    "filters": [
-        {
-            "key": "staff_name",
-            "label": "Name",
-            "order": 10,
-            "fieldType": "TextBox",
-            "options": []
-        },
-        {
-            "key": "staff_educ",
-            "label": "Education",
-            "order": 20,
-            "fieldType": "TextBox",
-            "options": []
-        },
-        {
-            "key": "staff_position",
-            "label": "Position",
-            "order": 30,
-            "fieldType": "TextBox",
-            "options": []
-        },
-        {
-            "key": "staff_dept",
-            "label": "Department",
-            "order": 40,
-            "fieldType": "TextBox",
-            "options": []
-        }
+    "filters": [ {
+        "key": "staff_name",
+        "label": "Name",
+        "order": 10,
+        "fieldType": "Select",
+        "options": []
+    }
+
     ],
     "infos": [
         {
@@ -158,9 +137,9 @@
             "order": 10,
             "label": "Name",
             "type": "Text",
-            "width": 60,
-            "innerwidth": 98,
-            "align": "center center"
+            "width": 50,
+            "innerwidth": 50,
+            "align": "left"
         },
         {
             "key": "staff_educ",
@@ -168,26 +147,26 @@
             "label": "Education",
             "type": "Text",
             "width": 50,
-            "innerwidth": 98,
-            "align": "center center"
+            "innerwidth": 50,
+            "align": "left"
         },
         {
             "key": "staff_id_card_no",
             "order": 50,
             "label": "ID Card No",
             "type": "Text",
-            "width": 30,
-            "innerwidth": 98,
-            "align": "center center"
+            "width": 50,
+            "innerwidth": 50,
+            "align": "left"
         },
         {
             "key": "staff_soc_sec_no",
             "order": 60,
             "label": "Social Sec. No",
             "type": "Text",
-            "width": 30,
-            "innerwidth": 98,
-            "align": "center center"
+            "width": 50,
+            "innerwidth": 50,
+            "align": "left"
         },
         {
             "key": "staff_position",
@@ -195,35 +174,35 @@
             "label": "Position",
             "type": "Text",
             "width": 50,
-            "innerwidth": 98,
-            "align": "center center"
+            "innerwidth": 50,
+            "align": "left"
         },
         {
             "key": "staff_dept",
             "order": 40,
             "label": "Department",
             "type": "Text",
-            "width": 40,
-            "innerwidth": 98,
-            "align": "center center"
+            "width": 50,
+            "innerwidth": 50,
+            "align": "left"
         },
         {
             "key": "staff_mob",
             "order": 11,
             "label": "Mobile",
             "type": "Text",
-            "width": 40,
-            "innerwidth": 98,
-            "align": "center center"
+            "width": 50,
+            "innerwidth": 50,
+            "align": "left"
         },
         {
             "key": "notes",
             "order": 80,
             "label": "Notes",
             "type": "Text",
-            "width": 100,
-            "innerwidth": 98,
-            "align": "center center"
+            "width": 50,
+            "innerwidth": 50,
+            "align": "leftr"
         }
     ],
     "subinfos": [],
@@ -233,28 +212,28 @@
             "text": "Name",
             "isFilterable": true,
             "isSortable": true,
-            "width": 60
+            "width": 20
         },
         {
             "key": "staff_educ",
             "text": "Education",
             "isFilterable": true,
             "isSortable": true,
-            "width": 50
+            "width": 20
         },
         {
             "key": "staff_position",
             "text": "Position",
             "isFilterable": true,
             "isSortable": true,
-            "width": 50
+            "width": 20
         },
         {
             "key": "staff_dept",
             "text": "Department",
             "isFilterable": true,
             "isSortable": true,
-            "width": 40
+            "width": 20
         }
     ]
 }

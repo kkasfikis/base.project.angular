@@ -11,7 +11,7 @@ import { MenuOption, SideMenuCategory } from './ui-components/dynamic-navigator/
 })
 export class AppComponent implements OnInit,AfterViewInit{
   title = 'base.project.angular';
-  userName = 'Not Logged In'
+  userName = 'not logged in'
   loggedIn = false;
   image = './assets/images/user.jpg';
   drawerOptions : SideMenuCategory[] | MenuOption[] = [];
@@ -49,144 +49,249 @@ export class AppComponent implements OnInit,AfterViewInit{
   
   ngOnInit(){
     this.overlay.getContainerElement().classList.add('darkMode')
- 
     this.drawerOptions = [
       {
-        key:'Ports',
-        label:'Ports',
-        icon:'port',
-        isFunction:false,
-        link:'/port',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
+        icon:'home',
+        label:'Category 1',
+        options:[
+          {
+            key:'Cat1_Option1',
+            label:'File',
+            icon:'folder',
+            isFunction:false,
+            subMenus : [
+              {
+                key:'clients',
+                label:'Clients',
+                icon:'person',
+                link:'/client',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
+              },
+              {
+                key:'agent',
+                label:'Agents',
+                icon:'person',
+                isFunction:false,
+                link:'/agent',
+                subMenus : [
+                ] as MenuOption[]
+              },
+
+              {
+                key:'supplier',
+                label:'Suppliers',
+                icon:'person',
+                isFunction:false,
+                link:'/supplier',
+                subMenus : [                
+                ] as MenuOption[]
+              },
+
+              {
+                key:'pot',
+                label:'Ports',
+                icon:'anchor',
+                link:'/port',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
+              },
+
+              {
+                key:'vessel',
+                label:'Vessels',
+                icon:'sailing',
+                link:'/vessel',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
+              },
+
+              {
+                key:'charges',
+                label:'Charges',
+                icon:'settings',
+                link:'/charge',
+                isFunction:false,
+                subMenus : [
+                ] as MenuOption[]
+              },
+              {
+                key:'staff',
+                label:'Staff',
+                icon:'boy',
+                link:'/staff',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
+              },
+
+              {
+                key:'bankAccount',
+                label:'Bank Accounts',
+                icon:'paid',
+                link:'/bankAccount',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
+              },
+
+            ] as MenuOption[]
+          } as MenuOption,
+          {
+            key:'Invoicing',
+            label:'Invoicing',
+            icon:'menu',
+            isFunction:false,
+            subMenus : [
+              {
+                key:'debit',
+                label:'Debit Notes',
+                icon:'menu',
+                link:'/invoice',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
+              },
+              {
+                key:'credit',
+                label:'Credit Notes',
+                icon:'menu',
+                isFunction:false,
+                link:'/invoice',
+                subMenus : [] as MenuOption[]
+              },
+              {
+                key:'da',
+                label:'Disbursement Accounts',
+                icon:'menu',
+                link:'/invoice',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
+              },
+              {
+                key:'soa',
+                label:'Statements',
+                icon:'menu',
+                link:'/soa',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
+              },
+              {
+                key:'csoa',
+                label:'Consolidated SOA',
+                icon:'menu',
+                link:'/csoa',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
+              }
+            ] as MenuOption[]
+          } as MenuOption,
+
+
+
+          {
+            key:'expenses',
+            label:'Expenses',
+            icon:'payments',
+            link:'/expense',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          }
+
+
+        ] as MenuOption[]
+      },
       {
-        key:'Clients',
-        label:'Clients',
-        icon:'user',
-        isFunction:false,
-        link:'/client',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
+        icon:'home',
+        label:'Category 2',
+        options:[
+          {
+            key:'proforma',
+            label:'Proformas',
+            icon:'menu',
+            link : '/invoice',
+            isFunction:false,
+            subMenus : [
+            ] as MenuOption[]
+          },
+          {
+            key:'call',
+            label:'Calls',
+            icon:'menu',
+            link : '/call', 
+            isFunction:false,
+            subMenus : [
+            ] as MenuOption[]
+          },
+          {
+            key:'breakdown',
+            label:'Breakdown Lists',
+            icon:'menu',
+            link : '/breakdown',
+            isFunction:false,
+            subMenus : [
+            ] as MenuOption[]
+          },
+          {
+            key:'reports',
+            label:'Reports',
+            icon:'menu',
+            isFunction:false,
+            subMenus : [
+            ] as MenuOption[]
+          },
+          {
+            key:'archive',
+            label:'Archive',
+            icon:'menu',
+            isFunction:false,
+            subMenus : [
+            ] as MenuOption[]
+          },
+          {
+            key:'predefined',
+            label:'List Values',
+            icon:'menu',
+            link : '/predefined',
+            isFunction:false,
+            subMenus : [
+            ] as MenuOption[]
+          },
+        ] as MenuOption[]
+      }
+      
+    ] as SideMenuCategory[]
+
+    this.navbarOptions = [
       {
-        key:'Agents',
-        label:'Agents',
-        icon:'user',
+        key:'myfm',
+        label:'    myForceMarine    ',
+        icon:'menu',
         isFunction:false,
-        link:'/agent',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
+        subMenus : [] 
+      },
       {
-        key:'Vessels',
-        label:'Vessels',
-        icon:'user',
+        key:'qa',
+        label:'    Q & A    ',
+        icon:'menu',
         isFunction:false,
-        link:'/vessel',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
+        subMenus : [
+       {
+            key:'question',
+            label:'Questions',
+            icon:'menu',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          }
+        ] 
+      },
       {
-        key:'Calls',
-        label:'Calls',
-        icon:'user',
+        key:'chat',
+        label:'  Live Chat  ',
+        icon:'menu',
         isFunction:false,
-        link:'/call',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
-      {
-        key:'Suppliers',
-        label:'Suppliers',
-        icon:'user',
-        isFunction:false,
-        link:'/supplier',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
-      {
-        key:'Expenses',
-        label:'Expenses',
-        icon:'user',
-        isFunction:false,
-        link:'/expense',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
-      {
-        key:'Predefined',
-        label:'Predefined',
-        icon:'user',
-        isFunction:false,
-        link:'/predefined',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
-      {
-        key:'Charges',
-        label:'Charges',
-        icon:'user',
-        isFunction:false,
-        link:'/charge',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
-      {
-        key:'BankAccount',
-        label:'Bank Accounts',
-        icon:'user',
-        isFunction:false,
-        link:'/bankAccount',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
-      {
-        key:'Staff',
-        label:'Staff',
-        icon:'user',
-        isFunction:false,
-        link:'/staff',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
-      {
-        key:'SOA',
-        label:'Statements Of Account',
-        icon:'user',
-        isFunction:false,
-        link:'/soa',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
-      {
-        key:'CSOA',
-        label:'Consolidated Statements Of Account',
-        icon:'user',
-        isFunction:false,
-        link:'/csoa',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
-      {
-        key:'Breakdown',
-        label:'Breakdown Lists',
-        icon:'user',
-        isFunction:false,
-        link:'/breakdown',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption,
-      {
-        key:'Invoice',
-        label:'Invoice',
-        icon:'user',
-        isFunction:false,
-        link:'/invoice',
-        func : {},
-        subMenus : [] as MenuOption[]
-      } as MenuOption
-    ]
+        subMenus : [] 
+      },
+
+
+    ] as MenuOption[]
   }
 
 

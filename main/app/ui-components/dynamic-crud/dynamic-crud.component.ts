@@ -17,6 +17,8 @@ import { FilterField } from './dynamic-crud.models';
 })
 export class DynamicCrudComponent implements OnInit {
 
+  @Input() title : string = '';
+
   @Input() hasCreate : boolean = true;
   @Input() hasUpdate : boolean = true;
   @Input() hasDelete : boolean =true;

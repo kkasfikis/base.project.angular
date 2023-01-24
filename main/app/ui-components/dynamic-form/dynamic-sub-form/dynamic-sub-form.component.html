@@ -1,5 +1,5 @@
 <mat-card fxFlex="100" fxLayout="column">
-    <div fxFlex="100" fxLayout="column">
+    <div fxFlex="100" fxLayout="column" *ngIf="label && label.length>0">
         <h3>{{label}}</h3>
         <mat-divider></mat-divider>
     </div>
@@ -23,7 +23,7 @@
         </button> 
         <button mat-raised-button [disabled]="disabled" (click)="handleFormSubmit()" color="primary">Submit</button>
     </mat-card-actions>
-    <br/>
+    <br *ngIf="!isTagged"/>
     <app-dynamic-table *ngIf="!isTagged"
         [tableColumns]="columnSubject"
         [tableData]="dataSubject"

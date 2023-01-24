@@ -11,7 +11,7 @@
             "minLength": 5,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
+            "width": 30,
             "innerWidth": 90,
             "align": "center1 center"
         },
@@ -26,7 +26,7 @@
             "minLength": 5,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
+            "width": 20,
             "innerWidth": 90,
             "align": "center center"
         },
@@ -38,10 +38,10 @@
             "options": [ {"key":"test","value":"test"} ],
             "enabled": true,
             "required": true,
-            "minLength": 5,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
+            "width": 20,
             "innerWidth": 90,
             "align": "center center"
         },
@@ -53,11 +53,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 5,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
             "width": 25,
-            "innerWidth": 90,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -68,11 +68,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 5,
-            "maxLength": 0,
+            "minLength": 3,
+            "maxLength": 255,
             "regexPattern": "",
             "width": 25,
-            "innerWidth": 100,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -87,7 +87,7 @@
             "maxLength": 255,
             "regexPattern": "",
             "width": 25,
-            "innerWidth": 100,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -98,11 +98,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
             "width": 25,
-            "innerWidth": 100,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -113,11 +113,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -128,11 +128,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -143,11 +143,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -158,11 +158,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -173,11 +173,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -188,11 +188,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -203,11 +203,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -218,11 +218,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 2,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -233,11 +233,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -248,11 +248,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -263,26 +263,26 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
             "key": "vessel_type",
-            "order": 190,
+            "order": 31,
             "type": "Select",
             "label": "Vessel Type",
             "options": [ {"key":"test","value":"test"} ],
             "enabled": true,
             "required": true,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 100,
+            "width": 30,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -293,11 +293,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 1,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         },
         {
@@ -323,11 +323,11 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 0,
+            "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
+            "width": 10,
+            "innerWidth": 98,
             "align": "center center"
         }
     ],
@@ -576,35 +576,35 @@
             "text": "Vessel Name",
             "isFilterable": true,
             "isSortable": true,
-            "width": 30
+            "width": 25
         },
         {
             "key": "ex_name",
             "text": "Ex Name",
             "isFilterable": true,
             "isSortable": true,
-            "width": 25
+            "width": 15
         },
         {
             "key": "flag",
             "text": "Flag",
             "isFilterable": true,
             "isSortable": true,
-            "width": 20
+            "width": 10
         },
         {
             "key": "blt",
             "text": "BLT",
             "isFilterable": true,
             "isSortable": true,
-            "width": 15
+            "width": 10
         },
         {
             "key": "vessel_type",
             "text": "Vessel Type",
             "isFilterable": true,
             "isSortable": true,
-            "width": 100
+            "width": 15
         }
     ]
 }

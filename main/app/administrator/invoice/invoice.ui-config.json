@@ -11,14 +11,14 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 100,
+            "width": 25,
             "innerWidth": 98,
             "align": "center center"
         },
         {
             "key": "inv_balance",
             "order": 20,
-            "type": "TextBox",
+            "type": "Hidden",
             "label": "Balance",
             "options": [],
             "enabled": true,
@@ -41,7 +41,7 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
+            "width": 10,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -49,14 +49,14 @@
             "key": "inv_seria",
             "order": 40,
             "type": "TextBox",
-            "label": "Document Seria",
+            "label": "Seria",
             "options": [],
             "enabled": true,
             "required": false,
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
+            "width": 5,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -64,14 +64,14 @@
             "key": "inv_no",
             "order": 50,
             "type": "TextBox",
-            "label": "Document Number",
+            "label": "Number",
             "options": [],
             "enabled": true,
             "required": false,
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
+            "width": 10,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -86,7 +86,7 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 50,
+            "width": 10,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -101,13 +101,13 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 50,
+            "width": 10,
             "innerWidth": 98,
             "align": "center center"
         },
         {
             "key": "inv_title",
-            "order": 80,
+            "order": 11,
             "type": "TextBox",
             "label": "Title",
             "options": [],
@@ -116,13 +116,13 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 100,
-            "innerWidth": 98,
+            "width": 75,
+            "innerWidth": 100,
             "align": "center center"
         },
         {
             "key": "inv_client_name",
-            "order": 90,
+            "order": 12,
             "type": "Select",
             "label": "Client Name",
             "options": [],
@@ -131,13 +131,13 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 60,
+            "width": 25,
             "innerWidth": 98,
             "align": "center center"
         },
         {
             "key": "inv_client_alias",
-            "order": 100,
+            "order": 13,
             "type": "Select",
             "label": "Client Alias",
             "options": [],
@@ -146,9 +146,9 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 98,
-            "align": "center center"
+            "width": 30,
+            "innerWidth": 50,
+            "align": "left"
         },
         {
             "key": "inv_client_info",
@@ -161,9 +161,9 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 100,
-            "innerWidth": 98,
-            "align": "center center"
+            "width": 80,
+            "innerWidth": 50,
+            "align": "left"
         },
         {
             "key": "inv_total_amount",
@@ -176,8 +176,8 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 98,
+            "width": 20,
+            "innerWidth": 100,
             "align": "center center"
         }
     ],
@@ -213,14 +213,14 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 20,
+                    "width": 30,
                     "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "item_order",
                     "order": 30,
-                    "type": "TextBox",
+                    "type": "Hidden",
                     "label": "Order",
                     "options": [],
                     "enabled": true,
@@ -255,11 +255,12 @@
                     "options": [],
                     "enabled": true,
                     "required": false,
-                    "minLength": 3,
+                    "minLength": 1,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width":5,
                     "innerWidth": 98,
+                    "value":1,
                     "align": "center center"
                 },
                 {
@@ -303,7 +304,7 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 5,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -353,13 +354,7 @@
                     "isSortable": true,
                     "width": 20
                 },
-                {
-                    "key": "item_order",
-                    "text": "Order",
-                    "isFilterable": true,
-                    "isSortable": true,
-                    "width": 0
-                },
+                
                 {
                     "key": "item_price",
                     "text": "Price",
@@ -372,7 +367,7 @@
                     "text": "QTY",
                     "isFilterable": true,
                     "isSortable": true,
-                    "width": 10
+                    "width": 5
                 },
                 {
                     "key": "item_amount",
@@ -393,7 +388,7 @@
                     "text": "Discount(%)",
                     "isFilterable": true,
                     "isSortable": true,
-                    "width": 10
+                    "width": 5
                 },
                 {
                     "key": "discount_amount",
@@ -711,7 +706,7 @@
                     "order": 50,
                     "label": "QTY",
                     "type": "Text",
-                    "width": 10,
+                    "width": 5,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -738,7 +733,7 @@
                     "order": 80,
                     "label": "Discount(%)",
                     "type": "Text",
-                    "width": 10,
+                    "width": 5,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -769,42 +764,42 @@
             "text": "Document Type",
             "isFilterable": true,
             "isSortable": true,
-            "width": 100
+            "width": 10
         },
         {
             "key": "inv_date",
             "text": "Document Issue Date",
             "isFilterable": true,
             "isSortable": true,
-            "width": 30
+            "width": 10
         },
         {
             "key": "call_id",
             "text": "Call Reference",
             "isFilterable": true,
             "isSortable": true,
-            "width": 50
+            "width": 10
         },
         {
             "key": "break_id",
             "text": "Breakdown Reference",
             "isFilterable": true,
             "isSortable": true,
-            "width": 50
+            "width": 10
         },
         {
             "key": "inv_client_name",
             "text": "Client Name",
             "isFilterable": true,
             "isSortable": true,
-            "width": 60
+            "width": 20
         },
         {
             "key": "inv_client_alias",
             "text": "Client Alias",
             "isFilterable": true,
             "isSortable": true,
-            "width": 40
+            "width": 10
         }
     ]
 }

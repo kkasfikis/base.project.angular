@@ -46,7 +46,7 @@
     </div>
     <div fxLayoutAlign="center">
         <mat-error *ngIf="form.controls[this.localFormField.key].errors?.['required']">
-            Field is Required
+            
         </mat-error>
         <mat-error *ngIf="form.controls[this.localFormField.key].errors?.['maxLength']">
             Field must be at most {{localFormField.minLength}} characters long

@@ -16,7 +16,7 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
+            "width": 10,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -31,7 +31,7 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
+            "width": 10,
             "innerWidth": 98,
             "align": "center center"
         },
