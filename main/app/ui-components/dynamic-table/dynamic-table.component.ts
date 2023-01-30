@@ -26,8 +26,8 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
 
   @Input() hasActions : boolean = false;
 
-  @Input() tableColumns : BehaviorSubject<TableColumn[]> = new BehaviorSubject<TableColumn[]>([]);
-  @Input() tableData : BehaviorSubject<TableData> = new BehaviorSubject<TableData>(new TableData(0,0,0,[]));
+  @Input() tableColumns : TableColumn[] | BehaviorSubject<TableColumn[]> = new BehaviorSubject<TableColumn[]>([]);
+  @Input() tableData : TableData | BehaviorSubject<TableData> = new BehaviorSubject<TableData>(new TableData(0,0,0,[]));
 
   @Input() isPaginated : boolean = false;
   @Output() pageChanged : EventEmitter<any> = new EventEmitter<any>();
@@ -49,58 +49,75 @@ export class DynamicTableComponent implements OnInit,AfterViewInit,OnDestroy {
     this.setColumnWidth();
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(()=>{
-      this.columnSub = this.tableColumns.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
-        next : (val : TableColumn[]) => {
-          this.columns = val;//.map(x=>x.name);
-          if(this.hasActions){
-            this.displayedColumns = [...this.columns.map(x=>x.key),'actions']
-          }
-          else{
-            this.displayedColumns = [...this.columns.map(x=>x.key)]
-          }
-          this.filterInputs = {}
-          this.filterValues = {}
-          if (!this.isPaginated){
-            this.tableSource.filterPredicate = this.createFilter();
-            this.columns.forEach((val)=>{
-              this.filterInputs[val.key] = new FormControl('');
-              this.filterValues[val.key] = '';
-              this.filterInputs[val.key].valueChanges.subscribe( (filterValue : string) => {
-                  this.filterValues[val.key] = filterValue;
-                  this.tableSource.filter = JSON.stringify(this.filterValues)
-              })
-            })
-          }
-
-        }
-      });
-      this.dataSub = this.tableData.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
-        next : (val : TableData) => {
-          if(val){
-            if(this.isPaginated){ 
-              let data = [];
-              for (let i = 0 ; i < val.page * val.size; i++){
-                data.push({});
-              }
-              data.push(...val.data);
-              this.tableSource = new MatTableDataSource<any>(data)
-              this.matPaginator.pageIndex = val.page;
-              this.matPaginator.pageSize = val.size;
-              this.tableSource.data.length = val.count; 
-            }
-            else{
-              this.tableSource.data = val.data;
-            }
-            this.tableSource._updateChangeSubscription();
-            this.tableSource.paginator = this.matPaginator;
-          }
-          this.setColumnWidth();
-        }
+  initTableColumns(columns : TableColumn[]){
+    this.columns = columns;//.map(x=>x.name);
+    if(this.hasActions){
+      this.displayedColumns = [...this.columns.map(x=>x.key),'actions']
+    }
+    else{
+      this.displayedColumns = [...this.columns.map(x=>x.key)]
+    }
+    this.filterInputs = {}
+    this.filterValues = {}
+    if (!this.isPaginated){
+      this.tableSource.filterPredicate = this.createFilter();
+      this.columns.forEach((val)=>{
+        this.filterInputs[val.key] = new FormControl('');
+        this.filterValues[val.key] = '';
+        this.filterInputs[val.key].valueChanges.subscribe( (filterValue : string) => {
+            this.filterValues[val.key] = filterValue;
+            this.tableSource.filter = JSON.stringify(this.filterValues)
+        })
       })
+    }
+  }
+
+  initTableData(tableData : TableData){
+    if(tableData){
+      if(this.isPaginated){ 
+        let data = [];
+        for (let i = 0 ; i < tableData.page * tableData.size; i++){
+          data.push({});
+        }
+        data.push(...tableData.data);
+        this.tableSource = new MatTableDataSource<any>(data)
+        this.matPaginator.pageIndex = tableData.page;
+        this.matPaginator.pageSize = tableData.size;
+        this.tableSource.data.length = tableData.count; 
+      }
+      else{
+        this.tableSource.data = tableData.data;
+      }
+      this.tableSource._updateChangeSubscription();
+      this.tableSource.paginator = this.matPaginator;
+    }
+    this.setColumnWidth();
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout( () => {
+      if(!Array.isArray(this.tableColumns)){
+        this.columnSub = (this.tableColumns as BehaviorSubject<TableColumn[]>).pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
+          next : (val : TableColumn[]) => {
+           this.initTableColumns(val)
+          }
+        });
+      }
+      else{
+        this.initTableColumns(this.tableColumns as TableColumn[])
+      }
+
+      if(this.tableData instanceof TableData){
+        this.initTableData(this.tableData)
+      }
+      else{
+        this.dataSub = (this.tableData as BehaviorSubject<TableData>).pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
+          next : (val : TableData) => {
+            this.initTableData(val);
+          }
+        })
+      }
     })
-    
   }
 
   ngOnDestroy(): void {

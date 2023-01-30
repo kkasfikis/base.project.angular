@@ -126,5 +126,13 @@
             "^/breakdown" : ""
         },
         "changeOrigin" : true
+    },
+    "/crud":{
+        "target" : "http://localhost:8081/crud",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/crud" : ""
+        },
+        "changeOrigin" : true
     }
 }

@@ -41,7 +41,7 @@ class BaseCrud:
 
             return {
                 'read' : True,
-                'data' : items[page * size : page * size + size] if not overflow else items[0:size],
+                'data' : items,
                 'count' : count,
                 'overflow' : overflow
             }, 200
@@ -144,5 +144,21 @@ class BaseCrud:
         except Exception as e:
             return {
                 'deleted' : False,
+                'message' : 'An error occured: ' + str(e)
+            },200
+
+    @staticmethod
+    def getAttribute(class_name:str,attribute:str):
+        item : any
+        collection = getattr(models,class_name)
+        try:
+            item = collection.objects().distinct(attribute)
+            return {
+                'attribute' : True,
+                'data' : item
+            },200
+        except Exception as e:
+            return {
+                'attribute' : False,
                 'message' : 'An error occured: ' + str(e)
             },200

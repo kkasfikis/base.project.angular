@@ -1,6 +1,11 @@
 {
     "fields": [
         {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
             "key": "vessel_name",
             "order": 10,
             "type": "TextBox",

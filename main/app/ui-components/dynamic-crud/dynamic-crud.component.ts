@@ -340,15 +340,21 @@ export class DynamicCrudComponent implements OnInit {
                 if(tField.key == key){
                   tField.tableData = [];
                   let data : any[] = [];
-                  obj[tField.key].forEach( (value : any, index : number) => {
-                    let row : any = {};
-                    tField.fields.forEach( (subfield : any) => {
-                      row[subfield.key] = obj[tField.key][index][subfield.key]; 
+                  if(tField.isTagged){
+                    tField.tableData = obj[tField.key];
+                  }
+                  else{
+                    obj[tField.key].forEach( (value : any, index : number) => {
+                      let row : any = {};
+                      tField.fields.forEach( (subfield : any) => {
+                        row[subfield.key] = obj[tField.key][index][subfield.key]; 
+                      })
+                      data.push(row);
                     })
-                    data.push(row);
-                  })
-                  tField.tableData = data;
-                  field.next(tField)
+                    tField.tableData = data;
+                    field.next(tField)
+                  }
+                  
                 }
               }
               else{

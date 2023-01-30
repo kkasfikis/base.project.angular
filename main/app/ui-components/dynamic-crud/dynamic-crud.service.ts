@@ -70,4 +70,10 @@ export class DynamicCrudService {
     return this.http.get(url  + '/' + item[identifier], {...options} )
   }
 
+  getAttribute(collection:string, attribute:string){
+    let options = {
+      headers : new HttpHeaders({'Content-Type' : 'application/json'})
+    }
+    return this.http.get('crud/' + collection + "/" + attribute, {...options} )
+  }
 }

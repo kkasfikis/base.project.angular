@@ -1,6 +1,11 @@
 {
     "fields": [
         {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
             "key": "soa_type",
             "order": 10,
             "type": "Select",

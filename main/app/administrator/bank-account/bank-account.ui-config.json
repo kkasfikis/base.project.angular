@@ -1,6 +1,11 @@
 {
     "fields": [
         {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
             "key": "bank",
             "order": 5,
             "type": "TextBox",

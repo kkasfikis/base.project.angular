@@ -1,6 +1,11 @@
 {
     "fields": [
         {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
             "key": "supplier_name",
             "order": 10,
             "type": "TextBox",

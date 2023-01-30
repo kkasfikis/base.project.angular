@@ -1,6 +1,11 @@
 {
     "fields": [
         {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
             "key": "eta",
             "order": 10,
             "type": "DatePicker",
@@ -61,7 +66,7 @@
             "align": "center center"
         },
         {
-            "key": "vsl_name",
+            "key": "vessel_name",
             "order": 11,
             "type": "Select",
             "label": "Vessel Name",
@@ -76,7 +81,7 @@
             "align": "center center"
         },
         {
-            "key": "vsl_flag",
+            "key": "vessel_flag",
             "order": 12,
             "type": "Select",
             "label": "Vessel Flag",
@@ -818,7 +823,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "arvl_port",
+                    "key": "arrival_port",
                     "order": 30,
                     "type": "Select",
                     "label": "Arrival Port",
@@ -833,7 +838,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "arvl_date",
+                    "key": "arrival_date",
                     "order": 40,
                     "type": "DatePicker",
                     "label": "Arrival Date",
@@ -848,7 +853,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "hotel_first",
+                    "key": "first_hotel",
                     "order": 50,
                     "type": "Select",
                     "label": "Hotel",
@@ -863,7 +868,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "details_first",
+                    "key": "first_hotel_details",
                     "order": 60,
                     "type": "TextBox",
                     "label": "Details",
@@ -878,7 +883,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "room_first",
+                    "key": "first_hotel_room",
                     "order": 51,
                     "type": "TextBox",
                     "label": "Room",
@@ -893,7 +898,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "phone_first",
+                    "key": "first_hotel_phone",
                     "order": 52,
                     "type": "TextBox",
                     "label": "Phone",
@@ -908,7 +913,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin_first",
+                    "key": "first_hotel_checkin_date",
                     "order": 53,
                     "type": "DatePicker",
                     "label": "Checkin",
@@ -923,7 +928,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout_first",
+                    "key": "first_hotel_checkout_date",
                     "order": 54,
                     "type": "DatePicker",
                     "label": "Checkout",
@@ -938,7 +943,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "hotel_second",
+                    "key": "second_hotel",
                     "order": 70,
                     "type": "Select",
                     "label": "Hotel",
@@ -953,7 +958,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "details_second",
+                    "key": "second_hotel_details",
                     "order": 80,
                     "type": "TextBox",
                     "label": "Details",
@@ -968,7 +973,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "room_second",
+                    "key": "second_hotel_room",
                     "order": 71,
                     "type": "TextBox",
                     "label": "Room",
@@ -983,7 +988,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "phone_second",
+                    "key": "second_hotel_phone",
                     "order": 72,
                     "type": "TextBox",
                     "label": "Phone",
@@ -998,7 +1003,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin_second",
+                    "key": "second_hotel_checkin_date",
                     "order": 73,
                     "type": "DatePicker",
                     "label": "Checkin",
@@ -1013,7 +1018,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout_second",
+                    "key": "second_hotel_checkout_date",
                     "order": 74,
                     "type": "DatePicker",
                     "label": "Checkout",
@@ -1028,7 +1033,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "visa_exp_date",
+                    "key": "visa_expiration_date",
                     "order": 41,
                     "type": "DatePicker",
                     "label": "Visa Expiration Date",
@@ -1043,7 +1048,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "pass_image",
+                    "key": "passport_image",
                     "order": 90,
                     "type": "TextBox",
                     "label": "Passport image",
@@ -1058,7 +1063,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_airport",
+                    "key": "departure_airport",
                     "order": 42,
                     "type": "Select",
                     "label": "Departure Airport",
@@ -1073,7 +1078,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_date",
+                    "key": "departure_date",
                     "order": 43,
                     "type": "DatePicker",
                     "label": "Departure Date",
@@ -1088,7 +1093,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_details",
+                    "key": "departure_details",
                     "order": 44,
                     "type": "TextBox",
                     "label": "Departure Details",
@@ -1134,28 +1139,28 @@
                     "width": 15
                 },
                 {
-                    "key": "arvl_port",
+                    "key": "arrival_port",
                     "text": "Arrival Port",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 15
                 },
                 {
-                    "key": "arvl_date",
+                    "key": "arrival_date",
                     "text": "Arrival Date",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "depart_airport",
+                    "key": "departure_airport",
                     "text": "Departure Airport",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 15
                 },
                 {
-                    "key": "depart_date",
+                    "key": "departure_date",
                     "text": "Departure Date",
                     "isFilterable": true,
                     "isSortable": true,
@@ -1182,7 +1187,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "arvl_port",
+                    "key": "arrival_port",
                     "order": 30,
                     "label": "Arrival Port",
                     "type": "Text",
@@ -1191,7 +1196,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "arvl_date",
+                    "key": "arrival_date",
                     "order": 40,
                     "label": "Arrival Date",
                     "type": "Text",
@@ -1200,7 +1205,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "hotel_first",
+                    "key": "first_hotel",
                     "order": 50,
                     "label": "Hotel",
                     "type": "Text",
@@ -1209,7 +1214,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "details_first",
+                    "key": "first_hotel_details",
                     "order": 60,
                     "label": "Details",
                     "type": "Text",
@@ -1218,7 +1223,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "room_first",
+                    "key": "first_hotel_room",
                     "order": 51,
                     "label": "Room",
                     "type": "Text",
@@ -1227,7 +1232,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "phone_first",
+                    "key": "first_hotel_phone",
                     "order": 52,
                     "label": "Phone",
                     "type": "Text",
@@ -1236,7 +1241,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin_first",
+                    "key": "first_hotel_checkin_date",
                     "order": 53,
                     "label": "Checkin",
                     "type": "Text",
@@ -1245,7 +1250,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout_first",
+                    "key": "first_hotel_checkout_date",
                     "order": 54,
                     "label": "Checkout",
                     "type": "Text",
@@ -1254,7 +1259,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "hotel_second",
+                    "key": "second_hotel",
                     "order": 70,
                     "label": "Hotel",
                     "type": "Text",
@@ -1263,7 +1268,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "details_second",
+                    "key": "second_hotel_details",
                     "order": 80,
                     "label": "Details",
                     "type": "Text",
@@ -1272,7 +1277,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "room_second",
+                    "key": "second_hotel_room",
                     "order": 71,
                     "label": "Room",
                     "type": "Text",
@@ -1281,7 +1286,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "phone_second",
+                    "key": "second_hotel_phone",
                     "order": 72,
                     "label": "Phone",
                     "type": "Text",
@@ -1290,7 +1295,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin_second",
+                    "key": "second_hotel_checkin_date",
                     "order": 73,
                     "label": "Checkin",
                     "type": "Text",
@@ -1299,7 +1304,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout_second",
+                    "key": "second_hotel_checkout_date",
                     "order": 74,
                     "label": "Checkout",
                     "type": "Text",
@@ -1308,7 +1313,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "visa_exp_date",
+                    "key": "visa_expiration_date",
                     "order": 80,
                     "label": "Visa Expiration Date",
                     "type": "Text",
@@ -1317,7 +1322,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "pass_image",
+                    "key": "passport_image",
                     "order": 90,
                     "label": "Passport image",
                     "type": "Image",
@@ -1326,7 +1331,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_airport",
+                    "key": "departure_airport",
                     "order": 100,
                     "label": "Departure Airport",
                     "type": "Text",
@@ -1335,7 +1340,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_date",
+                    "key": "departure_date",
                     "order": 110,
                     "label": "Departure Date",
                     "type": "Text",
@@ -1344,7 +1349,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_details",
+                    "key": "departure_details",
                     "order": 120,
                     "label": "Departure Details",
                     "type": "Text",
@@ -1391,7 +1396,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "signer",
+                    "key": "signin_signoff",
                     "order": 30,
                     "type": "Select",
                     "label": "Sign On/Off",
@@ -1436,7 +1441,7 @@
                     "align": "left"
                 },
                 {
-                    "key": "pass_exp_date",
+                    "key": "passport_expiration_date",
                     "order": 24,
                     "type": "DatePicker",
                     "label": "Passport Expiration Date",
@@ -1451,7 +1456,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "exit_visa_app_date",
+                    "key": "exit_visa_application_date",
                     "order": 23,
                     "type": "DatePicker",
                     "label": "Exit Visa App. Date",
@@ -1466,7 +1471,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "pass_link",
+                    "key": "passport_image",
                     "order": 23,
                     "type": "TextBox",
                     "label": "Passport Image",
@@ -1481,7 +1486,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "visa_link",
+                    "key": "visa_image",
                     "order": 80,
                     "type": "TextBox",
                     "label": "Visa Image",
@@ -1496,7 +1501,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "exit_visa_iss_date",
+                    "key": "exit_visa_ISS_date",
                     "order": 61,
                     "type": "DatePicker",
                     "label": "Exit Visa ISS Date",
@@ -1541,10 +1546,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "details",
+                    "key": "hotel_details",
                     "order": 111,
                     "type": "TextBox",
-                    "label": "Details",
+                    "label": "Hotel Details",
                     "options": [],
                     "enabled": true,
                     "required": false,
@@ -1556,10 +1561,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "room",
+                    "key": "hotel_room",
                     "order": 112,
                     "type": "TextBox",
-                    "label": "Room",
+                    "label": "Hotel Room",
                     "options": [],
                     "enabled": true,
                     "required": false,
@@ -1571,10 +1576,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "phone",
+                    "key": "hotel_phone",
                     "order": 140,
                     "type": "TextBox",
-                    "label": "Phone",
+                    "label": "Hotel Phone",
                     "options": [],
                     "enabled": true,
                     "required": false,
@@ -1586,10 +1591,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin",
+                    "key": "hotel_checkin_date",
                     "order": 150,
                     "type": "DatePicker",
-                    "label": "Checkin",
+                    "label": "Hotel Checkin Date",
                     "options": [],
                     "enabled": true,
                     "required": false,
@@ -1601,10 +1606,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout",
+                    "key": "hotel_checkout_date",
                     "order": 160,
                     "type": "DatePicker",
-                    "label": "Checkout",
+                    "label": "Hotel Checkout Date",
                     "options": [],
                     "enabled": true,
                     "required": false,
@@ -1616,7 +1621,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "jd_date",
+                    "key": "date",
                     "order": 22,
                     "type": "DatePicker",
                     "label": "Join/Disembark Date",
@@ -1647,7 +1652,7 @@
                     "width": 10
                 },
                 {
-                    "key": "signer",
+                    "key": "signin_signoff",
                     "text": "Sign On/Off",
                     "isFilterable": true,
                     "isSortable": true,
@@ -1655,7 +1660,7 @@
                 },
                 
                 {
-                    "key": "jd_date",
+                    "key": "date",
                     "text": "Join/Disembark Date",
                     "isFilterable": true,
                     "isSortable": true,
@@ -1673,7 +1678,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "signer",
+                    "key": "signin_signoff",
                     "order": 30,
                     "label": "Sign On/Off",
                     "type": "Text",
@@ -1700,7 +1705,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "pass_exp_date",
+                    "key": "passport_expiration_date",
                     "order": 50,
                     "label": "Passport Expiration Date",
                     "type": "Text",
@@ -1709,7 +1714,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "exit_visa_app_date",
+                    "key": "exit_visa_application_date",
                     "order": 60,
                     "label": "Exit Visa App. Date",
                     "type": "Text",
@@ -1718,7 +1723,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "pass_link",
+                    "key": "passport_image",
                     "order": 70,
                     "label": "Passport Image",
                     "type": "Image",
@@ -1727,7 +1732,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "visa_link",
+                    "key": "visa_image",
                     "order": 80,
                     "label": "Visa Image",
                     "type": "Image",
@@ -1736,7 +1741,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "exit_visa_iss_date",
+                    "key": "exit_visa_ISS_date",
                     "order": 61,
                     "label": "Exit Visa ISS Date",
                     "type": "Text",
@@ -1763,52 +1768,52 @@
                     "align": "center center"
                 },
                 {
-                    "key": "details",
+                    "key": "hotel_details",
                     "order": 111,
-                    "label": "Details",
+                    "label": "Hotel Details",
                     "type": "Text",
                     "width": 100,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "room",
+                    "key": "hotel_room",
                     "order": 112,
-                    "label": "Room",
+                    "label": "Hotel Room",
                     "type": "Text",
                     "width": 30,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "phone",
+                    "key": "hotel_phone",
                     "order": 140,
-                    "label": "Phone",
+                    "label": "Hotel Phone",
                     "type": "Text",
                     "width": 30,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "checkin",
+                    "key": "hotel_checkin_date",
                     "order": 150,
-                    "label": "Checkin",
+                    "label": "Hotel Checkin Date",
                     "type": "Text",
                     "width": 30,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "checkout",
+                    "key": "hotel_checkout_date",
                     "order": 160,
-                    "label": "Checkout",
+                    "label": "Hotel Checkout Date",
                     "type": "Text",
                     "width": 30,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "jd_date",
+                    "key": "date",
                     "order": 170,
                     "label": "Join/Disembark Date",
                     "type": "Text",
@@ -1831,7 +1836,7 @@
             "order":3000,
             "fields": [
                 {
-                    "key": "ts_type",
+                    "key": "type",
                     "order": 10,
                     "type": "Select",
                     "label": "Techs/Surveyors",
@@ -1846,10 +1851,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "Names",
+                    "key": "names",
                     "order": 20,
                     "type": "TextArea",
-                    "label": "Names",
+                    "label": "names",
                     "options": [],
                     "enabled": true,
                     "required": true,
@@ -1861,7 +1866,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "eq_surveys",
+                    "key": "equipment_surveys",
                     "order": 30,
                     "type": "TextBox",
                     "label": "Equipment / Surveys",
@@ -1891,10 +1896,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "details",
+                    "key": "hotel_details",
                     "order": 71,
                     "type": "TextBox",
-                    "label": "Details",
+                    "label": "Hotel Details",
                     "options": [],
                     "enabled": true,
                     "required": false,
@@ -1906,10 +1911,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "rooms",
+                    "key": "hotel_rooms",
                     "order": 60,
                     "type": "TextBox",
-                    "label": "Rooms",
+                    "label": "Hotel Room",
                     "options": [],
                     "enabled": true,
                     "required": false,
@@ -1921,10 +1926,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "phone",
+                    "key": "hotel_phone",
                     "order": 70,
                     "type": "TextBox",
-                    "label": "Phone",
+                    "label": "Hotel Phone",
                     "options": [],
                     "enabled": true,
                     "required": false,
@@ -1936,10 +1941,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "By",
+                    "key": "hotel_referrer",
                     "order": 80,
                     "type": "TextBox",
-                    "label": "Arranged By",
+                    "label": "Hotel Arranged By",
                     "options": [],
                     "enabled": true,
                     "required": false,
@@ -1951,10 +1956,10 @@
                     "align": "center center"
                 },
                 {
-                    "key": "By_text",
+                    "key": "hotel_referrer_details",
                     "order": 90,
                     "type": "TextBox",
-                    "label": "Arragement Info",
+                    "label": "Hotel Arragement Info",
                     "options": [],
                     "enabled": true,
                     "required": false,
@@ -1966,7 +1971,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin",
+                    "key": "hotel_checkin_date",
                     "order": 81,
                     "type": "DatePicker",
                     "label": "Checkin",
@@ -1981,7 +1986,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout",
+                    "key": "hotel_checkout_date",
                     "order": 82,
                     "type": "DatePicker",
                     "label": "Checkout",
@@ -1996,7 +2001,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "arvl_date",
+                    "key": "arrival_date",
                     "order": 120,
                     "type": "DatePicker",
                     "label": "Arrival Date",
@@ -2011,7 +2016,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": " arvl_flight",
+                    "key": " arrival_flight",
                     "order": 130,
                     "type": "TextBox",
                     "label": "Arrival Flight",
@@ -2026,7 +2031,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_date",
+                    "key": "departure_date",
                     "order": 140,
                     "type": "DatePicker",
                     "label": "Departure Date",
@@ -2041,7 +2046,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_flight",
+                    "key": "departure_flight",
                     "order": 150,
                     "type": "TextBox",
                     "label": "Departure Flight",
@@ -2073,35 +2078,35 @@
             ],
             "tableColumns": [
                 {
-                    "key": "ts_type",
+                    "key": "type",
                     "text": "Techs/Surveyors",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "Names",
-                    "text": "Names",
+                    "key": "names",
+                    "text": "names",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 20
                 },
                 {
-                    "key": "By",
+                    "key": "hotel_referrer",
                     "text": "Arranged By",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "arvl_date",
+                    "key": "arrival_date",
                     "text": "Arrival Date",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "depart_date",
+                    "key": "departure_date",
                     "text": "Departure Date",
                     "isFilterable": true,
                     "isSortable": true,
@@ -2110,7 +2115,7 @@
             ],
             "infoFields": [
                 {
-                    "key": "ts_type",
+                    "key": "type",
                     "order": 10,
                     "label": "Techs/Surveyors",
                     "type": "Text",
@@ -2119,16 +2124,16 @@
                     "align": "center center"
                 },
                 {
-                    "key": "Names",
+                    "key": "names",
                     "order": 20,
-                    "label": "Names",
+                    "label": "names",
                     "type": "Text",
                     "width": 70,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "eq_surveys",
+                    "key": "equipment_surveys",
                     "order": 30,
                     "label": "Equipment / Surveys",
                     "type": "Image",
@@ -2146,43 +2151,43 @@
                     "align": "center center"
                 },
                 {
-                    "key": "details",
+                    "key": "hotel_details",
                     "order": 71,
-                    "label": "Details",
+                    "label": "Hotel Details",
                     "type": "Text",
                     "width": 100,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "rooms",
+                    "key": "hotel_room",
                     "order": 60,
-                    "label": "Rooms",
+                    "label": "Hotel Room",
                     "type": "Text",
                     "width": 30,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "phone",
+                    "key": "hotel_phone",
                     "order": 70,
-                    "label": "Phone",
+                    "label": "Hotel Phone",
                     "type": "Text",
                     "width": 30,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "By",
+                    "key": "hotel_referrer",
                     "order": 80,
-                    "label": "Arranged By",
+                    "label": "Hotel Arranged By",
                     "type": "Text",
                     "width": 40,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "By_text",
+                    "key": "hotel_referrer_details",
                     "order": 90,
                     "label": "Arragement Info",
                     "type": "Text",
@@ -2191,25 +2196,25 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin",
+                    "key": "hotel_checkin_date",
                     "order": 81,
-                    "label": "Checkin",
+                    "label": "Hotel Checkin Date",
                     "type": "Text",
                     "width": 30,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "checkout",
+                    "key": "hotel_checkout_date",
                     "order": 82,
-                    "label": "Checkout",
+                    "label": "Hotel Checkout Date",
                     "type": "Text",
                     "width": 30,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "arvl_date",
+                    "key": "arrival_date",
                     "order": 120,
                     "label": "Arrival Date",
                     "type": "Text",
@@ -2218,7 +2223,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": " arvl_flight",
+                    "key": " arrival_flight",
                     "order": 130,
                     "label": "Arrival Flight",
                     "type": "Text",
@@ -2227,7 +2232,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_date",
+                    "key": "departure_date",
                     "order": 140,
                     "label": "Departure Date",
                     "type": "Text",
@@ -2236,7 +2241,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_flight",
+                    "key": "departure_flight",
                     "order": 150,
                     "label": "Departure Flight",
                     "type": "Text",
@@ -2298,7 +2303,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "date_of_inc",
+                    "key": "incident_date",
                     "order": 30,
                     "type": "DatePicker",
                     "label": "Date of Incident",
@@ -2313,7 +2318,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "date_of_med",
+                    "key": "medical_date",
                     "order": 40,
                     "type": "DatePicker",
                     "label": "Date of Medical Att.",
@@ -2328,7 +2333,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "type_of_med",
+                    "key": "medical_type",
                     "order": 50,
                     "type": "Select",
                     "label": "Type of Medical Att.",
@@ -2343,7 +2348,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin",
+                    "key": "checkin_date",
                     "order": 60,
                     "type": "DatePicker",
                     "label": "Checkin",
@@ -2358,7 +2363,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout",
+                    "key": "checkout_date",
                     "order": 70,
                     "type": "DatePicker",
                     "label": "Checkout",
@@ -2373,7 +2378,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "medical_status",
                     "order": 80,
                     "type": "Select",
                     "label": "Status",
@@ -2404,14 +2409,14 @@
                     "width": 15
                 },
                 {
-                    "key": "date_of_inc",
+                    "key": "incident_date",
                     "text": "Date of Incident",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "status",
+                    "key": "medical_status",
                     "text": "Status",
                     "isFilterable": true,
                     "isSortable": true,
@@ -2438,7 +2443,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "date_of_inc",
+                    "key": "incident_date",
                     "order": 30,
                     "label": "Date of Incident",
                     "type": "Text",
@@ -2447,7 +2452,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "date_of_med",
+                    "key": "medical_date",
                     "order": 40,
                     "label": "Date of Medical Att.",
                     "type": "Text",
@@ -2456,7 +2461,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "type_of_med",
+                    "key": "medical_type",
                     "order": 50,
                     "label": "Type of Medical Att.",
                     "type": "Text",
@@ -2465,7 +2470,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin",
+                    "key": "checkin_date",
                     "order": 60,
                     "label": "Checkin",
                     "type": "Text",
@@ -2474,7 +2479,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout",
+                    "key": "checkout_date",
                     "order": 70,
                     "label": "Checkout",
                     "type": "Text",
@@ -2483,7 +2488,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "medical_status",
                     "order": 80,
                     "label": "Status",
                     "type": "Text",
@@ -2506,7 +2511,7 @@
             "order":5000,
             "fields": [
                 {
-                    "key": "po",
+                    "key": "post_office",
                     "order": 10,
                     "type": "TextBox",
                     "label": "P.O.",
@@ -2521,7 +2526,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "description",
+                    "key": "offland_description",
                     "order": 20,
                     "type": "Select",
                     "label": "Description",
@@ -2536,7 +2541,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "desc_details",
+                    "key": "details",
                     "order": 30,
                     "type": "TextBox",
                     "label": "Description Details",
@@ -2551,7 +2556,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "docs",
+                    "key": "documents",
                     "order": 40,
                     "type": "TextArea",
                     "label": "Relative Documents",
@@ -2566,7 +2571,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_offland_date",
+                    "key": "offland_date",
                     "order": 50,
                     "type": "DatePicker",
                     "label": "Estimated Offland Date",
@@ -2581,7 +2586,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_frw_date",
+                    "key": "forward_date",
                     "order": 60,
                     "type": "DatePicker",
                     "label": "Estimated Forward Date",
@@ -2596,7 +2601,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_arvl_time",
+                    "key": "estimated_arrival_date",
                     "order": 70,
                     "type": "DatePicker",
                     "label": "Estimated Arrival Time",
@@ -2611,7 +2616,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "destination",
+                    "key": "offland_destination",
                     "order": 80,
                     "type": "TextBox",
                     "label": "Destination",
@@ -2626,7 +2631,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dest_details",
+                    "key": "offland_destination_details",
                     "order": 90,
                     "type": "TextArea",
                     "label": "Destination Details",
@@ -2641,7 +2646,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "offland_status",
                     "order": 100,
                     "type": "Select",
                     "label": "Status",
@@ -2671,7 +2676,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "frw_method",
+                    "key": "offland_forward_method",
                     "order": 31,
                     "type": "Select",
                     "label": "Forward Method",
@@ -2688,35 +2693,35 @@
             ],
             "tableColumns": [
                 {
-                    "key": "po",
+                    "key": "post_office",
                     "text": "P.O.",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "description",
+                    "key": "offland_description",
                     "text": "Description",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 20
                 },
                 {
-                    "key": "destination",
+                    "key": "offland_destination",
                     "text": "Destination",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 20
                 },
                 {
-                    "key": "status",
+                    "key": "offland_status",
                     "text": "Status",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "frw_method",
+                    "key": "offland_forward_method",
                     "text": "Forward Method",
                     "isFilterable": true,
                     "isSortable": true,
@@ -2725,7 +2730,7 @@
             ],
             "infoFields": [
                 {
-                    "key": "po",
+                    "key": "post_office",
                     "order": 10,
                     "label": "P.O.",
                     "type": "Text",
@@ -2734,7 +2739,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "description",
+                    "key": "offland_description",
                     "order": 20,
                     "label": "Description",
                     "type": "Text",
@@ -2752,7 +2757,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "docs",
+                    "key": "documents",
                     "order": 40,
                     "label": "Relative Documents",
                     "type": "Image",
@@ -2761,7 +2766,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_offland_date",
+                    "key": "offland_date",
                     "order": 50,
                     "label": "Estimated Offland Date",
                     "type": "Text",
@@ -2770,7 +2775,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_frw_date",
+                    "key": "forward_date",
                     "order": 60,
                     "label": "Estimated Forward Date",
                     "type": "Text",
@@ -2779,7 +2784,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_arvl_time",
+                    "key": "estimated_arrival_date",
                     "order": 70,
                     "label": "Estimated Arrival Time",
                     "type": "Text",
@@ -2788,7 +2793,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "destination",
+                    "key": "offland_destination",
                     "order": 80,
                     "label": "Destination",
                     "type": "Text",
@@ -2797,7 +2802,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dest_details",
+                    "key": "offland_destination_details",
                     "order": 90,
                     "label": "Destination Details",
                     "type": "Image",
@@ -2806,7 +2811,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "offland_status",
                     "order": 100,
                     "label": "Status",
                     "type": "Text",
@@ -2824,7 +2829,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "frw_method",
+                    "key": "offland_forward_method",
                     "order": 31,
                     "label": "Forward Method",
                     "type": "Text",
@@ -2840,13 +2845,14 @@
             "isTagged": false,
             "tagSeparator": ""
         },
+
         {
             "key": "inq6",
-            "label": "FW SUPPLY",
+            "label": "POWER SUPPLY",
             "order":6000,
             "fields": [
                 {
-                    "key": "pw_supply",
+                    "key": "power_supply",
                     "order": 10,
                     "type": "TextBox",
                     "label": "Fresh Water Supply",
@@ -2861,7 +2867,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "type": "TextBox",
                     "label": "QTY",
@@ -2876,7 +2882,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_dlv_date",
+                    "key": "estimated_delivery_datetime",
                     "order": 30,
                     "type": "DatePicker",
                     "label": "Est. Delivery Date",
@@ -2891,22 +2897,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_dlv_time",
-                    "order": 40,
-                    "type": "TextBox",
-                    "label": "Est. Delivery Time",
-                    "options": [],
-                    "enabled": true,
-                    "required": false,
-                    "minLength": 3,
-                    "maxLength": 255,
-                    "regexPattern": "",
-                    "width": 10,
-                    "innerWidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "status",
+                    "key": "power_supply_status",
                     "order": 50,
                     "type": "Select",
                     "label": "Status",
@@ -2921,7 +2912,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dlv_method",
+                    "key": "power_supply_delivery_method",
                     "order": 60,
                     "type": "Select",
                     "label": "Delivery Method",
@@ -2938,21 +2929,21 @@
             ],
             "tableColumns": [
                 {
-                    "key": "pw_supply",
+                    "key": "power_supply",
                     "text": "Fresh Water Supply",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "est_dlv_date",
+                    "key": "estimated_delivery_datetime",
                     "text": "Est. Delivery Date",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "dlv_method",
+                    "key": "power_supply_delivery_method",
                     "text": "Delivery Method",
                     "isFilterable": true,
                     "isSortable": true,
@@ -2961,7 +2952,7 @@
             ],
             "infoFields": [
                 {
-                    "key": "pw_supply",
+                    "key": "power_supply",
                     "order": 10,
                     "label": "Fresh Water Supply",
                     "type": "Text",
@@ -2970,7 +2961,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "label": "QTY",
                     "type": "Text",
@@ -2979,7 +2970,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_dlv_date",
+                    "key": "estimated_delivery_datetime",
                     "order": 30,
                     "label": "Estimated Delivery Date",
                     "type": "Text",
@@ -2988,16 +2979,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_dlv_time",
-                    "order": 40,
-                    "label": "Estimated Delivery Time",
-                    "type": "Text",
-                    "width": 30,
-                    "innerwidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "status",
+                    "key": "power_supply_status",
                     "order": 50,
                     "label": "Status",
                     "type": "Text",
@@ -3006,7 +2988,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dlv_method",
+                    "key": "power_supply_delivery_method",
                     "order": 60,
                     "label": "Delivery Method",
                     "type": "Text",
@@ -3029,7 +3011,7 @@
             "order":7000,
             "fields": [
                 {
-                    "key": "ds_type",
+                    "key": "domestic_shipment_type",
                     "order": 10,
                     "type": "Select",
                     "label": "DS Type",
@@ -3044,7 +3026,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "tracking_no",
+                    "key": "track_number",
                     "order": 20,
                     "type": "TextBox",
                     "label": "Tracking No",
@@ -3059,7 +3041,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "doc_link",
+                    "key": "documents",
                     "order": 30,
                     "type": "TextArea",
                     "label": "Documents",
@@ -3074,7 +3056,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "po",
+                    "key": "post_office",
                     "order": 31,
                     "type": "TextBox",
                     "label": "P.O.",
@@ -3089,7 +3071,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "act_arvl_date",
+                    "key": "domestic_shipment_date",
                     "order": 50,
                     "type": "DatePicker",
                     "label": "Actual Arrival Date",
@@ -3104,7 +3086,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "domestic_shipment_status",
                     "order": 60,
                     "type": "Select",
                     "label": "Status",
@@ -3121,28 +3103,28 @@
             ],
             "tableColumns": [
                 {
-                    "key": "ds_type",
+                    "key": "domestic_shipment_type",
                     "text": "DS Type",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "tracking_no",
+                    "key": "track_number",
                     "text": "Tracking No",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 15
                 },
                 {
-                    "key": "act_arvl_date",
+                    "key": "domestic_shipment_date",
                     "text": "Actual Arrival Date",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "status",
+                    "key": "domestic_shipment_status",
                     "text": "Status",
                     "isFilterable": true,
                     "isSortable": true,
@@ -3151,7 +3133,7 @@
             ],
             "infoFields": [
                 {
-                    "key": "ds_type",
+                    "key": "domestic_shipment_type",
                     "order": 10,
                     "label": "DS Type",
                     "type": "Text",
@@ -3160,7 +3142,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "tracking_no",
+                    "key": "track_number",
                     "order": 20,
                     "label": "Tracking No",
                     "type": "Text",
@@ -3169,7 +3151,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "doc_link",
+                    "key": "documents",
                     "order": 30,
                     "label": "Documents",
                     "type": "Image",
@@ -3178,7 +3160,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "po",
+                    "key": "post_office",
                     "order": 31,
                     "label": "P.O.",
                     "type": "Text",
@@ -3187,7 +3169,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "act_arvl_date",
+                    "key": "domestic_shipment_date",
                     "order": 50,
                     "label": "Actual Arrival Date",
                     "type": "Text",
@@ -3196,7 +3178,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "domestic_shipment_status",
                     "order": 60,
                     "label": "Status",
                     "type": "Text",
@@ -3219,7 +3201,7 @@
             "order":8000,
             "fields": [
                 {
-                    "key": "oss_type",
+                    "key": "overseas_shipment_type",
                     "order": 10,
                     "type": "Select",
                     "label": "OSS Type",
@@ -3234,7 +3216,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "tracking_no",
+                    "key": "track_number",
                     "order": 20,
                     "type": "TextBox",
                     "label": "Tracking No",
@@ -3249,7 +3231,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "doc_link",
+                    "key": "documents",
                     "order": 30,
                     "type": "TextArea",
                     "label": "Documents",
@@ -3264,7 +3246,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "po",
+                    "key": "post_office",
                     "order": 21,
                     "type": "TextBox",
                     "label": "P.O.",
@@ -3279,7 +3261,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "act_arvl_date",
+                    "key": "overseas_shipment_date",
                     "order": 50,
                     "type": "DatePicker",
                     "label": "Actual Arrival Date",
@@ -3294,7 +3276,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "overseas_shipment_status",
                     "order": 60,
                     "type": "Select",
                     "label": "Status",
@@ -3311,21 +3293,21 @@
             ],
             "tableColumns": [
                 {
-                    "key": "tracking_no",
+                    "key": "track_number",
                     "text": "Tracking No",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "act_arvl_date",
+                    "key": "domestic_shipment_date",
                     "text": "Actual Arrival Date",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "status",
+                    "key": "overseas_shipment_status",
                     "text": "Status",
                     "isFilterable": true,
                     "isSortable": true,
@@ -3334,7 +3316,7 @@
             ],
             "infoFields": [
                 {
-                    "key": "oss_type",
+                    "key": "overseas_shipment_type",
                     "order": 10,
                     "label": "OSS Type",
                     "type": "Text",
@@ -3343,7 +3325,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "tracking_no",
+                    "key": "track_number",
                     "order": 20,
                     "label": "Tracking No",
                     "type": "Text",
@@ -3352,7 +3334,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "doc_link",
+                    "key": "documents",
                     "order": 30,
                     "label": "Documents",
                     "type": "Image",
@@ -3361,7 +3343,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "po",
+                    "key": "post_office",
                     "order": 21,
                     "label": "P.O.",
                     "type": "Text",
@@ -3370,7 +3352,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "act_arvl_date",
+                    "key": "overseas_shipment_date",
                     "order": 50,
                     "label": "Actual Arrival Date",
                     "type": "Text",
@@ -3379,7 +3361,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "overseas_shipment_status",
                     "order": 60,
                     "label": "Status",
                     "type": "Text",
@@ -3402,7 +3384,7 @@
             "order":9000,
             "fields": [
                 {
-                    "key": "sp_type",
+                    "key": "store_provision_type",
                     "order": 10,
                     "type": "Select",
                     "label": "SP Type",
@@ -3417,7 +3399,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "type": "TextBox",
                     "label": "QTY",
@@ -3432,7 +3414,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "supplier",
+                    "key": "store_provision_supplier",
                     "order": 30,
                     "type": "TextBox",
                     "label": "Supplier",
@@ -3462,7 +3444,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dlv_date",
+                    "key": "delivery_date",
                     "order": 21,
                     "type": "DatePicker",
                     "label": "Delivery Date",
@@ -3477,7 +3459,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "store_provision_status",
                     "order": 60,
                     "type": "Select",
                     "label": "Status",
@@ -3492,7 +3474,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dlv_method",
+                    "key": "store_provision_delivery_method",
                     "order": 70,
                     "type": "Select",
                     "label": "Delivery Method",
@@ -3509,35 +3491,35 @@
             ],
             "tableColumns": [
                 {
-                    "key": "sp_type",
+                    "key": "store_provision_type",
                     "text": "SP Type",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "supplier",
+                    "key": "store_provision_supplier",
                     "text": "Supplier",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 15
                 },
                 {
-                    "key": "dlv_date",
+                    "key": "delivery_date",
                     "text": "Delivery Date",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "status",
+                    "key": "store_provision_status",
                     "text": "Status",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "dlv_method",
+                    "key": "store_provision_delivery_method",
                     "text": "Delivery Method",
                     "isFilterable": true,
                     "isSortable": true,
@@ -3546,7 +3528,7 @@
             ],
             "infoFields": [
                 {
-                    "key": "sp_type",
+                    "key": "store_provision_type",
                     "order": 10,
                     "label": "SP Type",
                     "type": "Text",
@@ -3555,7 +3537,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "label": "QTY",
                     "type": "Text",
@@ -3564,7 +3546,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "supplier",
+                    "key": "store_provision_supplier",
                     "order": 30,
                     "label": "Supplier",
                     "type": "Text",
@@ -3582,7 +3564,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dlv_date",
+                    "key": "delivery_date",
                     "order": 21,
                     "label": "Delivery Date",
                     "type": "Text",
@@ -3591,7 +3573,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "store_provision_status",
                     "order": 60,
                     "label": "Status",
                     "type": "Text",
@@ -3600,7 +3582,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dlv_method",
+                    "key": "store_provision_delivery_method",
                     "order": 70,
                     "label": "Delivery Method",
                     "type": "Text",
@@ -3623,7 +3605,7 @@
             "order":10000,
             "fields": [
                 {
-                    "key": "bunkers_type",
+                    "key": "bunker_type",
                     "order": 10,
                     "type": "Select",
                     "label": "Bunkers Type",
@@ -3638,7 +3620,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "type": "TextBox",
                     "label": "QTY",
@@ -3653,7 +3635,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "Dlv_date",
+                    "key": "delivery_date",
                     "order": 30,
                     "type": "DatePicker",
                     "label": "Delivery Date",
@@ -3668,7 +3650,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "s_type",
+                    "key": "bunker_supplier_type",
                     "order": 40,
                     "type": "Select",
                     "label": "Supplier Type",
@@ -3698,7 +3680,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "bunker_status",
                     "order": 60,
                     "type": "Select",
                     "label": "Status",
@@ -3713,7 +3695,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dlv_method",
+                    "key": "bunker_delivery_method",
                     "order": 70,
                     "type": "Select",
                     "label": "Delivery Method",
@@ -3730,35 +3712,35 @@
             ],
             "tableColumns": [
                 {
-                    "key": "bunkers_type",
+                    "key": "bunker_type",
                     "text": "Bunkers Type",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "Dlv_date",
+                    "key": "delivery_date",
                     "text": "Delivery Date",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "s_type",
+                    "key": "bunker_supplier_type",
                     "text": "Supplier Type",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 15
                 },
                 {
-                    "key": "status",
+                    "key": "bunker_status",
                     "text": "Status",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "dlv_method",
+                    "key": "bunker_delivery_method",
                     "text": "Delivery Method",
                     "isFilterable": true,
                     "isSortable": true,
@@ -3767,7 +3749,7 @@
             ],
             "infoFields": [
                 {
-                    "key": "bunkers_type",
+                    "key": "bunker_type",
                     "order": 10,
                     "label": "Bunkers Type",
                     "type": "Text",
@@ -3776,7 +3758,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "label": "QTY",
                     "type": "Text",
@@ -3785,7 +3767,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "Dlv_date",
+                    "key": "delivery_date",
                     "order": 30,
                     "label": "Delivery Date",
                     "type": "Text",
@@ -3794,7 +3776,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "s_type",
+                    "key": "bunker_supplier_type",
                     "order": 40,
                     "label": "Supplier Type",
                     "type": "Text",
@@ -3812,7 +3794,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "bunker_status",
                     "order": 60,
                     "label": "Status",
                     "type": "Text",
@@ -3821,7 +3803,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dlv_method",
+                    "key": "bunker_delivery_method",
                     "order": 70,
                     "label": "Delivery Method",
                     "type": "Text",
@@ -3844,7 +3826,7 @@
             "order":11000,
             "fields": [
                 {
-                    "key": "service",
+                    "key": "ship_pollutant_service",
                     "order": 10,
                     "type": "TextBox",
                     "label": "Service",
@@ -3859,7 +3841,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "type": "TextBox",
                     "label": "QTY",
@@ -3874,7 +3856,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "service_date",
+                    "key": "date",
                     "order": 30,
                     "type": "DatePicker",
                     "label": "Service Date",
@@ -3889,7 +3871,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "ship_pollutant_status",
                     "order": 40,
                     "type": "Select",
                     "label": "Status",
@@ -3906,21 +3888,21 @@
             ],
             "tableColumns": [
                 {
-                    "key": "service",
+                    "key": "ship_pollutant_service",
                     "text": "Service",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "service_date",
+                    "key": "date",
                     "text": "Service Date",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 10
                 },
                 {
-                    "key": "status",
+                    "key": "ship_pollutant_status",
                     "text": "Status",
                     "isFilterable": true,
                     "isSortable": true,
@@ -3929,7 +3911,7 @@
             ],
             "infoFields": [
                 {
-                    "key": "service",
+                    "key": "ship_pollutant_service",
                     "order": 10,
                     "label": "Service",
                     "type": "Text",
@@ -3938,7 +3920,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "label": "QTY",
                     "type": "Text",
@@ -3947,7 +3929,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "service_date",
+                    "key": "date",
                     "order": 30,
                     "label": "Service Date",
                     "type": "Text",
@@ -3956,7 +3938,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "status",
+                    "key": "ship_pollutant_status",
                     "order": 40,
                     "label": "Status",
                     "type": "Text",
@@ -3994,7 +3976,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dates",
+                    "key": "date",
                     "order": 20,
                     "type": "TextBox",
                     "label": "Dates",
@@ -4009,7 +3991,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 30,
                     "type": "TextBox",
                     "label": "QTY",
@@ -4039,7 +4021,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "doc_link",
+                    "key": "documents",
                     "order": 50,
                     "type": "TextArea",
                     "label": "Documents",
@@ -4063,7 +4045,7 @@
                     "width": 20
                 },
                 {
-                    "key": "dates",
+                    "key": "date",
                     "text": "Dates",
                     "isFilterable": true,
                     "isSortable": true,
@@ -4088,7 +4070,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dates",
+                    "key": "date",
                     "order": 20,
                     "label": "Dates",
                     "type": "Text",
@@ -4097,7 +4079,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 30,
                     "label": "QTY",
                     "type": "Text",
@@ -4115,7 +4097,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "doc_link",
+                    "key": "documents",
                     "order": 50,
                     "label": "Documents",
                     "type": "Image",
@@ -4138,7 +4120,7 @@
             "order":13000,
             "fields": [
                 {
-                    "key": "ctm_oper",
+                    "key": "ctm_operation",
                     "order": 10,
                     "type": "TextBox",
                     "label": "Operation",
@@ -4183,7 +4165,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "oper_date",
+                    "key": "date",
                     "order": 11,
                     "type": "DatePicker",
                     "label": "Date",
@@ -4200,14 +4182,14 @@
             ],
             "tableColumns": [
                 {
-                    "key": "ctm_oper",
+                    "key": "ctm_operation",
                     "text": "Operation",
                     "isFilterable": true,
                     "isSortable": true,
                     "width": 20
                 },
                 {
-                    "key": "oper_date",
+                    "key": "date",
                     "text": "Date",
                     "isFilterable": true,
                     "isSortable": true,
@@ -4216,7 +4198,7 @@
             ],
             "infoFields": [
                 {
-                    "key": "ctm_oper",
+                    "key": "ctm_operation",
                     "order": 10,
                     "label": "Operation",
                     "type": "Text",
@@ -4243,7 +4225,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "oper_date",
+                    "key": "date",
                     "order": 11,
                     "label": "Date",
                     "type": "Text",
@@ -4276,14 +4258,14 @@
             "options": []
         },
         {
-            "key": "vsl_name",
+            "key": "vessel_name",
             "label": "Vessel Name",
             "order": 11,
             "fieldType": "TextBox",
             "options": []
         },
         {
-            "key": "vsl_flag",
+            "key": "vessel_flag",
             "label": "Vessel Flag",
             "order": 12,
             "fieldType": "TextBox",
@@ -4356,7 +4338,7 @@
             "align": "center center"
         },
         {
-            "key": "vsl_name",
+            "key": "vessel_name",
             "order": 11,
             "label": "Vessel Name",
             "type": "Text",
@@ -4365,7 +4347,7 @@
             "align": "center center"
         },
         {
-            "key": "vsl_flag",
+            "key": "vessel_flag",
             "order": 12,
             "label": "Vessel Flag",
             "type": "Text",
@@ -4813,7 +4795,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "arvl_port",
+                    "key": "arrival_port",
                     "order": 30,
                     "label": "Arrival Port",
                     "type": "Text",
@@ -4822,7 +4804,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "arvl_date",
+                    "key": "arrival_date",
                     "order": 40,
                     "label": "Arrival Date",
                     "type": "Text",
@@ -4831,7 +4813,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "hotel_first",
+                    "key": "first_hotel",
                     "order": 50,
                     "label": "Hotel",
                     "type": "Text",
@@ -4840,7 +4822,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "details_first",
+                    "key": "first_hotel_details",
                     "order": 60,
                     "label": "Details",
                     "type": "Text",
@@ -4849,7 +4831,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "room_first",
+                    "key": "first_hotel_room",
                     "order": 51,
                     "label": "Room",
                     "type": "Text",
@@ -4858,7 +4840,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "phone_first",
+                    "key": "first_hotel_phone",
                     "order": 52,
                     "label": "Phone",
                     "type": "Text",
@@ -4867,7 +4849,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin_first",
+                    "key": "first_hotel_checkin_date",
                     "order": 53,
                     "label": "Checkin",
                     "type": "Text",
@@ -4876,7 +4858,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout_first",
+                    "key": "first_hotel_checkout_date",
                     "order": 54,
                     "label": "Checkout",
                     "type": "Text",
@@ -4885,7 +4867,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "hotel_second",
+                    "key": "second_hotel",
                     "order": 70,
                     "label": "Hotel",
                     "type": "Text",
@@ -4894,7 +4876,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "details_second",
+                    "key": "second_hotel_details",
                     "order": 80,
                     "label": "Details",
                     "type": "Text",
@@ -4903,7 +4885,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "room_second",
+                    "key": "second_hotel_room",
                     "order": 71,
                     "label": "Room",
                     "type": "Text",
@@ -4912,7 +4894,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "phone_second",
+                    "key": "second_hotel_phone",
                     "order": 72,
                     "label": "Phone",
                     "type": "Text",
@@ -4921,7 +4903,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin_second",
+                    "key": "second_hotel_checkin_date",
                     "order": 73,
                     "label": "Checkin",
                     "type": "Text",
@@ -4930,7 +4912,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout_second",
+                    "key": "second_hotel_checkout_date",
                     "order": 74,
                     "label": "Checkout",
                     "type": "Text",
@@ -4939,7 +4921,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "visa_exp_date",
+                    "key": "visa_expiration_date",
                     "order": 80,
                     "label": "Visa Expiration Date",
                     "type": "Text",
@@ -4948,7 +4930,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "pass_image",
+                    "key": "passport_image",
                     "order": 90,
                     "label": "Passport image",
                     "type": "Image",
@@ -4957,7 +4939,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_airport",
+                    "key": "departure_airport",
                     "order": 100,
                     "label": "Departure Airport",
                     "type": "Text",
@@ -4966,7 +4948,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_date",
+                    "key": "departure_date",
                     "order": 110,
                     "label": "Departure Date",
                     "type": "Text",
@@ -4975,7 +4957,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_details",
+                    "key": "departure_details",
                     "order": 120,
                     "label": "Departure Details",
                     "type": "Text",
@@ -5009,7 +4991,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "signer",
+                    "key": "signin_signoff",
                     "order": 30,
                     "label": "Sign On/Off",
                     "type": "Text",
@@ -5036,7 +5018,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "pass_exp_date",
+                    "key": "passport_expiration_date",
                     "order": 50,
                     "label": "Passport Expiration Date",
                     "type": "Text",
@@ -5045,7 +5027,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "exit_visa_app_date",
+                    "key": "exit_visa_application_date",
                     "order": 60,
                     "label": "Exit Visa App. Date",
                     "type": "Text",
@@ -5054,7 +5036,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "pass_link",
+                    "key": "passport_image",
                     "order": 70,
                     "label": "Passport Image",
                     "type": "Image",
@@ -5063,7 +5045,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "visa_link",
+                    "key": "visa_image",
                     "order": 80,
                     "label": "Visa Image",
                     "type": "Image",
@@ -5072,7 +5054,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "exit_visa_iss_date",
+                    "key": "exit_visa_ISS_date",
                     "order": 61,
                     "label": "Exit Visa ISS Date",
                     "type": "Text",
@@ -5126,7 +5108,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin",
+                    "key": "checkin_date",
                     "order": 150,
                     "label": "Checkin",
                     "type": "Text",
@@ -5135,7 +5117,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout",
+                    "key": "checkout_date",
                     "order": 160,
                     "label": "Checkout",
                     "type": "Text",
@@ -5160,7 +5142,7 @@
             "label": "TECHS / SURVEYORS",
             "fields": [
                 {
-                    "key": "ts_type",
+                    "key": "type",
                     "order": 10,
                     "label": "Techs/Surveyors",
                     "type": "Text",
@@ -5169,16 +5151,16 @@
                     "align": "center center"
                 },
                 {
-                    "key": "Names",
+                    "key": "names",
                     "order": 20,
-                    "label": "Names",
+                    "label": "names",
                     "type": "Text",
                     "width": 70,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "eq_surveys",
+                    "key": "equipment_surveys",
                     "order": 30,
                     "label": "Equipment / Surveys",
                     "type": "Image",
@@ -5241,7 +5223,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin",
+                    "key": "checkin_date",
                     "order": 81,
                     "label": "Checkin",
                     "type": "Text",
@@ -5250,7 +5232,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout",
+                    "key": "checkout_date",
                     "order": 82,
                     "label": "Checkout",
                     "type": "Text",
@@ -5259,7 +5241,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "arvl_date",
+                    "key": "arrival_date",
                     "order": 120,
                     "label": "Arrival Date",
                     "type": "Text",
@@ -5268,7 +5250,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": " arvl_flight",
+                    "key": " arrival_flight",
                     "order": 130,
                     "label": "Arrival Flight",
                     "type": "Text",
@@ -5277,7 +5259,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_date",
+                    "key": "departure_date",
                     "order": 140,
                     "label": "Departure Date",
                     "type": "Text",
@@ -5286,7 +5268,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "depart_flight",
+                    "key": "departure_flight",
                     "order": 150,
                     "label": "Departure Flight",
                     "type": "Text",
@@ -5329,7 +5311,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "date_of_inc",
+                    "key": "incident_date",
                     "order": 30,
                     "label": "Date of Incident",
                     "type": "Text",
@@ -5338,7 +5320,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "date_of_med",
+                    "key": "medical_date",
                     "order": 40,
                     "label": "Date of Medical Att.",
                     "type": "Text",
@@ -5347,7 +5329,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "type_of_med",
+                    "key": "medical_type",
                     "order": 50,
                     "label": "Type of Medical Att.",
                     "type": "Text",
@@ -5356,7 +5338,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkin",
+                    "key": "checkin_date",
                     "order": 60,
                     "label": "Checkin",
                     "type": "Text",
@@ -5365,7 +5347,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "checkout",
+                    "key": "checkout_date",
                     "order": 70,
                     "label": "Checkout",
                     "type": "Text",
@@ -5390,7 +5372,7 @@
             "label": "OFFLAND FORWARDING",
             "fields": [
                 {
-                    "key": "po",
+                    "key": "post_office",
                     "order": 10,
                     "label": "P.O.",
                     "type": "Text",
@@ -5417,7 +5399,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "docs",
+                    "key": "documents",
                     "order": 40,
                     "label": "Relative Documents",
                     "type": "Image",
@@ -5426,7 +5408,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_offland_date",
+                    "key": "offland_date",
                     "order": 50,
                     "label": "Estimated Offland Date",
                     "type": "Text",
@@ -5435,7 +5417,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_frw_date",
+                    "key": "forward_date",
                     "order": 60,
                     "label": "Estimated Forward Date",
                     "type": "Text",
@@ -5444,7 +5426,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_arvl_time",
+                    "key": "estimated_arrival_date",
                     "order": 70,
                     "label": "Estimated Arrival Time",
                     "type": "Text",
@@ -5453,7 +5435,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "destination",
+                    "key": "offland_destination",
                     "order": 80,
                     "label": "Destination",
                     "type": "Text",
@@ -5462,7 +5444,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dest_details",
+                    "key": "offland_destination_details",
                     "order": 90,
                     "label": "Destination Details",
                     "type": "Image",
@@ -5489,7 +5471,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "frw_method",
+                    "key": "offland_forward_method",
                     "order": 31,
                     "label": "Forward Method",
                     "type": "Text",
@@ -5505,7 +5487,7 @@
             "label": "FW SUPPLY",
             "fields": [
                 {
-                    "key": "pw_supply",
+                    "key": "power_supply",
                     "order": 10,
                     "label": "Fresh Water Supply",
                     "type": "Text",
@@ -5514,7 +5496,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "label": "QTY",
                     "type": "Text",
@@ -5523,7 +5505,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "est_dlv_date",
+                    "key": "estimated_delivery_datetime",
                     "order": 30,
                     "label": "Estimated Delivery Date",
                     "type": "Text",
@@ -5566,7 +5548,7 @@
             "label": "DOMESTIC SHIPMENT",
             "fields": [
                 {
-                    "key": "ds_type",
+                    "key": "domestic_shipment_type",
                     "order": 10,
                     "label": "DS Type",
                     "type": "Text",
@@ -5575,7 +5557,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "tracking_no",
+                    "key": "track_number",
                     "order": 20,
                     "label": "Tracking No",
                     "type": "Text",
@@ -5584,7 +5566,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "doc_link",
+                    "key": "documents",
                     "order": 30,
                     "label": "Documents",
                     "type": "Image",
@@ -5593,7 +5575,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "po",
+                    "key": "post_office",
                     "order": 31,
                     "label": "P.O.",
                     "type": "Text",
@@ -5602,7 +5584,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "act_arvl_date",
+                    "key": "domestic_shipment_date",
                     "order": 50,
                     "label": "Actual Arrival Date",
                     "type": "Text",
@@ -5627,7 +5609,7 @@
             "label": "OVERSEAS SHIPMENT",
             "fields": [
                 {
-                    "key": "oss_type",
+                    "key": "overseas_shipment_type",
                     "order": 10,
                     "label": "OSS Type",
                     "type": "Text",
@@ -5636,7 +5618,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "tracking_no",
+                    "key": "track_number",
                     "order": 20,
                     "label": "Tracking No",
                     "type": "Text",
@@ -5645,7 +5627,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "doc_link",
+                    "key": "documents",
                     "order": 30,
                     "label": "Documents",
                     "type": "Image",
@@ -5654,7 +5636,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "po",
+                    "key": "post_office",
                     "order": 21,
                     "label": "P.O.",
                     "type": "Text",
@@ -5663,7 +5645,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "act_arvl_date",
+                    "key": "domestic_shipment_date",
                     "order": 50,
                     "label": "Actual Arrival Date",
                     "type": "Text",
@@ -5688,7 +5670,7 @@
             "label": "STORE PROVISIONS",
             "fields": [
                 {
-                    "key": "sp_type",
+                    "key": "store_provision_type",
                     "order": 10,
                     "label": "SP Type",
                     "type": "Text",
@@ -5697,7 +5679,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "label": "QTY",
                     "type": "Text",
@@ -5706,7 +5688,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "supplier",
+                    "key": "store_provision_supplier",
                     "order": 30,
                     "label": "Supplier",
                     "type": "Text",
@@ -5724,7 +5706,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dlv_date",
+                    "key": "delivery_date",
                     "order": 21,
                     "label": "Delivery Date",
                     "type": "Text",
@@ -5758,7 +5740,7 @@
             "label": "BUNKERS",
             "fields": [
                 {
-                    "key": "bunkers_type",
+                    "key": "bunker_type",
                     "order": 10,
                     "label": "Bunkers Type",
                     "type": "Text",
@@ -5767,7 +5749,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "label": "QTY",
                     "type": "Text",
@@ -5776,7 +5758,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "Dlv_date",
+                    "key": "delivery_date",
                     "order": 30,
                     "label": "Delivery Date",
                     "type": "Text",
@@ -5785,7 +5767,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "s_type",
+                    "key": "bunker_supplier_type",
                     "order": 40,
                     "label": "Supplier Type",
                     "type": "Text",
@@ -5828,7 +5810,7 @@
             "label": "POLLUTANTS",
             "fields": [
                 {
-                    "key": "service",
+                    "key": "ship_pollutant_service",
                     "order": 10,
                     "label": "Service",
                     "type": "Text",
@@ -5837,7 +5819,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 20,
                     "label": "QTY",
                     "type": "Text",
@@ -5846,7 +5828,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "service_date",
+                    "key": "date",
                     "order": 30,
                     "label": "Service Date",
                     "type": "Text",
@@ -5880,7 +5862,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "dates",
+                    "key": "date",
                     "order": 20,
                     "label": "Dates",
                     "type": "Text",
@@ -5889,7 +5871,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "qty",
+                    "key": "quantity",
                     "order": 30,
                     "label": "QTY",
                     "type": "Text",
@@ -5907,7 +5889,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "doc_link",
+                    "key": "documents",
                     "order": 50,
                     "label": "Documents",
                     "type": "Image",
@@ -5923,7 +5905,7 @@
             "label": "CASH TO MASTER",
             "fields": [
                 {
-                    "key": "ctm_oper",
+                    "key": "ctm_operation",
                     "order": 10,
                     "label": "Operation",
                     "type": "Text",
@@ -5950,7 +5932,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "oper_date",
+                    "key": "date",
                     "order": 11,
                     "label": "Date",
                     "type": "Text",
@@ -5984,14 +5966,14 @@
             "width": 10
         },
         {
-            "key": "vsl_name",
+            "key": "vessel_name",
             "text": "Vessel Name",
             "isFilterable": true,
             "isSortable": true,
             "width": 10
         },
         {
-            "key": "vsl_flag",
+            "key": "vessel_flag",
             "text": "Vessel Flag",
             "isFilterable": true,
             "isSortable": true,

@@ -16,6 +16,7 @@ from endpoints.administrator.soa import api as soa
 from endpoints.administrator.csoa import api as csoa
 from endpoints.administrator.breakdown import api as breakdown
 from endpoints.administrator.invoice import api as invoice
+from endpoints.administrator.crud import api as crud
 
 
 if __name__ == '__main__':
@@ -34,5 +35,6 @@ if __name__ == '__main__':
     svc.api.add_namespace(csoa)
     svc.api.add_namespace(breakdown)
     svc.api.add_namespace(invoice)
+    svc.api.add_namespace(crud)
     svc.app.run(port=8081, debug=True)
 

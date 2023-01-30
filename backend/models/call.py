@@ -22,8 +22,8 @@ class Inquire1(svc.db.EmbeddedDocument):                                #   OWNE
     second_hotel_checkin_date = svc.db.StringField(min_length=3, max_length= 255)	#   D
     second_hotel_checkout_date = svc.db.StringField(min_length=3, max_length= 255)	#   D
     visa_expiration_date = svc.db.StringField(min_length=3, max_length= 255) #   D
-    passport = svc.db.StringField(min_length=3, max_length= 255)	    #   T	LINKs
-    departure_port = svc.db.StringField(min_length=3, max_length= 255)	#   T	Selected from PRLIST > value, for PRLIST > list = “Airports”
+    passport_image = svc.db.StringField(min_length=3, max_length= 255)	    #   T	LINKs
+    departure_airport = svc.db.StringField(min_length=3, max_length= 255)	#   T	Selected from PRLIST > value, for PRLIST > list = “Airports”
     departure_date	= svc.db.StringField(min_length=3, max_length= 255)     #   D
     departure_details = svc.db.StringField(min_length=3, max_length= 255)	#   T	LINKs
     comments = svc.db.StringField(min_length=3, max_length= 255)	#   T
@@ -40,11 +40,11 @@ class Inquire2(svc.db.EmbeddedDocument):                                        
     exit_visa_ISS_date = svc.db.StringField(min_length=3, max_length= 255)	#   D	ALERT
     visa_details = svc.db.StringField(min_length=3, max_length= 255)	        #   T	LINKs
     hotel = svc.db.StringField(min_length=3, max_length= 255)	        #   T	Selected from PRLIST > value, for PRLIST > list = “Hotels”
-    details = svc.db.StringField(min_length=3, max_length= 255)	    #   T
-    room = svc.db.StringField(min_length=3, max_length= 255)	        #   T
-    phone = svc.db.StringField(min_length=3, max_length= 255)	        #   T
-    checkin_date = svc.db.StringField(min_length=3, max_length= 255)	    #   D
-    checkout_date = svc.db.StringField(min_length=3, max_length= 255)	    #   D
+    hotel_details = svc.db.StringField(min_length=3, max_length= 255)	    #   T
+    hotel_room = svc.db.StringField(min_length=3, max_length= 255)	        #   T
+    hotel_phone = svc.db.StringField(min_length=3, max_length= 255)	        #   T
+    hotel_checkin_date = svc.db.StringField(min_length=3, max_length= 255)	    #   D
+    hotel_checkout_date = svc.db.StringField(min_length=3, max_length= 255)	    #   D
     date = svc.db.StringField(min_length=3, max_length= 255)	        #   D			‘join ship / disenbark date
 
 class Inquire3(svc.db.EmbeddedDocument):
@@ -52,13 +52,13 @@ class Inquire3(svc.db.EmbeddedDocument):
     names = svc.db.StringField(required=True, min_length=3, max_length= 255)	        #	T	workshop name and details / surveyform name snd details
     equipment_surveys = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	LINKs
     hotel = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Hotels” 
-    details = svc.db.StringField(min_length=3, max_length= 255)	    #	T
-    room = svc.db.StringField(min_length=3, max_length= 255)	        #	T
-    phone = svc.db.StringField(min_length=3, max_length= 255)	        #	T
-    referrer = svc.db.StringField(min_length=3, max_length= 255)	            #	T	Selected from PRLIST > value, for PRLIST > list = “Hotel Accomodation Arranged By” (workshop-surveyor / agent)
-    referrer_details = svc.db.StringField(min_length=3, max_length= 255)	        #	T
-    checkin_date = svc.db.StringField(min_length=3, max_length= 255)	    #	D
-    checkout_date = svc.db.StringField(min_length=3, max_length= 255)	    #	D
+    hotel_details = svc.db.StringField(min_length=3, max_length= 255)	    #	T
+    hotel_room = svc.db.StringField(min_length=3, max_length= 255)	        #	T
+    hotel_phone = svc.db.StringField(min_length=3, max_length= 255)	        #	T
+    hotel_referrer = svc.db.StringField(min_length=3, max_length= 255)	            #	T	Selected from PRLIST > value, for PRLIST > list = “Hotel Accomodation Arranged By” (workshop-surveyor / agent)
+    hotel_referrer_details = svc.db.StringField(min_length=3, max_length= 255)	        #	T
+    hotel_checkin_date = svc.db.StringField(min_length=3, max_length= 255)	    #	D
+    hotel_checkout_date = svc.db.StringField(min_length=3, max_length= 255)	    #	D
     arrival_date = svc.db.StringField(min_length=3, max_length= 255)	        #	D   ALERT
     arrival_flight = svc.db.StringField(min_length=3, max_length= 255)	    #	T
     departure_date = svc.db.StringField(min_length=3, max_length= 255)	        #	D   ALERT
@@ -73,81 +73,81 @@ class Inquire4(svc.db.EmbeddedDocument):
     medical_type = svc.db.StringField(min_length=3, max_length= 255)	    #	T	Selected from PRLIST > value, for PRLIST > list = “Type of Med. Att.” hospitalization/medical treatment
     checkin_date = svc.db.StringField(min_length=3, max_length= 255)	        #	D
     checkout_date = svc.db.StringField(min_length=3, max_length= 255)	    #	D
-    status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Medical Att. Status” (treatment & hospital / treatment & ship / discharge for hospital)
+    medical_status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Medical Att. Status” (treatment & hospital / treatment & ship / discharge for hospital)
 
 class Inquire5(svc.db.EmbeddedDocument):
     post_office = svc.db.StringField(min_length=3, max_length= 255)              #	T
-    description = svc.db.StringField(min_length=3, max_length= 255)	    #	T 	Selected from PRLIST > value, for PRLIST > list = “Offland Items Descriptions” (boxes, nr. Colls, weight)
+    offland_description = svc.db.StringField(min_length=3, max_length= 255)	    #	T 	Selected from PRLIST > value, for PRLIST > list = “Offland Items Descriptions” (boxes, nr. Colls, weight)
     details = svc.db.StringField(min_length=3, max_length= 255)	    #	T
-    doclink = svc.db.StringField(min_length=3, max_length= 255)	        #	T	LINKs
+    documents = svc.db.StringField(min_length=3, max_length= 255)	        #	T	LINKs
     offland_date = svc.db.StringField(min_length=3, max_length= 255)	#	D   ALERT
     forward_date = svc.db.StringField(min_length=3, max_length= 255)	    #	D   ALERT
-    eta_datetime = svc.db.StringField(min_length=3, max_length= 255)	    #	D   ALERT
-    destination = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	Selected from PRLIST > value, for PRLIST > list = “Offland Destinations” (other port / overseas /owner office)
-    destination_details = svc.db.StringField(min_length=3, max_length= 255)	    #	T
-    status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Statuses” (claance under progress / transit to exporting port)
+    estimated_arrival_date = svc.db.StringField(min_length=3, max_length= 255)	    #	D   ALERT
+    offland_destination = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	Selected from PRLIST > value, for PRLIST > list = “Offland Destinations” (other port / overseas /owner office)
+    offland_destination_details = svc.db.StringField(min_length=3, max_length= 255)	    #	T
+    offland_status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Statuses” (claance under progress / transit to exporting port)
     export_documents = svc.db.StringField(min_length=3, max_length= 255)	    #	T	LINKs
-    method = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	Selected from PRLIST > value, for PRLIST > list = “Offland FRW Methods” (local courier / int'l courier /local logistics / AWB B/L /dedicated truck / other
+    offland_forward_method = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	Selected from PRLIST > value, for PRLIST > list = “Offland FRW Methods” (local courier / int'l courier /local logistics / AWB B/L /dedicated truck / other
 
 class Inquire6(svc.db.EmbeddedDocument):
     power_supply = svc.db.StringField(min_length=3, max_length= 255)	    # 	T
     quantity = svc.db.StringField(min_length=3, max_length= 255)	            # 	N
-    datetime = svc.db.StringField(min_length=3, max_length= 255)	    # 	D   ALERT
-    status = svc.db.StringField(min_length=3, max_length= 255)	        # 	T	Selected from PRLIST > value, for PRLIST > list = “PW Supply Status”  (order  received / stand by  / order dlvrd)
-    method = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	Selected from PRLIST > value, for PRLIST > list = “PW Supply DLV Method”  (ph. Supplier arrangement / via supply boat arranged by agent)
+    estimated_delivery_datetime = svc.db.StringField(min_length=3, max_length= 255)	    # 	D   ALERT
+    power_supply_status = svc.db.StringField(min_length=3, max_length= 255)	        # 	T	Selected from PRLIST > value, for PRLIST > list = “PW Supply Status”  (order  received / stand by  / order dlvrd)
+    power_supply_delivery_method = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	Selected from PRLIST > value, for PRLIST > list = “PW Supply DLV Method”  (ph. Supplier arrangement / via supply boat arranged by agent)
 
 class Inquire7(svc.db.EmbeddedDocument):
-    type = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Domestic Shipment Type”   (AWB / courier / SF)
+    domestic_shipment_type = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Domestic Shipment Type”   (AWB / courier / SF)
     track_number = svc.db.StringField(min_length=3, max_length= 255)	    #	T
-    doclink = svc.db.StringField(min_length=3, max_length= 255)	        #	T   LINKs
+    documents = svc.db.StringField(min_length=3, max_length= 255)	        #	T   LINKs
     post_office = svc.db.StringField(min_length=3, max_length= 255)	            #	T
-    date = svc.db.StringField(min_length=3, max_length= 255)	    #	D   ALERT
-    status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Domestic Shipment Status”  
+    domestic_shipment_date = svc.db.StringField(min_length=3, max_length= 255)	    #	D   ALERT
+    domestic_shipment_status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Domestic Shipment Status”  
 
 class Inquire8(svc.db.EmbeddedDocument):
-    type = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Overseas Shipment Type”   (AWB / courier / SF)
+    overseas_shipment_type = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Overseas Shipment Type”   (AWB / courier / SF)
     track_number = svc.db.StringField(min_length=3, max_length= 255)	    #	T
     doclink = svc.db.StringField(min_length=3, max_length= 255)	        #	T
     post_office = svc.db.StringField(min_length=3, max_length= 255)	            #	T
-    date = svc.db.StringField(min_length=3, max_length= 255)	    #	D   ALERT
-    status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Overseas Shipment Status”  
+    overseas_shipment_date = svc.db.StringField(min_length=3, max_length= 255)	    #	D   ALERT
+    overseas_shipment_status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Overseas Shipment Status”  
 
 class Inquire9(svc.db.EmbeddedDocument):
-    type = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Store Provisions Type”  ( stores / provisions)
+    store_provision_type = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Store Provisions Type”  ( stores / provisions)
     quantity = svc.db.StringField(min_length=3, max_length= 255)	            #	N
-    supplier = svc.db.StringField(min_length=3, max_length= 255)	    #	T	Selected from PRLIST > value, for PRLIST > list = “Store Provisions Supplier”  Typelocal /physical supplier
+    store_provision_supplier = svc.db.StringField(min_length=3, max_length= 255)	    #	T	Selected from PRLIST > value, for PRLIST > list = “Store Provisions Supplier”  Typelocal /physical supplier
     details = svc.db.StringField(min_length=3, max_length= 255)	        #	T
-    date = svc.db.StringField(min_length=3, max_length= 255)	        #	D   ALERT
-    status = svc.db.StringField(min_length=3, max_length= 255)	        # 	T	Selected from PRLIST > value, for PRLIST > list = “Store Provisions Status”  (order partially received / order under preparation /stand by for dlvr /order dlvrd)
-    method = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	Selected from PRLIST > value, for PRLIST > list = “Store Provisions DLV Methods”  (ph. Supplier arrangement / via supply boat arranged by agent)
+    delivery_date = svc.db.StringField(min_length=3, max_length= 255)	        #	D   ALERT
+    store_provision_status = svc.db.StringField(min_length=3, max_length= 255)	        # 	T	Selected from PRLIST > value, for PRLIST > list = “Store Provisions Status”  (order partially received / order under preparation /stand by for dlvr /order dlvrd)
+    store_provision_delivery_method = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	Selected from PRLIST > value, for PRLIST > list = “Store Provisions DLV Methods”  (ph. Supplier arrangement / via supply boat arranged by agent)
 
 class Inquire10(svc.db.EmbeddedDocument):
-    type = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Bunkers Log” (bunkering / lub oils/ chems / paints)
+    bunker_type = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Bunkers Log” (bunkering / lub oils/ chems / paints)
     quantity = svc.db.StringField(min_length=3, max_length= 255)	            #	N
-    date = svc.db.StringField(min_length=3, max_length= 255)	        #	D   ALERT
-    supplier_type = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Supplier Types” (local / physical supplier)
+    delivery_date = svc.db.StringField(min_length=3, max_length= 255)	        #	D   ALERT
+    bunker_supplier_type = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Supplier Types” (local / physical supplier)
     details = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Bunkers Details” ( LFSO / HSFO/ MEO)
-    status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Bunkers Statuses” (order rcvd by ph. supplier / order under ph. Supplier clearance / bardge - order stand by for dlvr /order dlvrd)
-    method = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	Selected from PRLIST > value, for PRLIST > list = “Bunkers DLV Method” (ph. Supplier arrangement / via supply boat arranged by agent)
+    bunker_status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Bunkers Statuses” (order rcvd by ph. supplier / order under ph. Supplier clearance / bardge - order stand by for dlvr /order dlvrd)
+    bunker_delivery_method = svc.db.StringField(min_length=3, max_length= 255)	    # 	T	Selected from PRLIST > value, for PRLIST > list = “Bunkers DLV Method” (ph. Supplier arrangement / via supply boat arranged by agent)
 
 class Inquire11(svc.db.EmbeddedDocument):
-    service = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Ships Pollutants Service” (sludge disposal / slops disposal / garbage disposal /grey waters / hold washings)
+    ship_pollutant_service = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Ships Pollutants Service” (sludge disposal / slops disposal / garbage disposal /grey waters / hold washings)
     quantity = svc.db.StringField(min_length=3, max_length= 255)	            #	N
     date = svc.db.StringField(min_length=3, max_length= 255)	    #	D   ALERT
-    status = svc.db.StringField(min_length=3, max_length= 255)	        # 	T	Selected from PRLIST > value, for PRLIST > list = “Ships Pollutants Status” (permision on progress / stand by / garbage collection /collected)
+    ship_pollutant_status = svc.db.StringField(min_length=3, max_length= 255)	        # 	T	Selected from PRLIST > value, for PRLIST > list = “Ships Pollutants Status” (permision on progress / stand by / garbage collection /collected)
 
 class Inquire12(svc.db.EmbeddedDocument):
     description = svc.db.StringField(min_length=3, max_length= 255)	    #	T
     date = svc.db.StringField(min_length=3, max_length= 255)	        #	T   ALERT
     quantity = svc.db.StringField(min_length=3, max_length= 255)	            #	N
     status = svc.db.StringField(min_length=3, max_length= 255)	        #	T	Selected from PRLIST > value, for PRLIST > list = “Various Inquiries Statuses”
-    doclink = svc.db.StringField(min_length=3, max_length= 255)	        #	T   LINKs
+    documents = svc.db.StringField(min_length=3, max_length= 255)	        #	T   LINKs
 
 class Inquire13(svc.db.EmbeddedDocument):
-    ctmoper = svc.db.StringField(min_length=3, max_length= 255)		    #   T	Selected from PRLIST > value, for PRLIST > list = “CTM Operation” (remitted / received /dlvrd)
+    ctm_operation = svc.db.StringField(min_length=3, max_length= 255)		    #   T	Selected from PRLIST > value, for PRLIST > list = “CTM Operation” (remitted / received /dlvrd)
     amount = svc.db.StringField(min_length=3, max_length= 255)		    #   N
     currency = svc.db.StringField(min_length=3, max_length= 255)	    #   T   "USD","EURO","LC"
-    operdate = svc.db.StringField(min_length=3, max_length= 255)	    #   D
+    date = svc.db.StringField(min_length=3, max_length= 255)	    #   D
 
 class Call(svc.db.Document):
     eta_date = svc.db.StringField(required = True,min_length=3, max_length= 255)         #		D

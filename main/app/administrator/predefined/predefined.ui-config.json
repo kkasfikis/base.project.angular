@@ -6,7 +6,12 @@
             "type": "Hidden"
         },
         {
-            "key": "list_name",
+            "key": "key",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
+            "key": "name",
             "order": 10,
             "type": "TextBox",
             "label": "List Name",
@@ -16,27 +21,12 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 10,
+            "width": 30,
             "innerWidth": 98,
             "align": "center center"
         },
         {
-            "key": "value",
-            "order": 20,
-            "type": "TextBox",
-            "label": "Value",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 10,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "forecolor",
+            "key": "fore_color",
             "order": 30,
             "type": "TextBox",
             "label": "Text Color",
@@ -46,12 +36,12 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 15,
+            "width": 30,
             "innerWidth": 98,
             "align": "center center"
         },
         {
-            "key": "backcolor",
+            "key": "back_color",
             "order": 40,
             "type": "TextBox",
             "label": "Background Color",
@@ -61,88 +51,65 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 15,
+            "width": 30,
             "innerWidth": 98,
             "align": "center center"
         }
     ],
-    "subforms": [],
+    "subforms": [
+        {
+            "key" : "values",
+            "label" : "Values",
+            "order" : 100,
+            "enabled" : true,
+            "fields" : [
+                {
+                    "key": "value",
+                    "order": 40,
+                    "type": "TextBox",
+                    "label": "Value",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 100,
+                    "innerWidth": 98,
+                    "align": "center center"
+                }
+            ], 
+            "tableColumns": [],
+            "infoFields":[],
+            "hasDelete" : false,
+            "hasUpdate" : true,
+            "hasInfo" : false,
+            "identifierKey" : "_id",
+            "width" : 100,
+            "innerWidth" : 100,
+            "align" : "center center",
+            "isTagged" : true,
+            "tagSeperator" : ","
+        }
+    ],
     "filters": [
         {
-            "key": "list_name",
+            "key": "name",
             "label": "List Name",
             "order": 10,
             "fieldType": "TextBox",
             "options": []
         }
     ],
-    "infos": [
-        {
-            "key": "list_name",
-            "order": 10,
-            "label": "List Name",
-            "type": "Text",
-            "width": 50,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "value",
-            "order": 20,
-            "label": "Value",
-            "type": "Text",
-            "width": 50,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "forecolor",
-            "order": 30,
-            "label": "Text Color",
-            "type": "Text",
-            "width": 50,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "backcolor",
-            "order": 40,
-            "label": "Background Color",
-            "type": "Text",
-            "width": 50,
-            "innerwidth": 98,
-            "align": "center center"
-        }
-    ],
+    "infos": [],
     "subinfos": [],
     "columns": [
         {
-            "key": "list_name",
+            "key": "name",
             "text": "List Name",
             "isFilterable": true,
             "isSortable": true,
-            "width": 30
-        },
-        {
-            "key": "value",
-            "text": "Value",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 25
-        },
-        {
-            "key": "forecolor",
-            "text": "Text Color",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 10
-        },
-        {
-            "key": "backcolor",
-            "text": "Background Color",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 10
+            "width": 80
         }
     ]
 }

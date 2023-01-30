@@ -6,6 +6,11 @@
             "type": "Hidden"
         },
         {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
             "key": "name",
             "order": 20,
             "type": "TextBox",

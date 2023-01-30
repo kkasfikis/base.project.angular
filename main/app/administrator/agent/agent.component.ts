@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
@@ -11,9 +11,11 @@ import * as data from './agent.ui-config.json'
   templateUrl: './agent.component.html',
   styleUrls: ['./agent.component.scss']
 })
-export class AgentComponent implements OnInit {
+export class AgentComponent implements OnInit,OnDestroy {
 
   constructor() { }
+  ngOnDestroy(): void {
+  }
 
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
 
@@ -25,6 +27,10 @@ export class AgentComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Converting Agent fields from JSON ....')
+    this.formFields = [];
+    this.tableColumns = [];
+    this.infoFields = [];
+    this.filterFields = [];
     this.convertFromJson();
   }
 
