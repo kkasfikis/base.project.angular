@@ -150,20 +150,25 @@ class Inquire13(svc.db.EmbeddedDocument):
     date = svc.db.StringField(min_length=3, max_length= 255)	    #   D
 
 class Call(svc.db.Document):
-    eta_date = svc.db.StringField(required = True,min_length=3, max_length= 255)         #		D
+    estimated_date = svc.db.StringField(required = True,min_length=3, max_length= 255)         #		D
     call_entry_date = svc.db.StringField(min_length=3, max_length= 255)                   #       D	
+    
     client = svc.db.ReferenceField(Client)
     client_name = svc.db.StringField(required = True,min_length=3, max_length= 255)  #		T	Select from CLIENTS 
     client_alias = svc.db.StringField(required = True,min_length=3, max_length= 255)   #		T	Select from CLIENTALIAS for specific Client
+    
     vessel = svc.db.ReferenceField(Vessel)
     vessel_name = svc.db.StringField(required = True,min_length=3, max_length= 255)     #		T	Select from VESSELS
     vessel_flag = svc.db.StringField(required = True,min_length=3, max_length= 255)     #       T   Selected from PRLIST > value for PRLIST > list = “Vessel Flags”
+    
     port = svc.db.ReferenceField(Port)
     port_name = svc.db.StringField(required = True,min_length=3, max_length= 255)    #		T	Select from PORTS
     port_anchorage = svc.db.StringField(min_length=3, max_length= 255)                #		T
+    
     agent = svc.db.ReferenceField(Agent)
     agent_name = svc.db.StringField(min_length=3, max_length= 255)               #		T	Select from AGENTS
     agent_person_in_charge = svc.db.StringField(min_length=3, max_length= 255)                 #		T	Select from AGENTPIC for specific agent
+    
     call_status = svc.db.StringField(min_length=3, max_length= 255)              #		T	Selected from PRLIST > value, backcolor, forecolor for PRLIST > list = “Call Statuses”	
     call_type = svc.db.StringField(min_length=3, max_length= 255)                #		T	Selected from PRLIST > value, backcolor, forecolor for PRLIST > list = “Call Types”
     safety_manual = svc.db.StringField(min_length=3, max_length= 255)                  #		T

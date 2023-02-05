@@ -98,7 +98,7 @@
     ],
     "subforms": [
         {
-            "key": "agent_pic",
+            "key": "agent_people_in_charge",
             "title": "People In Charge",
             "order": 1000,
             "fields": [

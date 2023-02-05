@@ -134,5 +134,29 @@
             "^/crud" : ""
         },
         "changeOrigin" : true
+    },
+    "/helpers":{
+        "target" : "http://localhost:8081/helpers",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/helpers" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/getAttributeList":{
+        "target" : "http://localhost:8081/getAttributeList",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/getAttributeList" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/getSingleAttribute":{
+        "target" : "http://localhost:8081/getSingleAttribute",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/getSingleAttribute" : ""
+        },
+        "changeOrigin" : true
     }
 }

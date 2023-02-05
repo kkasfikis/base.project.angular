@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
 import { DynamicCrudService } from 'main/app/ui-components/dynamic-crud/dynamic-crud.service';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
@@ -102,7 +103,20 @@ export class CallComponent implements OnInit, OnDestroy{
     
   }
 
-  setField(fieldKey : string, values : string[]){
+  setReferenceFieldDropdown(fieldKey:string, fieldName:string, data:any[]){
+    let field = this.formFields.find(x => x.getValue().key == fieldKey) as BehaviorSubject<FormFieldBase>
+    let fieldValue = field.getValue() as FormFieldBase;
+    fieldValue.options = data.map( (x:any) => {
+        return {
+          key : x._id,
+          value : x[fieldName]
+        }
+      }
+    )
+    field.next(fieldValue)
+  }
+
+  setFieldDropdown(fieldKey : string, values : string[]){
     let field = this.formFields.find(x => x.getValue().key == fieldKey) as BehaviorSubject<FormFieldBase>
     let fieldValue = field.getValue() as FormFieldBase;
     fieldValue.options = values.map( (x:string) => {
@@ -112,6 +126,13 @@ export class CallComponent implements OnInit, OnDestroy{
         }
       }
     )
+    field.next(fieldValue)
+  }
+
+  setFieldValue(fieldKey : string, value : string){
+    let field = this.formFields.find(x => x.getValue().key == fieldKey) as BehaviorSubject<FormFieldBase>
+    let fieldValue = field.getValue() as FormFieldBase;
+    fieldValue.value = value
     field.next(fieldValue)
   }
 
@@ -136,10 +157,16 @@ export class CallComponent implements OnInit, OnDestroy{
   }
 
   initMods(){
-    forkJoin([this.crudService.read('predefined'),this.crudService.getAttribute('Port','name')]).subscribe(
-      ([resp,resp1] : any[]) => {
-        if(resp.read){
-          let data = resp.data;
+    forkJoin([
+        this.crudService.read('predefined'),
+        this.crudService.getAttributeWithId('Port','name'),
+        this.crudService.getAttributeWithId('Client','name'),
+        this.crudService.getAttributeWithId('Vessel','vessel_name'),
+        this.crudService.getAttributeWithId('Agent','agent_name')
+      ]).subscribe(
+      ([predefinedResp,portResp,clientResp,vesselResp,agentResp] : any[]) => {
+        if(predefinedResp.read){
+          let data = predefinedResp.data;
           let hotels = data.find( (x:any) => x.key=='hotels').values;
           let airports = data.find( (x:any) => x.key=='airports').values;
           let positions = data.find( (x:any) => x.key=='positions').values;
@@ -171,8 +198,19 @@ export class CallComponent implements OnInit, OnDestroy{
           let variousInquiriesStatus = data.find( (x:any) => x.key == 'variousInquiriesStatus').values;
           let ctmOperations = data.find( (x:any) => x.key == 'ctmOperations').values;
           let currencies = data.find( (x:any) => x.key == 'currencies').values;
-          let ports = resp1.data;
-          this.setField('port_name',ports)
+          let callStatus = data.find( (x:any) => x.key == 'callStatus').values;
+          let callTypes = data.find( (x:any) => x.key == 'callTypes').values;
+          let ports = portResp.data;  
+          this.setReferenceFieldDropdown('port', 'name', ports)
+          let clients = clientResp.data;
+          this.setReferenceFieldDropdown('client', 'name', clients)
+          let vessels = vesselResp.data;
+          this.setReferenceFieldDropdown('vessel','vessel_name',vessels)
+          let agents = agentResp.data;
+          this.setReferenceFieldDropdown('agent','agent_name',agents)
+
+          this.setFieldDropdown('call_status',callStatus)
+          this.setFieldDropdown('call_type',callTypes)
           
           this.setSubFormField('inq1',['first_hotel','second_hotel','position','arrival_port','departure_airport'],[hotels,hotels,positions,ports,airports]);
           this.setSubFormField('inq2',['rank','hotel','signin_signoff'],[crewRanks,hotels,['ON','OFF']]);
@@ -190,5 +228,42 @@ export class CallComponent implements OnInit, OnDestroy{
         } 
       }
     )
+  }
+
+  onFormChange( item : {mode : string, key : string, value : string, form : FormGroup}){
+    if(item.key == 'port'){
+      this.crudService.infoById('port',item.value).subscribe({
+        next : (resp : any) => {
+          this.setFieldValue('port_name',resp.data.name)
+          this.setFieldValue('port_anchorage',resp.data.anchorage)
+        }
+      });
+    }
+    if(item.key == 'client'){
+      this.crudService.infoById('client',item.value).subscribe({
+        next : (resp : any) => {
+          console.log('Cleint',resp)
+          this.setFieldValue('client_name',resp.data.name)
+          this.setFieldDropdown('client_alias',resp.data.client_aliases.map( (x:any) => x.alias))
+        }
+      });
+    }
+    if(item.key == 'vessel'){
+      this.crudService.infoById('vessel',item.value).subscribe({
+        next : (resp : any) => {
+          this.setFieldValue('vessel_name',resp.data.vessel_name)
+          this.setFieldValue('vessel_flag',resp.data.flag)
+        }
+      });
+    }
+    if(item.key == 'agent'){
+      this.crudService.infoById('agent',item.value).subscribe({
+        next : (resp : any) => {
+          console.log('AGENT',resp)
+          this.setFieldValue('agent_name',resp.data.agent_name)
+          this.setFieldDropdown('agent_person_in_charge',resp.data.agent_people_in_charge.map( (x:any) => x.pic_name))
+        }
+      })
+    }
   }
 }

@@ -146,19 +146,3 @@ class BaseCrud:
                 'deleted' : False,
                 'message' : 'An error occured: ' + str(e)
             },200
-
-    @staticmethod
-    def getAttribute(class_name:str,attribute:str):
-        item : any
-        collection = getattr(models,class_name)
-        try:
-            item = collection.objects().distinct(attribute)
-            return {
-                'attribute' : True,
-                'data' : item
-            },200
-        except Exception as e:
-            return {
-                'attribute' : False,
-                'message' : 'An error occured: ' + str(e)
-            },200

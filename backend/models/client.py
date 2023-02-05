@@ -34,5 +34,5 @@ class Client(svc.db.Document):
     account  = svc.db.StringField( min_length=3, max_length=255)
     entry_date  = svc.db.DateTimeField()
     notes = svc.db.StringField( min_length=3, max_length=255)
-    client_pic = svc.db.ListField(svc.db.EmbeddedDocumentField(ClientPiC))
-    client_alias = svc.db.ListField(svc.db.EmbeddedDocumentField(ClientAlias)) 
+    client_people_in_charge = svc.db.ListField(svc.db.EmbeddedDocumentField(ClientPiC))
+    client_aliases = svc.db.ListField(svc.db.EmbeddedDocumentField(ClientAlias)) 

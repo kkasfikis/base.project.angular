@@ -8,9 +8,9 @@ from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identit
 import json
 
 api = Namespace('crud',description = 'Client Crud Endpoints')
-
 @api.route("/<string:collection>/<string:attribute>", methods=['GET','POST'])
+@api.route("/<string:collection>/<string:attribute>/<string:mode>", methods=['GET','POST'])
 class GetCrud(Resource):
     @cross_origin()
-    def get(self,collection,attribute):
-        return BaseCrud.getAttribute(collection,attribute)
+    def get(self,collection,attribute,mode = None):
+        return BaseCrud.getAttribute(collection,attribute,mode)

@@ -6,11 +6,6 @@
             "type": "Hidden"
         },
         {
-            "key": "_id",
-            "order": 0,
-            "type": "Hidden"
-        },
-        {
             "key": "name",
             "order": 20,
             "type": "TextBox",
@@ -178,7 +173,7 @@
         {
             "key": "town",
             "order": 120,
-            "type": "Select",
+            "type": "TextBox",
             "label": "Town",
             "options": [],
             "enabled": true,
@@ -313,7 +308,7 @@
     ],
     "subforms": [
         {
-            "key": "client_alias",
+            "key": "client_aliases",
             "title": "CLIENT ALIAS NAMES",
             "order": 1000,
             "fields": [
@@ -385,7 +380,7 @@
             "tagSeparator": ""
         },
         {
-            "key": "client_pic",
+            "key": "client_people_in_charge",
             "title": "PEOPLE IN CHARGE",
             "order": 2000,
             "fields": [

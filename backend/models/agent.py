@@ -19,4 +19,4 @@ class Agent(svc.db.Document):
     phone = svc.db.StringField(min_length=3, max_length= 255)               #		T	
     fax = svc.db.StringField(min_length=3, max_length= 255)                 #		T	
     mail = svc.db.StringField(min_length=3, max_length= 255)                #		T
-    agent_pic = svc.db.ListField(svc.db.EmbeddedDocumentField(AgentPiC))
+    agent_people_in_charge = svc.db.ListField(svc.db.EmbeddedDocumentField(AgentPiC))

@@ -31,7 +31,7 @@ export class BankAccountComponent implements OnInit {
   }
 
   convertFromJson(){
-    let obj = data as any;
+    let obj = JSON.parse(JSON.stringify(data as any)) //deep copy workaround;
     this.tableColumns = obj.columns;
     
     if(obj.filters && obj.filters.length > 0){

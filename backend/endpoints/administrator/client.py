@@ -6,7 +6,7 @@ from ..crud import BaseCrud
 from models.client import Client
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
-
+from datetime import datetime
 api = Namespace('client',description = 'Client Crud Endpoints')
 
 @api.route("/", methods=['GET','POST'])
@@ -17,7 +17,9 @@ class GetPostClient(Resource):
 
     @cross_origin()
     def post(self):
-        return BaseCrud.create('Client',request.get_json())
+        data = request.get_json()
+        data['entry_date'] = datetime.fromisoformat(data['entry_date'].split('.')[0])
+        return BaseCrud.create('Client',data)
 
 @api.route("/<int:page>/<int:size>", methods=['GET','POST'])
 @api.route("/<int:page>/<int:size>/<string:sort>/<string:sortColumn>", methods=['GET','POST'])

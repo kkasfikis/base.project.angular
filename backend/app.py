@@ -1,6 +1,7 @@
 import os,sys
 from service import svc
 import endpoints.auth #do not remove this
+import endpoints.helpers #do not remove this
 from endpoints.administrator.port import api as port
 from endpoints.administrator.client import api as client
 from endpoints.administrator.agent import api as agent
