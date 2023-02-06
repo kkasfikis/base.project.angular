@@ -150,22 +150,22 @@ class Inquire13(svc.db.EmbeddedDocument):
     date = svc.db.StringField(min_length=3, max_length= 255)	    #   D
 
 class Call(svc.db.Document):
-    estimated_date = svc.db.StringField(required = True,min_length=3, max_length= 255)         #		D
-    call_entry_date = svc.db.StringField(min_length=3, max_length= 255)                   #       D	
+    estimated_date = svc.db.DateTimeField()       #		D
+    call_entry_date = svc.db.DateTimeField()                   #       D	
     
-    client = svc.db.ReferenceField(Client)
+    client = svc.db.ReferenceField(Client, reverse_delete_rule=1) # NULLIFY
     client_name = svc.db.StringField(required = True,min_length=3, max_length= 255)  #		T	Select from CLIENTS 
     client_alias = svc.db.StringField(required = True,min_length=3, max_length= 255)   #		T	Select from CLIENTALIAS for specific Client
     
-    vessel = svc.db.ReferenceField(Vessel)
+    vessel = svc.db.ReferenceField(Vessel, reverse_delete_rule=1)
     vessel_name = svc.db.StringField(required = True,min_length=3, max_length= 255)     #		T	Select from VESSELS
     vessel_flag = svc.db.StringField(required = True,min_length=3, max_length= 255)     #       T   Selected from PRLIST > value for PRLIST > list = “Vessel Flags”
     
-    port = svc.db.ReferenceField(Port)
+    port = svc.db.ReferenceField(Port, reverse_delete_rule=1)
     port_name = svc.db.StringField(required = True,min_length=3, max_length= 255)    #		T	Select from PORTS
     port_anchorage = svc.db.StringField(min_length=3, max_length= 255)                #		T
     
-    agent = svc.db.ReferenceField(Agent)
+    agent = svc.db.ReferenceField(Agent, reverse_delete_rule=1)
     agent_name = svc.db.StringField(min_length=3, max_length= 255)               #		T	Select from AGENTS
     agent_person_in_charge = svc.db.StringField(min_length=3, max_length= 255)                 #		T	Select from AGENTPIC for specific agent
     
@@ -182,19 +182,20 @@ class Call(svc.db.Document):
     draft = svc.db.StringField(min_length=3, max_length= 255)                   #		T
     usr = svc.db.StringField(min_length=3, max_length= 255)                     #		T
     cma = svc.db.StringField(min_length=3, max_length= 255)                     #		T
+    rfg = svc.db.StringField(min_length=3, max_length= 255)
     last_rscr = svc.db.StringField(min_length=3, max_length= 255)                #		T
     arrival_draft = svc.db.StringField(min_length=3, max_length= 255)               #		T
-    arrival_fwbob = svc.db.StringField(min_length=3, max_length= 255)               #		T
+    forward_bob_arrival = svc.db.StringField(min_length=3, max_length= 255)               #		T
     arrival_sludge = svc.db.StringField(min_length=3, max_length= 255)             #		T
     updated_prospect_link = svc.db.StringField(min_length=3, max_length= 255)         #	    T   LINKs
     updated_lineup = svc.db.StringField(min_length=3, max_length= 255)           #		T
     inbound_bob = svc.db.StringField(min_length=3, max_length= 255)              #		T
     outbound_fob = svc.db.StringField(min_length=3, max_length= 255)             #		T
-    entry_on_progress_date = svc.db.StringField(min_length=3, max_length= 255)         #	    D
+    entry_on_progress_date = svc.db.DateTimeField()       #	    D
     anchorage_waiting_pilot = svc.db.StringField(min_length=3, max_length= 255)   #	    T
-    etb = svc.db.StringField(min_length=3, max_length= 255)                     #		D
-    etc = svc.db.StringField(min_length=3, max_length= 255)                     #		D
-    ets	 = svc.db.StringField(min_length=3, max_length= 255)                    #		D
+    etb = svc.db.DateTimeField()                    #		D
+    etc = svc.db.DateTimeField()                  #		D
+    ets	 = svc.db.DateTimeField()                #		D
     remarks = svc.db.StringField(min_length=3, max_length= 255)                 #		T
     terminal_pisch_rate = svc.db.StringField(min_length=3, max_length= 255)       #	    T
     terminal_specs = svc.db.StringField(min_length=3, max_length= 255)           #		T   
@@ -202,7 +203,7 @@ class Call(svc.db.Document):
     port_recent_accident = svc.db.StringField(min_length=3, max_length= 255)      #	    T
     pilots_availability = svc.db.StringField(min_length=3, max_length= 255)      #	    T
     other_port_restrictions = svc.db.StringField(min_length=3, max_length= 255)    #	    T
-    military_exercise = svc.db.StringField(min_length=3, max_length= 255)        #		T
+    military_exercises = svc.db.StringField(min_length=3, max_length= 255)        #		T
     warehouse_conditions = svc.db.StringField(min_length=3, max_length= 255)     #	    T	
     ice_concentration = svc.db.StringField(min_length=3, max_length= 255)        #	    T
     fog_status = svc.db.StringField(min_length=3, max_length= 255)               #		T

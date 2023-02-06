@@ -56,11 +56,22 @@ class BaseCrud:
         pass
 
     @staticmethod
+    def recordItem(class_name : str, id : str):
+        try:
+            collection = getattr(models,class_name)
+            item = json.loads(collection.objects(pk = id).first().to_json())
+            item['id'] = item['_id']['$oid']
+            return item
+        except Exception as e:
+            print(str(e))
+            return None
+
+    @staticmethod
     def record(class_name : str, id : str):
         try:
             collection = getattr(models,class_name)
             item = json.loads(collection.objects(pk = id).first().to_json())
-            item['_id'] = item['_id']['$oid']
+            item['id'] = item['_id']['$oid']
             return {
                 'info' : True,
                 'data' : item

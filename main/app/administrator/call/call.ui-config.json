@@ -246,7 +246,7 @@
             "align": "center center"
         },
         {
-            "key": "saf_man",
+            "key": "safety_manual",
             "order": 130,
             "type": "TextBox",
             "label": "Safety Manual",
@@ -261,7 +261,7 @@
             "align": "center center"
         },
         {
-            "key": "saf_eq_cert",
+            "key": "safety_certificate",
             "order": 140,
             "type": "TextBox",
             "label": "Safety Equipment Certificate",
@@ -366,10 +366,10 @@
             "align": "center center"
         },
         {
-            "key": "bredth",
+            "key": "breadth",
             "order": 210,
             "type": "TextBox",
-            "label": "BREDTH",
+            "label": "breadth",
             "options": [],
             "enabled": true,
             "required": false,
@@ -385,21 +385,6 @@
             "order": 220,
             "type": "TextBox",
             "label": "DRAFT",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 10,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "user",
-            "order": 230,
-            "type": "TextBox",
-            "label": "USER",
             "options": [],
             "enabled": true,
             "required": false,
@@ -441,7 +426,7 @@
             "align": "center center"
         },
         {
-            "key": "arvl_draft",
+            "key": "arrival_draft",
             "order": 260,
             "type": "TextBox",
             "label": "Arrival DRAFT",
@@ -456,7 +441,7 @@
             "align": "center center"
         },
         {
-            "key": "fw_bob_arvl",
+            "key": "forward_bob_arrival",
             "order": 270,
             "type": "TextBox",
             "label": "FW BOB Arrival",
@@ -471,7 +456,7 @@
             "align": "center center"
         },
         {
-            "key": "sludges_arvl",
+            "key": "arrival_sludge",
             "order": 280,
             "type": "TextBox",
             "label": "Sludges Arrival",
@@ -486,7 +471,7 @@
             "align": "center center"
         },
         {
-            "key": "upd_prospect_link",
+            "key": "updated_prospect_link",
             "order": 290,
             "type": "TextBox",
             "label": "Updated Prospectus Link",
@@ -516,7 +501,7 @@
             "align": "center center"
         },
         {
-            "key": "indbound_bob",
+            "key": "inbound_bob",
             "order": 310,
             "type": "TextBox",
             "label": "Inbound BOB",
@@ -546,7 +531,7 @@
             "align": "center center"
         },
         {
-            "key": "entry_on_progress",
+            "key": "entry_on_progress_date",
             "order": 330,
             "type": "DatePicker",
             "label": "Entry on Progress",
@@ -636,7 +621,7 @@
             "align": "center center"
         },
         {
-            "key": "terminal_pisch",
+            "key": "terminal_pisch_rate",
             "order": 390,
             "type": "TextBox",
             "label": "Terminal Pisch",
@@ -666,7 +651,7 @@
             "align": "center center"
         },
         {
-            "key": "terminal_maint_sched",
+            "key": "terminal_maintenance_schedule",
             "order": 410,
             "type": "TextBox",
             "label": "Terminal Maint. Schedule",
@@ -711,7 +696,7 @@
             "align": "center center"
         },
         {
-            "key": "other_new_port_restrict",
+            "key": "other_port_restrictions",
             "order": 440,
             "type": "TextBox",
             "label": "Other New Port Restrictions",
@@ -816,7 +801,7 @@
             "align": "center center"
         },
         {
-            "key": "port_pdf_link",
+            "key": "port_document",
             "order": 510,
             "type": "TextBox",
             "label": "Port Map",
@@ -4470,7 +4455,7 @@
             "align": "center center"
         },
         {
-            "key": "saf_man",
+            "key": "safety_manual",
             "order": 130,
             "label": "Safety Manual",
             "type": "Text",
@@ -4479,7 +4464,7 @@
             "align": "center center"
         },
         {
-            "key": "saf_eq_cert",
+            "key": "safety_certificate",
             "order": 140,
             "label": "Safety Equipment Certficate",
             "type": "Text",
@@ -4542,9 +4527,9 @@
             "align": "center center"
         },
         {
-            "key": "bredth",
+            "key": "breadth",
             "order": 210,
-            "label": "BREDTH",
+            "label": "breadth",
             "type": "Text",
             "width": 25,
             "innerwidth": 98,
@@ -4554,15 +4539,6 @@
             "key": "draft",
             "order": 220,
             "label": "DRAFT",
-            "type": "Text",
-            "width": 25,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "user",
-            "order": 230,
-            "label": "USER",
             "type": "Text",
             "width": 25,
             "innerwidth": 98,
@@ -4587,7 +4563,7 @@
             "align": "center center"
         },
         {
-            "key": "arvl_draft",
+            "key": "arrival_draft",
             "order": 260,
             "label": "Arrival DRAFT",
             "type": "Text",
@@ -4596,7 +4572,7 @@
             "align": "center center"
         },
         {
-            "key": "fw_bob_arvl",
+            "key": "forward_bob_arrival",
             "order": 270,
             "label": "FW BOB Arrival",
             "type": "Text",
@@ -4605,7 +4581,7 @@
             "align": "center center"
         },
         {
-            "key": "sludges_arvl",
+            "key": "arrival_sludge",
             "order": 280,
             "label": "Sludges Arrival",
             "type": "Text",
@@ -4614,7 +4590,7 @@
             "align": "center center"
         },
         {
-            "key": "upd_prospect_link",
+            "key": "updated_prospect_link",
             "order": 290,
             "label": "Updated Prospectus Link",
             "type": "Image",
@@ -4632,7 +4608,7 @@
             "align": "center center"
         },
         {
-            "key": "indbound_bob",
+            "key": "inbound_bob",
             "order": 310,
             "label": "Inbound BOB",
             "type": "Text",
@@ -4650,7 +4626,7 @@
             "align": "center center"
         },
         {
-            "key": "entry_on_progress",
+            "key": "entry_on_progress_date",
             "order": 330,
             "label": "Entry on Progress",
             "type": "Text",
@@ -4704,7 +4680,7 @@
             "align": "center center"
         },
         {
-            "key": "terminal_pisch",
+            "key": "terminal_pisch_rate",
             "order": 390,
             "label": "Terminal Pisch",
             "type": "Text",
@@ -4722,7 +4698,7 @@
             "align": "center center"
         },
         {
-            "key": "terminal_maint_sched",
+            "key": "terminal_maintenance_schedule",
             "order": 410,
             "label": "Terminal Maint. Schedule",
             "type": "Text",
@@ -4749,7 +4725,7 @@
             "align": "center center"
         },
         {
-            "key": "other_new_port_restrict",
+            "key": "other_port_restrictions",
             "order": 440,
             "label": "Other New Port Restrictions",
             "type": "Text",
@@ -4812,7 +4788,7 @@
             "align": "center center"
         },
         {
-            "key": "port_pdf_link",
+            "key": "port_document",
             "order": 510,
             "label": "Port Map",
             "type": "Image",
