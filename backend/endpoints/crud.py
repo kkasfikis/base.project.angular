@@ -1,7 +1,7 @@
 import json
 import models
 from service import svc
-from helpers import Helpers
+from helperFunctions import HelperFunctions
 class BaseCrud:
     @staticmethod
     def read(class_name : str):
@@ -60,7 +60,7 @@ class BaseCrud:
         try:
             collection = getattr(models,class_name)
             item = json.loads(collection.objects(pk = id).first().to_json())
-            item['id'] = item['_id']['$oid']
+            item['_id'] = item['_id']['$oid']
             return item
         except Exception as e:
             print(str(e))
@@ -71,7 +71,7 @@ class BaseCrud:
         try:
             collection = getattr(models,class_name)
             item = json.loads(collection.objects(pk = id).first().to_json())
-            item['id'] = item['_id']['$oid']
+            item['_id'] = item['_id']['$oid']
             return {
                 'info' : True,
                 'data' : item
@@ -127,8 +127,7 @@ class BaseCrud:
             },200
         try:
             item = collection.objects(pk = id).first()
-            Helpers.copy_object_values(item_data,item)
-            print('ITEM:',item)
+            HelperFunctions.copy_object_values(item_data,item)
             item.save()
             return {
                 'updated' : True,

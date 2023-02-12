@@ -10,6 +10,9 @@ export enum FormFieldType{
     DatePicker,
     RadioBox,
     CheckBox,
+    Password,
+    Number,
+    Decimal,
     Hidden
 }
 

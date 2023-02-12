@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
+import { DynamicCrudService } from 'main/app/ui-components/dynamic-crud/dynamic-crud.service';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
@@ -13,7 +14,7 @@ import * as data from './supplier.ui-config.json'
 })
 export class SupplierComponent implements OnInit {
 
-  constructor() { }
+  constructor(private crudService : DynamicCrudService) { }
 
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
 
@@ -26,6 +27,34 @@ export class SupplierComponent implements OnInit {
   ngOnInit(): void {
     console.log('Converting Supplier fields from JSON ....')
     this.convertFromJson();
+    this.initMods();
+  }
+
+  setFieldDropdown(fieldKey : string, values : string[]){
+    let field = this.formFields.find(x => x.getValue().key == fieldKey) as BehaviorSubject<FormFieldBase>
+    let fieldValue = field.getValue() as FormFieldBase;
+    fieldValue.options = values.map( (x:string) => {
+        return {
+          key : x,
+          value : x
+        }
+      }
+    )
+    field.next(fieldValue)
+  }
+  
+  initMods(){
+    this.crudService.read('predefined').subscribe({
+      next : (resp : any) => {
+        this.setFieldDropdown( 'status' , resp.data.find( ( x:any ) => x.key == 'supplierStatus' ).values );
+        this.setFieldDropdown( 'category', resp.data.find( (x:any) => x.key == 'supplierCategories').values );
+        this.setFieldDropdown( 'country', resp.data.find( (x:any) => x.key == 'countries').values );
+        this.setFieldDropdown( 'supplier_object', resp.data.find( (x:any) => x.key == 'supplierOccupations').values );
+        this.setFieldDropdown( 'priority', resp.data.find( (x:any) => x.key == 'priorities').values );
+        this.setFieldDropdown( 'bank', resp.data.find( (x:any) => x.key == 'banks').values );
+        this.setFieldDropdown( 'payment_method', resp.data.find( (x:any) => x.key == 'paymentMethods').values );
+      }
+    })
   }
 
   convertFromJson(){

@@ -6,6 +6,16 @@
             <input matInput [formControlName]="localFormField.key" (change)="contentChange()">
         </mat-form-field>
 
+        <mat-form-field *ngSwitchCase="localFormFieldType.Password" appearance="fill" fxFlex="100">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input matInput [formControlName]="localFormField.key" type="password" (change)="contentChange()">
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.Number" appearance="fill" fxFlex="100">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input matInput [formControlName]="localFormField.key" type="number" (change)="contentChange()">
+        </mat-form-field>
+
         <mat-form-field *ngSwitchCase="localFormFieldType.TextArea" appearance="fill" fxFlex="100">
             <mat-label>{{localFormField.label}}</mat-label>
             <textarea matInput [formControlName]="localFormField.key" (change)="contentChange()"></textarea>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
+import { DynamicCrudService } from 'main/app/ui-components/dynamic-crud/dynamic-crud.service';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
@@ -13,7 +14,7 @@ import * as data from './expense.ui-config.json'
 })
 export class ExpenseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private crudService : DynamicCrudService) { }
 
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
 
@@ -26,6 +27,28 @@ export class ExpenseComponent implements OnInit {
   ngOnInit(): void {
     console.log('Converting Expense fields from JSON ....')
     this.convertFromJson();
+    this.initMods();
+  }
+
+  setFieldDropdown(fieldKey : string, values : string[]){
+    let field = this.formFields.find(x => x.getValue().key == fieldKey) as BehaviorSubject<FormFieldBase>
+    let fieldValue = field.getValue() as FormFieldBase;
+    fieldValue.options = values.map( (x:string) => {
+        return {
+          key : x,
+          value : x
+        }
+      }
+    )
+    field.next(fieldValue)
+  }
+  
+  initMods(){
+    this.crudService.read('predefined').subscribe({
+      next : (resp : any) => {
+        this.setFieldDropdown( 'currency' , resp.data.find( ( x:any ) => x.key == 'currencies' ).values );
+      }
+    })
   }
 
   convertFromJson(){

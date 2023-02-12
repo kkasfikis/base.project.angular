@@ -160,7 +160,10 @@
             "order": 110,
             "type": "Select",
             "label": "D/W",
-            "options": [],
+            "options": [
+                {"key":"deposit","value":"Deposit"},
+                {"key":"withdrawal","value":"Withdrawal"}
+            ],
             "enabled": true,
             "value": "W",
             "required": true,

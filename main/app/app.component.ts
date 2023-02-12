@@ -116,6 +116,14 @@ export class AppComponent implements OnInit,AfterViewInit{
                 ] as MenuOption[]
               },
               {
+                key:'expenses',
+                label:'Expenses',
+                icon:'payments',
+                link:'/expense',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
+              },
+              {
                 key:'staff',
                 label:'Staff',
                 icon:'boy',
@@ -142,24 +150,8 @@ export class AppComponent implements OnInit,AfterViewInit{
             isFunction:false,
             subMenus : [
               {
-                key:'debit',
-                label:'Debit Notes',
-                icon:'menu',
-                link:'/invoice',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-              {
-                key:'credit',
-                label:'Credit Notes',
-                icon:'menu',
-                isFunction:false,
-                link:'/invoice',
-                subMenus : [] as MenuOption[]
-              },
-              {
-                key:'da',
-                label:'Disbursement Accounts',
+                key:'invoice',
+                label:'Invoices',
                 icon:'menu',
                 link:'/invoice',
                 isFunction:false,
@@ -186,14 +178,6 @@ export class AppComponent implements OnInit,AfterViewInit{
 
 
 
-          {
-            key:'expenses',
-            label:'Expenses',
-            icon:'payments',
-            link:'/expense',
-            isFunction:false,
-            subMenus : [] as MenuOption[]
-          }
 
 
         ] as MenuOption[]
@@ -202,15 +186,6 @@ export class AppComponent implements OnInit,AfterViewInit{
         icon:'home',
         label:'Category 2',
         options:[
-          {
-            key:'proforma',
-            label:'Proformas',
-            icon:'menu',
-            link : '/invoice',
-            isFunction:false,
-            subMenus : [
-            ] as MenuOption[]
-          },
           {
             key:'call',
             label:'Calls',
@@ -232,14 +207,6 @@ export class AppComponent implements OnInit,AfterViewInit{
           {
             key:'reports',
             label:'Reports',
-            icon:'menu',
-            isFunction:false,
-            subMenus : [
-            ] as MenuOption[]
-          },
-          {
-            key:'archive',
-            label:'Archive',
             icon:'menu',
             isFunction:false,
             subMenus : [

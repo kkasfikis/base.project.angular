@@ -6,21 +6,6 @@
             "type": "Hidden"
         },
         {
-            "key": "csoa_type",
-            "order": 10,
-            "type": "Select",
-            "label": "Type",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 100,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
             "key": "csoa_date",
             "order": 20,
             "type": "DatePicker",
@@ -81,10 +66,10 @@
             "align": "center center"
         },
         {
-            "key": "inv_client_name",
+            "key": "client",
             "order": 80,
             "type": "Select",
-            "label": "Client Name",
+            "label": "Client",
             "options": [],
             "enabled": true,
             "required": false,
@@ -96,7 +81,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_client_info",
+            "key": "client_info",
             "order": 100,
             "type": "TextBox",
             "label": "General Info",
@@ -111,9 +96,9 @@
             "align": "center center"
         },
         {
-            "key": "inv_debit_amount",
+            "key": "csoa_debit_amount",
             "order": 110,
-            "type": "TextBox",
+            "type": "Number",
             "label": "Debit",
             "options": [],
             "enabled": true,
@@ -126,9 +111,9 @@
             "align": "center center"
         },
         {
-            "key": "inv_credit_tamount",
+            "key": "csoa_credit_amount",
             "order": 120,
-            "type": "TextBox",
+            "type": "Number",
             "label": "Credit",
             "options": [],
             "enabled": true,
@@ -141,9 +126,9 @@
             "align": "center center"
         },
         {
-            "key": "inv_balance_amount",
+            "key": "csoa_balance_amount",
             "order": 130,
-            "type": "TextBox",
+            "type": "Number",
             "label": "Balance",
             "options": [],
             "enabled": true,
@@ -158,14 +143,14 @@
     ],
     "subforms": [
         {
-            "key": "csoa_item",
+            "key": "csoa_items",
             "title": "CONSOLIDATED SOA ITEM DESCRIPTION",
             "order":1000,
             "fields": [
                 {
                     "key": "item_date",
                     "order": 10,
-                    "type": "TextBox",
+                    "type": "DatePicker",
                     "label": "Date",
                     "options": [],
                     "enabled": true,
@@ -178,7 +163,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_soa_description",
+                    "key": "item_description",
                     "order": 20,
                     "type": "TextBox",
                     "label": "Description",
@@ -195,7 +180,7 @@
                 {
                     "key": "item_debit",
                     "order": 30,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Price",
                     "options": [],
                     "enabled": true,
@@ -210,7 +195,7 @@
                 {
                     "key": "item_credit",
                     "order": 40,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Debit",
                     "options": [],
                     "enabled": true,
@@ -225,7 +210,7 @@
                 {
                     "key": "item_balance",
                     "order": 50,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Credit",
                     "options": [],
                     "enabled": true,
@@ -242,36 +227,36 @@
                 {
                     "key": "item_date",
                     "text": "Date",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 20
                 },
                 {
                     "key": "item_soa_description",
                     "text": "Description",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 30
                 },
                 {
                     "key": "item_debit",
                     "text": "Price",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 10
                 },
                 {
                     "key": "item_credit",
                     "text": "Debit",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 20
                 },
                 {
                     "key": "item_balance",
                     "text": "Credit",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 20
                 }
             ],
@@ -332,13 +317,6 @@
     ],
     "filters": [
         {
-            "key": "csoa_type",
-            "label": "Type",
-            "order": 10,
-            "fieldType": "Select",
-            "options": []
-        },
-        {
             "key": "csoa_date",
             "label": "Date",
             "order": 20,
@@ -368,15 +346,6 @@
         }
     ],
     "infos": [
-        {
-            "key": "csoa_type",
-            "order": 10,
-            "label": "Type",
-            "type": "Text",
-            "width": 100,
-            "innerwidth": 98,
-            "align": "center center"
-        },
         {
             "key": "csoa_date",
             "order": 20,
@@ -514,13 +483,6 @@
         }
     ],
     "columns": [
-        {
-            "key": "csoa_type",
-            "text": "Type",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 100
-        },
         {
             "key": "csoa_date",
             "text": "Date",

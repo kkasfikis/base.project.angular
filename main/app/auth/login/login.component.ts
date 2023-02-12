@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     } as FormFieldBase)),
     new BehaviorSubject<FormFieldBase>(new FormFieldBase({
       value : '',
-      type : FormFieldType.TextBox,
+      type : FormFieldType.Password,
       key : 'password',
       label : 'Password',
       order: 1,

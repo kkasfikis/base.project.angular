@@ -6,6 +6,7 @@ from models.port import Port
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
 from ..crud import BaseCrud
+from helperFunctions import HelperFunctions
 api = Namespace('breakdown',description = 'Breakdown List Crud Endpoints')
 
 @api.route("/", methods=['GET','POST'])
@@ -16,7 +17,9 @@ class GetPostBreakdown(Resource):
 
     @cross_origin()
     def post(self):
-        return BaseCrud.create('Breakdown',request.get_json())
+        data = request.get_json()
+        HelperFunctions.convertDates(data)
+        return BaseCrud.create('Breakdown',data)
 
 @api.route("/<int:page>/<int:size>", methods=['GET','POST'])
 @api.route("/<int:page>/<int:size>/<string:sort>/<string:sortColumn>", methods=['GET','POST'])

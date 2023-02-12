@@ -6,7 +6,7 @@
             "type": "Hidden"
         },
         {
-            "key": "break_entry",
+            "key": "breakdown_entry",
             "order": 10,
             "type": "DatePicker",
             "label": "Entry Date",
@@ -21,7 +21,7 @@
             "align": "center center"
         },
         {
-            "key": "break_status",
+            "key": "breakdown_status",
             "order": 20,
             "type": "Select",
             "label": "Status",
@@ -36,7 +36,7 @@
             "align": "center center"
         },
         {
-            "key": "break_comment",
+            "key": "breakdown_comment",
             "order": 30,
             "type": "TextArea",
             "label": "General Info",
@@ -51,7 +51,7 @@
             "align": "center center"
         },
         {
-            "key": "break_info",
+            "key": "breakdown_info",
             "order": 40,
             "type": "TextArea",
             "label": "Breakdown Info",
@@ -66,7 +66,7 @@
             "align": "center center"
         },
         {
-            "key": "break_debit_amount",
+            "key": "breakdown_debit_amount",
             "order": 51,
             "type": "TextBox",
             "label": "Total Debit",
@@ -81,7 +81,7 @@
             "align": "center center"
         },
         {
-            "key": "break_credit_amount",
+            "key": "breakdown_credit_amount",
             "order": 60,
             "type": "TextBox",
             "label": "Total Credit",
@@ -96,9 +96,9 @@
             "align": "center center"
         },
         {
-            "key": "break_actual_amount",
+            "key": "breakdown_actual_amount",
             "order": 23,
-            "type": "Hidden",
+            "type": "Number",
             "label": "Actual",
             "options": [],
             "enabled": true,
@@ -113,14 +113,14 @@
     ],
     "subforms": [
         {
-            "key": "break_item",
+            "key": "breakdown_items",
             "label": "SERVICES DESCRIPTION",
             "order":1000,
             "fields": [
                 {
                     "key": "item_date",
                     "order": 10,
-                    "type": "TextBox",
+                    "type": "DatePicker",
                     "label": "Date",
                     "options": [],
                     "enabled": true,
@@ -195,7 +195,7 @@
                 {
                     "key": "item_order",
                     "order": 60,
-                    "type": "Hidden",
+                    "type": "Number",
                     "label": "Order",
                     "options": [],
                     "enabled": true,
@@ -210,7 +210,7 @@
                 {
                     "key": "item_price",
                     "order": 70,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Price",
                     "options": [],
                     "enabled": true,
@@ -240,7 +240,7 @@
                 {
                     "key": "item_credit",
                     "order": 73,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Credit",
                     "options": [],
                     "enabled": true,
@@ -255,7 +255,7 @@
                 {
                     "key": "item_debit",
                     "order": 72,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Debit",
                     "options": [],
                     "enabled": true,
@@ -270,7 +270,7 @@
                 {
                     "key": "item_qty",
                     "order": 71,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "QTY",
                     "options": [],
                     "enabled": true,
@@ -285,7 +285,7 @@
                 {
                     "key": "item_amount",
                     "order": 120,
-                    "type": "Hidden",
+                    "type": "Number",
                     "label": "Amount",
                     "options": [],
                     "enabled": true,
@@ -300,7 +300,7 @@
                 {
                     "key": "item_actual",
                     "order": 130,
-                    "type": "Hidden",
+                    "type": "Number",
                     "label": "Actual",
                     "options": [],
                     "enabled": true,
@@ -332,36 +332,36 @@
                 {
                     "key": "item_date",
                     "text": "Date",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 10
                 },
                 {
                     "key": "item_status",
                     "text": "Status",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 10
                 },
                 {
                     "key": "item_category",
                     "text": "Category",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 10
                 },
                 {
                     "key": "item_subcategory",
                     "text": "Subcategory",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 15
                 },
                 {
                     "key": "item_description",
                     "text": "Description",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 25
                 }
             ],
@@ -504,7 +504,7 @@
     "filters": [],
     "infos": [
         {
-            "key": "break_entry",
+            "key": "breakdown_entry",
             "order": 10,
             "label": "Entry Date",
             "type": "Text",
@@ -513,7 +513,7 @@
             "align": "center center"
         },
         {
-            "key": "break_status",
+            "key": "breakdown_status",
             "order": 20,
             "label": "Status",
             "type": "Text",
@@ -522,7 +522,7 @@
             "align": "center center"
         },
         {
-            "key": "break_comment",
+            "key": "breakdown_comment",
             "order": 30,
             "label": "General Info",
             "type": "Text",
@@ -531,7 +531,7 @@
             "align": "center center"
         },
         {
-            "key": "break_info",
+            "key": "breakdown_info",
             "order": 40,
             "label": "Breakdown Info",
             "type": "Text",
@@ -540,7 +540,7 @@
             "align": "center center"
         },
         {
-            "key": "break_debit_amount",
+            "key": "breakdown_debit_amount",
             "order": 50,
             "label": "Debit",
             "type": "Text",
@@ -549,7 +549,7 @@
             "align": "center center"
         },
         {
-            "key": "break_credit_amount",
+            "key": "breakdown_credit_amount",
             "order": 60,
             "label": "Credit",
             "type": "Text",
@@ -558,7 +558,7 @@
             "align": "center center"
         },
         {
-            "key": "break_actual_amount",
+            "key": "breakdown_actual_amount",
             "order": 70,
             "label": "Actual",
             "type": "Text",
@@ -704,35 +704,35 @@
     ],
     "columns": [
         {
-            "key": "break_entry",
+            "key": "breakdown_entry",
             "text": "Entry Date",
             "isFilterable": true,
             "isSortable": true,
             "width": 10
         },
         {
-            "key": "break_status",
+            "key": "breakdown_status",
             "text": "Status",
             "isFilterable": true,
             "isSortable": true,
             "width": 10
         },
         {
-            "key": "break_info",
+            "key": "breakdown_info",
             "text": "Call Info",
             "isFilterable": true,
             "isSortable": true,
             "width": 50
         },
         {
-            "key": "break_debit_amount",
+            "key": "breakdown_debit_amount",
             "text": "Total Debit",
             "isFilterable": true,
             "isSortable": true,
             "width": 10
         },
         {
-            "key": "break_credit_amount",
+            "key": "breakdown_credit_amount",
             "text": "Total Credit",
             "isFilterable": true,
             "isSortable": true,

@@ -6,7 +6,7 @@
             "type": "Hidden"
         },
         {
-            "key": "inv_type",
+            "key": "invoice_type",
             "order": 10,
             "type": "Select",
             "label": "Document Type",
@@ -21,9 +21,9 @@
             "align": "center center"
         },
         {
-            "key": "inv_balance",
+            "key": "invoice_balance",
             "order": 20,
-            "type": "Hidden",
+            "type": "Number",
             "label": "Balance",
             "options": [],
             "enabled": true,
@@ -36,7 +36,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_date",
+            "key": "invoice_date",
             "order": 30,
             "type": "DatePicker",
             "label": "Document Issue Date",
@@ -46,12 +46,12 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 10,
+            "width": 33,
             "innerWidth": 98,
             "align": "center center"
         },
         {
-            "key": "inv_seria",
+            "key": "invoice_seria",
             "order": 40,
             "type": "TextBox",
             "label": "Seria",
@@ -61,12 +61,12 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 5,
+            "width": 33,
             "innerWidth": 98,
             "align": "center center"
         },
         {
-            "key": "inv_no",
+            "key": "invoice_no",
             "order": 50,
             "type": "TextBox",
             "label": "Number",
@@ -76,12 +76,12 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 10,
+            "width": 33,
             "innerWidth": 98,
             "align": "center center"
         },
         {
-            "key": "call_id",
+            "key": "call",
             "order": 60,
             "type": "Select",
             "label": "Call Reference",
@@ -91,12 +91,12 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 10,
+            "width": 50,
             "innerWidth": 98,
             "align": "center center"
         },
         {
-            "key": "break_id",
+            "key": "breakdown",
             "order": 70,
             "type": "Select",
             "label": "Breakdown Reference",
@@ -106,43 +106,28 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 10,
+            "width": 50,
             "innerWidth": 98,
             "align": "center center"
         },
         {
-            "key": "inv_title",
-            "order": 11,
-            "type": "TextBox",
-            "label": "Title",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 75,
-            "innerWidth": 100,
-            "align": "center center"
-        },
-        {
-            "key": "inv_client_name",
-            "order": 12,
+            "key": "client",
+            "order": 60,
             "type": "Select",
-            "label": "Client Name",
+            "label": "Client",
             "options": [],
             "enabled": true,
             "required": false,
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 25,
+            "width": 50,
             "innerWidth": 98,
             "align": "center center"
         },
         {
-            "key": "inv_client_alias",
-            "order": 13,
+            "key": "client_alias",
+            "order": 60,
             "type": "Select",
             "label": "Client Alias",
             "options": [],
@@ -151,12 +136,12 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
-            "innerWidth": 50,
-            "align": "left"
+            "width": 50,
+            "innerWidth": 98,
+            "align": "center center"
         },
         {
-            "key": "inv_client_info",
+            "key": "client_info",
             "order": 110,
             "type": "TextArea",
             "label": "General Info",
@@ -171,9 +156,24 @@
             "align": "left"
         },
         {
-            "key": "inv_total_amount",
-            "order": 120,
+            "key": "invoice_title",
+            "order": 11,
             "type": "TextBox",
+            "label": "Title",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 75,
+            "innerWidth": 100,
+            "align": "center center"
+        },
+        {
+            "key": "invoice_total_amount",
+            "order": 120,
+            "type": "Number",
             "label": "Total Amount",
             "options": [],
             "enabled": true,
@@ -188,14 +188,14 @@
     ],
     "subforms": [
         {
-            "key": "invoice_item",
+            "key": "invoice_items",
             "title": "ITEM DESCRIPTION",
             "order":1000,
             "fields": [
                 {
                     "key": "item_date",
                     "order": 10,
-                    "type": "TextBox",
+                    "type": "DatePicker",
                     "label": "Date",
                     "options": [],
                     "enabled": true,
@@ -225,7 +225,7 @@
                 {
                     "key": "item_order",
                     "order": 30,
-                    "type": "Hidden",
+                    "type": "Number",
                     "label": "Order",
                     "options": [],
                     "enabled": true,
@@ -240,7 +240,7 @@
                 {
                     "key": "item_price",
                     "order": 40,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Price",
                     "options": [],
                     "enabled": true,
@@ -255,7 +255,7 @@
                 {
                     "key": "item_qty",
                     "order": 50,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "QTY",
                     "options": [],
                     "enabled": true,
@@ -271,7 +271,7 @@
                 {
                     "key": "item_amount",
                     "order": 60,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Amount",
                     "options": [],
                     "enabled": true,
@@ -286,7 +286,7 @@
                 {
                     "key": "item_discount_value",
                     "order": 70,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Discount",
                     "options": [],
                     "enabled": true,
@@ -301,7 +301,7 @@
                 {
                     "key": "item_discount_percent",
                     "order": 80,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Discount(%)",
                     "options": [],
                     "enabled": true,
@@ -316,7 +316,7 @@
                 {
                     "key": "discount_amount",
                     "order": 90,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Amount",
                     "options": [],
                     "enabled": true,
@@ -331,7 +331,7 @@
                 {
                     "key": "discount_total",
                     "order": 100,
-                    "type": "TextBox",
+                    "type": "Number",
                     "label": "Final",
                     "options": [],
                     "enabled": true,
@@ -512,14 +512,14 @@
     ],
     "filters": [
         {
-            "key": "inv_type",
+            "key": "invoice_type",
             "label": "Document Type",
             "order": 10,
             "fieldType": "Select",
             "options": []
         },
         {
-            "key": "inv_date",
+            "key": "invoice_date",
             "label": "Document Issue Date",
             "order": 30,
             "fieldType": "Select",
@@ -540,14 +540,21 @@
             "options": []
         },
         {
-            "key": "inv_client_name",
-            "label": "Client Name",
+            "key": "client",
+            "label": "Client",
             "order": 90,
             "fieldType": "Select",
             "options": []
         },
         {
-            "key": "inv_client_alias",
+            "key": "client_name",
+            "label": "Client Name",
+            "order": 90,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "client_alias",
             "label": "Client Alias",
             "order": 100,
             "fieldType": "Select",
@@ -556,7 +563,7 @@
     ],
     "infos": [
         {
-            "key": "inv_type",
+            "key": "invoice_type",
             "order": 10,
             "label": "Document Type",
             "type": "Text",
@@ -565,7 +572,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_balance",
+            "key": "invoice_balance",
             "order": 20,
             "label": "Balance",
             "type": "Text",
@@ -574,7 +581,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_date",
+            "key": "invoice_date",
             "order": 30,
             "label": "Document Issue Date",
             "type": "Text",
@@ -583,7 +590,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_seria",
+            "key": "invoice_seria",
             "order": 40,
             "label": "Document Seria",
             "type": "Text",
@@ -592,7 +599,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_no",
+            "key": "invoice_no",
             "order": 50,
             "label": "Document Number",
             "type": "Text",
@@ -619,7 +626,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_title",
+            "key": "invoice_title",
             "order": 80,
             "label": "Title",
             "type": "Text",
@@ -628,7 +635,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_client_name",
+            "key": "invoice_client_name",
             "order": 90,
             "label": "Client Name",
             "type": "Text",
@@ -637,7 +644,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_client_alias",
+            "key": "invoice_client_alias",
             "order": 100,
             "label": "Client Alias",
             "type": "Text",
@@ -646,7 +653,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_client_info",
+            "key": "invoice_client_info",
             "order": 110,
             "label": "General Info",
             "type": "Text",
@@ -655,7 +662,7 @@
             "align": "center center"
         },
         {
-            "key": "inv_total_amount",
+            "key": "invoice_total_amount",
             "order": 120,
             "label": "Total Amount",
             "type": "Text",
@@ -765,14 +772,14 @@
     ],
     "columns": [
         {
-            "key": "inv_type",
+            "key": "invoice_type",
             "text": "Document Type",
             "isFilterable": true,
             "isSortable": true,
             "width": 10
         },
         {
-            "key": "inv_date",
+            "key": "invoice_date",
             "text": "Document Issue Date",
             "isFilterable": true,
             "isSortable": true,
@@ -793,14 +800,14 @@
             "width": 10
         },
         {
-            "key": "inv_client_name",
+            "key": "invoice_client_name",
             "text": "Client Name",
             "isFilterable": true,
             "isSortable": true,
             "width": 20
         },
         {
-            "key": "inv_client_alias",
+            "key": "invoice_client_alias",
             "text": "Client Alias",
             "isFilterable": true,
             "isSortable": true,

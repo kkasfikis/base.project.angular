@@ -16,7 +16,14 @@ def getAttributeList():
     try:
         items = []
         if mode is not None:
-            fields = ['id',attribute]
+            fields = ['id']
+            
+            if ',' in attribute:
+                for attr in attribute.split(','):
+                    fields.append(attr)
+            else:
+                fields.append(attribute)
+
             for item in collection.objects().only(*fields):
                 tItem = json.loads(item.to_json())
                 tItem['_id'] = tItem['_id']['$oid']

@@ -246,7 +246,7 @@
             "align": "center center"
         },
         {
-            "key": "payment_way",
+            "key": "payment_method",
             "order": 170,
             "type": "Select",
             "label": "Payment Way",
@@ -754,7 +754,7 @@
             "align": "center center"
         },
         {
-            "key": "payment_way",
+            "key": "payment_method",
             "order": 170,
             "label": "Payment Way",
             "type": "Text",
@@ -935,7 +935,7 @@
             "width": 50
         },
         {
-            "key": "payment_way",
+            "key": "payment_method",
             "text": "Payment Way",
             "isFilterable": true,
             "isSortable": true,

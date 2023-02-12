@@ -24,6 +24,12 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy {
     this.localFormField = field;
     this.form.clearValidators();
     let validators : ValidatorFn[] = [];
+
+    if(field.type == FormFieldType.DatePicker){
+      console.log(field.type,field.value);
+      field.value = new Date(field.value['$date']);
+    }
+
     if(field.required){ validators.push(Validators.required); }
     if(field.maxLength > 0) { validators.push(Validators.maxLength(field.maxLength))}
     if(field.minLength > 0) {validators.push(Validators.minLength(field.minLength))}
