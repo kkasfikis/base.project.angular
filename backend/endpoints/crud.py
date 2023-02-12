@@ -43,8 +43,6 @@ class BaseCrud:
                     if type(titem[key]) == dict and '$oid' in titem[key]:
                         titem[key] = titem[key]['$oid']
                     if type(titem[key]) == dict and '$date' in titem[key]:
-                        print(titem[key]['$date'] )
-                        print('aaaaa',titem[key]['$date'], datetime.fromtimestamp( titem[key]['$date'] / 1000  ),datetime.fromtimestamp(titem[key]['$date'] / 1000  ).isoformat())
                         titem[key] = datetime.fromtimestamp( titem[key]['$date'] / 1000 ).isoformat()
                 items.append(titem)
             

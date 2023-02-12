@@ -42,30 +42,12 @@ class PutDeleteCall(Resource):
 
     @cross_origin()
     def get(self, id):
-        data =  BaseCrud.recordItem('Call',id)
-        if data is not None:
-            data['port'] = data['port']['$oid']
-            data['vessel'] = data['vessel']['$oid']
-            data['agent'] = data['agent']['$oid']
-            data['client'] = data['client']['$oid']
-            print(data)
-            return {
-                'info' : True,
-                'data' : data
-            },200
-        else:
-            return {
-                'updated' : False,
-                'message' : 'An error occured'
-            },200
-
-        
+        return BaseCrud.record('Call',id)
 
     @cross_origin()
     def put(self, id):
         return BaseCrud.update('Call', id, request.get_json())
-
-
+    
     @cross_origin()
     def delete(self, id):
         return BaseCrud.delete('Call',id)

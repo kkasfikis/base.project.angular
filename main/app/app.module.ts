@@ -64,6 +64,7 @@ import { SOAComponent } from './administrator/soa/soa.component';
 import { CSOAComponent } from './administrator/csoa/csoa.component';
 import { BreakdownComponent } from './administrator/breakdown/breakdown.component';
 import { InvoiceComponent } from './administrator/invoice/invoice.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -128,6 +129,7 @@ import { InvoiceComponent } from './administrator/invoice/invoice.component';
     MatDialogModule,
     MatRadioModule,
     ResponsiveDynamicTableModule,
+    MatExpansionModule,
     MatNativeDateModule ,
     ToastrModule.forRoot()
   ],
