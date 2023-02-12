@@ -17,9 +17,7 @@ class GetPostBreakdown(Resource):
 
     @cross_origin()
     def post(self):
-        data = request.get_json()
-        HelperFunctions.convertDates(data)
-        return BaseCrud.create('Breakdown',data)
+        return BaseCrud.create('Breakdown',request.get_json())
 
 @api.route("/<int:page>/<int:size>", methods=['GET','POST'])
 @api.route("/<int:page>/<int:size>/<string:sort>/<string:sortColumn>", methods=['GET','POST'])

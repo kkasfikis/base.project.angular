@@ -2,6 +2,7 @@ import json
 import models
 from service import svc
 from helperFunctions import HelperFunctions
+from datetime import datetime
 class BaseCrud:
     @staticmethod
     def read(class_name : str):
@@ -10,8 +11,13 @@ class BaseCrud:
             items = []
             for item in collection.objects:
                 titem = json.loads(item.to_json())
-                titem['_id'] = titem['_id']['$oid']
-                items.append(titem)                
+                for key in titem.keys():
+                    if type(titem[key]) == dict and '$oid' in titem[key]:
+                        titem[key] = titem[key]['$oid']
+                    if type(titem[key]) == dict and '$date' in titem[key]:
+                        titem[key] = datetime.fromtimestamp(titem[key]['$date'] / 1000 ).isoformat()
+                items.append(titem)              
+                  
             return {
                 'read' : True,
                 'data' : items
@@ -33,7 +39,13 @@ class BaseCrud:
                 overflow = True
             for item in collection.objects.skip(page*size).limit(size):
                 titem = json.loads(item.to_json())
-                titem['_id'] = titem['_id']['$oid']
+                for key in titem.keys():
+                    if type(titem[key]) == dict and '$oid' in titem[key]:
+                        titem[key] = titem[key]['$oid']
+                    if type(titem[key]) == dict and '$date' in titem[key]:
+                        print(titem[key]['$date'] )
+                        print('aaaaa',titem[key]['$date'], datetime.fromtimestamp( titem[key]['$date'] / 1000  ),datetime.fromtimestamp(titem[key]['$date'] / 1000  ).isoformat())
+                        titem[key] = datetime.fromtimestamp( titem[key]['$date'] / 1000 ).isoformat()
                 items.append(titem)
             
             if sort is not None and sort == 'desc' and sort_column is not None:
@@ -60,7 +72,11 @@ class BaseCrud:
         try:
             collection = getattr(models,class_name)
             item = json.loads(collection.objects(pk = id).first().to_json())
-            item['_id'] = item['_id']['$oid']
+            for key in item.keys():
+                if type(item[key]) == dict and '$oid' in item[key]:
+                    item[key] = item[key]['$oid']
+                if type(item[key]) == dict and '$date' in item[key]:
+                    item[key] = datetime.fromtimestamp(item[key]['$date'] / 1000 ).isoformat()
             return item
         except Exception as e:
             print(str(e))
@@ -71,7 +87,11 @@ class BaseCrud:
         try:
             collection = getattr(models,class_name)
             item = json.loads(collection.objects(pk = id).first().to_json())
-            item['_id'] = item['_id']['$oid']
+            for key in item.keys():
+                if type(item[key]) == dict and '$oid' in item[key]:
+                    item[key] = item[key]['$oid']
+                if type(item[key]) == dict and '$date' in item[key]:
+                    item[key] = datetime.fromtimestamp(item[key]['$date'] / 1000 ).isoformat()
             return {
                 'info' : True,
                 'data' : item
@@ -88,6 +108,9 @@ class BaseCrud:
         collection = getattr(models,class_name)
         if '_id' in data:
             data.pop('_id')
+        
+        HelperFunctions.convertDatesFromISO(data)
+
         try:
             item = collection(**data)
             item.validate()
@@ -116,6 +139,9 @@ class BaseCrud:
         collection = getattr(models,class_name)
         if '_id' in data:
             data.pop('_id')
+
+        HelperFunctions.convertDatesFromISO(data)
+
         try:
             item_data = collection(**data)
             item_data.validate()

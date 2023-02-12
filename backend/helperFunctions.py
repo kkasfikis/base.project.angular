@@ -15,7 +15,7 @@ class HelperFunctions:
         pass
 
     @staticmethod
-    def convertDates(data):
+    def convertDatesFromISO(data):
         for key in data.keys():
             if type(data[key]) == list:
                 for item in data[key]:

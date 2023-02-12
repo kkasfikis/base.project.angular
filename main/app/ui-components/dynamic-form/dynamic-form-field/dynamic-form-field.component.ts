@@ -27,7 +27,7 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy {
 
     if(field.type == FormFieldType.DatePicker){
       console.log(field.type,field.value);
-      field.value = new Date(field.value['$date']);
+      field.value = new Date(field.value);
     }
 
     if(field.required){ validators.push(Validators.required); }
