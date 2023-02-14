@@ -34,6 +34,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   localFormFieldType : typeof FormFieldType = FormFieldType;
   
   ngOnInit(): void {
+    console.log('FORM FIELDS:',this.formFields)
     this.form = this.formService.toFormGroup(this.formFields)
     this.enabledSub = this.enabled.pipe(takeUntil(this.ngUnsubscribe)).subscribe({
       next : (enabled : boolean) => {

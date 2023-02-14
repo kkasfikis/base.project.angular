@@ -1,4 +1,4 @@
-<!-- <mat-card fxFlex="100" fxLayout="column">
+<mat-card fxFlex="100" fxLayout="column">
     <div fxFlex="100" fxLayout="column" *ngIf="label && label.length>0">
         <h3>{{label}}</h3>
         <mat-divider></mat-divider>
@@ -34,9 +34,9 @@
             <span *ngFor="let tag of tags" class="tag"><span class="tag-content">{{tag}}</span><a class="delete" (click)="deleteTag(tag)">×</a></span>
         </div>
     </div>
-</mat-card> -->
+</mat-card>
 
-<mat-accordion>
+<!-- <mat-accordion>
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header *ngIf="label && label.length>0">
         <mat-panel-title>
@@ -81,5 +81,5 @@
       </div>
       
     </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->
 
