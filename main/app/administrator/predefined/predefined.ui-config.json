@@ -21,37 +21,7 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "fore_color",
-            "order": 30,
-            "type": "TextBox",
-            "label": "Text Color",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 30,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "back_color",
-            "order": 40,
-            "type": "TextBox",
-            "label": "Background Color",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 30,
+            "width": 100,
             "innerWidth": 98,
             "align": "center center"
         }
@@ -65,7 +35,7 @@
             "fields" : [
                 {
                     "key": "value",
-                    "order": 40,
+                    "order": 20,
                     "type": "TextBox",
                     "label": "Value",
                     "options": [],
@@ -74,12 +44,62 @@
                     "minLength": 3,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 100,
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "fore_color",
+                    "order": 30,
+                    "type": "TextBox",
+                    "label": "Text Color",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "back_color",
+                    "order": 40,
+                    "type": "TextBox",
+                    "label": "Background Color",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
                     "innerWidth": 98,
                     "align": "center center"
                 }
             ], 
-            "tableColumns": [],
+            "tableColumns": [
+                {
+                    "key": "value",
+                    "text": "Value",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                }, {
+                    "key": "fore_color",
+                    "text": "Foreground",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                }, {
+                    "key": "back_color",
+                    "text": "Background",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                }
+            ],
             "infoFields":[],
             "hasDelete" : false,
             "hasUpdate" : true,
@@ -88,8 +108,8 @@
             "width" : 100,
             "innerWidth" : 100,
             "align" : "center center",
-            "isTagged" : true,
-            "tagSeperator" : ","
+            "isTagged" : false,
+            "tagSeperator" : ""
         }
     ],
     "filters": [

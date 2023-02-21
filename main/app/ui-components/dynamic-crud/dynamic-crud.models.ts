@@ -7,7 +7,12 @@ export class FilterField{
     multiple : boolean = false;
     isSub : boolean = false;
     fieldType : FormFieldType = FormFieldType.TextBox;
-    options : {key:string, value:string}[] = [];
+    options : {
+        key:string, 
+        value:string, 
+        foreColor : string, 
+        backColor : string
+    }[] = [];
     constructor(init?:Partial<FilterField>){
         Object.assign(this, init);
     }

@@ -29,7 +29,6 @@ export class ClientComponent implements OnInit {
     console.log('Converting Client fields from JSON ....')
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
-    console.log('FILTERS',result.filters)
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;

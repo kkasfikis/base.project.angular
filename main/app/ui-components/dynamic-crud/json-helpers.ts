@@ -91,27 +91,30 @@ export abstract class JsonHelpers {
             else{
               val = x[fieldName]
             }
-            console.log('!!!!!!val!!!!!!',val)
             return {
               key : x._id,
-              value : val
+              value : val,
+              foreColor : '',
+              backColor : ''
             }
           }
         )
         field.next(fieldValue)
       }
     
-      public static setFieldDropdown(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[],fieldKey : string, values : string[]){
+      public static setFieldDropdown(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[],fieldKey : string, values : any[]){
         let field = formFields.find(x => x.getValue().key == fieldKey) as BehaviorSubject<FormFieldBase>
         let fieldValue = field.getValue() as FormFieldBase;
-        fieldValue.options = values.map( (x:string) => {
+        fieldValue.options = values.map( (x:any) => {
             return {
-              key : x,
-              value : x
+              key : x.value,
+              value : x.value,
+              foreColor : x.foreColor,
+              backColor : x.backColor
             }
           }
         )
-        field.next(fieldValue)
+        field.next(fieldValue);
       }
     
       public static setFieldValue(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[],fieldKey : string, value : string){
@@ -129,8 +132,10 @@ export abstract class JsonHelpers {
           fields.forEach( (field : string, index : number) => {
             subFormValue.fields.find(x=>x.key == field)!.options = values[index].map( (item : any) => {
               return {
-                key : item,
-                value : item
+                key : item.key,
+                value : item.value,
+                foreColor : item.foreColor,
+                backColor : item.backColor  
               };
             })
           })

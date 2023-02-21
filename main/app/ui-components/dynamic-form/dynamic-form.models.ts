@@ -16,14 +16,18 @@ export enum FormFieldType{
     Hidden
 }
 
-
 export class FormFieldBase{
     key : string = '';
     order : number = 0;
     value : any | any[];
     type : FormFieldType = FormFieldType.TextBox;
     label : string = '';
-    options : {key : string, value : string}[] = [];
+    options : {
+        key : string, 
+        value : string, 
+        foreColor : string, 
+        backColor : string
+    }[] = [];
     enabled : boolean = true;
     required : boolean = false;
     minLength : number = 0;
@@ -56,6 +60,7 @@ export class SubForm{
     align : string = 'center';
     isTagged : boolean = false;
     tagSeperator : string = ':';
+
     constructor(init?:Partial<SubForm>) {
         Object.assign(this, init);
     }
