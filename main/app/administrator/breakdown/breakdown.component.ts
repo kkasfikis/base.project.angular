@@ -40,8 +40,6 @@ export class BreakdownComponent implements OnInit {
   
   initMods(){
 
-
-    
     this.crudService.read('predefined').subscribe({
       next : (resp : any) => {
         let serviceStatus = resp.data.find( ( x:any ) => x.key == 'serviceStatus' ).values;

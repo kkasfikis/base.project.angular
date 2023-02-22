@@ -16,8 +16,7 @@ class BaseCrud:
                         titem[key] = titem[key]['$oid']
                     if type(titem[key]) == dict and '$date' in titem[key]:
                         titem[key] = datetime.fromtimestamp(titem[key]['$date'] / 1000 ).isoformat()
-                items.append(titem)              
-                  
+                items.append(titem)                    
             return {
                 'read' : True,
                 'data' : items
@@ -77,7 +76,6 @@ class BaseCrud:
                     item[key] = datetime.fromtimestamp(item[key]['$date'] / 1000 ).isoformat()
             return item
         except Exception as e:
-            print(str(e))
             return None
 
     @staticmethod
@@ -143,7 +141,6 @@ class BaseCrud:
         try:
             item_data = collection(**data)
             item_data.validate()
-            print("ITEM DATA:",item_data)
         except svc.db.ValidationError as e:
             return {
                 'updated' : False,

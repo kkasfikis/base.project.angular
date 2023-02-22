@@ -109,8 +109,8 @@ export abstract class JsonHelpers {
             return {
               key : x.value,
               value : x.value,
-              foreColor : x.foreColor,
-              backColor : x.backColor
+              foreColor : x.fore_color,
+              backColor : x.back_color
             }
           }
         )
@@ -130,12 +130,14 @@ export abstract class JsonHelpers {
     
         if (fields && fields.length > 0 && values && values.length > 0 && fields.length == values.length){
           fields.forEach( (field : string, index : number) => {
+            
             subFormValue.fields.find(x=>x.key == field)!.options = values[index].map( (item : any) => {
+              console.log('Values',values[index]);
               return {
                 key : item.key,
                 value : item.value,
-                foreColor : item.foreColor,
-                backColor : item.backColor  
+                foreColor : item.fore_color,
+                backColor : item.back_color  
               };
             })
           })

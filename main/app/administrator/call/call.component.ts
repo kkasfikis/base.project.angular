@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
 import { DynamicCrudService } from 'main/app/ui-components/dynamic-crud/dynamic-crud.service';
+import { JsonHelpers } from 'main/app/ui-components/dynamic-crud/json-helpers';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
@@ -37,123 +38,12 @@ export class CallComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     console.log('Converting Call fields from JSON ....')
-    this.convertFromJson();
+    let result = JsonHelpers.convertFromJson(data);
+    this.formFields = result.fields;
+    this.filterFields = result.filters;
+    this.infoFields = result.infos;
+    this.tableColumns = result.columns;
     this.initMods();
-  }
-
-  convertFromJson(){
-    this.formFields = [];
-    let obj = JSON.parse(JSON.stringify(data as any)) //deep copy workaround
-    this.tableColumns = obj.columns;
-    
-    if(obj.filters && obj.filters.length > 0){
-      obj.filters.forEach( (value:any) => {
-        value.fieldType = FormFieldType[value.fieldType];
-        this.filterFields.push(new FilterField(value));
-      })
-    }
-    
-    if(obj.infos && obj.infos.length > 0){
-      obj.infos.forEach((value:any, index:number) => {
-        value.type = InfoType[value.type];
-        this.infoFields.push(new InfoField(value));
-      })
-    }
-
-    if(obj.subinfos && obj.subinfos.length > 0){
-      obj.subinfos.forEach((value:any, index:number) => {
-        value.fields.forEach((subvalue:any)=>{
-          subvalue.type = InfoType[subvalue.type];
-        })
-        this.infoFields.push(new SubFormInfo(value))
-      })
-    }
-
-    if(obj.fields && obj.fields.length > 0){
-      obj.fields.forEach( (value : any) => {
-        value.type = FormFieldType[value.type]; 
-        this.formFields.push(new BehaviorSubject<FormFieldBase>(new FormFieldBase(value)))
-        
-      })
-    }
-     
-    if(obj.subforms && obj.subforms.length > 0){
-      obj.subforms.forEach( (value : any) => {
-        let tfields:FormFieldBase[] = []
-        value.fields.forEach((subvalue : any) => {
-          subvalue.type = FormFieldType[subvalue.type]
-          tfields.push(new FormFieldBase(subvalue));
-        });
-        let tcolumns:TableColumn[] = []
-        value.tableColumns.forEach((subvalue : any) => {
-          tcolumns.push(new TableColumn(subvalue));
-        });
-        let tinfos :InfoField[] = []
-        value.infoFields.forEach((subvalue : any) => {
-          subvalue.type = InfoType[subvalue.type];
-          tinfos.push(new InfoField(subvalue));
-        });
-        value.fields = tfields;
-        value.tableColumns = tcolumns;
-        value.infoFields = tinfos;
-        let subj = new BehaviorSubject<SubForm>(new SubForm(value))
-        this.formFields.push(subj);
-      })
-    }
-    
-  }
-
-  setReferenceFieldDropdown(fieldKey:string, fieldName:string, data:any[]){
-    let field = this.formFields.find(x => x.getValue().key == fieldKey) as BehaviorSubject<FormFieldBase>
-    let fieldValue = field.getValue() as FormFieldBase;
-    fieldValue.options = data.map( (x:any) => {
-        return {
-          key : x._id,
-          value : x[fieldName]
-        }
-      }
-    )
-    field.next(fieldValue)
-  }
-
-  setFieldDropdown(fieldKey : string, values : string[]){
-    let field = this.formFields.find(x => x.getValue().key == fieldKey) as BehaviorSubject<FormFieldBase>
-    let fieldValue = field.getValue() as FormFieldBase;
-    fieldValue.options = values.map( (x:string) => {
-        return {
-          key : x,
-          value : x
-        }
-      }
-    )
-    field.next(fieldValue)
-  }
-
-  setFieldValue(fieldKey : string, value : string){
-    let field = this.formFields.find(x => x.getValue().key == fieldKey) as BehaviorSubject<FormFieldBase>
-    let fieldValue = field.getValue() as FormFieldBase;
-    fieldValue.value = value
-    field.next(fieldValue)
-  }
-
-  setSubFormField(subformKey : string, fields : string[], values : string[][]){
-    console.log(`SETTING SUFORM ${subformKey}`,fields,values)
-    let subForm = this.formFields.find( x => x.getValue().key == subformKey) as BehaviorSubject<SubForm>;
-    let subFormValue = subForm?.getValue() as SubForm
-
-    if (fields && fields.length > 0 && values && values.length > 0 && fields.length == values.length){
-      fields.forEach( (field : string, index : number) => {
-        console.log('FIELD',field)
-        subFormValue.fields.find(x=>x.key == field)!.options = values[index].map( (item : any) => {
-          return {
-            key : item,
-            value : item
-          };
-        })
-      })
-    }
-
-    subForm?.next(subFormValue)
   }
 
   initMods(){
@@ -201,30 +91,30 @@ export class CallComponent implements OnInit, OnDestroy{
           let callStatus = data.find( (x:any) => x.key == 'callStatus').values;
           let callTypes = data.find( (x:any) => x.key == 'callTypes').values;
           let ports = portResp.data;  
-          this.setReferenceFieldDropdown('port', 'name', ports)
+          JsonHelpers.setReferenceFieldDropdown(this.formFields,'port', 'name', ports)
           let clients = clientResp.data;
-          this.setReferenceFieldDropdown('client', 'name', clients)
+          JsonHelpers.setReferenceFieldDropdown(this.formFields,'client', 'name', clients)
           let vessels = vesselResp.data;
-          this.setReferenceFieldDropdown('vessel','vessel_name',vessels)
+          JsonHelpers.setReferenceFieldDropdown(this.formFields,'vessel','vessel_name',vessels)
           let agents = agentResp.data;
-          this.setReferenceFieldDropdown('agent','agent_name',agents)
+          JsonHelpers.setReferenceFieldDropdown(this.formFields,'agent','agent_name',agents)
 
-          this.setFieldDropdown('call_status',callStatus)
-          this.setFieldDropdown('call_type',callTypes)
+          JsonHelpers.setFieldDropdown(this.formFields,'call_status',callStatus)
+          JsonHelpers.setFieldDropdown(this.formFields,'call_type',callTypes)
           
-          this.setSubFormField('inq1',['first_hotel','second_hotel','position','arrival_port','departure_airport'],[hotels,hotels,positions,ports,airports]);
-          this.setSubFormField('inq2',['rank','hotel','signin_signoff'],[crewRanks,hotels,['ON','OFF']]);
-          this.setSubFormField('inq3',['hotel','hotel_referrer'],[hotels,hotelArrangedBy]);
-          this.setSubFormField('inq4',['position','medical_type','medical_status'],[hotels,medicalAttendanceTypes,medicalAttendanceStatus]);
-          this.setSubFormField('inq5',['offland_description','offland_destination','offland_status','offland_forward_method'],[offlandItemDescriptions,offlandDestinations,offlandStatus,offlandForwardMethods]);
-          this.setSubFormField('inq6',['power_supply_status','power_supply_delivery_method'],[powerSupplyStatus,powerSupplyDeliveryMethods]);
-          this.setSubFormField('inq7',['domestic_shipment_type','domestic_shipment_status'],[domesticShipmentTypes,domesticShipmentStatus]);
-          this.setSubFormField('inq8',['overseas_shipment_type','overseas_shipment_status'],[overseasShipmentTypes,overseasShipmentStatus]);
-          this.setSubFormField('inq9',['store_provision_type','store_provision_supplier','store_provision_status','store_provision_delivery_method'],[storeProvisionTypes,storeProvisionSuppliers,storeProvisionStatus,storeProvisionDeliveryMethods]);
-          this.setSubFormField('inq10',['bunker_type','bunker_supplier_type','details','bunker_status','bunker_delivery_method'],[bunkerTypes,bunkerSupplierTypes,bunkerDetails,bunkerStatus,bunkerDeliveryMethods]);
-          this.setSubFormField('inq11',['ship_pollutant_service','ship_pollutant_status'],[shipPollutantServices,shipPollutantStatus]);
-          this.setSubFormField('inq12',['status'],[variousInquiriesStatus]);
-          this.setSubFormField('inq13',['ctm_operation','currency'],[ctmOperations,currencies]);
+          JsonHelpers.setSubFormField(this.formFields,'inq1',['first_hotel','second_hotel','position','arrival_port','departure_airport'],[hotels,hotels,positions,ports,airports]);
+          JsonHelpers.setSubFormField(this.formFields,'inq2',['rank','hotel','signin_signoff'],[crewRanks,hotels,['ON','OFF']]);
+          JsonHelpers.setSubFormField(this.formFields,'inq3',['hotel','hotel_referrer'],[hotels,hotelArrangedBy]);
+          JsonHelpers.setSubFormField(this.formFields,'inq4',['position','medical_type','medical_status'],[hotels,medicalAttendanceTypes,medicalAttendanceStatus]);
+          JsonHelpers.setSubFormField(this.formFields,'inq5',['offland_description','offland_destination','offland_status','offland_forward_method'],[offlandItemDescriptions,offlandDestinations,offlandStatus,offlandForwardMethods]);
+          JsonHelpers.setSubFormField(this.formFields,'inq6',['power_supply_status','power_supply_delivery_method'],[powerSupplyStatus,powerSupplyDeliveryMethods]);
+          JsonHelpers.setSubFormField(this.formFields,'inq7',['domestic_shipment_type','domestic_shipment_status'],[domesticShipmentTypes,domesticShipmentStatus]);
+          JsonHelpers.setSubFormField(this.formFields,'inq8',['overseas_shipment_type','overseas_shipment_status'],[overseasShipmentTypes,overseasShipmentStatus]);
+          JsonHelpers.setSubFormField(this.formFields,'inq9',['store_provision_type','store_provision_supplier','store_provision_status','store_provision_delivery_method'],[storeProvisionTypes,storeProvisionSuppliers,storeProvisionStatus,storeProvisionDeliveryMethods]);
+          JsonHelpers.setSubFormField(this.formFields,'inq10',['bunker_type','bunker_supplier_type','details','bunker_status','bunker_delivery_method'],[bunkerTypes,bunkerSupplierTypes,bunkerDetails,bunkerStatus,bunkerDeliveryMethods]);
+          JsonHelpers.setSubFormField(this.formFields,'inq11',['ship_pollutant_service','ship_pollutant_status'],[shipPollutantServices,shipPollutantStatus]);
+          JsonHelpers.setSubFormField(this.formFields,'inq12',['status'],[variousInquiriesStatus]);
+          JsonHelpers.setSubFormField(this.formFields,'inq13',['ctm_operation','currency'],[ctmOperations,currencies]);
         } 
       }
     )
@@ -234,8 +124,8 @@ export class CallComponent implements OnInit, OnDestroy{
     if(item.key == 'port'){
       this.crudService.infoById('port',item.value).subscribe({
         next : (resp : any) => {
-          this.setFieldValue('port_name',resp.data.name)
-          this.setFieldValue('port_anchorage',resp.data.anchorage)
+          JsonHelpers.setFieldValue(this.formFields,'port_name',resp.data.name)
+          JsonHelpers.setFieldValue(this.formFields,'port_anchorage',resp.data.anchorage)
         }
       });
     }
@@ -243,16 +133,16 @@ export class CallComponent implements OnInit, OnDestroy{
       this.crudService.infoById('client',item.value).subscribe({
         next : (resp : any) => {
           console.log('Cleint',resp)
-          this.setFieldValue('client_name',resp.data.name)
-          this.setFieldDropdown('client_alias',resp.data.client_aliases.map( (x:any) => x.alias))
+          JsonHelpers.setFieldValue(this.formFields,'client_name',resp.data.name)
+          JsonHelpers.setFieldDropdown(this.formFields,'client_alias',resp.data.client_aliases.map( (x:any) => x.alias))
         }
       });
     }
     if(item.key == 'vessel'){
       this.crudService.infoById('vessel',item.value).subscribe({
         next : (resp : any) => {
-          this.setFieldValue('vessel_name',resp.data.vessel_name)
-          this.setFieldValue('vessel_flag',resp.data.flag)
+          JsonHelpers.setFieldValue(this.formFields,'vessel_name',resp.data.vessel_name)
+          JsonHelpers.setFieldValue(this.formFields,'vessel_flag',resp.data.flag)
         }
       });
     }
@@ -260,8 +150,8 @@ export class CallComponent implements OnInit, OnDestroy{
       this.crudService.infoById('agent',item.value).subscribe({
         next : (resp : any) => {
           console.log('AGENT',resp)
-          this.setFieldValue('agent_name',resp.data.agent_name)
-          this.setFieldDropdown('agent_person_in_charge',resp.data.agent_people_in_charge.map( (x:any) => x.pic_name))
+          JsonHelpers.setFieldValue(this.formFields,'agent_name',resp.data.agent_name)
+          JsonHelpers.setFieldDropdown(this.formFields,'agent_person_in_charge',resp.data.agent_people_in_charge.map( (x:any) => x.pic_name))
         }
       })
     }

@@ -39,10 +39,11 @@ export class DynamicCrudFiltersComponent implements OnInit {
   changeFilter(field : FilterField){
     let sform = this.searchForm.getValue()
     sform.fields = [];
-    let filterOptions : {key : string, value:string}[] = [];
+    let filterOptions : {key : string, value:string, foreColor:string, backColor:string}[] = [];
     this.filterFields.forEach( (filter) => {
-      filterOptions.push({key : filter.key, value: filter.label});
-    })
+      filterOptions.push({key : filter.key, value : filter.label, foreColor : '', backColor : ''});
+    });
+    
     sform.fields.push( new FormFieldBase({
       key : 'filter',
       label : 'Filter',

@@ -24,14 +24,23 @@
         <mat-form-field *ngSwitchCase="localFormFieldType.Select" appearance="fill" fxFlex="100">
             <mat-label>{{localFormField.label}}</mat-label>
             <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()">
-                <mat-option *ngFor="let opt of localFormField.options" [value]="opt.key"  [ngStyle]="(opt.foreColor && opt.backColor) ? {'color' : opt.foreColor , 'background-color' : opt.backColor} : {} ">{{opt.value}}</mat-option>
+                <mat-option *ngFor="let opt of localFormField.options" [value]="opt.key" >
+                    <span [style.background-color]="" [ngStyle]="(opt.backColor) ? { 'position':'fixed','top':'0px','left':'0px','right':'0px','font-size':'25px','background-color': opt.backColor} : {}"> 
+                        <p [ngStyle]="(opt.foreColor)? {'color' : opt.foreColor} :{}">{{ opt.value }}</p>
+                    </span>      
+                </mat-option>
             </mat-select> 
         </mat-form-field>
 
         <mat-form-field *ngSwitchCase="localFormFieldType.MultiSelect" appearance="fill" fxFlex="100">
             <mat-label>{{localFormField.label}}</mat-label>
             <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()" multiple>
-                <mat-option *ngFor="let opt of localFormField.options" [value]="opt.key" [ngStyle]="(opt.foreColor && opt.backColor) ? {'color' : opt.foreColor , 'background-color' : opt.backColor} : {} ">{{opt.value}}</mat-option>
+                <mat-option *ngFor="let opt of localFormField.options" [value]="opt.key">
+                    <span style="position:fixed;top:0px;left:0px;right:0px;font-size:25px;" [ngStyle]="(opt.backColor) ? {'background-color':opt.backColor} : {}"> 
+                        <p [ngStyle]="(opt.foreColor)? {'color' : opt.foreColor} :{}">{{ opt.value }}</p>
+                    </span> 
+                    {{opt.value}}
+                </mat-option>
             </mat-select> 
         </mat-form-field>
 
