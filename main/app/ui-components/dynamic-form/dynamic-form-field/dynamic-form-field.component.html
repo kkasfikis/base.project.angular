@@ -23,10 +23,10 @@
 
         <mat-form-field *ngSwitchCase="localFormFieldType.Select" appearance="fill" fxFlex="100">
             <mat-label>{{localFormField.label}}</mat-label>
-            <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()">
+            <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()" [ngStyle]="{ 'position':'absolute','top':'0px','left':'0px','right':'0px','font-size':'25px','background-color' : selectBackColor}">
                 <mat-option *ngFor="let opt of localFormField.options" [value]="opt.key" >
-                    <span [style.background-color]="" [ngStyle]="(opt.backColor) ? { 'position':'fixed','top':'0px','left':'0px','right':'0px','font-size':'25px','background-color': opt.backColor} : {}"> 
-                        <p [ngStyle]="(opt.foreColor)? {'color' : opt.foreColor} :{}">{{ opt.value }}</p>
+                    <span  [ngStyle]="{ 'position':'absolute','top':'0px','left':'0px','right':'0px','font-size':'25px','background-color': opt.backColor}"> 
+                        <p [ngStyle]="{'color' : opt.foreColor}">{{ opt.value }}</p>
                     </span>      
                 </mat-option>
             </mat-select> 
@@ -36,8 +36,8 @@
             <mat-label>{{localFormField.label}}</mat-label>
             <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()" multiple>
                 <mat-option *ngFor="let opt of localFormField.options" [value]="opt.key">
-                    <span style="position:fixed;top:0px;left:0px;right:0px;font-size:25px;" [ngStyle]="(opt.backColor) ? {'background-color':opt.backColor} : {}"> 
-                        <p [ngStyle]="(opt.foreColor)? {'color' : opt.foreColor} :{}">{{ opt.value }}</p>
+                    <span [ngStyle]="{ 'position':'absolute','top':'0px','left':'0px','right':'0px','font-size':'25px','background-color': opt.backColor}"> 
+                        <p [ngStyle]=" {'color' : opt.foreColor}">{{ opt.value }}</p>
                     </span> 
                     {{opt.value}}
                 </mat-option>

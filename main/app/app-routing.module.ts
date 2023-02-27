@@ -15,14 +15,18 @@ import { PredefinedComponent } from './administrator/predefined/predefined.compo
 import { SOAComponent } from './administrator/soa/soa.component';
 import { StaffComponent } from './administrator/staff/staff.component';
 import { SupplierComponent } from './administrator/supplier/supplier.component';
+import { UserManagementComponent } from './administrator/user-management/user-management.component';
 import { VesselComponent } from './administrator/vessel/vessel.component';
 import { AdminGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { UnauthorizedComponent } from './auth/unauthorized/unauthorized.component';
 const routes: Routes = [
   {path:'',redirectTo:'about',pathMatch:'full'},
   {path:'about',component: AboutComponent},
   {path:'login',component: LoginComponent},
+  {path:'register',component: RegisterComponent},
+  {path:'changePassword',component: LoginComponent},
   {path:'unauthorized',component: UnauthorizedComponent},
   
   //Administrator
@@ -41,8 +45,9 @@ const routes: Routes = [
   {path:'csoa',component:CSOAComponent,canActivate:[AdminGuard]},
   {path:'breakdown',component:BreakdownComponent,canActivate:[AdminGuard]},
   {path:'invoice',component:InvoiceComponent,canActivate:[AdminGuard]},
+  {path:'userManagement',component:UserManagementComponent,canActivate:[AdminGuard]},
 
-
+  
 ];
 
 @NgModule({

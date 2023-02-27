@@ -20,6 +20,9 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
   constructor(private elementRef : ElementRef) { }
 
+  selectForeColor : string = '';
+  selectBackColor : string = '';
+
   initFormField(field : FormFieldBase){
     this.localFormField = field;
     this.form.clearValidators();
@@ -67,6 +70,22 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy {
 
   contentChange(){
     let value = this.form.get(this.localFormField.key)?.value;
+    console.log('VALUE CHANGED',value);
+    let ff : FormFieldBase;
+    if(this.formField instanceof FormFieldBase){
+      ff = this.formField;
+    }
+    else{
+      ff = this.formField.getValue();
+    } 
+    if(ff.type == FormFieldType.Select){
+      
+      let item : any = ff.options.find( (x:any) => x.value == value);
+      if(item && item.foreColor && item.foreColor.length > 0 && item.backColor && item.backColor.length > 0){
+        this.selectForeColor = item.foreColor;
+        this.selectBackColor = item.backColor;
+      }
+    }
     this.onFieldChange.emit( {key: this.localFormField.key,value: value, form: this.form})
   }
 

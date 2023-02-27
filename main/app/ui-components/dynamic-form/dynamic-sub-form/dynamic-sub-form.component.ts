@@ -66,6 +66,7 @@ export class DynamicSubFormComponent implements OnInit {
     this.formField = subForm;
     this.form = this.formService.toFormGroup(subForm.fields as FormFieldBase[]);
     this.isTagged ? this.tags = subForm.tableData : this.dataSubject.next(this.mapData(subForm))
+    console.log('INSIDE INITIALIZATION :', subForm.tableData);
   }
 
   ngOnInit(): void {
@@ -88,7 +89,7 @@ export class DynamicSubFormComponent implements OnInit {
   }
 
   mapData(subform : SubForm){
-    return new TableData(0,0,0,subform.tableData.map((item :any,index: number)=>{
+    let data = subform.tableData.map((item :any,index: number)=>{
       let newItem = Object.assign({},item);
       let actions : TableAction[] = [];
       if(subform.hasDelete){
@@ -123,8 +124,10 @@ export class DynamicSubFormComponent implements OnInit {
       }
       newItem['internalId'] = index;
       newItem['actions'] = actions;
+      console.log('item with name : ', newItem['value'],'and internal id :',newItem['internalId'] )
       return newItem;
-    }))
+    })  
+    return new TableData(0,0,0,data);
   }
 
   updateSubRecord(item : {internalId : number}){
@@ -140,6 +143,7 @@ export class DynamicSubFormComponent implements OnInit {
       (this.subformField instanceof SubForm) 
         ? this.subformField = subform : (this.subformField).next(subform);
     })
+    console.log('Item Internal Id : ', this.editInternalId)
     this.editInternalId = item.internalId;
     this.formActions = [
       {
@@ -181,14 +185,18 @@ export class DynamicSubFormComponent implements OnInit {
         item += ( (item.length == 0) ? '' : this.tagSeperator) + form[key];
       })
       tData.push(item);
-      subform.tableData = tData;
+      //subform.tableData = tData;
       this.tags = tData;
     }
     else{
       if(this.editInternalId >= 0){
         let tData : any[] = subform.tableData;
-        (tData.length > 1) ? tData = tData.splice(this.editInternalId,1) : tData = [];
+        console.log('data before update',this.editInternalId,JSON.stringify(tData));
+        
+        (tData.length > 1) ? tData.splice(this.editInternalId,1) : tData = [];
+        console.log('data after splice',JSON.stringify(tData));
         tData.push(this.form.getRawValue());
+        console.log('data after update',JSON.stringify(tData));
         subform.tableData = tData;
         this.editInternalId = -1;
         this.formActions = [];

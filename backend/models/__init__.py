@@ -13,3 +13,4 @@ from .soa import StatementOfAccount
 from .csoa import ConsolidatedStatementOfAccount
 from .breakdown import Breakdown
 from .invoice import Invoice
+from .user import User

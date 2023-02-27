@@ -158,5 +158,29 @@
             "^/getSingleAttribute" : ""
         },
         "changeOrigin" : true
+    },
+    "/userManagement":{
+        "target" : "http://localhost:8081/userManagement",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/userManagement" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/register":{
+        "target" : "http://localhost:8081/register",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/register" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/changePassword":{
+        "target" : "http://localhost:8081/changePassword",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/changePassword" : ""
+        },
+        "changeOrigin" : true
     }
 }

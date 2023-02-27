@@ -23,9 +23,11 @@ export class DynamicNavigatorComponent implements OnInit,AfterViewInit {
   @Input() public isDrawerFixed : boolean = false;
 
   @Input() public isThemeSelectEnabled = true;
+  @Input() public hasRegister = true;
 
   @Output() public themeChanged: EventEmitter<any> = new EventEmitter<any>();
   @Output() public loginSelected : EventEmitter<any> = new EventEmitter<any>();
+  @Output() public registerSelected : EventEmitter<any> = new EventEmitter<any>();
  
   constructor(private changeDetector : ChangeDetectorRef){
 
@@ -44,6 +46,10 @@ export class DynamicNavigatorComponent implements OnInit,AfterViewInit {
 
   emitLoginSelected(event : Event){
     this.loginSelected.emit(event);
+  } 
+  
+  emitRegisterSelected(event : Event){
+    this.registerSelected.emit(event);
   }
 
   ngAfterViewChanged(){

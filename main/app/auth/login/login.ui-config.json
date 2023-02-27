@@ -1,0 +1,34 @@
+{
+    "fields" : [
+        {
+            "key": "username",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Username",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "password",
+            "order": 10,
+            "type": "Password",
+            "label": "Password",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        }
+    ]
+}

@@ -69,6 +69,31 @@ export class AuthService {
     return this.http.post('/login', data, {...options});
   }
 
+  register(username : string, password : string, email : string, fullName : string){
+    let options = {
+      headers : new HttpHeaders({'Content-Type' : 'application/json'})
+    }
+    let data = {
+      username : username,
+      password : password,
+      email : email,
+      full_name : fullName,
+      roles : []
+    }
+    return this.http.post('/register', data, {...options});
+  }
+
+  changePassword(oldPassword : string, newPassword : string){
+    let options = {
+      headers : new HttpHeaders({'Content-Type' : 'application/json'})
+    }
+    let data = {
+      old_password : oldPassword,
+      new_password : newPassword
+    }
+    return this.http.post('/changePassword', data, {...options});
+  }
+
   logout(){
     localStorage.removeItem('user');
     this.loggedIn.next(false);

@@ -1,0 +1,156 @@
+{
+    "fields":[
+        {
+            "key":"_id",
+            "type":"Hidden"
+        },
+        {
+            "key": "username",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Username",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left"
+        },
+        {
+            "key": "full_name",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Full Name",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left"
+        },
+        {
+            "key": "email",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Email",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left"
+        },
+        {
+            "key": "password",
+            "order": 10,
+            "type": "Hidden"
+        }
+    ],
+    "subforms":[
+        {
+            "key" : "roles",
+            "label" : "Roles",
+            "order" : 100,
+            "enabled" : true,
+            "fields" : [
+                {
+                    "key": "role",
+                    "order": 40,
+                    "type": "TextBox",
+                    "label": "Role",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 3,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 100,
+                    "innerWidth": 98,
+                    "align": "center center"
+                }
+            ], 
+            "tableColumns": [],
+            "infoFields":[],
+            "hasDelete" : false,
+            "hasUpdate" : true,
+            "hasInfo" : false,
+            "identifierKey" : "_id",
+            "width" : 100,
+            "innerWidth" : 100,
+            "align" : "center center",
+            "isTagged" : true,
+            "tagSeperator" : ","
+        }
+    ],
+    "infos": [
+        {
+            "key": "username",
+            "order": 10,
+            "label": "Username",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "full_name",
+            "order": 20,
+            "label": "Full Name",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "email",
+            "order": 30,
+            "label": "Email",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "roles",
+            "order": 40,
+            "label": "Roles",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 36,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [],
+    "columns": [
+        {
+            "key": "username",
+            "text": "Username",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 20
+        },
+        {
+            "key": "full_name",
+            "text": "Full Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        },
+        {
+            "key": "email",
+            "text": "Email",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 30
+        }
+    ]
+}

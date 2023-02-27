@@ -65,6 +65,9 @@ import { CSOAComponent } from './administrator/csoa/csoa.component';
 import { BreakdownComponent } from './administrator/breakdown/breakdown.component';
 import { InvoiceComponent } from './administrator/invoice/invoice.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { RegisterComponent } from './auth/register/register.component';
+import { ChangePasswordComponent } from './auth/change-password/change-password.component';
+import { UserManagementComponent } from './administrator/user-management/user-management.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +104,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
     SOAComponent,
     CSOAComponent,
     BreakdownComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    RegisterComponent,
+    ChangePasswordComponent,
+    UserManagementComponent
   ],
   imports: [
     BrowserModule,

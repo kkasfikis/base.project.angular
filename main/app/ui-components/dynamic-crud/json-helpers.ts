@@ -77,7 +77,6 @@ export abstract class JsonHelpers {
       public static setReferenceFieldDropdown(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[],fieldKey:string, fieldName:string, data:any[]){
         let field = formFields.find(x => x.getValue().key == fieldKey) as BehaviorSubject<FormFieldBase>
         let fieldValue = field.getValue() as FormFieldBase;
-        console.log('!!!!FIELD NAME!!!!',fieldName)
         fieldValue.options = data.map( (x:any) => {
             let val = '';
             let first = true;
@@ -132,9 +131,8 @@ export abstract class JsonHelpers {
           fields.forEach( (field : string, index : number) => {
             
             subFormValue.fields.find(x=>x.key == field)!.options = values[index].map( (item : any) => {
-              console.log('Values',values[index]);
               return {
-                key : item.key,
+                key : item.value,
                 value : item.value,
                 foreColor : item.fore_color,
                 backColor : item.back_color  

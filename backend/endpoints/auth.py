@@ -69,6 +69,11 @@ def login():
         'message' : 'Wrong User Credentials'
     }, 200
 
+@svc.app.route('/changePassword', methods=['POST'])
+@jwt_required()
+def profile():
+    return get_jwt_identity(),200
+
 @svc.app.route('/profile', methods=['GET'])
 @jwt_required()
 def profile():

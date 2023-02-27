@@ -1,38 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JsonHelpers } from 'main/app/ui-components/dynamic-crud/json-helpers';
-import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
+import { FormFieldBase, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from '../auth.service';
-import * as data from './login.ui-config.json'
+import * as data from './register.ui-config.json'
+
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
-
-  formFields : (BehaviorSubject<FormFieldBase> | BehaviorSubject<SubForm>)[] = []
+export class RegisterComponent implements OnInit {
 
   constructor(private authService : AuthService, private toastr : ToastrService, private router : Router) { }
-  
 
+  formFields : (BehaviorSubject<FormFieldBase> | BehaviorSubject<SubForm>)[] = [] 
 
   ngOnInit(): void {
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
-    console.log('Form fields:', this.formFields)
   }
 
-  login(data : any){
-    this.authService.login(data['username'],data['password']).subscribe({
-      next : (resp : any) => {
-        if (resp && resp.login){
-          if(!this.authService.setUser(resp.token)){
-            this.toastr.error('Failed to decode JWT', 'error');
-          }
+  register(data : any){
+    this.authService.register(data.username,data.password,data.email,data.full_name).subscribe({
+      next : (resp:any) => {
+        if(resp && resp.register){
           this.router.navigate(['/']);
           this.toastr.success(resp.message,'Success')
         }
@@ -42,4 +37,5 @@ export class LoginComponent implements OnInit {
       }
     })
   }
+
 }

@@ -172,14 +172,17 @@ export class AppComponent implements OnInit,AfterViewInit{
                 link:'/csoa',
                 isFunction:false,
                 subMenus : [] as MenuOption[]
+              },
+              {
+                key:'userManagement',
+                label:'User Management',
+                icon:'user',
+                link:'/userManagement',
+                isFunction:false,
+                subMenus : [] as MenuOption[]
               }
             ] as MenuOption[]
-          } as MenuOption,
-
-
-
-
-
+          } as MenuOption
         ] as MenuOption[]
       },
       {
@@ -279,6 +282,11 @@ export class AppComponent implements OnInit,AfterViewInit{
 
   login(){
     this.router.navigate(['/login']);
+  }
+
+  register(){
+    console.log('register')
+    this.router.navigate(['/register']);
   }
 
   logout(){

@@ -28,7 +28,7 @@ export class DynamicFormService {
         if( field.regexPattern && field.regexPattern.length > 0 ){
           validators.push(Validators.pattern(field.regexPattern));
         }
-        group[field.key] = new FormControl(field.value || '',validators as ValidatorFn[])  
+        group[field.key] = new FormControl(field.value,validators as ValidatorFn[])
       }
     })
     return new FormGroup(group);
