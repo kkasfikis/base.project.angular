@@ -18,6 +18,7 @@ import { SupplierComponent } from './administrator/supplier/supplier.component';
 import { UserManagementComponent } from './administrator/user-management/user-management.component';
 import { VesselComponent } from './administrator/vessel/vessel.component';
 import { AdminGuard } from './auth/auth.guard';
+import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { UnauthorizedComponent } from './auth/unauthorized/unauthorized.component';
@@ -26,7 +27,7 @@ const routes: Routes = [
   {path:'about',component: AboutComponent},
   {path:'login',component: LoginComponent},
   {path:'register',component: RegisterComponent},
-  {path:'changePassword',component: LoginComponent},
+  {path:'changePassword',component: ChangePasswordComponent},
   {path:'unauthorized',component: UnauthorizedComponent},
   
   //Administrator
@@ -47,7 +48,7 @@ const routes: Routes = [
   {path:'invoice',component:InvoiceComponent,canActivate:[AdminGuard]},
   {path:'userManagement',component:UserManagementComponent,canActivate:[AdminGuard]},
 
-  
+
 ];
 
 @NgModule({

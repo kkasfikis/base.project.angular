@@ -2,7 +2,7 @@
     <!-- Side Navigator Configuration -->
     <mat-sidenav #sideNav mode="side">
         <mat-nav-list fxLayout="column">
-            <div fxFlex="100" fxLayoutAlign="center center" fxLayoutGap="10" fxLayout="row" stlye="margin:10px">
+            <div fxFlex="100" fxLayoutAlign="center center" fxLayoutGap="10" fxLayout="row" style="padding:10px">
                 <img class="sidemenu-user-photo" src="{{photo}}"/>
                 <h1>{{userName}}</h1>
             </div>
@@ -66,6 +66,7 @@
                         <img class="navbar-user-photo" fxLayoutAlign="center center" src="{{photo}}"/>
                     </div>
                     <a *ngIf="!isLoggedIn" (click)="emitLoginSelected($event)" fxLayoutAlign="center center">Login</a>
+                    &nbsp;&nbsp;
                     <a *ngIf="!isLoggedIn && hasRegister" (click)="emitRegisterSelected($event)" fxLayoutAlign="center center">Register</a>
                 </div>
             </div>

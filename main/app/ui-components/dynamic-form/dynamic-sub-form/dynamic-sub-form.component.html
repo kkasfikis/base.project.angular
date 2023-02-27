@@ -1,4 +1,4 @@
-<mat-card fxFlex="100" fxLayout="column">
+<mat-card fxFlex="100" fxLayout="column"  *ngIf=" !label || label.length == 0 || isTagged">
     <div fxFlex="100" fxLayout="column" *ngIf="label && label.length>0">
         <h3>{{label}}</h3>
         <mat-divider></mat-divider>
@@ -23,12 +23,15 @@
         </button> 
         <button mat-raised-button [disabled]="disabled" (click)="handleFormSubmit()" color="primary">Submit</button>
     </mat-card-actions>
+    
     <br *ngIf="!isTagged"/>
+    
     <app-dynamic-table *ngIf="!isTagged"
         [tableColumns]="columnSubject"
         [tableData]="dataSubject"
         [hasActions]="true"
     ></app-dynamic-table>
+
     <div *ngIf="isTagged && tags && tags.length > 0" fxFlex="100">
         <div class="tags-input-wrapper" fxFlex="100">
             <span *ngFor="let tag of tags" class="tag"><span class="tag-content">{{tag}}</span><a class="delete" (click)="deleteTag(tag)">×</a></span>
@@ -36,9 +39,9 @@
     </div>
 </mat-card>
 
-<!-- <mat-accordion>
+<mat-accordion  *ngIf="label && label.length>0 && !isTagged">
     <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header *ngIf="label && label.length>0">
+      <mat-expansion-panel-header>
         <mat-panel-title>
             {{label}}
         </mat-panel-title>
@@ -78,8 +81,8 @@
                 <span *ngFor="let tag of tags" class="tag"><span class="tag-content">{{tag}}</span><a class="delete" (click)="deleteTag(tag)">×</a></span>
             </div>
         </div>
-      </div>
+    </div>
       
     </mat-expansion-panel>
-</mat-accordion> -->
+</mat-accordion>
 

@@ -16,9 +16,8 @@ export class AppComponent implements OnInit,AfterViewInit{
   image = './assets/images/user.jpg';
   drawerOptions : SideMenuCategory[] | MenuOption[] = [];
   navbarOptions : MenuOption[] = [];
-  @HostBinding('class') className='darkMode'
+  @HostBinding('class') className= ''
 
-  testFunc = this.testFunction.bind(this)
 
   constructor(private overlay: OverlayContainer,private authService : AuthService, private router : Router, private _zone: NgZone){
     
@@ -48,147 +47,158 @@ export class AppComponent implements OnInit,AfterViewInit{
   }
   
   ngOnInit(){
-    this.overlay.getContainerElement().classList.add('darkMode')
+    //this.overlay.getContainerElement().classList.add('darkMode')
     this.drawerOptions = [
       {
-        icon:'home',
-        label:'Category 1',
-        options:[
+        icon : 'home',
+        title : 'Account',
+        options : [
           {
-            key:'Cat1_Option1',
-            label:'File',
-            icon:'folder',
+            key:'userManagement',
+            label:'User Management',
+            icon:'person',
+            link:'/userManagement',
             isFunction:false,
-            subMenus : [
-              {
-                key:'clients',
-                label:'Clients',
-                icon:'person',
-                link:'/client',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-              {
-                key:'agent',
-                label:'Agents',
-                icon:'person',
-                isFunction:false,
-                link:'/agent',
-                subMenus : [
-                ] as MenuOption[]
-              },
-
-              {
-                key:'supplier',
-                label:'Suppliers',
-                icon:'person',
-                isFunction:false,
-                link:'/supplier',
-                subMenus : [                
-                ] as MenuOption[]
-              },
-
-              {
-                key:'pot',
-                label:'Ports',
-                icon:'anchor',
-                link:'/port',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-
-              {
-                key:'vessel',
-                label:'Vessels',
-                icon:'sailing',
-                link:'/vessel',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-
-              {
-                key:'charges',
-                label:'Charges',
-                icon:'settings',
-                link:'/charge',
-                isFunction:false,
-                subMenus : [
-                ] as MenuOption[]
-              },
-              {
-                key:'expenses',
-                label:'Expenses',
-                icon:'payments',
-                link:'/expense',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-              {
-                key:'staff',
-                label:'Staff',
-                icon:'boy',
-                link:'/staff',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-
-              {
-                key:'bankAccount',
-                label:'Bank Accounts',
-                icon:'paid',
-                link:'/bankAccount',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-
-            ] as MenuOption[]
-          } as MenuOption,
+            subMenus : [] as MenuOption[]
+          },
           {
-            key:'Invoicing',
-            label:'Invoicing',
-            icon:'menu',
+            key:'changePassword',
+            label:'Change Password',
+            icon:'person',
+            link:'/changePassword',
             isFunction:false,
-            subMenus : [
-              {
-                key:'invoice',
-                label:'Invoices',
-                icon:'menu',
-                link:'/invoice',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-              {
-                key:'soa',
-                label:'Statements',
-                icon:'menu',
-                link:'/soa',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-              {
-                key:'csoa',
-                label:'Consolidated SOA',
-                icon:'menu',
-                link:'/csoa',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              },
-              {
-                key:'userManagement',
-                label:'User Management',
-                icon:'user',
-                link:'/userManagement',
-                isFunction:false,
-                subMenus : [] as MenuOption[]
-              }
-            ] as MenuOption[]
-          } as MenuOption
+            subMenus : [] as MenuOption[]
+          },
         ] as MenuOption[]
-      },
+      } as SideMenuCategory,
       {
-        icon:'home',
-        label:'Category 2',
-        options:[
+        icon : 'home',
+        title : 'File',
+        options : [
+          {
+            key:'clients',
+            label:'Clients',
+            icon:'person',
+            link:'/client',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          },
+          {
+            key:'agent',
+            label:'Agents',
+            icon:'person',
+            isFunction:false,
+            link:'/agent',
+            subMenus : [
+            ] as MenuOption[]
+          },
+
+          {
+            key:'supplier',
+            label:'Suppliers',
+            icon:'person',
+            isFunction:false,
+            link:'/supplier',
+            subMenus : [                
+            ] as MenuOption[]
+          },
+
+          {
+            key:'port',
+            label:'Ports',
+            icon:'anchor',
+            link:'/port',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          },
+
+          {
+            key:'vessel',
+            label:'Vessels',
+            icon:'sailing',
+            link:'/vessel',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          },
+
+          {
+            key:'charges',
+            label:'Charges',
+            icon:'settings',
+            link:'/charge',
+            isFunction:false,
+            subMenus : [
+            ] as MenuOption[]
+          },
+          {
+            key:'expenses',
+            label:'Expenses',
+            icon:'payments',
+            link:'/expense',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          },
+          {
+            key:'staff',
+            label:'Staff',
+            icon:'boy',
+            link:'/staff',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          },
+
+          {
+            key:'bankAccount',
+            label:'Bank Accounts',
+            icon:'paid',
+            link:'/bankAccount',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          },
+        ] as MenuOption[]
+      } as SideMenuCategory,
+      {
+        icon : 'home',
+        title : 'Invoicing',
+        options : [
+          {
+            key:'invoice',
+            label:'Invoices',
+            icon:'menu',
+            link:'/invoice',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          },
+          {
+            key:'soa',
+            label:'Statements',
+            icon:'menu',
+            link:'/soa',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          },
+          {
+            key:'csoa',
+            label:'Consolidated SOA',
+            icon:'menu',
+            link:'/csoa',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          },
+          {
+            key:'userManagement',
+            label:'User Management',
+            icon:'user',
+            link:'/userManagement',
+            isFunction:false,
+            subMenus : [] as MenuOption[]
+          }
+        ] as MenuOption[]
+      } as SideMenuCategory,
+      {
+        icon : "home",
+        title : "Agency",
+        options : [
           {
             key:'call',
             label:'Calls',
@@ -223,45 +233,11 @@ export class AppComponent implements OnInit,AfterViewInit{
             isFunction:false,
             subMenus : [
             ] as MenuOption[]
-          },
-        ] as MenuOption[]
-      }
-      
-    ] as SideMenuCategory[]
-
-    this.navbarOptions = [
-      {
-        key:'myfm',
-        label:'    myForceMarine    ',
-        icon:'menu',
-        isFunction:false,
-        subMenus : [] 
-      },
-      {
-        key:'qa',
-        label:'    Q & A    ',
-        icon:'menu',
-        isFunction:false,
-        subMenus : [
-       {
-            key:'question',
-            label:'Questions',
-            icon:'menu',
-            isFunction:false,
-            subMenus : [] as MenuOption[]
           }
-        ] 
-      },
-      {
-        key:'chat',
-        label:'  Live Chat  ',
-        icon:'menu',
-        isFunction:false,
-        subMenus : [] 
-      },
+        ] as MenuOption[]
+      } as SideMenuCategory
 
-
-    ] as MenuOption[]
+    ]
   }
 
 
@@ -276,9 +252,6 @@ export class AppComponent implements OnInit,AfterViewInit{
     }
   }
 
-  testFunction(x:any){
-    alert('TEST FUNCTION WORKS : ' + x.test);
-  }
 
   login(){
     this.router.navigate(['/login']);

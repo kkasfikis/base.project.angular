@@ -123,22 +123,45 @@ export abstract class JsonHelpers {
         field.next(fieldValue)
       }
     
-      public static setSubFormField(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[],subformKey : string, fields : string[], values : string[][]){
+      public static setSubFormField(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[], subformKey : string, fields : string[], values : any[][]){
         let subForm = formFields.find( x => x.getValue().key == subformKey) as BehaviorSubject<SubForm>;
         let subFormValue = subForm?.getValue() as SubForm
     
         if (fields && fields.length > 0 && values && values.length > 0 && fields.length == values.length){
           fields.forEach( (field : string, index : number) => {
-            
-            subFormValue.fields.find(x=>x.key == field)!.options = values[index].map( (item : any) => {
-              return {
-                key : item.value,
-                value : item.value,
-                foreColor : item.fore_color,
-                backColor : item.back_color  
-              };
-            })
-          })
+            if(values[index] && values[index].length > 0){
+              subFormValue.fields.find(x=>x.key == field)!.options = values[index].map( (item : any) => {
+                return {
+                  key : item.value,
+                  value : item.value,
+                  foreColor : item.fore_color,
+                  backColor : item.back_color  
+                };
+              });
+            }
+          });
+        }
+    
+        subForm?.next(subFormValue)
+      }
+
+      public static setSubFormReferenceField(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[], subformKey : string, fields : string[], values : any[][]){
+        let subForm = formFields.find( x => x.getValue().key == subformKey) as BehaviorSubject<SubForm>;
+        let subFormValue = subForm?.getValue() as SubForm
+    
+        if (fields && fields.length > 0 && values && values.length > 0 && fields.length == values.length){
+          fields.forEach( (field : string, index : number) => {
+            if(values[index] && values[index].length > 0){
+              subFormValue.fields.find(x=>x.key == field)!.options = values[index].map( (item : any) => {
+                return {
+                  key : item._id,
+                  value : item.name,
+                  foreColor : '',
+                  backColor : ''  
+                };
+              });
+            }
+          });
         }
     
         subForm?.next(subFormValue)

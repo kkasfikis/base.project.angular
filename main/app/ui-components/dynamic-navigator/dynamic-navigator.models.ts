@@ -14,7 +14,7 @@ export class MenuOption{
 export class SideMenuCategory{
 
     icon : string = "";
-    label : string = "";
+    title : string = "";
     options : MenuOption[] = [];
 
     constructor() {}

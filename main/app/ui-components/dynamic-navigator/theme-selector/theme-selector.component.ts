@@ -9,7 +9,7 @@ export class ThemeSelectorComponent implements OnInit {
 
   constructor() { }
 
-  toggleControl = new FormControl(true);
+  toggleControl = new FormControl(false);
   @Output() public themeChanged : EventEmitter<any> = new EventEmitter<any>(); 
 
   ngOnInit(): void {

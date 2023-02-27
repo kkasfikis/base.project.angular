@@ -102,8 +102,9 @@ export class CallComponent implements OnInit, OnDestroy{
           JsonHelpers.setFieldDropdown(this.formFields,'call_status',callStatus)
           JsonHelpers.setFieldDropdown(this.formFields,'call_type',callTypes)
           
-          JsonHelpers.setSubFormField(this.formFields,'inq1',['first_hotel','second_hotel','position','arrival_port','departure_airport'],[hotels,hotels,positions,ports,airports]);
-          JsonHelpers.setSubFormField(this.formFields,'inq2',['rank','hotel','signin_signoff'],[crewRanks,hotels,['ON','OFF']]);
+          JsonHelpers.setSubFormField(this.formFields,'inq1',['first_hotel','second_hotel','position','departure_airport'],[hotels,hotels,positions,airports]);
+          JsonHelpers.setSubFormReferenceField(this.formFields,'inq1',['arrival_port'],[ports])
+          JsonHelpers.setSubFormField(this.formFields,'inq2',['rank','hotel','signin_signoff'],[crewRanks,hotels,[{value:'ON'},{value:'OFF'}]]);
           JsonHelpers.setSubFormField(this.formFields,'inq3',['hotel','hotel_referrer'],[hotels,hotelArrangedBy]);
           JsonHelpers.setSubFormField(this.formFields,'inq4',['position','medical_type','medical_status'],[hotels,medicalAttendanceTypes,medicalAttendanceStatus]);
           JsonHelpers.setSubFormField(this.formFields,'inq5',['offland_description','offland_destination','offland_status','offland_forward_method'],[offlandItemDescriptions,offlandDestinations,offlandStatus,offlandForwardMethods]);
