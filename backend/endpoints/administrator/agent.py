@@ -7,7 +7,7 @@ from models.agent import Agent
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
 
-api = Namespace('agent',description = 'Agent Crud Endpoints')
+api = Namespace('admin/agent',description = 'Agent Crud Endpoints')
 
 @api.route("/", methods=['GET','POST'])
 class GetPostAgent(Resource):

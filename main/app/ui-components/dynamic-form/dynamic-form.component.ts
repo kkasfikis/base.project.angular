@@ -34,8 +34,15 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   localFormFieldType : typeof FormFieldType = FormFieldType;
   
   ngOnInit(): void {
-    console.log('FORM FIELDS:',this.formFields)
     this.form = this.formService.toFormGroup(this.formFields)
+    // this.formFields
+    //   .forEach( (x:BehaviorSubject<FormFieldBase> | BehaviorSubject<SubForm>) => {
+    //     if(x instanceof BehaviorSubject && x.getValue() instanceof FormFieldBase){
+    //       let ff = x.getValue() as FormFieldBase;
+    //       console.log('Setting value for :', ff.key, ff.value)
+    //       this.form.controls[ff.key].patchValue(ff.value, {onlySelf: false, emitEvent: true});
+    //     }
+    //   })
     this.enabledSub = this.enabled.pipe(takeUntil(this.ngUnsubscribe)).subscribe({
       next : (enabled : boolean) => {
           if(enabled){

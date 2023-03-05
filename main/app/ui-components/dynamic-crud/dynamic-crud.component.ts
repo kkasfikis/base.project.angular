@@ -9,6 +9,7 @@ import { TableAction, TableColumn, TableData } from '../dynamic-table/dynamic-ta
 import { DynamicCrudService } from './dynamic-crud.service';
 import { ConfirmationDialogComponent, ConfirmationDialogModel } from '../dialogs/confirmation-dialog/confirmation-dialog.component';
 import { FilterField } from './dynamic-crud.models';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-dynamic-crud',
@@ -42,7 +43,8 @@ export class DynamicCrudComponent implements OnInit {
   @Output() onFormChange : EventEmitter<any> = new EventEmitter<any>();
   @Output() onSubFormChange : EventEmitter<any> = new EventEmitter<any>();
 
-  
+  originalCreateFormFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = [];
+  originalUpdateFormFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = [];
 
   isOnCreateMode : boolean = false;
   isOnUpdateMode : boolean = false;
@@ -72,7 +74,7 @@ export class DynamicCrudComponent implements OnInit {
   private filterMode: boolean =false;
   private filterPayload : any;
 
-  constructor(private crudService : DynamicCrudService, public dialog : MatDialog, private toastr : ToastrService) { }
+  constructor(private crudService : DynamicCrudService, public dialog : MatDialog, private loadingService : LoadingService, private toastr : ToastrService) { }
   
   updateFormActions : FormAction[] =[
     {
@@ -98,6 +100,8 @@ export class DynamicCrudComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableColumnSubject.next(this.tableColumns);
+    this.originalCreateFormFields = this.createFormFields;
+    this.originalUpdateFormFields = this.updateFormFields;
     this.size = this.pageSize;
     this.switchMode('read')
   }
@@ -208,6 +212,7 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   normalRead(){
+    this.loadingService.setLoading(true);
     this.crudService.read(this.endpoint).subscribe({
       next : (resp : any) => {
         if(resp.read){
@@ -221,11 +226,13 @@ export class DynamicCrudComponent implements OnInit {
         this.isOnUpdateMode = false;
         this.isOnReadMode = true;
         this.isOnInfoMode = false;
+        this.loadingService.setLoading(false);
       }
     })
   }
 
   paginatedRead(){
+    this.loadingService.setLoading(true)
     this.crudService.paginatedRead(this.endpoint,this.page,this.size,this.sort,this.sortColumn).subscribe({
       next : (resp : any) => {
         if(resp.read){
@@ -245,11 +252,13 @@ export class DynamicCrudComponent implements OnInit {
         else{
           this.toastr.error('Could not read records', 'Error')
         }
+        this.loadingService.setLoading(false)
       }
     })
   }
 
   filterRead(){
+    this.loadingService.setLoading(true);
     this.crudService.filter(this.endpoint,this.page,this.pageSize,this.filterPayload,this.sort,this.sortColumn).subscribe({
       next : (resp : any) => {
         if(resp.read){
@@ -272,49 +281,24 @@ export class DynamicCrudComponent implements OnInit {
         this.isOnUpdateMode = false;
         this.isOnReadMode = true;
         this.isOnInfoMode = false;
+        this.loadingService.setLoading(false);
       }
     })
   }
 
   cleanForm(isCreate:boolean){
     if(isCreate){
-      this.createFormFields.forEach( (field) => {
-        if(field.getValue() instanceof SubForm){
-          let tfield = field.getValue() as SubForm;
-          tfield.fields.forEach( (subfield) => {
-            subfield.value = '';
-          });
-          tfield.tableData = []
-        }
-        else{
-          let sField = (field as BehaviorSubject<FormFieldBase>).getValue();
-          sField.value = '';
-          (field as BehaviorSubject<FormFieldBase>).next(sField);
-        }
-      });
+      this.createFormFields = this.originalCreateFormFields;
     }
     else {
-      this.updateFormFields.forEach( (field) => {
-        if(field.getValue() instanceof SubForm){
-          let tfield = field.getValue() as SubForm ;
-          tfield.fields.forEach( (subfield) => {
-            subfield.value = '';
-          });
-          tfield.tableData = [];
-          (field as BehaviorSubject<SubForm>).next(tfield);
-        }
-        else{
-          let sField = (field as BehaviorSubject<FormFieldBase>).getValue();
-          sField.value = '';
-          (field as BehaviorSubject<FormFieldBase>).next(sField);
-        }
-      });
+      this.updateFormFields = this.originalUpdateFormFields;
     }
   }
 
 
   crudInfo(payload : any){
     this.infoElement = {};
+    this.loadingService.setLoading(true);
     this.crudService.info(this.endpoint, this.tableData[payload.internalId], this.identifierKey).subscribe({
       next : (resp : any) => {
         if(resp.info){
@@ -324,12 +308,14 @@ export class DynamicCrudComponent implements OnInit {
         else{
           this.toastr.error(resp.message,'Error')
         }
+        this.loadingService.setLoading(false);
       }
     });
   }
 
   crudUpdate(payload : any){
     this.cleanForm(false);
+    this.loadingService.setLoading(true);
     this.crudService.info(this.endpoint,this.tableData[payload.internalId],this.identifierKey).subscribe({
       next : (resp : any) => {
         let obj = resp.data;
@@ -366,7 +352,7 @@ export class DynamicCrudComponent implements OnInit {
               }
           })
         })
-        
+        this.loadingService.setLoading(false);
         this.switchMode('update')
       } 
     })
@@ -374,6 +360,7 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   crudUpdateSubmit(payload : any){
+    this.loadingService.setLoading(true);
     this.crudService.update( this.endpoint, payload, this.identifierKey).subscribe({
       next: (response : any) => {
         if(!response.updated){
@@ -383,10 +370,12 @@ export class DynamicCrudComponent implements OnInit {
           this.switchMode('read');
           this.toastr.success(response['message'],'Success')
         }
+        this.loadingService.setLoading(false);
       },
       error : () => {
         this.switchMode('read');
         this.toastr.error('Error','An error occured while trying to create record')
+        this.loadingService.setLoading(false);
       }
     })
   }
@@ -408,6 +397,7 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   crudDeleteSubmit(item : {internalId : number}){
+    this.loadingService.setLoading(true);
     this.crudService.delete( this.endpoint, this.tableData[item.internalId], this.identifierKey ).subscribe({
       next: (response : any) => {
         if(!response.deleted){
@@ -417,10 +407,12 @@ export class DynamicCrudComponent implements OnInit {
           this.switchMode('read');
           this.toastr.success(response['message'],'Success')
         }
+        this.loadingService.setLoading(false);
       },
       error : () => {
         this.switchMode('read');
         this.toastr.error('Error','An error occured while trying to create record')
+        this.loadingService.setLoading(false);
       }
     })
   }

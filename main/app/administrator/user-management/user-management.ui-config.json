@@ -10,14 +10,14 @@
             "type": "TextBox",
             "label": "Username",
             "options": [],
-            "enabled": true,
+            "enabled": false,
             "required": true,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
             "width": 50,
             "innerWidth": 98,
-            "align": "left"
+            "align": "flex-start"
         },
         {
             "key": "full_name",
@@ -25,14 +25,14 @@
             "type": "TextBox",
             "label": "Full Name",
             "options": [],
-            "enabled": true,
+            "enabled": false,
             "required": true,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
             "width": 50,
             "innerWidth": 98,
-            "align": "left"
+            "align": "flex-start"
         },
         {
             "key": "email",
@@ -40,57 +40,51 @@
             "type": "TextBox",
             "label": "Email",
             "options": [],
-            "enabled": true,
+            "enabled": false,
             "required": true,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
             "width": 50,
             "innerWidth": 98,
-            "align": "left"
+            "align": "flex-start"
         },
         {
-            "key": "password",
+            "key": "role",
             "order": 10,
-            "type": "Hidden"
-        }
-    ],
-    "subforms":[
-        {
-            "key" : "roles",
-            "label" : "Roles",
-            "order" : 100,
-            "enabled" : true,
-            "fields" : [
+            "type": "Select",
+            "label": "Role",
+            "options": [
                 {
-                    "key": "role",
-                    "order": 40,
-                    "type": "TextBox",
-                    "label": "Role",
-                    "options": [],
-                    "enabled": true,
-                    "required": false,
-                    "minLength": 3,
-                    "maxLength": 255,
-                    "regexPattern": "",
-                    "width": 100,
-                    "innerWidth": 98,
-                    "align": "center center"
+                    "key" : "administrator",
+                    "value" : "administrator",
+                    "foreColor" : "",
+                    "backColor" : ""
+                },
+                {
+                    "key" : "captain",
+                    "value" : "captain",
+                    "foreColor" : "",
+                    "backColor" : ""
+                },
+                {
+                    "key" : "agent",
+                    "value" : "agent",
+                    "foreColor" : "",
+                    "backColor" : ""
                 }
-            ], 
-            "tableColumns": [],
-            "infoFields":[],
-            "hasDelete" : false,
-            "hasUpdate" : true,
-            "hasInfo" : false,
-            "identifierKey" : "_id",
-            "width" : 100,
-            "innerWidth" : 100,
-            "align" : "center center",
-            "isTagged" : true,
-            "tagSeperator" : ","
-        }
+            ],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "flex-start"
+        }   
     ],
+    "subforms":[],
     "infos": [
         {
             "key": "username",
@@ -115,16 +109,16 @@
             "order": 30,
             "label": "Email",
             "type": "Text",
-            "width": 40,
+            "width": 50,
             "innerwidth": 98,
             "align": "center center"
         },
         {
-            "key": "roles",
+            "key": "role",
             "order": 40,
-            "label": "Roles",
+            "label": "Role",
             "type": "Text",
-            "width": 40,
+            "width": 50,
             "innerwidth": 36,
             "align": "center center"
         }
@@ -143,14 +137,21 @@
             "text": "Full Name",
             "isFilterable": true,
             "isSortable": true,
-            "width": 30
+            "width": 20
         },
         {
             "key": "email",
             "text": "Email",
             "isFilterable": true,
             "isSortable": true,
-            "width": 30
+            "width": 20
+        },
+        {
+            "key": "role",
+            "text": "Role",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 20
         }
     ]
 }

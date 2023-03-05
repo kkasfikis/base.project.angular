@@ -8,7 +8,7 @@ import json
 import bson
 from ..crud import BaseCrud
 
-api = Namespace('predefined',description = 'Predefined Crud Endpoints')
+api = Namespace('admin/predefined',description = 'Predefined Crud Endpoints')
 
 @api.route("/", methods=['GET','POST'])
 class GetPostPredefined(Resource):

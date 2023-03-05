@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { JsonHelpers } from 'main/app/ui-components/dynamic-crud/json-helpers';
+import { JsonHelpers } from 'main/app/ui-components/scripts/json-helpers';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';

@@ -68,6 +68,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { RegisterComponent } from './auth/register/register.component';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { UserManagementComponent } from './administrator/user-management/user-management.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AgentCallComponent } from './agent/agent-call/agent-call.component'
 
 @NgModule({
   declarations: [
@@ -107,7 +109,8 @@ import { UserManagementComponent } from './administrator/user-management/user-ma
     InvoiceComponent,
     RegisterComponent,
     ChangePasswordComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    AgentCallComponent
   ],
   imports: [
     BrowserModule,
@@ -137,6 +140,7 @@ import { UserManagementComponent } from './administrator/user-management/user-ma
     ResponsiveDynamicTableModule,
     MatExpansionModule,
     MatNativeDateModule ,
+    MatProgressSpinnerModule,
     ToastrModule.forRoot()
   ],
   providers: [{ provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi: true}],

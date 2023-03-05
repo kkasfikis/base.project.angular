@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
 import { DynamicCrudService } from 'main/app/ui-components/dynamic-crud/dynamic-crud.service';
-import { JsonHelpers } from 'main/app/ui-components/dynamic-crud/json-helpers';
+import { JsonHelpers } from 'main/app/ui-components/scripts/json-helpers';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
@@ -52,9 +52,9 @@ export class SOAComponent implements OnInit {
 
   onFormChange( item : {mode : string, key : string, value : string, form : FormGroup}){
     if(item.key == 'client'){
-      this.crudService.infoById('client',item.value).subscribe({
+      this.crudService.infoById('admin/client',item.value).subscribe({
         next : (resp : any) => {
-          JsonHelpers.setFieldDropdown(this.formFields,'client_alias',resp.data.client_aliases.map( (x:any) => x.alias))
+          JsonHelpers.setFieldDropdown(this.formFields,'client_alias',resp.data.client_aliases.map( (x:any) =>  {return { key : x.alias, value: x.alias}}))
         }
       });
     }

@@ -6,7 +6,7 @@ import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
 import { BehaviorSubject } from 'rxjs';
 import * as data from './breakdown.ui-config.json'
-import { JsonHelpers } from 'main/app/ui-components/dynamic-crud/json-helpers';
+import { JsonHelpers } from 'main/app/ui-components/scripts/json-helpers';
 
 @Component({
   selector: 'app-breakdown',
@@ -40,17 +40,17 @@ export class BreakdownComponent implements OnInit {
   
   initMods(){
 
-    this.crudService.read('predefined').subscribe({
+    this.crudService.read('admin/predefined').subscribe({
       next : (resp : any) => {
         let serviceStatus = resp.data.find( ( x:any ) => x.key == 'serviceStatus' ).values;
         let serviceCategories = resp.data.find( ( x:any ) => x.key == 'serviceCategories' ).values;
         let serviceSubcategories = resp.data.find( ( x:any ) => x.key == 'serviceSubcategories' ).values;
         JsonHelpers.setFieldDropdown(this.formFields,'breakdown_status' , resp.data.find( ( x:any ) => x.key == 'breakdownStatus' ).values );
-        JsonHelpers.setSubFormField(this.formFields, 'breakdown_items', ['item_category','item_subcategory','item_status'],[serviceCategories,serviceSubcategories,serviceStatus] )
+        JsonHelpers.setSubFieldDropdown(this.formFields, 'breakdown_items', ['item_category','item_subcategory','item_status'],[serviceCategories,serviceSubcategories,serviceStatus] )
       }
     })
     
-    this.crudService.read('predefined').subscribe({
+    this.crudService.read('admin/predefined').subscribe({
       next : (resp : any) => {
        
       }

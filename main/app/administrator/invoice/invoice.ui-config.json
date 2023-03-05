@@ -8,12 +8,28 @@
         {
             "key": "invoice_type",
             "order": 10,
-            "type": "Select",
-            "label": "Document Type",
+            "value" : "Proforma",
+            "type": "TextBox",
+            "label": "Type",
+            "options": [],
+            "enabled": false,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "invoice_title",
+            "order": 11,
+            "type": "TextBox",
+            "label": "Title",
             "options": [],
             "enabled": true,
-            "required": false,
-            "minLength": 3,
+            "required": true,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
             "width": 25,
@@ -23,15 +39,20 @@
         {
             "key": "invoice_balance",
             "order": 20,
-            "type": "Number",
-            "label": "Balance",
+            "type": "Hidden"
+        },
+        {
+            "key": "invoice_no",
+            "order": 25,
+            "type": "TextBox",
+            "label": "Ref. Number",
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 10,
+            "width": 25,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -39,86 +60,26 @@
             "key": "invoice_date",
             "order": 30,
             "type": "DatePicker",
-            "label": "Document Issue Date",
+            "label": "Date",
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 33,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_seria",
-            "order": 40,
-            "type": "TextBox",
-            "label": "Seria",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 33,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_no",
-            "order": 50,
-            "type": "TextBox",
-            "label": "Number",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 33,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "call",
-            "order": 60,
-            "type": "Select",
-            "label": "Call Reference",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 50,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "breakdown",
-            "order": 70,
-            "type": "Select",
-            "label": "Breakdown Reference",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 50,
+            "width": 25,
             "innerWidth": 98,
             "align": "center center"
         },
         {
             "key": "client",
-            "order": 60,
+            "order": 50,
             "type": "Select",
             "label": "Client",
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
             "width": 50,
@@ -133,7 +94,7 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
             "width": 50,
@@ -148,27 +109,12 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 80,
-            "innerWidth": 50,
+            "width": 100,
+            "innerWidth": 98,
             "align": "left"
-        },
-        {
-            "key": "invoice_title",
-            "order": 11,
-            "type": "TextBox",
-            "label": "Title",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 75,
-            "innerWidth": 100,
-            "align": "center center"
         },
         {
             "key": "invoice_total_amount",
@@ -178,12 +124,12 @@
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 100,
-            "align": "center center"
+            "width": 100,
+            "innerWidth": 25,
+            "align": "flex-end"
         }
     ],
     "subforms": [
@@ -193,49 +139,69 @@
             "order":1000,
             "fields": [
                 {
-                    "key": "item_date",
+                    "key": "item_category1",
                     "order": 10,
-                    "type": "DatePicker",
-                    "label": "Date",
+                    "type": "Select",
+                    "label": "Category",
                     "options": [],
                     "enabled": true,
-                    "required": false,
-                    "minLength": 3,
+                    "required": true,
+                    "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 25,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_category2",
+                    "order": 11,
+                    "type": "Select",
+                    "label": "Sub Category 1",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 25,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_category3",
+                    "order": 12,
+                    "type": "Select",
+                    "label": "Sub Category 2",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "item_description",
                     "order": 20,
-                    "type": "TextBox",
+                    "type": "Select",
                     "label": "Description",
                     "options": [],
                     "enabled": true,
-                    "required": false,
-                    "minLength": 3,
+                    "required": true,
+                    "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 30,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "item_order",
                     "order": 30,
-                    "type": "Number",
-                    "label": "Order",
-                    "options": [],
-                    "enabled": true,
-                    "required": false,
-                    "minLength": 3,
-                    "maxLength": 255,
-                    "regexPattern": "",
-                    "width": 0,
-                    "innerWidth": 98,
-                    "align": "center center"
+                    "type": "Hidden"
                 },
                 {
                     "key": "item_price",
@@ -245,10 +211,10 @@
                     "options": [],
                     "enabled": true,
                     "required": false,
-                    "minLength": 3,
+                    "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 33,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -263,9 +229,9 @@
                     "minLength": 1,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width":5,
+                    "width":33,
                     "innerWidth": 98,
-                    "value":1,
+                    "value": 1,
                     "align": "center center"
                 },
                 {
@@ -276,10 +242,10 @@
                     "options": [],
                     "enabled": true,
                     "required": false,
-                    "minLength": 3,
+                    "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 33,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -291,10 +257,10 @@
                     "options": [],
                     "enabled": true,
                     "required": false,
-                    "minLength": 3,
+                    "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 33,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -306,107 +272,79 @@
                     "options": [],
                     "enabled": true,
                     "required": false,
-                    "minLength": 3,
+                    "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 5,
+                    "width": 33,
                     "innerWidth": 98,
                     "align": "center center"
                 },
                 {
-                    "key": "discount_amount",
-                    "order": 90,
-                    "type": "Number",
-                    "label": "Amount",
-                    "options": [],
-                    "enabled": true,
-                    "required": false,
-                    "minLength": 3,
-                    "maxLength": 255,
-                    "regexPattern": "",
-                    "width": 10,
-                    "innerWidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "discount_total",
+                    "key": "item_total",
                     "order": 100,
                     "type": "Number",
-                    "label": "Final",
+                    "label": "Subtotal",
                     "options": [],
                     "enabled": true,
                     "required": false,
-                    "minLength": 3,
+                    "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 33,
                     "innerWidth": 98,
                     "align": "center center"
                 }
             ],
             "tableColumns": [
                 {
-                    "key": "item_date",
-                    "text": "Date",
-                    "isFilterable": true,
-                    "isSortable": true,
-                    "width": 10
-                },
-                {
                     "key": "item_description",
                     "text": "Description",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 20
                 },
                 
                 {
                     "key": "item_price",
                     "text": "Price",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 10
                 },
                 {
                     "key": "item_qty",
                     "text": "QTY",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 5
                 },
                 {
                     "key": "item_amount",
                     "text": "Amount",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 10
                 },
                 {
                     "key": "item_discount_value",
                     "text": "Discount",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 10
                 },
                 {
                     "key": "item_discount_percent",
                     "text": "Discount(%)",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 5
                 },
+                
                 {
-                    "key": "discount_amount",
-                    "text": "Amount",
-                    "isFilterable": true,
-                    "isSortable": true,
-                    "width": 10
-                },
-                {
-                    "key": "discount_total",
-                    "text": "Final",
-                    "isFilterable": true,
-                    "isSortable": true,
+                    "key": "item_total",
+                    "text": "Subtotal",
+                    "isFilterable": false,
+                    "isSortable": false,
                     "width": 10
                 }
             ],
@@ -433,7 +371,7 @@
                     "key": "item_order",
                     "order": 30,
                     "label": "Order",
-                    "type": "Text",
+                    "type": "Hidden",
                     "width": 0,
                     "innerwidth": 98,
                     "align": "center center"
@@ -512,9 +450,9 @@
     ],
     "filters": [
         {
-            "key": "invoice_type",
-            "label": "Document Type",
-            "order": 10,
+            "key": "invoice_no",
+            "label": "Ref. Number",
+            "order": 30,
             "fieldType": "Select",
             "options": []
         },
@@ -526,31 +464,10 @@
             "options": []
         },
         {
-            "key": "call_id",
-            "label": "Call Reference",
-            "order": 60,
-            "fieldType": "Select",
-            "options": []
-        },
-        {
-            "key": "break_id",
-            "label": "Breakdown Reference",
-            "order": 70,
-            "fieldType": "Select",
-            "options": []
-        },
-        {
             "key": "client",
             "label": "Client",
             "order": 90,
             "fieldType": "Select",
-            "options": []
-        },
-        {
-            "key": "client_name",
-            "label": "Client Name",
-            "order": 90,
-            "fieldType": "TextBox",
             "options": []
         },
         {
@@ -772,29 +689,8 @@
     ],
     "columns": [
         {
-            "key": "invoice_type",
-            "text": "Document Type",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 10
-        },
-        {
             "key": "invoice_date",
-            "text": "Document Issue Date",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 10
-        },
-        {
-            "key": "call_id",
-            "text": "Call Reference",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 10
-        },
-        {
-            "key": "break_id",
-            "text": "Breakdown Reference",
+            "text": "Date",
             "isFilterable": true,
             "isSortable": true,
             "width": 10
@@ -809,6 +705,13 @@
         {
             "key": "invoice_client_alias",
             "text": "Client Alias",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 10
+        },
+        {
+            "key": "invoice_no`",
+            "text": "Ref. Number",
             "isFilterable": true,
             "isSortable": true,
             "width": 10

@@ -7,7 +7,7 @@ from models.port import Port
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
 from ..crud import BaseCrud
-api = Namespace('invoice',description = 'invoice Crud Endpoints')
+api = Namespace('admin/invoice',description = 'invoice Crud Endpoints')
 
 @api.route("/", methods=['GET','POST'])
 class GetPostInvoice(Resource):

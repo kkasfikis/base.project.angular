@@ -22,7 +22,12 @@
     "lib": [
       "es2020",
       "dom", "dom.iterable"
-    ]
+    ],
+    "paths": {
+      "ui-lib": [
+        "dist/ui-lib"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

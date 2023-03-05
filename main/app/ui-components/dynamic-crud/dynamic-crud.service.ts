@@ -97,4 +97,15 @@ export class DynamicCrudService {
     }
     return this.http.get('getSingleAttribute?class_name=' + collection + "&id=" + id + "&attribute=" + attribute + '&mode=identified', {...options} )
   }
+
+  qyeryByValue(collection:string, query:any){
+    let options = {
+      headers : new HttpHeaders({'Content-Type' : 'application/json'})
+    };
+    let data = {
+      class_name : collection,
+      query : query
+    }
+    return this.http.post('queryByValue', data, {...options});
+  }
 }

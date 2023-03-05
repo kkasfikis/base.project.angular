@@ -7,123 +7,123 @@
         },
         "changeOrigin" : true
     },
-    "/port":{
-        "target" : "http://localhost:8081/port",
+    "/admin/port":{
+        "target" : "http://localhost:8081/admin/port",
         "secure" : false,
         "pathRewrite" : {
-            "^/port" : ""
+            "^/admin/port" : ""
         },
         "changeOrigin" : true
     },
-    "/client":{
-        "target" : "http://localhost:8081/client",
+    "/admin/client":{
+        "target" : "http://localhost:8081/admin/client",
         "secure" : false,
         "pathRewrite" : {
-            "^/client" : ""
+            "^/admin/client" : ""
         },
         "changeOrigin" : true
     },
-    "/agent":{
-        "target" : "http://localhost:8081/agent",
+    "/admin/agent":{
+        "target" : "http://localhost:8081/admin/agent",
         "secure" : false,
         "pathRewrite" : {
-            "^/agent" : ""
+            "^/admin/agent" : ""
         },
         "changeOrigin" : true
     },
-    "/vessel":{
-        "target" : "http://localhost:8081/vessel",
+    "/admin/vessel":{
+        "target" : "http://localhost:8081/admin/vessel",
         "secure" : false,
         "pathRewrite" : {
-            "^/vessel" : ""
+            "^/admin/vessel" : ""
         },
         "changeOrigin" : true
     },
-    "/call":{
-        "target" : "http://localhost:8081/call",
+    "/admin/call":{
+        "target" : "http://localhost:8081/admin/call",
         "secure" : false,
         "pathRewrite" : {
-            "^/call" : ""
+            "^/admin/call" : ""
         },
         "changeOrigin" : true
     },
-    "/supplier":{
-        "target" : "http://localhost:8081/supplier",
+    "/admin/supplier":{
+        "target" : "http://localhost:8081/admin/supplier",
         "secure" : false,
         "pathRewrite" : {
-            "^/supplier" : ""
+            "^/admin/supplier" : ""
         },
         "changeOrigin" : true
     },
-    "/expense":{
-        "target" : "http://localhost:8081/expense",
+    "/admin/expense":{
+        "target" : "http://localhost:8081/admin/expense",
         "secure" : false,
         "pathRewrite" : {
-            "^/expense" : ""
+            "^/admin/expense" : ""
         },
         "changeOrigin" : true
     },
-    "/predefined":{
-        "target" : "http://localhost:8081/predefined",
+    "/admin/predefined":{
+        "target" : "http://localhost:8081/admin/predefined",
         "secure" : false,
         "pathRewrite" : {
-            "^/predefined" : ""
+            "^/admin/predefined" : ""
         },
         "changeOrigin" : true
     },
-    "/charge":{
-        "target" : "http://localhost:8081/charge",
+    "/admin/charge":{
+        "target" : "http://localhost:8081/admin/charge",
         "secure" : false,
         "pathRewrite" : {
-            "^/charge" : ""
+            "^/admin/charge" : ""
         },
         "changeOrigin" : true
     },
-    "/staff":{
-        "target" : "http://localhost:8081/staff",
+    "/admin/staff":{
+        "target" : "http://localhost:8081/admin/staff",
         "secure" : false,
         "pathRewrite" : {
-            "^/staff" : ""
+            "^/admin/staff" : ""
         },
         "changeOrigin" : true
     },
-    "/bankAccount":{
-        "target" : "http://localhost:8081/bankAccount",
+    "/admin/bankAccount":{
+        "target" : "http://localhost:8081/admin/bankAccount",
         "secure" : false,
         "pathRewrite" : {
-            "^/bankAccount" : ""
+            "^/admin/bankAccount" : ""
         },
         "changeOrigin" : true
     },
-    "/soa":{
-        "target" : "http://localhost:8081/soa",
+    "/admin/soa":{
+        "target" : "http://localhost:8081/admin/soa",
         "secure" : false,
         "pathRewrite" : {
-            "^/soa" : ""
+            "^/admin/soa" : ""
         },
         "changeOrigin" : true
     },
-    "/csoa":{
-        "target" : "http://localhost:8081/csoa",
+    "/admin/csoa":{
+        "target" : "http://localhost:8081/admin/csoa",
         "secure" : false,
         "pathRewrite" : {
-            "^/csoa" : ""
+            "^/admin/csoa" : ""
         },
         "changeOrigin" : true
     },
-    "/invoice":{
-        "target" : "http://localhost:8081/invoice",
+    "/admin/invoice":{
+        "target" : "http://localhost:8081/admin/invoice",
         "secure" : false,
         "pathRewrite" : {
-            "^/invoice" : ""
+            "^/admin/invoice" : ""
         },
         "changeOrigin" : true
     },
-    "/breakdown":{
-        "target" : "http://localhost:8081/breakdown",
+    "/admin/breakdown":{
+        "target" : "http://localhost:8081/admin/breakdown",
         "secure" : false,
         "pathRewrite" : {
-            "^/breakdown" : ""
+            "^/admin/breakdown" : ""
         },
         "changeOrigin" : true
     },
@@ -159,11 +159,11 @@
         },
         "changeOrigin" : true
     },
-    "/userManagement":{
-        "target" : "http://localhost:8081/userManagement",
+    "/admin/userManagement":{
+        "target" : "http://localhost:8081/admin/userManagement",
         "secure" : false,
         "pathRewrite" : {
-            "^/userManagement" : ""
+            "^/admin/userManagement" : ""
         },
         "changeOrigin" : true
     },
@@ -180,6 +180,14 @@
         "secure" : false,
         "pathRewrite" : {
             "^/changePassword" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/queryByValue":{
+        "target" : "http://localhost:8081/queryByValue",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/queryByValue" : ""
         },
         "changeOrigin" : true
     }

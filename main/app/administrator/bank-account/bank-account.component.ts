@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
 import { DynamicCrudService } from 'main/app/ui-components/dynamic-crud/dynamic-crud.service';
-import { JsonHelpers } from 'main/app/ui-components/dynamic-crud/json-helpers';
+import { JsonHelpers } from 'main/app/ui-components/scripts/json-helpers';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
@@ -39,9 +39,8 @@ export class BankAccountComponent implements OnInit {
 
 
   initMods(){
-    this.crudService.read('predefined').subscribe({
+    this.crudService.read('admin/predefined').subscribe({
       next : (resp : any) => {
-        console.log('currency',resp.data.find( (x : any) => x.key == 'currencies').values);
         JsonHelpers.setFieldDropdown(this.formFields,'currency',resp.data.find( (x : any) => x.key == 'currencies').values);
       }
     })

@@ -14,7 +14,7 @@ from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identit
 import json
 from helperFunctions import HelperFunctions
 
-api = Namespace('call',description = 'Call Crud Endpoints')
+api = Namespace('admin/call',description = 'Call Crud Endpoints')
 
 @api.route("/", methods=['GET','POST'])
 class GetPostCall(Resource):

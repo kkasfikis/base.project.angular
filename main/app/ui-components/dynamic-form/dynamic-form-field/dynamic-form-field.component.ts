@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, ElementRef, ViewChild, Renderer2, AfterViewInit } from '@angular/core';
 import { FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { BehaviorSubject, Subject, Subscription, takeUntil } from 'rxjs';
 import { FormFieldBase, FormFieldType } from '../dynamic-form.models';
@@ -8,7 +8,7 @@ import { FormFieldBase, FormFieldType } from '../dynamic-form.models';
   templateUrl: './dynamic-form-field.component.html',
   styleUrls: ['./dynamic-form-field.component.scss']
 })
-export class DynamicFormFieldComponent implements OnInit, OnDestroy {
+export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewInit {
 
   @Input() formField! : FormFieldBase | BehaviorSubject<FormFieldBase>;
   @Input() form! : FormGroup;
@@ -18,11 +18,14 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy {
   localFormField! : FormFieldBase;
   localFormFieldType : typeof FormFieldType = FormFieldType
   private ngUnsubscribe = new Subject<void>();
-  constructor(private elementRef : ElementRef) { }
+  constructor(private elementRef : ElementRef,private renderer: Renderer2) { }
 
   selectForeColor : string = '';
   selectBackColor : string = '';
 
+  colorStyles : HTMLStyleElement | undefined;
+  @ViewChild('formField') public element! : ElementRef;
+  
   initFormField(field : FormFieldBase){
     this.localFormField = field;
     this.form.clearValidators();
@@ -40,6 +43,36 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy {
     if(field.enabled) {this.form.get(this.localFormField.key)?.enable();} else { this.form.get(this.localFormField.key)?.disable(); }
     this.form.get(this.localFormField.key)?.addValidators(validators);
     this.form.controls[this.localFormField.key].patchValue(field.value, {onlySelf: false, emitEvent: true});
+    
+    if(this.localFormField.type == FormFieldType.Select && this.localFormField.value != undefined && this.localFormField.value.length > 0){      
+      let item : any = this.localFormField.options.find( (x:any) => x.value == this.localFormField.value);
+      if(item && !!item.foreColor && item.foreColor.length > 0 && !!item.backColor && item.backColor.length > 0){
+        this.selectForeColor = item.foreColor;
+        this.selectBackColor = item.backColor;
+        console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%',this.localFormField.key,this.selectForeColor,this.selectBackColor)
+        this.setSelectColor(this.selectForeColor,this.selectBackColor)
+      }
+    }
+  }
+
+  setSelectColor(foreColor : string , backColor : string){
+    let element =  document.getElementsByTagName('head')[0];//document.getElementById(this.localFormField.key)//this.element.nativeElement as HTMLElement
+    if(this.colorStyles != undefined){
+      element!.removeChild(this.colorStyles!);
+    }
+    let css = `
+      .${this.localFormField.key} .mat-select-value-text {
+        color:${foreColor} !important;
+        background-color: ${backColor};
+      }      
+    `
+    this.colorStyles = document.createElement('style');
+    this.colorStyles.appendChild(document.createTextNode(css));
+    element!.prepend(this.colorStyles)
+  }
+
+  ngAfterViewInit(): void {
+    
   }
 
   ngOnInit(): void {
@@ -53,7 +86,7 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy {
       });
     }
     else{
-      this.initFormField(this.formField)
+      this.initFormField(this.formField as FormFieldBase)
     }
     window.onbeforeunload = () => this.ngOnDestroy();
   }
@@ -70,23 +103,17 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy {
 
   contentChange(){
     let value = this.form.get(this.localFormField.key)?.value;
-    console.log('VALUE CHANGED',value);
-    let ff : FormFieldBase;
-    if(this.formField instanceof FormFieldBase){
-      ff = this.formField;
-    }
-    else{
-      ff = this.formField.getValue();
-    } 
-    if(ff.type == FormFieldType.Select){
-      
-      let item : any = ff.options.find( (x:any) => x.value == value);
-      if(item && item.foreColor && item.foreColor.length > 0 && item.backColor && item.backColor.length > 0){
+
+    if(this.localFormField.type == FormFieldType.Select){      
+      let item : any = this.localFormField.options.find( (x:any) => x.value == value);
+      if(item && !!item.foreColor && item.foreColor.length > 0 && !!item.backColor && item.backColor.length > 0){
         this.selectForeColor = item.foreColor;
         this.selectBackColor = item.backColor;
+        this.setSelectColor(this.selectForeColor,this.selectBackColor)
       }
     }
-    this.onFieldChange.emit( {key: this.localFormField.key,value: value, form: this.form})
+ 
+    this.onFieldChange.emit( {key: this.localFormField.key, value: value, form: this.form})
   }
 
 

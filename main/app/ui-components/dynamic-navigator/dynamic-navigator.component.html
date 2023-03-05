@@ -22,7 +22,7 @@
         </mat-nav-list>
     </mat-sidenav>
     
-    <mat-sidenav-content>
+    <mat-sidenav-content fxLayout="column">
         <!-- Start of NavBar -->
         <mat-toolbar style="min-height:100px" class="mat-elevation-z10" color="primary">
             <!-- Navbar Left Side -->
@@ -108,9 +108,13 @@
         </mat-toolbar>
 
         <!-- Main Content -->
-        <div class="content" style="width:100%; height:100%" fxLayout="column">
+        <div class="content" [fxHide]="isLoading" style="width:100%; height:100%" fxLayout="column">
             <br/><br/>
             <router-outlet></router-outlet>
+        </div>
+
+        <div fxFlex="100" *ngIf="isLoading" class="content" style="width:100%; height:100%" fxLayoutAlign="center center">
+            <mat-spinner></mat-spinner>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

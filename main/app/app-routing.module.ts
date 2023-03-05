@@ -17,7 +17,7 @@ import { StaffComponent } from './administrator/staff/staff.component';
 import { SupplierComponent } from './administrator/supplier/supplier.component';
 import { UserManagementComponent } from './administrator/user-management/user-management.component';
 import { VesselComponent } from './administrator/vessel/vessel.component';
-import { AdminGuard } from './auth/auth.guard';
+import { AdminGuard, AgentGuard, CaptainGuard } from './auth/auth.guard';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -31,24 +31,28 @@ const routes: Routes = [
   {path:'unauthorized',component: UnauthorizedComponent},
   
   //Administrator
-  {path:'port',component:PortComponent,canActivate:[AdminGuard]},
-  {path:'vessel',component:VesselComponent,canActivate:[AdminGuard]},
-  {path:'client',component:ClientComponent,canActivate:[AdminGuard]},
-  {path:'agent',component:AgentComponent,canActivate:[AdminGuard]},
-  {path:'call',component:CallComponent,canActivate:[AdminGuard]},
-  {path:'supplier',component:SupplierComponent,canActivate:[AdminGuard]},
-  {path:'expense',component:ExpenseComponent,canActivate:[AdminGuard]},
-  {path:'bankAccount',component:BankAccountComponent,canActivate:[AdminGuard]},
-  {path:'staff',component:StaffComponent,canActivate:[AdminGuard]},
-  {path:'predefined',component:PredefinedComponent,canActivate:[AdminGuard]},
-  {path:'charge',component:ChargeComponent,canActivate:[AdminGuard]},
-  {path:'soa',component:SOAComponent,canActivate:[AdminGuard]},
-  {path:'csoa',component:CSOAComponent,canActivate:[AdminGuard]},
-  {path:'breakdown',component:BreakdownComponent,canActivate:[AdminGuard]},
-  {path:'invoice',component:InvoiceComponent,canActivate:[AdminGuard]},
-  {path:'userManagement',component:UserManagementComponent,canActivate:[AdminGuard]},
+  {path:'admin/port',component:PortComponent,canActivate:[AdminGuard]},
+  {path:'admin/vessel',component:VesselComponent,canActivate:[AdminGuard]},
+  {path:'admin/client',component:ClientComponent,canActivate:[AdminGuard]},
+  {path:'admin/agent',component:AgentComponent,canActivate:[AdminGuard]},
+  {path:'admin/call',component:CallComponent,canActivate:[AdminGuard]},
+  {path:'admin/supplier',component:SupplierComponent,canActivate:[AdminGuard]},
+  {path:'admin/expense',component:ExpenseComponent,canActivate:[AdminGuard]},
+  {path:'admin/bankAccount',component:BankAccountComponent,canActivate:[AdminGuard]},
+  {path:'admin/staff',component:StaffComponent,canActivate:[AdminGuard]},
+  {path:'admin/predefined',component:PredefinedComponent,canActivate:[AdminGuard]},
+  {path:'admin/charge',component:ChargeComponent,canActivate:[AdminGuard]},
+  {path:'admin/soa',component:SOAComponent,canActivate:[AdminGuard]},
+  {path:'admin/csoa',component:CSOAComponent,canActivate:[AdminGuard]},
+  {path:'admin/breakdown',component:BreakdownComponent,canActivate:[AdminGuard]},
+  {path:'admin/invoice',component:InvoiceComponent,canActivate:[AdminGuard]},
+  {path:'admin/userManagement',component:UserManagementComponent,canActivate:[AdminGuard]},
 
-
+  //Captain
+  {path:'captain/call',component:CallComponent,canActivate:[CaptainGuard]},
+  
+  //Agent
+  {path:'agent/call',component:CallComponent,canActivate:[AgentGuard]},
 ];
 
 @NgModule({

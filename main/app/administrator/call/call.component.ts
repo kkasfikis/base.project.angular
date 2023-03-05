@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
 import { DynamicCrudService } from 'main/app/ui-components/dynamic-crud/dynamic-crud.service';
-import { JsonHelpers } from 'main/app/ui-components/dynamic-crud/json-helpers';
+import { JsonHelpers } from 'main/app/ui-components/scripts/json-helpers';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
@@ -48,7 +48,7 @@ export class CallComponent implements OnInit, OnDestroy{
 
   initMods(){
     forkJoin([
-        this.crudService.read('predefined'),
+        this.crudService.read('admin/predefined'),
         this.crudService.getAttributeWithId('Port','name'),
         this.crudService.getAttributeWithId('Client','name'),
         this.crudService.getAttributeWithId('Vessel','vessel_name'),
@@ -102,20 +102,20 @@ export class CallComponent implements OnInit, OnDestroy{
           JsonHelpers.setFieldDropdown(this.formFields,'call_status',callStatus)
           JsonHelpers.setFieldDropdown(this.formFields,'call_type',callTypes)
           
-          JsonHelpers.setSubFormField(this.formFields,'inq1',['first_hotel','second_hotel','position','departure_airport'],[hotels,hotels,positions,airports]);
-          JsonHelpers.setSubFormReferenceField(this.formFields,'inq1',['arrival_port'],[ports])
-          JsonHelpers.setSubFormField(this.formFields,'inq2',['rank','hotel','signin_signoff'],[crewRanks,hotels,[{value:'ON'},{value:'OFF'}]]);
-          JsonHelpers.setSubFormField(this.formFields,'inq3',['hotel','hotel_referrer'],[hotels,hotelArrangedBy]);
-          JsonHelpers.setSubFormField(this.formFields,'inq4',['position','medical_type','medical_status'],[hotels,medicalAttendanceTypes,medicalAttendanceStatus]);
-          JsonHelpers.setSubFormField(this.formFields,'inq5',['offland_description','offland_destination','offland_status','offland_forward_method'],[offlandItemDescriptions,offlandDestinations,offlandStatus,offlandForwardMethods]);
-          JsonHelpers.setSubFormField(this.formFields,'inq6',['power_supply_status','power_supply_delivery_method'],[powerSupplyStatus,powerSupplyDeliveryMethods]);
-          JsonHelpers.setSubFormField(this.formFields,'inq7',['domestic_shipment_type','domestic_shipment_status'],[domesticShipmentTypes,domesticShipmentStatus]);
-          JsonHelpers.setSubFormField(this.formFields,'inq8',['overseas_shipment_type','overseas_shipment_status'],[overseasShipmentTypes,overseasShipmentStatus]);
-          JsonHelpers.setSubFormField(this.formFields,'inq9',['store_provision_type','store_provision_supplier','store_provision_status','store_provision_delivery_method'],[storeProvisionTypes,storeProvisionSuppliers,storeProvisionStatus,storeProvisionDeliveryMethods]);
-          JsonHelpers.setSubFormField(this.formFields,'inq10',['bunker_type','bunker_supplier_type','details','bunker_status','bunker_delivery_method'],[bunkerTypes,bunkerSupplierTypes,bunkerDetails,bunkerStatus,bunkerDeliveryMethods]);
-          JsonHelpers.setSubFormField(this.formFields,'inq11',['ship_pollutant_service','ship_pollutant_status'],[shipPollutantServices,shipPollutantStatus]);
-          JsonHelpers.setSubFormField(this.formFields,'inq12',['status'],[variousInquiriesStatus]);
-          JsonHelpers.setSubFormField(this.formFields,'inq13',['ctm_operation','currency'],[ctmOperations,currencies]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq1',['first_hotel','second_hotel','position','departure_airport'],[hotels,hotels,positions,airports]);
+          JsonHelpers.setSubReferenceFieldDropdown(this.formFields,'inq1',['arrival_port'],[ports])
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq2',['rank','hotel','signin_signoff'],[crewRanks,hotels,[{value:'ON'},{value:'OFF'}]]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq3',['hotel','hotel_referrer'],[hotels,hotelArrangedBy]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq4',['position','medical_type','medical_status'],[hotels,medicalAttendanceTypes,medicalAttendanceStatus]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq5',['offland_description','offland_destination','offland_status','offland_forward_method'],[offlandItemDescriptions,offlandDestinations,offlandStatus,offlandForwardMethods]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq6',['power_supply_status','power_supply_delivery_method'],[powerSupplyStatus,powerSupplyDeliveryMethods]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq7',['domestic_shipment_type','domestic_shipment_status'],[domesticShipmentTypes,domesticShipmentStatus]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq8',['overseas_shipment_type','overseas_shipment_status'],[overseasShipmentTypes,overseasShipmentStatus]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq9',['store_provision_type','store_provision_supplier','store_provision_status','store_provision_delivery_method'],[storeProvisionTypes,storeProvisionSuppliers,storeProvisionStatus,storeProvisionDeliveryMethods]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq10',['bunker_type','bunker_supplier_type','details','bunker_status','bunker_delivery_method'],[bunkerTypes,bunkerSupplierTypes,bunkerDetails,bunkerStatus,bunkerDeliveryMethods]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq11',['ship_pollutant_service','ship_pollutant_status'],[shipPollutantServices,shipPollutantStatus]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq12',['status'],[variousInquiriesStatus]);
+          JsonHelpers.setSubFieldDropdown(this.formFields,'inq13',['ctm_operation','currency'],[ctmOperations,currencies]);
         } 
       }
     )
@@ -123,36 +123,49 @@ export class CallComponent implements OnInit, OnDestroy{
 
   onFormChange( item : {mode : string, key : string, value : string, form : FormGroup}){
     if(item.key == 'port'){
-      this.crudService.infoById('port',item.value).subscribe({
+      this.crudService.infoById('admin/port',item.value).subscribe({
         next : (resp : any) => {
-          JsonHelpers.setFieldValue(this.formFields,'port_name',resp.data.name)
           JsonHelpers.setFieldValue(this.formFields,'port_anchorage',resp.data.anchorage)
         }
       });
     }
     if(item.key == 'client'){
-      this.crudService.infoById('client',item.value).subscribe({
+      this.crudService.infoById('admin/client',item.value).subscribe({
         next : (resp : any) => {
-          console.log('Cleint',resp)
-          JsonHelpers.setFieldValue(this.formFields,'client_name',resp.data.name)
-          JsonHelpers.setFieldDropdown(this.formFields,'client_alias',resp.data.client_aliases.map( (x:any) => x.alias))
+          JsonHelpers.setFieldDropdown( 
+            this.formFields,
+            'client_alias',
+            resp.data.client_aliases.map( (x:any) => {
+              return {
+                key : x.alias, 
+                value: x.alias
+              } 
+            })
+          )
         }
       });
     }
     if(item.key == 'vessel'){
-      this.crudService.infoById('vessel',item.value).subscribe({
+      this.crudService.infoById('admin/vessel',item.value).subscribe({
         next : (resp : any) => {
-          JsonHelpers.setFieldValue(this.formFields,'vessel_name',resp.data.vessel_name)
           JsonHelpers.setFieldValue(this.formFields,'vessel_flag',resp.data.flag)
         }
       });
     }
     if(item.key == 'agent'){
-      this.crudService.infoById('agent',item.value).subscribe({
+      this.crudService.infoById('admin/agent',item.value).subscribe({
         next : (resp : any) => {
           console.log('AGENT',resp)
-          JsonHelpers.setFieldValue(this.formFields,'agent_name',resp.data.agent_name)
-          JsonHelpers.setFieldDropdown(this.formFields,'agent_person_in_charge',resp.data.agent_people_in_charge.map( (x:any) => x.pic_name))
+          JsonHelpers.setFieldDropdown(
+            this.formFields,
+            'agent_person_in_charge',
+            resp.data.agent_people_in_charge.map( (x:any) => {
+              return {
+                key : x.pic_name, 
+                value: x.pic_name
+              } 
+            })
+          )
         }
       })
     }

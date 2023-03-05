@@ -1,11 +1,11 @@
 <app-dynamic-crud
-    [title]="'Documents (PROFORMA, D/N, C/N, D/A)'"
+    [title]="'PROFORMA'"
     [hasCreate]="true"
     [hasUpdate]="true"
     [hasDelete]="true"
     [hasInfo]="true"
 
-    [endpoint]="'/invoice'"
+    [endpoint]="'admin/invoice'"
 
     [identifierKey]="'_id'"
 
@@ -23,4 +23,5 @@
     [filterFields]="filterFields"
 
     (onFormChange)="onFormChange($event)"
+    (onSubFormChange)="onSubFormChange($event)"
 ></app-dynamic-crud>

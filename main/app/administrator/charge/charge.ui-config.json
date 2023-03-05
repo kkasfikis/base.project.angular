@@ -6,59 +6,14 @@
             "type": "Hidden"
         },
         {
-            "key": "ch_cat",
+            "key": "category1",
             "order": 10,
             "type": "TextBox",
-            "label": "Charge Category",
+            "label": "Category",
             "options": [],
             "enabled": true,
             "required": true,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 20,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "ch_cat_order",
-            "order": 35,
-            "type": "TextBox",
-            "label": "Charge Category Order",
-            "options": [],
-            "enabled": true,
-            "required": true,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 5,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "ch_sub",
-            "order": 30,
-            "type": "TextBox",
-            "label": "Charge Subcategory",
-            "options": [],
-            "enabled": true,
-            "required": true,
-            "minLength": 3,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 20,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "ch_desc",
-            "order": 40,
-            "type": "TextBox",
-            "label": "Charge Description",
-            "options": [],
-            "enabled": true,
-            "required": true,
-            "minLength": 3,
+            "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
             "width": 25,
@@ -66,92 +21,99 @@
             "align": "center center"
         },
         {
-            "key": "ch_rem",
-            "order": 50,
-            "type": "TextArea",
-            "label": "Notes",
+            "key": "category_order",
+            "order": 15,
+            "type": "Number",
+            "label": "Inv. Order",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "category2",
+            "order": 20,
+            "type": "TextBox",
+            "label": "Sub Category 1",
             "options": [],
             "enabled": true,
             "required": false,
-            "minLength": 3,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "category3",
+            "order": 30,
+            "type": "TextBox",
+            "label": "Sub Category 2",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "description",
+            "order": 40,
+            "type": "TextBox",
+            "label": "Charge Description",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 66,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "price",
+            "order": 50,
+            "type": "Number",
+            "label": "Price",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 33,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "notes",
+            "order": 99,
+            "type": "TextArea",
+            "label": "Remarks",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
             "maxLength": 10000,
             "regexPattern": "",
-            "width": 30,
+            "width": 100,
             "innerWidth": 98,
             "align": "center center"
         }
-    ],
-    "subforms": [
-        {
-            "key": "port_charges",
-            "title": "PORT CHARGES",
-            "order":1000,
-            "fields": [
+    ],    
+    "infoFields": [
                 {
-                    "key": "ch_desc",
-                    "order": 10,
-                    "type": "TextBox",
-                    "label": "Charge Description",
-                    "options": [],
-                    "enabled": true,
-                    "required": true,
-                    "minLength": 3,
-                    "maxLength": 255,
-                    "regexPattern": "",
-                    "width": 25,
-                    "innerWidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "port_name",
-                    "order": 20,
-                    "type": "TextBox",
-                    "label": "Port",
-                    "options": [],
-                    "enabled": true,
-                    "required": true,
-                    "minLength": 3,
-                    "maxLength": 255,
-                    "regexPattern": "",
-                    "width": 25,
-                    "innerWidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "price",
-                    "order": 30,
-                    "type": "TextBox",
-                    "label": "Price",
-                    "options": [],
-                    "enabled": true,
-                    "required": false,
-                    "minLength": 3,
-                    "maxLength": 255,
-                    "regexPattern": "",
-                    "width": 10,
-                    "innerWidth": 98,
-                    "align": "center center"
-                }
-            ],
-            "tableColumns": [
-                {
-                    "key": "ch_desc",
-                    "text": "Charge Description",
-                    "isFilterable": true,
-                    "isSortable": true,
-                    "width": 25
-                },
-                {
-                    "key": "port_name",
-                    "text": "Port",
-                    "isFilterable": true,
-                    "isSortable": true,
-                    "width": 25
-                }
-            ],
-            "infoFields": [
-                {
-                    "key": "ch_desc",
+                    "key": "description",
                     "order": 10,
                     "label": "Charge Description",
                     "type": "Text",
@@ -177,33 +139,33 @@
                     "innerwidth": 98,
                     "align": "center center"
                 }
-            ],
-            "hasInfo": true,
-            "width": 100,
-            "innerWidth": 100,
-            "align": "center center",
-            "isTagged": false,
-            "tagSeparator": ""
-        }
     ],
+    "subforms": [],
     "filters": [
         {
-            "key": "ch_cat",
-            "label": "Charge Category",
+            "key": "category1",
+            "label": "Category",
             "order": 10,
             "fieldType": "TextBox",
             "options": []
         },
         {
-            "key": "ch_sub",
-            "label": "Charge Subcategory",
+            "key": "category2",
+            "label": "Sub Category 1",
             "order": 30,
             "fieldType": "TextBox",
             "options": []
         },
         {
-            "key": "ch_desc",
-            "label": "Charge Description",
+            "key": "category3",
+            "label": "Sub Category 2",
+            "order": 31,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "description",
+            "label": "Description",
             "order": 40,
             "fieldType": "TextBox",
             "options": []
@@ -211,43 +173,43 @@
     ],
     "infos": [
         {
-            "key": "ch_cat",
+            "key": "category1",
             "order": 10,
             "label": "Charge Category",
             "type": "Text",
-            "width": 40,
+            "width": 25,
             "innerwidth": 98,
             "align": "center center"
         },
         {
-            "key": "ch_cat_order",
+            "key": "category_order",
             "order": 35,
             "label": "Charge Category Order",
             "type": "Text",
-            "width": 10,
+            "width": 25,
             "innerwidth": 98,
             "align": "center center"
         },
         {
-            "key": "ch_sub",
+            "key": "category2",
             "order": 30,
             "label": "Charge Subcategory",
             "type": "Text",
-            "width": 50,
+            "width": 25,
             "innerwidth": 98,
             "align": "center center"
         },
         {
-            "key": "ch_desc",
+            "key": "category3",
             "order": 40,
             "label": "Charge Description",
             "type": "Text",
-            "width": 100,
+            "width": 25,
             "innerwidth": 98,
             "align": "center center"
         },
         {
-            "key": "ch_rem",
+            "key": "notes",
             "order": 50,
             "label": "Notes",
             "type": "Text",
@@ -256,63 +218,34 @@
             "align": "center center"
         }
     ],
-    "subinfos": [
-        {
-            "key": "",
-            "order": 1000,
-            "label": "PORT CHARGES",
-            "fields": [
-                {
-                    "key": "ch_desc",
-                    "order": 10,
-                    "label": "Charge Description",
-                    "type": "Text",
-                    "width": 40,
-                    "innerwidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "port_name",
-                    "order": 20,
-                    "label": "Port",
-                    "type": "Text",
-                    "width": 40,
-                    "innerwidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "price",
-                    "order": 30,
-                    "label": "Price",
-                    "type": "Text",
-                    "width": 20,
-                    "innerwidth": 98,
-                    "align": "center center"
-                }
-            ]
-        }
-    ],
     "columns": [
         {
-            "key": "ch_cat",
-            "text": "Charge Category",
+            "key": "category1",
+            "text": "Category",
             "isFilterable": true,
             "isSortable": true,
-            "width": 40
+            "width": 15
         },
         {
-            "key": "ch_sub",
-            "text": "Charge Subcategory",
+            "key": "category2",
+            "text": "Sub Category 1",
             "isFilterable": true,
             "isSortable": true,
-            "width": 50
+            "width": 15
         },
         {
-            "key": "ch_desc",
-            "text": "Charge Description",
+            "key": "category3",
+            "text": "Sub Category 2",
             "isFilterable": true,
             "isSortable": true,
-            "width": 100
+            "width": 15
+        },
+        {
+            "key": "description",
+            "text": "Description",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 35
         }
     ]
 }

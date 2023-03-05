@@ -6,7 +6,7 @@ from models.port import Port
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
 from ..crud import BaseCrud
-api = Namespace('supplier',description = 'Supplier Crud Endpoints')
+api = Namespace('admin/supplier',description = 'Supplier Crud Endpoints')
 
 @api.route("/", methods=['GET','POST'])
 class GetPostSupplier(Resource):

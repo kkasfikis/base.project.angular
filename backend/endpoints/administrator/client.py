@@ -7,7 +7,7 @@ from models.client import Client
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
 from datetime import datetime
-api = Namespace('client',description = 'Client Crud Endpoints')
+api = Namespace('admin/client',description = 'Client Crud Endpoints')
 
 @api.route("/", methods=['GET','POST'])
 class GetPostClient(Resource):

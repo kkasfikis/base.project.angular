@@ -1,5 +1,5 @@
-<div [formGroup]="form" fxLayout="column" fxFlex="100">
-    <div [ngSwitch]="localFormField.type" fxFlex="100">
+<div [formGroup]="form"  fxLayout="column" fxFlex="100">
+    <div [ngSwitch]="localFormField.type" fxFlex="100" id="{{localFormField.key}}" [ngClass]="localFormField.key">
         
         <mat-form-field *ngSwitchCase="localFormFieldType.TextBox" appearance="fill" fxFlex="100">
             <mat-label>{{localFormField.label}}</mat-label>
@@ -21,11 +21,11 @@
             <textarea matInput [formControlName]="localFormField.key" (change)="contentChange()"></textarea>
         </mat-form-field>
 
-        <mat-form-field *ngSwitchCase="localFormFieldType.Select" appearance="fill" fxFlex="100">
+        <mat-form-field *ngSwitchCase="localFormFieldType.Select" appearance="fill" fxFlex="100" >
             <mat-label>{{localFormField.label}}</mat-label>
-            <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()" [ngStyle]="{ 'position':'absolute','top':'0px','left':'0px','right':'0px','font-size':'25px','background-color' : selectBackColor}">
+            <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()" >
                 <mat-option *ngFor="let opt of localFormField.options" [value]="opt.key" >
-                    <span  [ngStyle]="{ 'position':'absolute','top':'0px','left':'0px','right':'0px','font-size':'25px','background-color': opt.backColor}"> 
+                    <span  [ngStyle]="{ 'position':'absolute','top':'0px','left':'0px','right':'0px','font-size':'15px','background-color': opt.backColor}"> 
                         <p [ngStyle]="{'color' : opt.foreColor}">{{ opt.value }}</p>
                     </span>      
                 </mat-option>
@@ -36,10 +36,9 @@
             <mat-label>{{localFormField.label}}</mat-label>
             <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()" multiple>
                 <mat-option *ngFor="let opt of localFormField.options" [value]="opt.key">
-                    <span [ngStyle]="{ 'position':'absolute','top':'0px','left':'0px','right':'0px','font-size':'25px','background-color': opt.backColor}"> 
-                        <p [ngStyle]=" {'color' : opt.foreColor}">{{ opt.value }}</p>
+                    <span> 
+                        <p>{{ opt.value }}</p>
                     </span> 
-                    {{opt.value}}
                 </mat-option>
             </mat-select> 
         </mat-form-field>

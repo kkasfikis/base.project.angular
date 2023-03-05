@@ -78,7 +78,7 @@ export class AuthService {
       password : password,
       email : email,
       full_name : fullName,
-      roles : []
+      role : ''
     }
     return this.http.post('/register', data, {...options});
   }

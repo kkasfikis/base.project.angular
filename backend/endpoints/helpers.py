@@ -63,3 +63,24 @@ def getSingleAttribute():
             'attribute' : False,
             'message' : 'An error occured: ' + str(e)
         },200
+
+@svc.app.route("/queryByValue", methods=["POST"])
+def queryByValue():
+    data = request.get_json()
+    class_name = data['class_name']
+    query = data['query']
+    collection = getattr(models,class_name)
+    try:
+        results = list(collection.objects(**query))
+        data = [json.loads(x.to_json()) for x in results] 
+        for x in data:
+            x['_id'] = x['_id']['$oid']
+        return {
+            'query' : True,
+            'data' : data
+        },200
+    except Exception as e:
+        return {
+            'query' : False,
+            'message' : 'An error occured: ' + str(e)
+        },200

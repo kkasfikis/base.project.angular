@@ -52,7 +52,7 @@ def login():
         if user:
             token = create_access_token(identity={ 
                 'username' : user.username, 
-                'roles' : user.roles
+                'role' : user.role
             })
             return {
                 'login' : True,

@@ -7,7 +7,7 @@ from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identit
 import json
 from ..crud import BaseCrud
 from helperFunctions import HelperFunctions
-api = Namespace('breakdown',description = 'Breakdown List Crud Endpoints')
+api = Namespace('admin/breakdown',description = 'Breakdown List Crud Endpoints')
 
 @api.route("/", methods=['GET','POST'])
 class GetPostBreakdown(Resource):

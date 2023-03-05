@@ -7,7 +7,7 @@ from models.client import Client
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
 
-api = Namespace('crud',description = 'Client Crud Endpoints')
+api = Namespace('admin/crud',description = 'Client Crud Endpoints')
 @api.route("/<string:collection>/<string:attribute>", methods=['GET','POST'])
 @api.route("/<string:collection>/<string:attribute>/<string:mode>", methods=['GET','POST'])
 class GetCrud(Resource):

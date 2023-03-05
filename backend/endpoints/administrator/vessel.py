@@ -7,7 +7,7 @@ from models.vessel import Vessel
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
 
-api = Namespace('vessel',description = 'Vessel Crud Endpoints')
+api = Namespace('admin/vessel',description = 'Vessel Crud Endpoints')
 
 @api.route("/", methods=['GET','POST'])
 class GetPostVessel(Resource):
