@@ -1,5 +1,6 @@
 from service import svc
 from models.port import Port
+from models.user import User
 class AgentPiC(svc.db.EmbeddedDocument):
     pic_name = svc.db.StringField(required = True, unique = True, min_length=0, max_length= 255)   #	    T
     agent_name = svc.db.StringField(min_length=0, max_length= 255)           #		T	Select from AGENTS
@@ -20,3 +21,4 @@ class Agent(svc.db.Document):
     fax = svc.db.StringField(min_length=0, max_length= 255)                 #		T	
     mail = svc.db.StringField(min_length=0, max_length= 255)                #		T
     agent_people_in_charge = svc.db.ListField(svc.db.EmbeddedDocumentField(AgentPiC))
+    agent_user = svc.db.ReferenceField(User, reverse_delete_rule=1)

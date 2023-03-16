@@ -1,0 +1,24 @@
+<app-dynamic-crud
+    [title]="'Breakdown Lists'"    
+
+    [hasCreate]="false"
+    [hasUpdate]="false"
+    [hasDelete]="false"
+    [hasInfo]="true"
+
+    [endpoint]="'client/breakdown'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="false"
+></app-dynamic-crud>

@@ -127,3 +127,38 @@ export class CaptainGuard implements CanActivate{
         this.router.navigate(['/unauthorized']);
     }
 }
+
+
+@Injectable({providedIn : 'root'})
+export class ClientGuard implements CanActivate{
+
+    constructor( private authService : AuthService, private router : Router){}
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+        return this.checkIsUserAuthenticated() && this.checkIsUserClient();
+    }
+    
+    private checkIsUserAuthenticated(){
+        if(this.authService.getUser() != undefined){
+            return true;
+        }
+        this.redirectToLogin();
+        return false;
+    }
+
+    private checkIsUserClient(){
+        if(this.authService.getUser().role == 'client'){
+            return true;
+        }
+        this.redirectToUnauthorized();
+        return false;
+    }
+
+    private redirectToLogin(){
+        this.router.navigate(['/login']);
+    }
+
+    private redirectToUnauthorized(){
+        this.router.navigate(['/unauthorized']);
+    }
+}

@@ -1,0 +1,2083 @@
+{
+    "fields" : [
+        {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        
+        {
+            "key": "safety_manual",
+            "order": 130,
+            "type": "TextBox",
+            "label": "Safety Manual",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "safety_certificate",
+            "order": 140,
+            "type": "TextBox",
+            "label": "Safety Equipment Certificate",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "itc",
+            "order": 150,
+            "type": "TextBox",
+            "label": "ITC",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "rfg",
+            "order": 160,
+            "type": "TextBox",
+            "label": "RFG",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "ssec",
+            "order": 170,
+            "type": "TextBox",
+            "label": "SSEC",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "nrt",
+            "order": 180,
+            "type": "TextBox",
+            "label": "NRT",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "ert",
+            "order": 190,
+            "type": "TextBox",
+            "label": "ERT",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "dwt",
+            "order": 200,
+            "type": "TextBox",
+            "label": "DWT",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "breadth",
+            "order": 210,
+            "type": "TextBox",
+            "label": "breadth",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "draft",
+            "order": 220,
+            "type": "TextBox",
+            "label": "DRAFT",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "cma",
+            "order": 240,
+            "type": "TextBox",
+            "label": "CMA",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "last_rscr",
+            "order": 250,
+            "type": "TextBox",
+            "label": "Last RSCR",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "arrival_draft",
+            "order": 260,
+            "type": "TextBox",
+            "label": "Arrival DRAFT",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "forward_bob_arrival",
+            "order": 270,
+            "type": "TextBox",
+            "label": "FW BOB Arrival",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "arrival_sludge",
+            "order": 280,
+            "type": "TextBox",
+            "label": "Sludges Arrival",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "updated_prospect_link",
+            "order": 290,
+            "type": "TextBox",
+            "label": "Updated Prospectus Link",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 1000,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "updated_lineup",
+            "order": 300,
+            "type": "TextBox",
+            "label": "Update Lineup",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inbound_bob",
+            "order": 310,
+            "type": "TextBox",
+            "label": "Inbound BOB",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "outbound_fob",
+            "order": 320,
+            "type": "TextBox",
+            "label": "Outbound FOB",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "entry_on_progress_date",
+            "order": 330,
+            "type": "DatePicker",
+            "label": "Entry on Progress",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "anchorage_waiting_pilot",
+            "order": 340,
+            "type": "TextBox",
+            "label": "Anchorage waiting Pilot",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subforms": [],
+    "filters": [
+        {
+            "key": "client_name",
+            "label": "Client Name",
+            "order": 30,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "client_alias",
+            "label": "Client Alias",
+            "order": 40,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "vessel_name",
+            "label": "Vessel Name",
+            "order": 11,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "vessel_flag",
+            "label": "Vessel Flag",
+            "order": 12,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "port_name",
+            "label": "Port",
+            "order": 70,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "agent_name",
+            "label": "Agent Name",
+            "order": 90,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "call_status",
+            "label": "Status",
+            "order": 110,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "call_type",
+            "label": "Call Type",
+            "order": 120,
+            "fieldType": "TextBox",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "estimated_date",
+            "order": 10,
+            "label": "ETA",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "call_entry_date",
+            "order": 109,
+            "label": "Call Entry Date",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "client_name",
+            "order": 30,
+            "label": "Client Name",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "client_alias",
+            "order": 40,
+            "label": "Client Alias",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "vessel_name",
+            "order": 11,
+            "label": "Vessel Name",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "vessel_flag",
+            "order": 12,
+            "label": "Vessel Flag",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "port_name",
+            "order": 70,
+            "label": "Port",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "port_anch",
+            "order": 80,
+            "label": "Anchorage",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "agent_name",
+            "order": 90,
+            "label": "Agent Name",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "agent_person_in_charge",
+            "order": 100,
+            "label": "PiC Name",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "call_status",
+            "order": 110,
+            "label": "Status",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "call_type",
+            "order": 120,
+            "label": "Call Type",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "safety_manual",
+            "order": 130,
+            "label": "Safety Manual",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "safety_certificate",
+            "order": 140,
+            "label": "Safety Equipment Certficate",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "itc",
+            "order": 150,
+            "label": "ITC",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "rfg",
+            "order": 160,
+            "label": "RFG",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "ssec",
+            "order": 170,
+            "label": "SSEC",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "nrt",
+            "order": 180,
+            "label": "NRT",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "ert",
+            "order": 190,
+            "label": "ERT",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "dwt",
+            "order": 200,
+            "label": "DWT",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "breadth",
+            "order": 210,
+            "label": "breadth",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "draft",
+            "order": 220,
+            "label": "DRAFT",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "cma",
+            "order": 240,
+            "label": "CMA",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "last_rscr",
+            "order": 250,
+            "label": "Last RSCR",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "arrival_draft",
+            "order": 260,
+            "label": "Arrival DRAFT",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "forward_bob_arrival",
+            "order": 270,
+            "label": "FW BOB Arrival",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "arrival_sludge",
+            "order": 280,
+            "label": "Sludges Arrival",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "updated_prospect_link",
+            "order": 290,
+            "label": "Updated Prospectus Link",
+            "type": "Image",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "updated_lineup",
+            "order": 300,
+            "label": "Update Lineup",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "inbound_bob",
+            "order": 310,
+            "label": "Inbound BOB",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "outbound_fob",
+            "order": 320,
+            "label": "Outbound FOB",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "entry_on_progress_date",
+            "order": 330,
+            "label": "Entry on Progress",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "anchorage_waiting_pilot",
+            "order": 340,
+            "label": "Anchorage waiting Pilot",
+            "type": "Text",
+            "width": 70,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "etb",
+            "order": 350,
+            "label": "ETB",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "etc",
+            "order": 360,
+            "label": "ETC",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "ets",
+            "order": 370,
+            "label": "ETS",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "remarks",
+            "order": 380,
+            "label": "Remarks",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "terminal_pisch_rate",
+            "order": 390,
+            "label": "Terminal Pisch",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "terminal_specs",
+            "order": 400,
+            "label": "Terminal Specs",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "terminal_maintenance_schedule",
+            "order": 410,
+            "label": "Terminal Maint. Schedule",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "port_recent_accident",
+            "order": 420,
+            "label": "Port Recent Accident",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "pilots_availability",
+            "order": 430,
+            "label": "Pilots Availability",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "other_port_restrictions",
+            "order": 440,
+            "label": "Other New Port Restrictions",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "military_exercises",
+            "order": 450,
+            "label": "Military Exercises",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "warehouse_conditions",
+            "order": 460,
+            "label": "Warehouse Conditions",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "ice_concentration",
+            "order": 470,
+            "label": "Ice Concentration",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "fog_status",
+            "order": 480,
+            "label": "Fog Status",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "typhoons_expected",
+            "order": 490,
+            "label": "Typhoons Expected",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "holidays",
+            "order": 500,
+            "label": "Holidays",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "port_document",
+            "order": 510,
+            "label": "Port Map",
+            "type": "Image",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "fishing_boat_risk_status",
+            "order": 471,
+            "label": "Fishing boat Risk Status",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [
+        {
+            "key": "",
+            "order": 1000,
+            "label": "OWNERS REPRESENTATIVES LOG",
+            "fields": [
+                {
+                    "key": "position",
+                    "order": 10,
+                    "label": "Position",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "name",
+                    "order": 20,
+                    "label": "Name",
+                    "type": "Text",
+                    "width": 60,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "arrival_port",
+                    "order": 30,
+                    "label": "Arrival Port",
+                    "type": "Text",
+                    "width": 60,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "arrival_date",
+                    "order": 40,
+                    "label": "Arrival Date",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "first_hotel",
+                    "order": 50,
+                    "label": "Hotel",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "first_hotel_details",
+                    "order": 60,
+                    "label": "Details",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "first_hotel_room",
+                    "order": 51,
+                    "label": "Room",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "first_hotel_phone",
+                    "order": 52,
+                    "label": "Phone",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "first_hotel_checkin_date",
+                    "order": 53,
+                    "label": "Checkin",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "first_hotel_checkout_date",
+                    "order": 54,
+                    "label": "Checkout",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "second_hotel",
+                    "order": 70,
+                    "label": "Hotel",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "second_hotel_details",
+                    "order": 80,
+                    "label": "Details",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "second_hotel_room",
+                    "order": 71,
+                    "label": "Room",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "second_hotel_phone",
+                    "order": 72,
+                    "label": "Phone",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "second_hotel_checkin_date",
+                    "order": 73,
+                    "label": "Checkin",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "second_hotel_checkout_date",
+                    "order": 74,
+                    "label": "Checkout",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "visa_expiration_date",
+                    "order": 80,
+                    "label": "Visa Expiration Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "passport_image",
+                    "order": 90,
+                    "label": "Passport image",
+                    "type": "Image",
+                    "width": 70,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "departure_airport",
+                    "order": 100,
+                    "label": "Departure Airport",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "departure_date",
+                    "order": 110,
+                    "label": "Departure Date",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "departure_details",
+                    "order": 120,
+                    "label": "Departure Details",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "comments",
+                    "order": 130,
+                    "label": "Comments",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 2000,
+            "label": "CREW CHANGES",
+            "fields": [
+                {
+                    "key": "name",
+                    "order": 10,
+                    "label": "Name",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "signin_signoff",
+                    "order": 30,
+                    "label": "Sign On/Off",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "rank",
+                    "order": 20,
+                    "label": "Rank",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "details",
+                    "order": 40,
+                    "label": "Details",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "passport_expiration_date",
+                    "order": 50,
+                    "label": "Passport Expiration Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "exit_visa_application_date",
+                    "order": 60,
+                    "label": "Exit Visa App. Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "passport_image",
+                    "order": 70,
+                    "label": "Passport Image",
+                    "type": "Image",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "visa_image",
+                    "order": 80,
+                    "label": "Visa Image",
+                    "type": "Image",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "exit_visa_ISS_date",
+                    "order": 61,
+                    "label": "Exit Visa ISS Date",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "visa_details",
+                    "order": 100,
+                    "label": "Visa Details",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "hotel",
+                    "order": 110,
+                    "label": "Hotel",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "details",
+                    "order": 111,
+                    "label": "Details",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "room",
+                    "order": 112,
+                    "label": "Room",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "phone",
+                    "order": 140,
+                    "label": "Phone",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "checkin_date",
+                    "order": 150,
+                    "label": "Checkin",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "checkout_date",
+                    "order": 160,
+                    "label": "Checkout",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "jd_date",
+                    "order": 170,
+                    "label": "Join/Disembark Date",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 3000,
+            "label": "TECHS / SURVEYORS",
+            "fields": [
+                {
+                    "key": "type",
+                    "order": 10,
+                    "label": "Techs/Surveyors",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "names",
+                    "order": 20,
+                    "label": "names",
+                    "type": "Text",
+                    "width": 70,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "equipment_surveys",
+                    "order": 30,
+                    "label": "Equipment / Surveys",
+                    "type": "Image",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "hotel",
+                    "order": 40,
+                    "label": "Hotel",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "details",
+                    "order": 71,
+                    "label": "Details",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "rooms",
+                    "order": 60,
+                    "label": "Rooms",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "phone",
+                    "order": 70,
+                    "label": "Phone",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "By",
+                    "order": 80,
+                    "label": "Arranged By",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "By_text",
+                    "order": 90,
+                    "label": "Arragement Info",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "checkin_date",
+                    "order": 81,
+                    "label": "Checkin",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "checkout_date",
+                    "order": 82,
+                    "label": "Checkout",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "arrival_date",
+                    "order": 120,
+                    "label": "Arrival Date",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": " arrival_flight",
+                    "order": 130,
+                    "label": "Arrival Flight",
+                    "type": "Text",
+                    "width": 60,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "departure_date",
+                    "order": 140,
+                    "label": "Departure Date",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "departure_flight",
+                    "order": 150,
+                    "label": "Departure Flight",
+                    "type": "Text",
+                    "width": 60,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "attendance",
+                    "order": 160,
+                    "label": "Attendance",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 4000,
+            "label": "MEDICAL ASSISTANCE",
+            "fields": [
+                {
+                    "key": "position",
+                    "order": 10,
+                    "label": "Position",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "name",
+                    "order": 20,
+                    "label": "Name",
+                    "type": "Text",
+                    "width": 60,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "incident_date",
+                    "order": 30,
+                    "label": "Date of Incident",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "medical_date",
+                    "order": 40,
+                    "label": "Date of Medical Att.",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "medical_type",
+                    "order": 50,
+                    "label": "Type of Medical Att.",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "checkin_date",
+                    "order": 60,
+                    "label": "Checkin",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "checkout_date",
+                    "order": 70,
+                    "label": "Checkout",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "status",
+                    "order": 80,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 5000,
+            "label": "OFFLAND FORWARDING",
+            "fields": [
+                {
+                    "key": "post_office",
+                    "order": 10,
+                    "label": "P.O.",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "description",
+                    "order": 20,
+                    "label": "Description",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "desc_details",
+                    "order": 30,
+                    "label": "Description Details",
+                    "type": "Text",
+                    "width": 70,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "documents",
+                    "order": 40,
+                    "label": "Relative Documents",
+                    "type": "Image",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "offland_date",
+                    "order": 50,
+                    "label": "Estimated Offland Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "forward_date",
+                    "order": 60,
+                    "label": "Estimated Forward Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "estimated_arrival_date",
+                    "order": 70,
+                    "label": "Estimated Arrival Time",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "offland_destination",
+                    "order": 80,
+                    "label": "Destination",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "offland_destination_details",
+                    "order": 90,
+                    "label": "Destination Details",
+                    "type": "Image",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "status",
+                    "order": 100,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "export_docs",
+                    "order": 110,
+                    "label": "Export Documents",
+                    "type": "Image",
+                    "width": 70,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "offland_forward_method",
+                    "order": 31,
+                    "label": "Forward Method",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 6000,
+            "label": "FW SUPPLY",
+            "fields": [
+                {
+                    "key": "power_supply",
+                    "order": 10,
+                    "label": "Fresh Water Supply",
+                    "type": "Text",
+                    "width": 60,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "quantity",
+                    "order": 20,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "estimated_delivery_datetime",
+                    "order": 30,
+                    "label": "Estimated Delivery Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "est_dlv_time",
+                    "order": 40,
+                    "label": "Estimated Delivery Time",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "status",
+                    "order": 50,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "dlv_method",
+                    "order": 60,
+                    "label": "Delivery Method",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 7000,
+            "label": "DOMESTIC SHIPMENT",
+            "fields": [
+                {
+                    "key": "domestic_shipment_type",
+                    "order": 10,
+                    "label": "DS Type",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "track_number",
+                    "order": 20,
+                    "label": "Tracking No",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "documents",
+                    "order": 30,
+                    "label": "Documents",
+                    "type": "Image",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "post_office",
+                    "order": 31,
+                    "label": "P.O.",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "domestic_shipment_date",
+                    "order": 50,
+                    "label": "Actual Arrival Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "status",
+                    "order": 60,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 8000,
+            "label": "OVERSEAS SHIPMENT",
+            "fields": [
+                {
+                    "key": "overseas_shipment_type",
+                    "order": 10,
+                    "label": "OSS Type",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "track_number",
+                    "order": 20,
+                    "label": "Tracking No",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "documents",
+                    "order": 30,
+                    "label": "Documents",
+                    "type": "Image",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "post_office",
+                    "order": 21,
+                    "label": "P.O.",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "domestic_shipment_date",
+                    "order": 50,
+                    "label": "Actual Arrival Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "status",
+                    "order": 60,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 9000,
+            "label": "STORE PROVISIONS",
+            "fields": [
+                {
+                    "key": "store_provision_type",
+                    "order": 10,
+                    "label": "SP Type",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "quantity",
+                    "order": 20,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "store_provision_supplier",
+                    "order": 30,
+                    "label": "Supplier",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "details",
+                    "order": 40,
+                    "label": "Details",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "delivery_date",
+                    "order": 21,
+                    "label": "Delivery Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "status",
+                    "order": 60,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "dlv_method",
+                    "order": 70,
+                    "label": "Delivery Method",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 10000,
+            "label": "BUNKERS",
+            "fields": [
+                {
+                    "key": "bunker_type",
+                    "order": 10,
+                    "label": "Bunkers Type",
+                    "type": "Text",
+                    "width": 70,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "quantity",
+                    "order": 20,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "delivery_date",
+                    "order": 30,
+                    "label": "Delivery Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "bunker_supplier_type",
+                    "order": 40,
+                    "label": "Supplier Type",
+                    "type": "Text",
+                    "width": 70,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "details",
+                    "order": 50,
+                    "label": "Details",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "status",
+                    "order": 60,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "dlv_method",
+                    "order": 70,
+                    "label": "Delivery Method",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 11000,
+            "label": "POLLUTANTS",
+            "fields": [
+                {
+                    "key": "ship_pollutant_service",
+                    "order": 10,
+                    "label": "Service",
+                    "type": "Text",
+                    "width": 70,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "quantity",
+                    "order": 20,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "date",
+                    "order": 30,
+                    "label": "Service Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "status",
+                    "order": 40,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 70,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 12000,
+            "label": "VARIOUS INQUIRIES",
+            "fields": [
+                {
+                    "key": "description",
+                    "order": 10,
+                    "label": "Description",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "date",
+                    "order": 20,
+                    "label": "Dates",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "quantity",
+                    "order": 30,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "status",
+                    "order": 40,
+                    "label": "Status",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "documents",
+                    "order": 50,
+                    "label": "Documents",
+                    "type": "Image",
+                    "width": 100,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        },
+        {
+            "key": "",
+            "order": 13000,
+            "label": "CASH TO MASTER",
+            "fields": [
+                {
+                    "key": "ctm_operation",
+                    "order": 10,
+                    "label": "Operation",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "amount",
+                    "order": 20,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "currency",
+                    "order": 30,
+                    "label": "Currency",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "date",
+                    "order": 11,
+                    "label": "Date",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        }
+    ],
+    "columns": [
+        {
+            "key": "estimated_date",
+            "text": "ETA",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 10
+        },
+        {
+            "key": "client_name",
+            "text": "Client Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 15
+        },
+        {
+            "key": "client_alias",
+            "text": "Client Alias",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 10
+        },
+        {
+            "key": "vessel_name",
+            "text": "Vessel Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 10
+        },
+        {
+            "key": "vessel_flag",
+            "text": "Vessel Flag",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 5
+        },
+        {
+            "key": "port_name",
+            "text": "Port",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 15
+        },
+        {
+            "key": "agent_name",
+            "text": "Agent Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 10
+        },
+        {
+            "key": "call_status",
+            "text": "Status",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 10
+        },
+        {
+            "key": "call_type",
+            "text": "Call Type",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 15
+        }
+    ]
+}

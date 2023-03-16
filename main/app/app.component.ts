@@ -95,6 +95,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   logout() {
+    this.authService.logout();
     this.image = './assets/images/user.jpg';
   }
 

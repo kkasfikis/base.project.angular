@@ -1,4 +1,6 @@
 from service import svc
+from models.user import User
+
 class ClientPiC(svc.db.EmbeddedDocument):
     name = svc.db.StringField(required = True, min_length=0, max_length= 255)
     position = svc.db.StringField(required = True, min_length=0, max_length= 255)
@@ -36,3 +38,4 @@ class Client(svc.db.Document):
     notes = svc.db.StringField( min_length=0, max_length=255)
     client_people_in_charge = svc.db.ListField(svc.db.EmbeddedDocumentField(ClientPiC))
     client_aliases = svc.db.ListField(svc.db.EmbeddedDocumentField(ClientAlias)) 
+    client_user = svc.db.ReferenceField(User, reverse_delete_rule=1)

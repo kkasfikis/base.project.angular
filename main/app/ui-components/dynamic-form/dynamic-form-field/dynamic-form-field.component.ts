@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, ElementRef, ViewChild, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, ElementRef, ViewChild, Renderer2, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { BehaviorSubject, Subject, Subscription, takeUntil } from 'rxjs';
 import { FormFieldBase, FormFieldType } from '../dynamic-form.models';
@@ -8,7 +8,7 @@ import { FormFieldBase, FormFieldType } from '../dynamic-form.models';
   templateUrl: './dynamic-form-field.component.html',
   styleUrls: ['./dynamic-form-field.component.scss']
 })
-export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewInit {
+export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewInit,OnChanges {
 
   @Input() formField! : FormFieldBase | BehaviorSubject<FormFieldBase>;
   @Input() form! : FormGroup;
@@ -40,6 +40,7 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
     if(field.maxLength > 0) { validators.push(Validators.maxLength(field.maxLength))}
     if(field.minLength > 0) {validators.push(Validators.minLength(field.minLength))}
     if(field.regexPattern && field.regexPattern != '') {validators.push(Validators.pattern(field.regexPattern))}
+    console.log('Inside FormField', this.localFormField.key, this.localFormField)
     if(field.enabled) {this.form.get(this.localFormField.key)?.enable();} else { this.form.get(this.localFormField.key)?.disable(); }
     this.form.get(this.localFormField.key)?.addValidators(validators);
     this.form.controls[this.localFormField.key].patchValue(field.value, {onlySelf: false, emitEvent: true});
@@ -49,7 +50,6 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
       if(item && !!item.foreColor && item.foreColor.length > 0 && !!item.backColor && item.backColor.length > 0){
         this.selectForeColor = item.foreColor;
         this.selectBackColor = item.backColor;
-        console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%',this.localFormField.key,this.selectForeColor,this.selectBackColor)
         this.setSelectColor(this.selectForeColor,this.selectBackColor)
       }
     }
@@ -75,6 +75,13 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
     
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+   if(this.formField instanceof FormFieldBase){
+    console.log('Inside change',changes)
+    
+   }
+  }
+
   ngOnInit(): void {
     if(!(this.formField instanceof FormFieldBase)){
       this.formField.pipe(
@@ -92,6 +99,11 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
   }
 
   ngOnDestroy(): void {
+    let element =  document.getElementsByTagName('head')[0];
+    if(this.colorStyles != undefined){
+      element!.removeChild(this.colorStyles!);
+    }
+
     if(!(this.formField instanceof FormFieldBase)){
       this.ngUnsubscribe.next();
       this.ngUnsubscribe.complete();
@@ -103,7 +115,10 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
 
   contentChange(){
     let value = this.form.get(this.localFormField.key)?.value;
-
+    console.log('value changed to value:',value)
+    if(this.localFormField.type == FormFieldType.ColorPicker){   
+      console.log('Color picker value',value)
+    }
     if(this.localFormField.type == FormFieldType.Select){      
       let item : any = this.localFormField.options.find( (x:any) => x.value == value);
       if(item && !!item.foreColor && item.foreColor.length > 0 && !!item.backColor && item.backColor.length > 0){

@@ -16,9 +16,14 @@ from endpoints.administrator.predefined import api as predefined
 from endpoints.administrator.soa import api as soa
 from endpoints.administrator.csoa import api as csoa
 from endpoints.administrator.breakdown import api as breakdown
-from endpoints.administrator.invoice import api as invoice
+from endpoints.administrator.proforma import api as proforma
+from endpoints.administrator.proformaTemplate import api as proformaTemplate
 from endpoints.administrator.crud import api as crud
 from endpoints.administrator.userManagement import api as userManagement
+from endpoints.agent.call import api as agentCall
+from endpoints.captain.call import api as captainCall
+from endpoints.client.breakdown import api as clientBreakdown
+from endpoints.client.proforma import api as clientProforma
 
 
 if __name__ == '__main__':
@@ -27,6 +32,8 @@ if __name__ == '__main__':
     svc.api.add_namespace(client)
     svc.api.add_namespace(vessel)
     svc.api.add_namespace(call)
+    svc.api.add_namespace(agentCall)
+    svc.api.add_namespace(captainCall)
     svc.api.add_namespace(supplier)
     svc.api.add_namespace(expense)
     svc.api.add_namespace(bankAccount)
@@ -36,7 +43,10 @@ if __name__ == '__main__':
     svc.api.add_namespace(soa)
     svc.api.add_namespace(csoa)
     svc.api.add_namespace(breakdown)
-    svc.api.add_namespace(invoice)
+    svc.api.add_namespace(clientBreakdown)
+    svc.api.add_namespace(proforma)
+    svc.api.add_namespace(clientProforma)
+    svc.api.add_namespace(proformaTemplate)
     svc.api.add_namespace(crud)
     svc.api.add_namespace(userManagement)
     svc.app.run(port=8081, debug=True)

@@ -114,7 +114,7 @@
             "key": "inv_company",
             "order": 49,
             "type": "TextBox",
-            "label": "Invoice Issued By",
+            "label": "Proforma Issued By",
             "options": [],
             "enabled": true,
             "required": false,
@@ -276,7 +276,7 @@
         {
             "key": "ref_inv",
             "order": 50,
-            "label": "Ref. Invoice No",
+            "label": "Ref. Proforma No",
             "type": "Text",
             "width": 20,
             "innerwidth": 98,
@@ -285,7 +285,7 @@
         {
             "key": "inv_date",
             "order": 60,
-            "label": "Invoice Date",
+            "label": "Proforma Date",
             "type": "Text",
             "width": 20,
             "innerwidth": 98,

@@ -166,9 +166,16 @@ export abstract class JsonHelpers {
     //})
   }
 
+  public static setSubformItems(formFields: (BehaviorSubject<FormFieldBase> | BehaviorSubject<SubForm>)[], subformKey : string, data : any){
+    let subForm = formFields.find(x => x.getValue().key == subformKey) as BehaviorSubject<SubForm>;
+    let subFormValue = subForm?.getValue() as SubForm;
+    subFormValue.tableData = data;
+    subForm.next(subFormValue);
+  }
+
   public static setSubReferenceFieldDropdown(formFields: (BehaviorSubject<FormFieldBase> | BehaviorSubject<SubForm>)[], subformKey: string, fields: string[], values: any[][]) {
     let subForm = formFields.find(x => x.getValue().key == subformKey) as BehaviorSubject<SubForm>;
-    let subFormValue = subForm?.getValue() as SubForm
+    let subFormValue = subForm?.getValue() as SubForm;
 
     if (fields && fields.length > 0 && values && values.length > 0 && fields.length == values.length) {
       fields.forEach((field: string, index: number) => {
@@ -185,6 +192,14 @@ export abstract class JsonHelpers {
       });
     }
 
+    subForm?.next(subFormValue)
+  }
+
+  public static setSubFieldEnabled(formFields: (BehaviorSubject<FormFieldBase> | BehaviorSubject<SubForm>)[], subformKey: string, field: string, enabled: boolean){
+    let subForm = formFields.find(x => x.getValue().key == subformKey) as BehaviorSubject<SubForm>;
+    let subFormValue = subForm?.getValue() as SubForm
+    let ff = subFormValue.fields.find(x => x.key == field);
+    ff!.enabled = enabled;
     subForm?.next(subFormValue)
   }
 }

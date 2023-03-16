@@ -5,15 +5,15 @@ import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dy
 import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
 import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
 import { BehaviorSubject, forkJoin } from 'rxjs';
-import * as data from './invoice.ui-config.json'
+import * as data from './proforma.ui-config.json'
 import { JsonHelpers } from 'main/app/ui-components/scripts/json-helpers';
 import { FormGroup } from '@angular/forms';
 @Component({
-  selector: 'app-invoice',
-  templateUrl: './invoice.component.html',
-  styleUrls: ['./invoice.component.scss']
+  selector: 'app-proforma',
+  templateUrl: './proforma.component.html',
+  styleUrls: ['./proforma.component.scss']
 })
-export class InvoiceComponent implements OnInit {
+export class ProformaComponent implements OnInit {
 
   constructor(private crudService : DynamicCrudService) { }
 
@@ -26,7 +26,7 @@ export class InvoiceComponent implements OnInit {
   filterFields : FilterField[] = []
 
   ngOnInit(): void {
-    console.log('Converting Invoice fields from JSON ....')
+    console.log('Converting Proforma fields from JSON ....')
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;
@@ -38,19 +38,17 @@ export class InvoiceComponent implements OnInit {
   initMods(){
     forkJoin([
       this.crudService.read('admin/predefined'),
-      this.crudService.getAttributeWithId('Call','estimated_date,client_name,client_alias,port_name,vessel_name,agent_name'),
-      this.crudService.getAttributeWithId('Breakdown','breakdown_entry,breakdown_info,breakdown_status'),
       this.crudService.getAttributeWithId('Client','name'),
+      this.crudService.getAttributeWithId('ProformaTemplate','template_name'),
       this.crudService.read('admin/charge')
     ]).subscribe(
-    ([predefinedResp,callResp,breakdownResp,clientResp,chargeResp] : any[]) => {
-      JsonHelpers.setFieldDropdown(this.formFields, 'invoice_type', predefinedResp.data.find( ( x:any ) => x.key == 'documentTypes' ).values )
+    ([predefinedResp,clientResp,templateResp,chargeResp] : any[]) => {
+      JsonHelpers.setFieldDropdown(this.formFields, 'proforma_type', predefinedResp.data.find( ( x:any ) => x.key == 'documentTypes' ).values )
       JsonHelpers.setReferenceFieldDropdown(this.formFields,'client','name',clientResp.data)
-      //JsonHelpers.setReferenceFieldDropdown(this.formFields,'call','estimated_date,client_name,client_alias,port_name,vessel_name,agent_name',callResp.data)
-      //JsonHelpers.setReferenceFieldDropdown(this.formFields,'breakdown','breakdown_entry,breakdown_info,breakdown_status',breakdownResp.data)
+      JsonHelpers.setReferenceFieldDropdown(this.formFields,'proforma_template','template_name',templateResp.data)
       JsonHelpers.setSubFieldDropdown(
         this.formFields,
-        'invoice_items',
+        'proforma_items',
         ['item_category1'],
         [ ([...new Set(chargeResp.data.map( (item:any) => item.category1))] as string[])
           .map( (x: string) => 
@@ -73,44 +71,34 @@ export class InvoiceComponent implements OnInit {
         }
       });
     }
-  }
 
-  onSubFormChange(item : {subform : string, key : string, value: string, form : FormGroup} ){
-    if(item.subform == "invoice_items" && item.key == "item_category1"){
-      JsonHelpers.setSubFieldValue(this.formFields,'invoice_items','item_category1',item.value);
-      this.crudService.qyeryByValue('Charge',{ "category1" : item.value }).subscribe({
-        next : (resp : any) => {
-          if(resp.query){
-            const data = [...new Set(resp.data.map( (item:any) => item.category2))] as string[];
-            JsonHelpers.setSubFieldDropdown(
-              this.formFields,
-              'invoice_items',
-              ['item_category2'],
-              [ data.map( (x:any) => 
-                {
-                  return {
-                    key : x,
-                    value : x
-                  }
-                }
-              )],
-            )
-          }
+    if(item.key == 'proforma_template'){
+      this.crudService.infoById('admin/proformaTemplate',item.value).subscribe({
+        next : (resp:any) => {
+          JsonHelpers.setSubformItems(this.formFields,'proforma_items',resp.data.template_items);
         }
       })
     }
-    if(item.subform == "invoice_items" && item.key == "item_category2"){
-      JsonHelpers.setSubFieldValue(this.formFields,'invoice_items','item_category2',item.value);
-      let category = item.form.get('item_category1')?.value;
-      if(category != undefined){
-        this.crudService.qyeryByValue('Charge',{ "category1" : category, "category2" : item.value }).subscribe({
+  }
+
+  onSubFormChange(item : {subform : string, key : string, value: string, form : FormGroup} ){
+    if(item.subform == "proforma_items" && item.key == "item_category1"){
+      JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_category1',item.value);
+      if(!!item.value && item.value.length > 0){
+        console.log('categorry changed')
+        this.crudService.qyeryByValue('Charge',{ "category1" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){
-              const data = [...new Set(resp.data.map( (item:any) => item.category3))] as string[];
+              const data = [...new Set(resp.data.map( (item:any) => item.category2))] as string[]; 
+              console.log(this.formFields)
+              JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_category2','');  
+              JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_description',''); 
+              JsonHelpers.setSubFieldEnabled(this.formFields,'proforma_items','item_category2',true); 
+              JsonHelpers.setSubFieldEnabled(this.formFields,'proforma_items','item_description',false);             
               JsonHelpers.setSubFieldDropdown(
                 this.formFields,
-                'invoice_items',
-                ['item_category3'],
+                'proforma_items',
+                ['item_category2'],
                 [ data.map( (x:any) => 
                   {
                     return {
@@ -124,19 +112,24 @@ export class InvoiceComponent implements OnInit {
           }
         })
       }
+      
     }
-    if(item.subform == "invoice_items" && item.key == "item_category3"){
-      JsonHelpers.setSubFieldValue(this.formFields,'invoice_items','item_category3',item.value);
-      let category1 = item.form.get('item_category1')?.value;
-      let category2 = item.form.get('item_category2')?.value;
-      if(category1 != undefined && category2 != undefined){
-        this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2, "category3" : item.value }).subscribe({
+    if(item.subform == "proforma_items" && item.key == "item_category2"){
+      JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_category2',item.value);
+      let category = item.form.get('item_category1')?.value;
+      if(category != undefined && !!item.value  && item.value.length > 0){
+        console.log('categorry1 changed')
+        this.crudService.qyeryByValue('Charge',{ "category1" : category, "category2" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){
+              
+              JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_description','');
+              JsonHelpers.setSubFieldEnabled(this.formFields,'proforma_items','item_description',true); 
+
               const data = [...new Set(resp.data.map( (item:any) => item.description))] as string[];
               JsonHelpers.setSubFieldDropdown(
                 this.formFields,
-                'invoice_items',
+                'proforma_items',
                 ['item_description'],
                 [ data.map( (x:any) => 
                   {
@@ -152,18 +145,18 @@ export class InvoiceComponent implements OnInit {
         })
       }
     }
-    if(item.subform == "invoice_items" && item.key == "item_description"){
-      JsonHelpers.setSubFieldValue(this.formFields,'invoice_items','item_description',item.value);
+    if(item.subform == "proforma_items" && item.key == "item_description"){
+      JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_description',item.value);
       let category1 = item.form.get('item_category1')?.value;
       let category2 = item.form.get('item_category2')?.value;
-      let category3 = item.form.get('item_category3')?.value;
-      if(category1 != undefined && category2 != undefined && category3 != undefined){
-        this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2, "category3" : category3, "description" : item.value }).subscribe({
+      if(category1 != undefined && category2 != undefined && !!item.value && item.value.length > 0){
+        console.log('description changed')
+        this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2, "description" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){
               JsonHelpers.setSubFieldValue(
                 this.formFields,
-                'invoice_items',
+                'proforma_items',
                 'item_price',
                 resp.data && resp.data.length > 0 ? resp.data[0].price : 0
               )

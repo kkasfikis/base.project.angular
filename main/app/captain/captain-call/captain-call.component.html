@@ -1,11 +1,11 @@
 <app-dynamic-crud
-    [title]="'PROFORMA'"
-    [hasCreate]="true"
+    [title]="'Calls'"
+    [hasCreate]="false"
     [hasUpdate]="true"
-    [hasDelete]="true"
+    [hasDelete]="false"
     [hasInfo]="true"
 
-    [endpoint]="'admin/invoice'"
+    [endpoint]="'captain/call'"
 
     [identifierKey]="'_id'"
 
@@ -15,13 +15,11 @@
     [tableColumns]="tableColumns"
 
     [infoFields]="infoFields"
-
+    
     [isPaginated]="true"
     [pageSize]="10"
 
     [hasFilters]="true"
     [filterFields]="filterFields"
 
-    (onFormChange)="onFormChange($event)"
-    (onSubFormChange)="onSubFormChange($event)"
 ></app-dynamic-crud>

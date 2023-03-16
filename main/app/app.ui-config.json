@@ -126,10 +126,18 @@
                 "isFunction": false,
                 "subMenus": [
                   {
+                    "key": "proformaTemplates",
+                    "label": "Proforma Templates",
+                    "icon": "menu",
+                    "link": "/admin/proformaTemplate",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
                     "key": "proforma",
                     "label": "Proformas",
                     "icon": "menu",
-                    "link": "/admin/invoice",
+                    "link": "/admin/proforma",
                     "isFunction": false,
                     "subMenus": []
                   },
@@ -155,19 +163,19 @@
           },
           {
             "icon": "home",
-            "label": "Invoices",
+            "label": "Proformas",
             "options": [
               {
                 "key": "invoicung",
-                "label": "Invoices",
+                "label": "Proformas",
                 "icon": "folder",
                 "isFunction": false,
                 "subMenus": [
                   {
-                    "key": "invoice",
-                    "label": "Invoices",
+                    "key": "proforma",
+                    "label": "Proformas",
                     "icon": "menu",
-                    "link": "/admin/invoice",
+                    "link": "/admin/proforma",
                     "isFunction": false,
                     "subMenus": []
                   },
@@ -331,6 +339,69 @@
         
     ],
 
+    "clientNavbar" : [
+
+    ],
+    "clientDrawer" : [
+      {
+        "key": "clients",
+        "label": "Clients",
+        "icon": "person",
+        "link": "/admin/client",
+        "isFunction": false
+      },
+      {
+        "icon": "home",
+        "label": "CRM",
+        "options": [
+          {
+            "key": "agency",
+            "label": "CRM",
+            "icon": "folder",
+            "isFunction": false,
+            "subMenus": [
+              {
+                "key": "proforma",
+                "label": "Proformas",
+                "icon": "menu",
+                "link": "/client/proforma",
+                "isFunction": false
+              },
+              {
+                "key": "breakdown",
+                "label": "Breakdown Lists",
+                "icon": "menu",
+                "link": "/client/breakdown",
+                "isFunction": false
+              }
+            ] 
+          }
+        ]
+    },
+    {
+        "icon": "home",
+        "label": "Users",
+        "options": [
+          {
+            "key": "account",
+            "label": "Users",
+            "icon": "folder",
+            "isFunction": false,
+            "subMenus": [
+              {
+                "key": "changePassword",
+                "label": "Change Password",
+                "icon": "person",
+                "link": "/changePassword",
+                "isFunction": false
+              }
+            ]
+          }
+        ]
+      }
+    
+    ],
+
     "captainNavbar" : [
         {
             "key": "fm",
@@ -354,7 +425,7 @@
                 }
             ]
         }
-    ],
+    ],  
     "captainDrawer" : [
         {
             "icon": "home",

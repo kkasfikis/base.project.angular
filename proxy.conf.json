@@ -47,6 +47,22 @@
         },
         "changeOrigin" : true
     },
+    "/agent/call":{
+        "target" : "http://localhost:8081/agent/call",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/agent/call" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/captain/call":{
+        "target" : "http://localhost:8081/captain/call",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/captain/call" : ""
+        },
+        "changeOrigin" : true
+    },
     "/admin/supplier":{
         "target" : "http://localhost:8081/admin/supplier",
         "secure" : false,
@@ -111,11 +127,27 @@
         },
         "changeOrigin" : true
     },
-    "/admin/invoice":{
-        "target" : "http://localhost:8081/admin/invoice",
+    "/admin/proformaTemplate":{
+        "target" : "http://localhost:8081/admin/proformaTemplate",
         "secure" : false,
         "pathRewrite" : {
-            "^/admin/invoice" : ""
+            "^/admin/proformaTemplate" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/admin/proforma":{
+        "target" : "http://localhost:8081/admin/proforma",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/admin/proforma" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/client/proforma":{
+        "target" : "http://localhost:8081/client/proforma",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/client/proforma" : ""
         },
         "changeOrigin" : true
     },
@@ -124,6 +156,14 @@
         "secure" : false,
         "pathRewrite" : {
             "^/admin/breakdown" : ""
+        },
+        "changeOrigin" : true
+    },
+    "/client/breakdown":{
+        "target" : "http://localhost:8081/client/breakdown",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/client/breakdown" : ""
         },
         "changeOrigin" : true
     },

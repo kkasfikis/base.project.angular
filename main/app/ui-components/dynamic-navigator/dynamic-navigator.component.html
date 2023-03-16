@@ -68,6 +68,7 @@
                     <a *ngIf="!isLoggedIn" (click)="emitLoginSelected($event)" fxLayoutAlign="center center">Login</a>
                     &nbsp;&nbsp;
                     <a *ngIf="!isLoggedIn && hasRegister" (click)="emitRegisterSelected($event)" fxLayoutAlign="center center">Register</a>
+                    <a *ngIf="isLoggedIn && hasLogout" (click)="emitLogoutSelected($event)" fxLayoutAlign="center center">Logout</a>
                 </div>
             </div>
 
@@ -84,6 +85,7 @@
                     <div *ngIf="isLoggedIn" mat-menu-item>Logged in as : <b>{{userName}}</b></div>
                     <button *ngIf="!isLoggedIn" mat-menu-item (click)="emitLoginSelected($event)">Login</button>
                     <button *ngIf="!isLoggedIn && hasRegister" mat-menu-item (click)="emitRegisterSelected($event)">Register</button>
+                    <button *ngIf="isLoggedIn && hasLogout" mat-menu-item (click)="emitLogoutSelected($event)">Logout</button>
                     <!-- Theme Select Option -->
                     <app-theme-selector *ngIf="isThemeSelectEnabled" (themeChanged)="emitThemeChanged($event)"></app-theme-selector>
 

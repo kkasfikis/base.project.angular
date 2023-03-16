@@ -1,0 +1,24 @@
+<app-dynamic-crud
+    [title]="'PROFORMA'"
+    [hasCreate]="false"
+    [hasUpdate]="false"
+    [hasDelete]="false"
+    [hasInfo]="true"
+
+    [endpoint]="'client/proforma'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="true"
+    [filterFields]="filterFields"
+></app-dynamic-crud>

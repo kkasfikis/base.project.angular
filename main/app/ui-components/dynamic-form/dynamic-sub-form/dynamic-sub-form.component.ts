@@ -64,8 +64,16 @@ export class DynamicSubFormComponent implements OnInit {
     this.identifierKey = subForm.identifierKey ? subForm.identifierKey : '';
     this.columnSubject.next(subForm.tableColumns)
     this.formField = subForm;
+    this.formField.fields = [...subForm.fields];
     this.form = this.formService.toFormGroup(subForm.fields as FormFieldBase[]);
+    
+    subForm.fields.forEach( (field : FormFieldBase) => {
+      if (field.enabled) { this.form.controls[field.key].enable() } else { this.form.controls[field.key].disable() };
+      this.form.controls[field.key].patchValue(field.value, {onlySelf: false, emitEvent: true});
+    })
+
     this.isTagged ? this.tags = subForm.tableData : this.dataSubject.next(this.mapData(subForm))
+    console.log('INSIDE SUBFORM',this.formField.fields)
   }
 
   ngOnInit(): void {
@@ -75,6 +83,7 @@ export class DynamicSubFormComponent implements OnInit {
     else{
       this.subformField.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
         next : (field : SubForm) => {
+          console.log('aaaaaaa')
           this.initSubForm(field)
         }
       })

@@ -72,6 +72,12 @@
                     "value" : "agent",
                     "foreColor" : "",
                     "backColor" : ""
+                },
+                {
+                    "key" : "client",
+                    "value" : "client",
+                    "foreColor" : "",
+                    "backColor" : ""
                 }
             ],
             "enabled": true,

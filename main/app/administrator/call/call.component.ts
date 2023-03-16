@@ -99,6 +99,8 @@ export class CallComponent implements OnInit, OnDestroy{
           let agents = agentResp.data;
           JsonHelpers.setReferenceFieldDropdown(this.formFields,'agent','agent_name',agents)
 
+        
+
           JsonHelpers.setFieldDropdown(this.formFields,'call_status',callStatus)
           JsonHelpers.setFieldDropdown(this.formFields,'call_type',callTypes)
           
@@ -125,6 +127,8 @@ export class CallComponent implements OnInit, OnDestroy{
     if(item.key == 'port'){
       this.crudService.infoById('admin/port',item.value).subscribe({
         next : (resp : any) => {
+
+          console.log('PORT RESPONSE',resp)
           JsonHelpers.setFieldValue(this.formFields,'port_anchorage',resp.data.anchorage)
         }
       });

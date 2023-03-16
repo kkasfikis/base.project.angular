@@ -15,29 +15,29 @@ def register():
         user = User(**(request.get_json()))
     except svc.db.ValidationError as e:
         return {
-            'created' : False,
+            'register' : False,
             'message' : 'There are validation errors: ' + str(e) 
         }
     try:
         if User.objects(username=user.username).count() > 0:
             return {
-                'created' : False,
+                'register' : False,
                 'message' : 'Username already exists'
             },200
         if User.objects(email=user.email).count() > 0:
             return {
-                'created' : False,
+                'register' : False,
                 'message' : 'Email already exists'
             },200
         user.password = hashlib.sha256(user.password.encode("utf-8")).hexdigest()
         user.save()
         return {
-            'created' : True,
+            'register' : True,
             'message' : 'User was successfully registered'
         }
     except Exception as e:
         return {
-            'created' : False,
+            'register' : False,
             'message' : 'An error occured: ' + str(e)
         },200
 
@@ -51,6 +51,7 @@ def login():
         print(user.username)
         if user:
             token = create_access_token(identity={ 
+                'id' : str(user.pk),
                 'username' : user.username, 
                 'role' : user.role
             })
@@ -60,6 +61,7 @@ def login():
                 'token' : token 
             }, 200
     except Exception as e:
+        print('!!!!!!',e)
         return {
             'login' : False,
             'message' : 'An error occured: ' + str(e) 

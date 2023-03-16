@@ -27,6 +27,7 @@ export class DynamicNavigatorComponent implements OnInit,AfterViewInit,OnDestroy
 
   @Input() public isThemeSelectEnabled = true;
   @Input() public hasRegister = true;
+  @Input() public hasLogout = true;
 
   isLoading : boolean = false;
   _unsubscribeSignal$ : Subject<void> = new Subject<void>();
@@ -34,6 +35,7 @@ export class DynamicNavigatorComponent implements OnInit,AfterViewInit,OnDestroy
   @Output() public themeChanged: EventEmitter<any> = new EventEmitter<any>();
   @Output() public loginSelected : EventEmitter<any> = new EventEmitter<any>();
   @Output() public registerSelected : EventEmitter<any> = new EventEmitter<any>();
+  @Output() public logoutSelected : EventEmitter<any> = new EventEmitter<any>();
  
   constructor(private changeDetector : ChangeDetectorRef, private loadingService : LoadingService){
     this.loadingService.loading.pipe(takeUntil(this._unsubscribeSignal$)).subscribe( (isLoading:boolean) => {
@@ -68,6 +70,9 @@ export class DynamicNavigatorComponent implements OnInit,AfterViewInit,OnDestroy
     this.registerSelected.emit(event);
   }
 
+  emitLogoutSelected(event : Event){
+    this.logoutSelected.emit(event);
+  }
   ngAfterViewChanged(){
     this.changeDetector.detectChanges();
   }

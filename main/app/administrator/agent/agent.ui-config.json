@@ -16,7 +16,7 @@
             "minLength": 3,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
+            "width": 33,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -31,23 +31,8 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
+            "width": 33,
             "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "notes",
-            "order": 60,
-            "type": "TextArea",
-            "label": "Notes",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 10000,
-            "regexPattern": "",
-            "width": 100,
-            "innerWidth": 100,
             "align": "center center"
         },
         {
@@ -61,7 +46,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
+            "width": 33,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -76,7 +61,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
+            "width": 33,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -91,8 +76,39 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
+            "width": 33,
             "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "agent_user",
+            "order": 55,
+            "type": "Select",
+            "label": "Agent User",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 33,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        
+        {
+            "key": "notes",
+            "order": 60,
+            "type": "TextArea",
+            "label": "Notes",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 10000,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 100,
             "align": "center center"
         }
     ],

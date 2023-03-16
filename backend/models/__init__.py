@@ -12,5 +12,6 @@ from .bankAccount import BankAccount
 from .soa import StatementOfAccount
 from .csoa import ConsolidatedStatementOfAccount
 from .breakdown import Breakdown
-from .invoice import Invoice
+from .proforma import Proforma
+from .proformaTemplate import ProformaTemplate  
 from .user import User

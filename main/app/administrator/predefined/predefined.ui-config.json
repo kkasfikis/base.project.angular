@@ -51,7 +51,7 @@
                 {
                     "key": "fore_color",
                     "order": 30,
-                    "type": "TextBox",
+                    "type": "ColorPicker",
                     "label": "Text Color",
                     "options": [],
                     "enabled": true,
@@ -66,7 +66,7 @@
                 {
                     "key": "back_color",
                     "order": 40,
-                    "type": "TextBox",
+                    "type": "ColorPicker",
                     "label": "Background Color",
                     "options": [],
                     "enabled": true,

@@ -13,6 +13,7 @@ export enum FormFieldType{
     Password,
     Number,
     Decimal,
+    ColorPicker,
     Hidden
 }
 

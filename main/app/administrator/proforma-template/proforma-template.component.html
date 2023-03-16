@@ -1,0 +1,27 @@
+<app-dynamic-crud
+    [title]="'PROFORMA'"
+    [hasCreate]="true"
+    [hasUpdate]="true"
+    [hasDelete]="true"
+    [hasInfo]="true"
+
+    [endpoint]="'admin/proformaTemplate'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="false"
+    [filterFields]="filterFields"
+
+    (onFormChange)="onFormChange($event)"
+    (onSubFormChange)="onSubFormChange($event)"
+></app-dynamic-crud>

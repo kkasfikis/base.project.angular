@@ -15,7 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms'  
 
-
+import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 import { MatButtonModule} from '@angular/material/button'
 import { MatInputModule} from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
@@ -63,13 +63,17 @@ import { ChargeComponent } from './administrator/charge/charge.component';
 import { SOAComponent } from './administrator/soa/soa.component';
 import { CSOAComponent } from './administrator/csoa/csoa.component';
 import { BreakdownComponent } from './administrator/breakdown/breakdown.component';
-import { InvoiceComponent } from './administrator/invoice/invoice.component';
+import { ProformaComponent } from './administrator/proforma/proforma.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { RegisterComponent } from './auth/register/register.component';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { UserManagementComponent } from './administrator/user-management/user-management.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AgentCallComponent } from './agent/agent-call/agent-call.component'
+import { AgentCallComponent } from './agent/agent-call/agent-call.component';
+import { CaptainCallComponent } from './captain/captain-call/captain-call.component';
+import { ProformaTemplateComponent } from './administrator/proforma-template/proforma-template.component';
+import { ClientProformaComponent } from './client/client-proforma/client-proforma.component';
+import { ClientBreakdownComponent } from './client/client-breakdown/client-breakdown.component'
 
 @NgModule({
   declarations: [
@@ -106,11 +110,15 @@ import { AgentCallComponent } from './agent/agent-call/agent-call.component'
     SOAComponent,
     CSOAComponent,
     BreakdownComponent,
-    InvoiceComponent,
+    ProformaComponent,
     RegisterComponent,
     ChangePasswordComponent,
     UserManagementComponent,
-    AgentCallComponent
+    AgentCallComponent,
+    CaptainCallComponent,
+    ProformaTemplateComponent,
+    ClientProformaComponent,
+    ClientBreakdownComponent
   ],
   imports: [
     BrowserModule,
@@ -137,13 +145,17 @@ import { AgentCallComponent } from './agent/agent-call/agent-call.component'
     MatSortModule,
     MatDialogModule,
     MatRadioModule,
+    NgxMatColorPickerModule,
     ResponsiveDynamicTableModule,
     MatExpansionModule,
     MatNativeDateModule ,
     MatProgressSpinnerModule,
     ToastrModule.forRoot()
   ],
-  providers: [{ provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi: true}],
+  providers: [
+    { provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi: true},
+    { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,135 +6,24 @@
             "type": "Hidden"
         },
         {
-            "key": "invoice_type",
+            "key": "template_name",
             "order": 10,
-            "value" : "Proforma",
             "type": "TextBox",
-            "label": "Type",
-            "options": [],
-            "enabled": false,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 25,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_title",
-            "order": 11,
-            "type": "TextBox",
-            "label": "Title",
+            "label": "Template Name",
             "options": [],
             "enabled": true,
             "required": true,
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 25,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_balance",
-            "order": 20,
-            "type": "Hidden"
-        },
-        {
-            "key": "invoice_no",
-            "order": 25,
-            "type": "TextBox",
-            "label": "Ref. Number",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 25,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_date",
-            "order": 30,
-            "type": "DatePicker",
-            "label": "Date",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 25,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "client",
-            "order": 50,
-            "type": "Select",
-            "label": "Client",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 50,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "client_alias",
-            "order": 60,
-            "type": "Select",
-            "label": "Client Alias",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 50,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "client_info",
-            "order": 110,
-            "type": "TextArea",
-            "label": "General Info",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
             "width": 100,
             "innerWidth": 98,
-            "align": "left"
-        },
-        {
-            "key": "invoice_total_amount",
-            "order": 120,
-            "type": "Number",
-            "label": "Total Amount",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 100,
-            "innerWidth": 25,
-            "align": "flex-end"
+            "align": "center center"
         }
     ],
     "subforms": [
         {
-            "key": "invoice_items",
+            "key": "template_items",
             "title": "ITEM DESCRIPTION",
             "order":1000,
             "fields": [
@@ -149,7 +38,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 25,
+                    "width": 33,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -159,27 +48,12 @@
                     "type": "Select",
                     "label": "Sub Category 1",
                     "options": [],
-                    "enabled": true,
+                    "enabled": false,
                     "required": true,
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 25,
-                    "innerWidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "item_category3",
-                    "order": 12,
-                    "type": "Select",
-                    "label": "Sub Category 2",
-                    "options": [],
-                    "enabled": true,
-                    "required": true,
-                    "minLength": 0,
-                    "maxLength": 255,
-                    "regexPattern": "",
-                    "width": 25,
+                    "width": 33,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -189,12 +63,12 @@
                     "type": "Select",
                     "label": "Description",
                     "options": [],
-                    "enabled": true,
+                    "enabled": false,
                     "required": true,
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 25,
+                    "width": 33,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -449,141 +323,14 @@
         }
     ],
     "filters": [
-        {
-            "key": "invoice_no",
-            "label": "Ref. Number",
-            "order": 30,
-            "fieldType": "Select",
-            "options": []
-        },
-        {
-            "key": "invoice_date",
-            "label": "Document Issue Date",
-            "order": 30,
-            "fieldType": "Select",
-            "options": []
-        },
-        {
-            "key": "client",
-            "label": "Client",
-            "order": 90,
-            "fieldType": "Select",
-            "options": []
-        },
-        {
-            "key": "client_alias",
-            "label": "Client Alias",
-            "order": 100,
-            "fieldType": "Select",
-            "options": []
-        }
     ],
     "infos": [
         {
-            "key": "invoice_type",
+            "key": "template_name",
             "order": 10,
-            "label": "Document Type",
+            "label": "Tempalte Name",
             "type": "Text",
             "width": 100,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_balance",
-            "order": 20,
-            "label": "Balance",
-            "type": "Text",
-            "width": 10,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_date",
-            "order": 30,
-            "label": "Document Issue Date",
-            "type": "Text",
-            "width": 30,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_seria",
-            "order": 40,
-            "label": "Document Seria",
-            "type": "Text",
-            "width": 20,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_no",
-            "order": 50,
-            "label": "Document Number",
-            "type": "Text",
-            "width": 40,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "call_id",
-            "order": 60,
-            "label": "Call Reference",
-            "type": "Text",
-            "width": 50,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "break_id",
-            "order": 70,
-            "label": "Breakdown Reference",
-            "type": "Text",
-            "width": 50,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_title",
-            "order": 80,
-            "label": "Title",
-            "type": "Text",
-            "width": 100,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_client_name",
-            "order": 90,
-            "label": "Client Name",
-            "type": "Text",
-            "width": 60,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_client_alias",
-            "order": 100,
-            "label": "Client Alias",
-            "type": "Text",
-            "width": 40,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_client_info",
-            "order": 110,
-            "label": "General Info",
-            "type": "Text",
-            "width": 100,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "invoice_total_amount",
-            "order": 120,
-            "label": "Total Amount",
-            "type": "Text",
-            "width": 40,
             "innerwidth": 98,
             "align": "center center"
         }
@@ -689,32 +436,11 @@
     ],
     "columns": [
         {
-            "key": "invoice_date",
-            "text": "Date",
+            "key": "template_name",
+            "text": "Template Name",
             "isFilterable": true,
             "isSortable": true,
-            "width": 10
-        },
-        {
-            "key": "invoice_client_name",
-            "text": "Client Name",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 20
-        },
-        {
-            "key": "invoice_client_alias",
-            "text": "Client Alias",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 10
-        },
-        {
-            "key": "invoice_no`",
-            "text": "Ref. Number",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 10
+            "width": 80
         }
     ]
 }

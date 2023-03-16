@@ -37,8 +37,11 @@ export class ClientComponent implements OnInit {
 
 
   initMods(){
-    forkJoin([this.crudService.read('admin/predefined')]).subscribe(
-      ([predefinedResp] : any[]) => {
+    forkJoin([
+      this.crudService.read('admin/predefined'),
+      this.crudService.qyeryByValue('User',{ role : 'client' })
+    ]).subscribe(
+      ([predefinedResp,userResp] : any[]) => {
         if(predefinedResp.read){
           let data = predefinedResp.data;
           let clientStatus = data.find( (x:any) => x.key=='clientStatus').values;
@@ -47,12 +50,15 @@ export class ClientComponent implements OnInit {
           let priorities = data.find( (x:any) => x.key=='priorities').values;
           let paymentMethods = data.find( (x:any) => x.key=='paymentMethods').values;
           let banks = data.find( (x:any) => x.key=='banks').values;
+          
           JsonHelpers.setFieldDropdown(this.formFields,'category',clientCategories);
           JsonHelpers.setFieldDropdown(this.formFields,'status',clientStatus);
           JsonHelpers.setFieldDropdown(this.formFields,'country',countries);
           JsonHelpers.setFieldDropdown(this.formFields,'priority',priorities);
           JsonHelpers.setFieldDropdown(this.formFields,'bank',banks);
           JsonHelpers.setFieldDropdown(this.formFields,'payment_method',paymentMethods);
+          
+          JsonHelpers.setReferenceFieldDropdown(this.formFields,'client_user','full_name',userResp.data)
         } 
       }
     )

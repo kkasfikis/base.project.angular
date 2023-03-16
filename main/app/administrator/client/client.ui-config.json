@@ -291,6 +291,21 @@
             "align": "center center"
         },
         {
+            "key": "client_user",
+            "order": 190,
+            "type": "Select",
+            "label": "Client User",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 10,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
             "key": "notes",
             "order": 200,
             "type": "TextArea",
