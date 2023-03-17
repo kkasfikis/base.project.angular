@@ -9,7 +9,7 @@
             <div *ngFor="let infoField of sortByOrder(infoFields)" [fxFlex]="infoField.width" [fxLayoutAlign]="infoField.align">
                 <app-dynamic-info-field
                     [infoField]="infoField"
-                    [value]="obj[infoField.key]"
+                    [value]="infoField.key.includes('.') ? obj[infoField.key.split('.')[0]][infoField.key.split('.')[1]] : obj[infoField.key]"
                     [fxFlex]="infoField.innerWidth"
                 ></app-dynamic-info-field>
             </div>

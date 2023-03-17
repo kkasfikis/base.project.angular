@@ -3,7 +3,7 @@
         
         <app-dynamic-info-field *ngIf="!isSubForm(infoField)"
             [infoField]="infoField"
-            [value]="obj[infoField.key]"
+            [value]="infoField.key.includes('.') ? obj[infoField.key.split('.')[0]][infoField.key.split('.')[1]] : obj[infoField.key]"
             [fxFlex]="infoField.innerWidth"
         ></app-dynamic-info-field>
 

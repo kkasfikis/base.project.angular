@@ -1,4 +1,5 @@
 import json
+import bson
 import models
 from service import svc
 from helperFunctions import HelperFunctions
@@ -40,7 +41,13 @@ class BaseCrud:
                 titem = json.loads(item.to_json())
                 for key in titem.keys():
                     if type(titem[key]) == dict and '$oid' in titem[key]:
-                        titem[key] = titem[key]['$oid']
+                        if key != '_id':
+                            titem[key] = item[key].to_mongo().to_dict()
+                            for skey in titem[key].keys():
+                                if type(titem[key][skey]) == bson.objectid.ObjectId :
+                                    titem[key][skey] = str(titem[key][skey])    
+                        else:
+                            titem['_id'] = titem['_id']['$oid']
                     if type(titem[key]) == dict and '$date' in titem[key]:
                         titem[key] = datetime.fromtimestamp( titem[key]['$date'] / 1000 ).isoformat()
                 items.append(titem)
@@ -68,13 +75,19 @@ class BaseCrud:
     def recordItem(class_name : str, id : str):
         try:
             collection = getattr(models,class_name)
-            item = json.loads(collection.objects(pk = id).first().to_json())
-            for key in item.keys():
-                if type(item[key]) == dict and '$oid' in item[key]:
-                    item[key] = item[key]['$oid']
-                if type(item[key]) == dict and '$date' in item[key]:
-                    item[key] = datetime.fromtimestamp(item[key]['$date'] / 1000 ).isoformat()
-            return item
+            item = collection.objects(pk = id).first()
+            titem = json.loads(item.to_json()) 
+            titem['_id'] = titem['_id']['$oid']
+            for key in titem.keys():
+                if type(titem[key]) == dict and '$oid' in titem[key]:
+                    titem[key] = item[key].to_mongo().to_dict()
+                    for skey in titem[key].keys():
+                        if type(titem[key][skey]) == bson.objectid.ObjectId :
+                            titem[key][skey] = str(titem[key][skey])
+                    
+                if type(titem[key]) == dict and '$date' in titem[key]:
+                    titem[key] = datetime.fromtimestamp(titem[key]['$date'] / 1000 ).isoformat()
+            return titem
         except Exception as e:
             return None
 
@@ -82,15 +95,19 @@ class BaseCrud:
     def record(class_name : str, id : str):
         try:
             collection = getattr(models,class_name)
-            item = json.loads(collection.objects(pk = id).first().to_json())
-            for key in item.keys():
-                if type(item[key]) == dict and '$oid' in item[key]:
-                    item[key] = item[key]['$oid']
-                if type(item[key]) == dict and '$date' in item[key]:
-                    item[key] = datetime.fromtimestamp(item[key]['$date'] / 1000 ).isoformat()
+            item = collection.objects(pk = id).first()
+            titem = json.loads(item.to_json()) 
+            titem['_id'] = titem['_id']['$oid']
+            for key in titem.keys():
+                if type(titem[key]) == dict and '$oid' in titem[key]:
+                    titem[key] = item[key].to_mongo().to_dict()
+                    for skey in titem[key].keys():
+                        if type(titem[key][skey]) == bson.objectid.ObjectId :
+                            titem[key][skey] = str(titem[key][skey])
+                   
             return {
                 'info' : True,
-                'data' : item
+                'data' : titem
             },200
         except Exception as e:
             return {

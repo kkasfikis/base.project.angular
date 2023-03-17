@@ -4305,7 +4305,7 @@
             "align": "center center"
         },
         {
-            "key": "client_name",
+            "key": "client.name",
             "order": 30,
             "label": "Client Name",
             "type": "Text",
@@ -5928,7 +5928,7 @@
             "width": 10
         },
         {
-            "key": "client_name",
+            "key": "client.name",
             "text": "Client Name",
             "isFilterable": true,
             "isSortable": true,
