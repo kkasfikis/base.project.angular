@@ -3,6 +3,8 @@ from flask_restx import Resource,Namespace
 from flask_cors import cross_origin
 import models
 import json
+import bson
+from datetime import datetime
 from service import svc
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 
@@ -27,15 +29,26 @@ def getAttributeList():
             for item in collection.objects().only(*fields):
                 tItem = json.loads(item.to_json())
                 tItem['_id'] = tItem['_id']['$oid']
+                for key in tItem.keys():
+                    
+                    if type(tItem[key]) == dict and '$date' in tItem[key]:
+                        tItem[key] = datetime.fromtimestamp(tItem[key]['$date'] / 1000 ).isoformat()
+                    if key != '_id':
+                        if type(tItem[key]) == dict and '$oid' in tItem[key]:
+                            tItem[key] = item[key].to_mongo().to_dict()
+                            for skey in tItem[key].keys():
+                                if type(tItem[key][skey]) == bson.objectid.ObjectId :
+                                    tItem[key][skey] = str(tItem[key][skey])
                 items.append(tItem)
         else:
             items = collection.objects().distinct(attribute)
-            
+        
         return {
             'attribute' : True,
             'data' : items
         },200
     except Exception as e:
+        print('EXCEPTION',e)
         return {
             'attribute' : False,
             'message' : 'An error occured: ' + str(e)

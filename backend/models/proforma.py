@@ -1,7 +1,6 @@
 from service import svc
-from models.call import Call
-from models.breakdown import Breakdown
 from models.client import Client
+
 class ProformaItem(svc.db.EmbeddedDocument):
     item_category1 = svc.db.StringField(min_length=0, max_length= 255)  
     item_category2 = svc.db.StringField(min_length=0, max_length= 255)   

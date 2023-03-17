@@ -1,6 +1,6 @@
 from service import svc
-from models.port import Port
 from models.user import User
+
 class AgentPiC(svc.db.EmbeddedDocument):
     pic_name = svc.db.StringField(required = True, unique = True, min_length=0, max_length= 255)   #	    T
     agent_name = svc.db.StringField(min_length=0, max_length= 255)           #		T	Select from AGENTS

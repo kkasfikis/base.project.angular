@@ -1,6 +1,7 @@
 
 from models.client import Client
 from service import svc
+
 class ConsolidatedStatementOfAccountItem(svc.db.EmbeddedDocument):
     item_date = svc.db.DateTimeField()     #	T
     item_description = svc.db.StringField(required = True, unique = True, min_length=0, max_length= 255) #	T	 SOA no / SOA Date SOA title

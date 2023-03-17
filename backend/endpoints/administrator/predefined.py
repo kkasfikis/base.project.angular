@@ -1,7 +1,6 @@
 from flask import jsonify, request, current_app
 from flask_restx import Resource,Namespace,fields,reqparse
 from flask_cors import CORS, cross_origin
-from service import svc
 from models.predefined import Predefined
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json

@@ -1,11 +1,8 @@
 from flask import jsonify, request, current_app
 from flask_restx import Resource,Namespace
 from flask_cors import cross_origin
-from service import svc
 from ..crud import BaseCrud
-from models.client import Client
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
-import json
 from datetime import datetime
 api = Namespace('admin/client',description = 'Client Crud Endpoints')
 

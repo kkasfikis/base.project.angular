@@ -3,14 +3,11 @@ from flask_restx import Resource,Namespace,fields,reqparse
 from flask_cors import CORS, cross_origin
 from ..crud import BaseCrud
 from service import svc
-from models.agent import Agent
-from models.call import Call
 from datetime import datetime
-from models.port import Port
 from models.client import Client
-from models.agent import Agent
-from models.vessel import Vessel
 from models.breakdown import Breakdown
+from models.proforma import Proforma
+from models.call import Call
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
 from helperFunctions import HelperFunctions
@@ -28,20 +25,22 @@ class PaginatedCaptainCall(Resource):
             items = []
             overflow = False
             client = Client.objects( client_user =  user['id'] ).first()
-            count = Breakdown.objects(client =  client).count()
+            proformas = Proforma.objects( client = client )
+            calls = Call.objects( client = client)
+            count = Breakdown.objects(proforma__in = proformas , call__in = calls).count()
             if(page * size > count) :
                 overflow = True
 
-            calls = None
+            
             if sort != None and sortColumn != None:
                 if sort != 'asc':
                     sortColumn = '-' + sortColumn
 
-                calls = Breakdown.objects(client =  client).skip(page*size).limit(size).order_by(sortColumn)
+                breakdowns = Breakdown.objects.filter( proforma__in = proformas , call__in = calls).skip(page*size).limit(size).order_by(sortColumn)
             else:
-                calls = Breakdown.objects(client =  client).skip(page*size).limit(size)
+                breakdowns = Breakdown.objects(proforma__in = proformas , call__in = calls).skip(page*size).limit(size)
                 pass  
-            for item in calls:
+            for item in breakdowns:
                 titem = json.loads(item.to_json())
                 for key in titem.keys():
                     if type(titem[key]) == dict and '$oid' in titem[key]:
@@ -72,7 +71,7 @@ class PutDeleteCaptainCall(Resource):
     @cross_origin()
     def get(self, id):
         try:
-            item = json.loads(Call.objects(pk = id).first().to_json())
+            item = json.loads(Breakdown.objects(pk = id).first().to_json())
             for key in item.keys():
                 if type(item[key]) == dict and '$oid' in item[key]:
                     item[key] = item[key]['$oid']

@@ -3,13 +3,8 @@ from flask_restx import Resource,Namespace,fields,reqparse
 from flask_cors import CORS, cross_origin
 from ..crud import BaseCrud
 from service import svc
-from models.agent import Agent
-from models.call import Call
 from datetime import datetime
-from models.port import Port
 from models.client import Client
-from models.agent import Agent
-from models.vessel import Vessel
 from models.proforma import Proforma
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json

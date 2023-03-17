@@ -3,6 +3,7 @@ from models.breakdown import Breakdown
 from models.call import Call
 from models.client import Client
 from service import svc
+
 class StatementOfAccountItem(svc.db.EmbeddedDocument):
     item_date = svc.db.DateTimeField()     #	T
     item_description = svc.db.StringField(min_length=0, max_length= 255)                             #	T	 DA no / DA title, CN no /CN title

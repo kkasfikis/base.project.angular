@@ -93,7 +93,12 @@ export abstract class JsonHelpers {
 
       if (fieldName.includes(',')) {
         fieldName.split(',').forEach((key: string) => {
-          (first) ? val = x[key] : val += ',' + x[key]
+          if(key.includes('.')){
+            (first) ? val = x[key.split('.')[0]][key.split('.')[1]] : val += ',' + x[key.split('.')[0]][key.split('.')[1]]
+          }
+          else{
+            (first) ? val = x[key] : val += ',' + x[key]
+          }
           first = false;
         })
       }

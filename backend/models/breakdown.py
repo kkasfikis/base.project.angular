@@ -1,4 +1,6 @@
 from service import svc
+from models.proforma import Proforma
+from models.call import Call
 
 class BreakdownItem(svc.db.EmbeddedDocument):
     item_date = svc.db.DateTimeField()                          #	D
@@ -17,6 +19,9 @@ class BreakdownItem(svc.db.EmbeddedDocument):
     item_link = svc.db.StringField(min_length=0, max_length= 255)      
 
 class Breakdown(svc.db.Document):
+    proforma = svc.db.ReferenceField(Proforma, reverse_delete_rule=1)
+    call = svc.db.ReferenceField(Call,reverse_delete_rule=1)
+
     breakdown_entry = svc.db.DateTimeField()                      #	D
     breakdown_status = svc.db.StringField(required = True, min_length=0, max_length= 255)                   #	T
     breakdown_comment = svc.db.StringField(required = True, min_length=0, max_length= 255)                  #	T
@@ -24,4 +29,6 @@ class Breakdown(svc.db.Document):
     breakdown_debit_amount = svc.db.FloatField(min_value=0)                               #	N   sum of itemamount
     breakdown_credit_amount = svc.db.FloatField(min_value=0)                              #	N   sum of itemcredit
     breakdown_actual_amount = svc.db.FloatField(min_value=0)                              #	N   sum of itemactual
+    breakdown_no = svc.db.StringField(unique = True, min_length=0, max_length= 255) 
+    
     breakdown_items = svc.db.ListField(svc.db.EmbeddedDocumentField(BreakdownItem))                            #	T

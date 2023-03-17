@@ -1,5 +1,6 @@
 from service import svc
 from models.user import User
+
 class Vessel(svc.db.Document):
     vessel_name = svc.db.StringField(required = True, min_length=0, max_length= 255)      #	T
     ex_name = svc.db.StringField(min_length=0, max_length= 255)          #		T

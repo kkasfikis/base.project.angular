@@ -6,6 +6,7 @@ from flask_jwt_extended import JWTManager
 from flask_mongoengine import MongoEngine
 from dataclasses import dataclass, field
 
+
 @dataclass
 class Service:
     name : str
