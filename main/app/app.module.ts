@@ -74,8 +74,6 @@ import { CaptainCallComponent } from './captain/captain-call/captain-call.compon
 import { ProformaTemplateComponent } from './administrator/proforma-template/proforma-template.component';
 import { ClientProformaComponent } from './client/client-proforma/client-proforma.component';
 import { ClientBreakdownComponent } from './client/client-breakdown/client-breakdown.component';
-import { ReportGeneratorComponent } from './ui-components/report-generator/report-generator.component'
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -119,8 +117,7 @@ import { ReportGeneratorComponent } from './ui-components/report-generator/repor
     CaptainCallComponent,
     ProformaTemplateComponent,
     ClientProformaComponent,
-    ClientBreakdownComponent,
-    ReportGeneratorComponent
+    ClientBreakdownComponent
   ],
   imports: [
     BrowserModule,
