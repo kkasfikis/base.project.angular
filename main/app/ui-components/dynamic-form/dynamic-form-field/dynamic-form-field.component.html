@@ -26,6 +26,18 @@
             <textarea matInput [formControlName]="localFormField.key" (change)="contentChange()"></textarea>
         </mat-form-field>
 
+        <div *ngSwitchCase="localFormFieldType.Image">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input type="file" accept="localFormField.allowedFileTypes" (change)="onFileSelected($event)">
+            <img [src]="localFormField.value" width="300">
+        </div>
+
+        <div *ngSwitchCase="localFormFieldType.PDF">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input type="file" accept=".pdf" (change)="onFileSelected($event)">
+            <iframe  [src]="selectedFilePath" width="100%" height="500"></iframe>
+        </div>
+
         <mat-form-field *ngSwitchCase="localFormFieldType.Select" appearance="fill" fxFlex="100" >
             <mat-label>{{localFormField.label}}</mat-label>
             <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()" >

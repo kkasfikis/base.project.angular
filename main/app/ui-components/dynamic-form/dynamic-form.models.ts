@@ -1,3 +1,4 @@
+import { SafeUrl } from "@angular/platform-browser";
 import { BehaviorSubject } from "rxjs";
 import { InfoField, SubFormInfo } from "../dynamic-info/dynamic-info.models";
 import { TableColumn } from "../dynamic-table/dynamic-table.models";
@@ -14,8 +15,14 @@ export enum FormFieldType{
     Number,
     Decimal,
     ColorPicker,
-    Hidden
+    Hidden,
+    Image,
+    PDF
 }
+export interface SelectedFile {
+    type: string;
+    url: SafeUrl;
+  }
 
 export class FormFieldBase{
     key : string = '';

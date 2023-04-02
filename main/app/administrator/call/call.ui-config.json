@@ -188,7 +188,7 @@
         {
             "key": "safety_manual",
             "order": 130,
-            "type": "TextBox",
+            "type": "File",
             "label": "Safety Manual",
             "options": [],
             "enabled": true,
@@ -196,6 +196,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
+            "allowedFileTypes": ".pdf,.doc,.docx,.xls,.xlsx",
             "width": 50,
             "innerWidth": 98,
             "align": "center center"

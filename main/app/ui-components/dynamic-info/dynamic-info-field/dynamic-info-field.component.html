@@ -3,4 +3,7 @@
         <b fxFlex="25" fxLayoutAlign="flex-start">{{infoField.label}}</b>
         <span fxFlex="75" fxLayoutAlign="center">{{value}}</span>
     </div>
+    <div *ngSwitchCase="localInfoType.PDF" style="margin:10px">
+        <iframe *ngIf="selectedFilePath != undefined"  [src]="selectedFilePath" width="100%" height="500"></iframe>
+    </div>
 </div>

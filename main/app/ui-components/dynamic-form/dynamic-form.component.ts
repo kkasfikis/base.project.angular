@@ -112,6 +112,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
         obj[subform.key] = subform.tableData;
       }
     })    
+    console.log('submitted form',obj)
     return obj;
   }
 }

@@ -16,7 +16,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 25,
+            "width": 33,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -31,7 +31,7 @@
             "minLength": 0,
             "maxLength": 10000,
             "regexPattern": "",
-            "width": 25,
+            "width": 33,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -46,29 +46,29 @@
             "minLength": 0,
             "maxLength": 100,
             "regexPattern": "",
-            "width": 25,
+            "width": 33,
             "innerWidth": 98,
             "align": "center center"
         },
         {
-            "key": "weather_link",
+            "key": "weather_link_file",
             "order": 40,
-            "type": "TextBox",
-            "label": "Port Wheather",
+            "type": "PDF",
+            "label": "Port Weather",
             "options": [],
             "enabled": true,
             "required": false,
             "minLength": 0,
-            "maxLength": 1000,
+            "maxLength": 0,
             "regexPattern": "",
-            "width": 25,
+            "width": 100,
             "innerWidth": 100,
             "align": "center center"
         },
         {
             "key": "notes",
             "order": 50,
-            "type": "TextBox",
+            "type": "TextArea",
             "label": "Notes",
             "options": [],
             "enabled": true,
@@ -120,10 +120,10 @@
             "align": "center center"
         },
         {
-            "key": "weather_link",
+            "key": "weather_link_file",
             "order": 50,
             "label": "Port Wheather",
-            "type": "Text",
+            "type": "PDF",
             "width": 100,
             "innerwidth": 100,
             "align": "center center"

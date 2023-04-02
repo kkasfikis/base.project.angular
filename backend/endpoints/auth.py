@@ -45,7 +45,7 @@ def register():
 @svc.app.route("/login", methods=["POST"])
 def login():
     login_details = request.get_json()
-    print(login_details,hashlib.sha256("test1".encode("utf-8")).hexdigest())
+    print('LOGIN DETAILS',login_details)
     try:
         user = User.objects.get(username = login_details['username'], password = hashlib.sha256(login_details['password'].encode("utf-8")).hexdigest())
         print(user.username)
@@ -61,7 +61,6 @@ def login():
                 'token' : token 
             }, 200
     except Exception as e:
-        print('!!!!!!',e)
         return {
             'login' : False,
             'message' : 'An error occured: ' + str(e) 

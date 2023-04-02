@@ -1,7 +1,8 @@
 import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, ElementRef, ViewChild, Renderer2, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { BehaviorSubject, Subject, Subscription, takeUntil } from 'rxjs';
-import { FormFieldBase, FormFieldType } from '../dynamic-form.models';
+import { FormFieldBase, FormFieldType, SelectedFile } from '../dynamic-form.models';
 
 @Component({
   selector: 'app-dynamic-form-field',
@@ -17,11 +18,17 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
 
   localFormField! : FormFieldBase;
   localFormFieldType : typeof FormFieldType = FormFieldType
+
+  selectedFilePath : SafeResourceUrl = '';
+
   private ngUnsubscribe = new Subject<void>();
-  constructor(private elementRef : ElementRef,private renderer: Renderer2) { }
+  constructor(private elementRef : ElementRef,private renderer: Renderer2,public sanitizer: DomSanitizer,) { }
 
   selectForeColor : string = '';
   selectBackColor : string = '';
+
+  fileUploading = false;
+  progressValue = 0;
 
   colorStyles : HTMLStyleElement | undefined;
   @ViewChild('formField') public element! : ElementRef;
@@ -44,7 +51,12 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
     if(field.enabled) {this.form.get(this.localFormField.key)?.enable();} else { this.form.get(this.localFormField.key)?.disable(); }
     this.form.get(this.localFormField.key)?.addValidators(validators);
     this.form.controls[this.localFormField.key].patchValue(field.value, {onlySelf: false, emitEvent: true});
-    
+    if(this.localFormField.type == FormFieldType.PDF && !!this.localFormField.value){
+      let contentType = ''
+      contentType = 'data:application/pdf;base64,'
+      this.localFormField.value = contentType + this.localFormField.value 
+      this.selectedFilePath = this.sanitizer.bypassSecurityTrustResourceUrl(this.localFormField.value);
+    }
     if(this.localFormField.type == FormFieldType.Select && this.localFormField.value != undefined && this.localFormField.value.length > 0){      
       let item : any = this.localFormField.options.find( (x:any) => x.value == this.localFormField.value);
       if(item && !!item.foreColor && item.foreColor.length > 0 && !!item.backColor && item.backColor.length > 0){
@@ -56,7 +68,7 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
   }
 
   setSelectColor(foreColor : string , backColor : string){
-    let element =  document.getElementsByTagName('head')[0];//document.getElementById(this.localFormField.key)//this.element.nativeElement as HTMLElement
+    let element =  document.getElementsByTagName('head')[0]; //document.getElementById(this.localFormField.key)//this.element.nativeElement as HTMLElement
     if(this.colorStyles != undefined){
       element!.removeChild(this.colorStyles!);
     }
@@ -65,7 +77,7 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
         color:${foreColor} !important;
         background-color: ${backColor};
       }      
-    `
+    ` 
     this.colorStyles = document.createElement('style');
     this.colorStyles.appendChild(document.createTextNode(css));
     element!.prepend(this.colorStyles)
@@ -113,12 +125,30 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
     this.elementRef.nativeElement.remove();
   }
 
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      this.localFormField.value = file;
+      this.form.controls[this.localFormField.key].setValue(file)
+      
+      reader.onload = (e: any) => {
+         const fileData = e.target.result;
+         this.localFormField.value = fileData
+         console.log('File',file)
+         this.form.controls[this.localFormField.key].setValue(fileData)
+      };
+      reader.readAsDataURL(file);
+      console.log('URL' ,URL.createObjectURL(file) )
+      this.selectedFilePath = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
+      //this.localFormField.fileType = file.name.split('.')[file.name.split('.').length - 1];
+    }
+    this.onFieldChange.emit( {key: this.localFormField.key, value: this.localFormField.value, form: this.form})
+  }
+
   contentChange(){
     let value = this.form.get(this.localFormField.key)?.value;
-    console.log('value changed to value:',value)
-    if(this.localFormField.type == FormFieldType.ColorPicker){   
-      console.log('Color picker value',value)
-    }
+
     if(this.localFormField.type == FormFieldType.Select){      
       let item : any = this.localFormField.options.find( (x:any) => x.value == value);
       if(item && !!item.foreColor && item.foreColor.length > 0 && !!item.backColor && item.backColor.length > 0){

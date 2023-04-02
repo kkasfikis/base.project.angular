@@ -1,6 +1,7 @@
 export enum InfoType{
     Text,
-    Image
+    Image,
+    PDF
 }
 
 export class InfoField{

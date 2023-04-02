@@ -165,10 +165,6 @@ export abstract class JsonHelpers {
       });
     }
     subForm?.next(subFormValue)
-
-    //fields.forEach( (field:string,index:number) => {
-    //  JsonHelpers.setSubFieldValue(formFields,subformKey,field,values[index])
-    //})
   }
 
   public static setSubformItems(formFields: (BehaviorSubject<FormFieldBase> | BehaviorSubject<SubForm>)[], subformKey : string, data : any){

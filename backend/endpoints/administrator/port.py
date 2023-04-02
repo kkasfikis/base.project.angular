@@ -3,6 +3,7 @@ from flask_restx import Resource,Namespace,fields,reqparse
 from flask_cors import CORS, cross_origin
 from service import svc
 from models.port import Port
+from werkzeug.datastructures import MultiDict
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
 from ..crud import BaseCrud
@@ -28,11 +29,13 @@ class PaginatedPort(Resource):
     @cross_origin()
     def post(self,page,size,sort=None,sortColumn=None):
         try:
+        
             ports = []
             data = request.get_json()
-            print(data)
+
             count = Port.objects.count()
             overflow = False
+            
             if(page * size > count * 20) :
                 overflow = True
             for port in Port.objects: #.skip(page*size).limit(size):
@@ -42,18 +45,21 @@ class PaginatedPort(Resource):
                     tport['name'] = tport['name'] + "_" + str(i)
                     ports.append(tport)
             y = (data['search'][0]).split(':')[1]
-            print ('Y:',y)
+
             ports1 = list(filter(lambda x: (y  in x['name']), ports)) 
             count = len(ports1)
+            
             if sort is not None and sort == 'desc' and sortColumn is not None:
                 ports1.reverse()
             ports1 = ports1[page * size : page * size + size] 
+            
             return {
                 'read' : True,
                 'data' : ports1,
                 'count' : count,
                 'overflow' : overflow
             }, 200
+        
         except svc.db.ValidationError as e:
             return {
                 'read' : False,
@@ -69,7 +75,11 @@ class PutDeletePort(Resource):
 
     @cross_origin()
     def put(self, id):
-        return BaseCrud.update('Port', id, request.get_json())
+        try:
+            print('FILES',request.files.to_dict())
+            return BaseCrud.update('Port', id, request.form.to_dict(), request.files.to_dict())
+        except Exception as e:
+            print('EXCEPTION',str(e))
 
 
     @cross_origin()

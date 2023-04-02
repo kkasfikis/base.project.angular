@@ -17,7 +17,7 @@
         },
         {
             "key": "password",
-            "order": 10,
+            "order": 20,
             "type": "Password",
             "label": "Password",
             "options": [],

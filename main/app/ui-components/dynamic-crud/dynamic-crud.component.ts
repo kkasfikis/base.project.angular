@@ -10,6 +10,9 @@ import { DynamicCrudService } from './dynamic-crud.service';
 import { ConfirmationDialogComponent, ConfirmationDialogModel } from '../dialogs/confirmation-dialog/confirmation-dialog.component';
 import { FilterField } from './dynamic-crud.models';
 import { LoadingService } from '../services/loading.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-dynamic-crud',
@@ -24,6 +27,10 @@ export class DynamicCrudComponent implements OnInit {
   @Input() hasUpdate : boolean = true;
   @Input() hasDelete : boolean =true;
   @Input() hasInfo : boolean = true;
+  @Input() hasReport : boolean = true;
+
+  @Input() reportTitle : string = 'FORCE MARINE';
+  @Input() reportHeader : string = '<h1>THIS IS A TEST</h1>';
 
   @Input() endpoint : string = '';
 
@@ -53,6 +60,9 @@ export class DynamicCrudComponent implements OnInit {
 
   infoElement : any;
 
+
+  reportUrl : SafeUrl = '';
+
   tableColumnSubject : BehaviorSubject<TableColumn[]> = new BehaviorSubject<TableColumn[]>([])
   tableDataSubject : BehaviorSubject<TableData> = new BehaviorSubject<TableData>(new TableData(0,0,0,[]))
 
@@ -74,7 +84,7 @@ export class DynamicCrudComponent implements OnInit {
   private filterMode: boolean =false;
   private filterPayload : any;
 
-  constructor(private crudService : DynamicCrudService, public dialog : MatDialog, private loadingService : LoadingService, private toastr : ToastrService) { }
+  constructor(private crudService : DynamicCrudService, public dialog : MatDialog, private loadingService : LoadingService, private toastr : ToastrService, private sanitizer : DomSanitizer) { }
   
   updateFormActions : FormAction[] =[
     {
@@ -359,9 +369,9 @@ export class DynamicCrudComponent implements OnInit {
     
   }
 
-  crudUpdateSubmit(payload : any){
+  async crudUpdateSubmit(payload : any){
     this.loadingService.setLoading(true);
-    this.crudService.update( this.endpoint, payload, this.identifierKey).subscribe({
+    (await this.crudService.update( this.endpoint, payload, this.identifierKey)).subscribe({
       next: (response : any) => {
         if(!response.updated){
           this.toastr.warning(response['message'],'Warning')
@@ -459,6 +469,31 @@ export class DynamicCrudComponent implements OnInit {
     this.filterMode = false;
     this.filterPayload = undefined;
     this.read();
+  }
+
+  generatePDF(){
+    // const doc = document.implementation.createHTMLDocument();
+    // doc.head.innerHTML = this.reportHeader
+    // doc.body.title = this.reportTitle
+    // doc.body.innerHTML = document.getElementById('infoContainer')?.innerHTML!;
+    // console.log('generating report',doc.body.innerHTML)
+    // const blob = new Blob([doc.documentElement.outerHTML], { type: 'application/pdf' });
+    // this.reportUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blob));
+    // console.log('Generated blob : ',blob)
+  
+
+    let DATA: any = document.getElementById('infoContainer');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage('./assets/images/user.jpg','PNG',0, 0 ,50,50)
+      PDF.addImage(FILEURI, 'PNG', 0, 60, fileWidth, fileHeight);
+    
+      PDF.save('angular-demo.pdf');
+    });
   }
 
 }

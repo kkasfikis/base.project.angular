@@ -49,11 +49,30 @@ export class DynamicCrudService {
     return this.http.post( url , payload, {...options});
   }
 
-  update(url:string, item:any, identifier:string){
+  async update(url:string, item:any, identifier:string){
     let options = {
-      headers : new HttpHeaders({'Content-Type' : 'application/json'})
+      headers : new HttpHeaders({'Content-Type' : 'multipart/form'})
     }
-    return this.http.put(url + '/' + item[identifier], item, {...options});
+
+    let formData = new FormData();
+    
+    await Promise.all( Object.keys(item).map( async (key : string) => {
+      console.log('key',key)
+      if(key.includes('_file')){
+        console.log('file',key)
+        const blob = await fetch(`${item[key]}`).then(res => res.blob());
+        console.log('BLOOOOOB',blob)
+        formData.append(key, blob, 'AAAA.pdf')
+      }
+      else{
+        console.log('value',key)
+        formData.append(key,item[key]);
+      }
+    })).then( () => {
+      console.log('FORM DATA',Array.from(formData.entries()))
+    })
+    
+    return this.http.put(url + '/' + item[identifier], formData);
   }
 
   delete(url:string, item : any, identifier : string){
