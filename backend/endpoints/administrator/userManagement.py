@@ -34,7 +34,7 @@ class PutDeleteUserManagement(Resource):
 
     @cross_origin()
     def put(self, id):
-        data = request.get_json()
+        data = request.form.to_dict()#request.get_json()
         try:
             
             item = User.objects(pk = id).first()
@@ -54,6 +54,7 @@ class PutDeleteUserManagement(Resource):
                 'message' : f'User role successfully updated'
             },200
         except Exception as e:
+            print('EXCEPTION',str(e))
             return {
                 'updated' : False,
                 'message' : 'An error occured: ' + str(e)

@@ -349,21 +349,6 @@
             "width": 70,
             "innerWidth": 98,
             "align": "center center"
-        },
-        {
-            "key": "agent_user",
-            "order": 215,
-            "type": "Select",
-            "label": "Agent User",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 70,
-            "innerWidth": 98,
-            "align": "center center"
         }
     ],
     "subforms": [],

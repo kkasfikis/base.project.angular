@@ -61,7 +61,7 @@
             "minLength": 0,
             "maxLength": 0,
             "regexPattern": "",
-            "width": 100,
+            "width": 50,
             "innerWidth": 100,
             "align": "center center"
         },

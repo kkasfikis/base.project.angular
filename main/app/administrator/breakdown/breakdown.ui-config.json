@@ -705,7 +705,7 @@
     ],
     "subinfos": [
         {
-            "key": "",
+            "key": "breakdown_items",
             "order": 1000,
             "label": "ITEM DESCRIPTION",
             "fields": [
