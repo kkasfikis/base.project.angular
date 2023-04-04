@@ -15,6 +15,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class ProformaComponent implements OnInit {
 
+  beforeCreateUpdateActions = this.initMods.bind(this); 
+
   constructor(private crudService : DynamicCrudService) { }
 
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
@@ -32,10 +34,10 @@ export class ProformaComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
 
-  initMods(){
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     forkJoin([
       this.crudService.read('admin/predefined'),
       this.crudService.getAttributeWithId('Client','name'),
@@ -43,11 +45,11 @@ export class ProformaComponent implements OnInit {
       this.crudService.read('admin/charge')
     ]).subscribe(
     ([predefinedResp,clientResp,templateResp,chargeResp] : any[]) => {
-      JsonHelpers.setFieldDropdown(this.formFields, 'proforma_type', predefinedResp.data.find( ( x:any ) => x.key == 'documentTypes' ).values )
-      JsonHelpers.setReferenceFieldDropdown(this.formFields,'client','name',clientResp.data)
-      JsonHelpers.setReferenceFieldDropdown(this.formFields,'proforma_template','template_name',templateResp.data)
+      JsonHelpers.setFieldDropdown(formFields, 'proforma_type', predefinedResp.data.find( ( x:any ) => x.key == 'documentTypes' ).values )
+      JsonHelpers.setReferenceFieldDropdown(formFields,'client','name',clientResp.data)
+      JsonHelpers.setReferenceFieldDropdown(formFields,'proforma_template','template_name',templateResp.data)
       JsonHelpers.setSubFieldDropdown(
-        this.formFields,
+        formFields,
         'proforma_items',
         ['item_category1'],
         [ ([...new Set(chargeResp.data.map( (item:any) => item.category1))] as string[])

@@ -39,24 +39,25 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
     let validators : ValidatorFn[] = [];
 
     if(field.type == FormFieldType.DatePicker){
-      console.log(field.type,field.value);
-      field.value = new Date(field.value);
+      field.value = new Date(field.value['$date']);
+      console.log(this.localFormField.key,field.value,field.value instanceof Date)
     }
 
     if(field.required){ validators.push(Validators.required); }
     if(field.maxLength > 0) { validators.push(Validators.maxLength(field.maxLength))}
     if(field.minLength > 0) {validators.push(Validators.minLength(field.minLength))}
     if(field.regexPattern && field.regexPattern != '') {validators.push(Validators.pattern(field.regexPattern))}
-    console.log('Inside FormField', this.localFormField.key, this.localFormField)
     if(field.enabled) {this.form.get(this.localFormField.key)?.enable();} else { this.form.get(this.localFormField.key)?.disable(); }
     this.form.get(this.localFormField.key)?.addValidators(validators);
     this.form.controls[this.localFormField.key].patchValue(field.value, {onlySelf: false, emitEvent: true});
+    
     if(this.localFormField.type == FormFieldType.PDF && !!this.localFormField.value){
       let contentType = ''
       contentType = 'data:application/pdf;base64,'
       this.localFormField.value = contentType + this.localFormField.value 
       this.selectedFilePath = this.sanitizer.bypassSecurityTrustResourceUrl(this.localFormField.value);
     }
+    
     if(this.localFormField.type == FormFieldType.Select && this.localFormField.value != undefined && this.localFormField.value.length > 0){      
       let item : any = this.localFormField.options.find( (x:any) => x.value == this.localFormField.value);
       if(item && !!item.foreColor && item.foreColor.length > 0 && !!item.backColor && item.backColor.length > 0){
@@ -88,10 +89,6 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
   }
 
   ngOnChanges(changes: SimpleChanges) {
-   if(this.formField instanceof FormFieldBase){
-    console.log('Inside change',changes)
-    
-   }
   }
 
   ngOnInit(): void {

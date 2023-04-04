@@ -14,7 +14,7 @@ class GetPostStaff(Resource):
 
     @cross_origin()
     def post(self):
-        return BaseCrud.create('Staff',request.get_json())
+        return BaseCrud.create('Staff',json.loads(request.form.to_dict()['data']), request.files.to_dict())
 
 @api.route("/<int:page>/<int:size>", methods=['GET','POST'])
 @api.route("/<int:page>/<int:size>/<string:sort>/<string:sortColumn>", methods=['GET','POST'])
@@ -36,7 +36,7 @@ class PutDeleteStaff(Resource):
 
     @cross_origin()
     def put(self, id):
-        return BaseCrud.update('Staff', id, request.get_json())
+        return BaseCrud.update('Staff', id,json.loads(request.form.to_dict()['data']), request.files.to_dict())
 
 
     @cross_origin()

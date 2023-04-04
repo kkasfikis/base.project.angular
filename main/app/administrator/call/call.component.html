@@ -22,5 +22,8 @@
     [hasFilters]="true"
     [filterFields]="filterFields"
 
+    [beforeCreateActions]="beforeCreateUpdateActions"
+    [beforeUpdateActions]="beforeCreateUpdateActions"
+
     (onFormChange) = "onFormChange($event)"
 ></app-dynamic-crud>

@@ -15,6 +15,8 @@ import * as data from './supplier.ui-config.json'
 })
 export class SupplierComponent implements OnInit {
 
+  beforeCreateUpdateActions = this.initMods.bind(this)
+
   constructor(private crudService : DynamicCrudService) { }
 
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
@@ -32,19 +34,19 @@ export class SupplierComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
   
-  initMods(){
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     this.crudService.read('admin/predefined').subscribe({
       next : (resp : any) => {
-        JsonHelpers.setFieldDropdown(this.formFields, 'status' , resp.data.find( ( x:any ) => x.key == 'supplierStatus' ).values );
-        JsonHelpers.setFieldDropdown(this.formFields,  'category', resp.data.find( (x:any) => x.key == 'supplierCategories').values );
-        JsonHelpers.setFieldDropdown(this.formFields,  'country', resp.data.find( (x:any) => x.key == 'countries').values );
-        JsonHelpers.setFieldDropdown(this.formFields,  'supplier_object', resp.data.find( (x:any) => x.key == 'supplierOccupations').values );
-        JsonHelpers.setFieldDropdown(this.formFields,  'priority', resp.data.find( (x:any) => x.key == 'priorities').values );
-        JsonHelpers.setFieldDropdown(this.formFields,  'bank', resp.data.find( (x:any) => x.key == 'banks').values );
-        JsonHelpers.setFieldDropdown(this.formFields, 'payment_method', resp.data.find( (x:any) => x.key == 'paymentMethods').values );
+        JsonHelpers.setFieldDropdown(formFields, 'status' , resp.data.find( ( x:any ) => x.key == 'supplierStatus' ).values );
+        JsonHelpers.setFieldDropdown(formFields,  'category', resp.data.find( (x:any) => x.key == 'supplierCategories').values );
+        JsonHelpers.setFieldDropdown(formFields,  'country', resp.data.find( (x:any) => x.key == 'countries').values );
+        JsonHelpers.setFieldDropdown(formFields,  'supplier_object', resp.data.find( (x:any) => x.key == 'supplierOccupations').values );
+        JsonHelpers.setFieldDropdown(formFields,  'priority', resp.data.find( (x:any) => x.key == 'priorities').values );
+        JsonHelpers.setFieldDropdown(formFields,  'bank', resp.data.find( (x:any) => x.key == 'banks').values );
+        JsonHelpers.setFieldDropdown(formFields, 'payment_method', resp.data.find( (x:any) => x.key == 'paymentMethods').values );
       }
     })
   }

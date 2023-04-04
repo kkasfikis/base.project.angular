@@ -15,6 +15,8 @@ import * as data from './client.ui-config.json'
 })
 export class ClientComponent implements OnInit {
 
+  beforeCreateUpdateActions = this.initMods.bind(this);
+
   constructor(private crudService : DynamicCrudService) { }
 
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
@@ -32,11 +34,11 @@ export class ClientComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
 
 
-  initMods(){
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     forkJoin([
       this.crudService.read('admin/predefined'),
       this.crudService.qyeryByValue('User',{ role : 'client' })
@@ -51,14 +53,14 @@ export class ClientComponent implements OnInit {
           let paymentMethods = data.find( (x:any) => x.key=='paymentMethods').values;
           let banks = data.find( (x:any) => x.key=='banks').values;
           
-          JsonHelpers.setFieldDropdown(this.formFields,'category',clientCategories);
-          JsonHelpers.setFieldDropdown(this.formFields,'status',clientStatus);
-          JsonHelpers.setFieldDropdown(this.formFields,'country',countries);
-          JsonHelpers.setFieldDropdown(this.formFields,'priority',priorities);
-          JsonHelpers.setFieldDropdown(this.formFields,'bank',banks);
-          JsonHelpers.setFieldDropdown(this.formFields,'payment_method',paymentMethods);
+          JsonHelpers.setFieldDropdown(formFields,'category',clientCategories);
+          JsonHelpers.setFieldDropdown(formFields,'status',clientStatus);
+          JsonHelpers.setFieldDropdown(formFields,'country',countries);
+          JsonHelpers.setFieldDropdown(formFields,'priority',priorities);
+          JsonHelpers.setFieldDropdown(formFields,'bank',banks);
+          JsonHelpers.setFieldDropdown(formFields,'payment_method',paymentMethods);
           
-          JsonHelpers.setReferenceFieldDropdown(this.formFields,'client_user','full_name',userResp.data)
+          JsonHelpers.setReferenceFieldDropdown(formFields,'client_user','full_name',userResp.data)
         } 
       }
     )

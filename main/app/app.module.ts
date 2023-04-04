@@ -74,6 +74,7 @@ import { CaptainCallComponent } from './captain/captain-call/captain-call.compon
 import { ProformaTemplateComponent } from './administrator/proforma-template/proforma-template.component';
 import { ClientProformaComponent } from './client/client-proforma/client-proforma.component';
 import { ClientBreakdownComponent } from './client/client-breakdown/client-breakdown.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -152,6 +153,7 @@ import { ClientBreakdownComponent } from './client/client-breakdown/client-break
     ToastrModule.forRoot()
   ],
   providers: [
+    DatePipe,
     { provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi: true},
     { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
   ],

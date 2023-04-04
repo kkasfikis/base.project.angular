@@ -15,7 +15,7 @@ class GetPostBreakdown(Resource):
 
     @cross_origin()
     def post(self):
-        data = request.get_json()
+        data = json.loads(request.form.to_dict()['data'])
         data.pop('call_estimated_date')
         data.pop('call_client')
         data.pop('call_client_alias')
@@ -23,7 +23,7 @@ class GetPostBreakdown(Resource):
         data.pop('call_vessel_flag')
         data.pop('call_port')
         data.pop('proforma_no')
-        return BaseCrud.create('Breakdown',data)
+        return BaseCrud.create('Breakdown',data, request.files.to_dict())
 
 @api.route("/<int:page>/<int:size>", methods=['GET','POST'])
 @api.route("/<int:page>/<int:size>/<string:sort>/<string:sortColumn>", methods=['GET','POST'])
@@ -45,7 +45,7 @@ class PutDeleteBreakdown(Resource):
 
     @cross_origin()
     def put(self, id):
-        data = request.get_json()
+        data = json.loads(request.form.to_dict()['data'])
         data.pop('call_estimated_date')
         data.pop('call_client')
         data.pop('call_client_alias')
@@ -53,7 +53,7 @@ class PutDeleteBreakdown(Resource):
         data.pop('call_vessel_flag')
         data.pop('call_port')
         data.pop('proforma_no')
-        return BaseCrud.update('Breakdown', id, data)
+        return BaseCrud.update('Breakdown', id, data, request.files.to_dict())
 
 
     @cross_origin()

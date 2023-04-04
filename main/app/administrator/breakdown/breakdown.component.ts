@@ -16,6 +16,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class BreakdownComponent implements OnInit {
 
+  beforeCreateUpdateActions = this.initMods.bind(this);
+
   constructor(private crudService : DynamicCrudService) { }
 
 
@@ -34,39 +36,53 @@ export class BreakdownComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
 
 
   
-  initMods(){
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     forkJoin([
       this.crudService.read('admin/predefined'),
+      this.crudService.read('admin/charge'),
       this.crudService.getAttributeWithId('Port','name'),
       this.crudService.getAttributeWithId('Client','name'),
       this.crudService.getAttributeWithId('Vessel','vessel_name'),
       this.crudService.getAttributeWithId('Call','estimated_date,vessel,vessel_flag,client,client_alias,port'),
       this.crudService.getAttributeWithId('Proforma','proforma_no,client,client_alias')
     ]).subscribe(
-    ([predefinedResp,portResp,clientResp,vesselResp,callResp,proformaResp] : any[]) => {
+    ([predefinedResp,chargeResp,portResp,clientResp,vesselResp,callResp,proformaResp] : any[]) => {
       if(predefinedResp.read){
 
+        JsonHelpers.setSubFieldDropdown(
+          formFields,
+          'breakdown_items',
+          ['item_category'],
+          [ ([...new Set(chargeResp.data.map( (item:any) => item.category1))] as string[])
+            .map( (x: string) => 
+            {
+              return {
+                key : x,
+                value : x
+              }
+            }
+          )],
+        )
+
         let ports = portResp.data;  
-        JsonHelpers.setReferenceFieldDropdown(this.formFields,'call_port', 'name', ports)
+        JsonHelpers.setReferenceFieldDropdown(formFields,'call_port', 'name', ports)
         let clients = clientResp.data;
-        JsonHelpers.setReferenceFieldDropdown(this.formFields,'call_client', 'name', clients)
+        JsonHelpers.setReferenceFieldDropdown(formFields,'call_client', 'name', clients)
         let vessels = vesselResp.data;
-        JsonHelpers.setReferenceFieldDropdown(this.formFields,'call_vessel','vessel_name',vessels)
+        JsonHelpers.setReferenceFieldDropdown(formFields,'call_vessel','vessel_name',vessels)
         let calls = callResp.data;
-        JsonHelpers.setReferenceFieldDropdown(this.formFields,'call','estimated_date,vessel.vessel_name,vessel_flag,client.name,client_alias,port.name',calls)
+        JsonHelpers.setReferenceFieldDropdown(formFields,'call','estimated_date,vessel.vessel_name,vessel_flag,client.name,client_alias,port.name',calls)
         let proformas = proformaResp.data;
-        JsonHelpers.setReferenceFieldDropdown(this.formFields,'proforma','proforma_no,client.name,client_alias',proformas)
+        JsonHelpers.setReferenceFieldDropdown(formFields,'proforma','proforma_no,client.name,client_alias',proformas)
 
         let serviceStatus = predefinedResp.data.find( ( x:any ) => x.key == 'serviceStatus' ).values;
-        let serviceCategories = predefinedResp.data.find( ( x:any ) => x.key == 'serviceCategories' ).values;
-        let serviceSubcategories = predefinedResp.data.find( ( x:any ) => x.key == 'serviceSubcategories' ).values;
-        JsonHelpers.setFieldDropdown(this.formFields,'breakdown_status' , predefinedResp.data.find( ( x:any ) => x.key == 'breakdownStatus' ).values );
-        JsonHelpers.setSubFieldDropdown(this.formFields, 'breakdown_items', ['item_category','item_subcategory','item_status'],[serviceCategories,serviceSubcategories,serviceStatus] )
+        JsonHelpers.setFieldDropdown(formFields,'breakdown_status' , predefinedResp.data.find( ( x:any ) => x.key == 'breakdownStatus' ).values );
+        JsonHelpers.setSubFieldDropdown(formFields, 'breakdown_items', ['item_status'],[serviceStatus] )
       
       } 
     });
@@ -87,6 +103,7 @@ export class BreakdownComponent implements OnInit {
       this.crudService.infoById('admin/call',item.value).subscribe({
         next : (resp:any) => {
           let call = resp.data
+          console.log(resp.data)
           JsonHelpers.setFieldValue(this.formFields,'call_estimated_date',call.estimated_date);
           JsonHelpers.setFieldValue(this.formFields,'call_vessel',call.vessel);
           JsonHelpers.setFieldValue(this.formFields,'call_client',call.client);
@@ -98,4 +115,88 @@ export class BreakdownComponent implements OnInit {
     }
   }
 
+  onSubFormChange(item : {subform : string, key : string, value: string, form : FormGroup} ){
+    if(item.subform == "breakdown_items" && item.key == "item_category"){
+      JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_category',item.value);
+      if(!!item.value && item.value.length > 0){
+        this.crudService.qyeryByValue('Charge',{ "category1" : item.value }).subscribe({
+          next : (resp : any) => {
+            if(resp.query){
+              const data = [...new Set(resp.data.map( (item:any) => item.category2))] as string[]; 
+              console.log(this.formFields)
+              JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_subcategory','');  
+              JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_description',''); 
+              JsonHelpers.setSubFieldEnabled(this.formFields,'breakdown_items','item_subcategory',true); 
+              JsonHelpers.setSubFieldEnabled(this.formFields,'breakdown_items','item_description',false);             
+              JsonHelpers.setSubFieldDropdown(
+                this.formFields,
+                'breakdown_items',
+                ['item_subcategory'],
+                [ data.map( (x:any) => 
+                  {
+                    return {
+                      key : x,
+                      value : x
+                    }
+                  }
+                )],
+              )
+            }
+          }
+        })
+      }
+      
+    }
+    if(item.subform == "breakdown_items" && item.key == "item_subcategory"){
+      JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_subcategory',item.value);
+      let category = item.form.get('item_category')?.value;
+      if(category != undefined && !!item.value  && item.value.length > 0){
+        console.log('categorry1 changed')
+        this.crudService.qyeryByValue('Charge',{ "category1" : category, "category2" : item.value }).subscribe({
+          next : (resp : any) => {
+            if(resp.query){
+              
+              JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_description','');
+              JsonHelpers.setSubFieldEnabled(this.formFields,'breakdown_items','item_description',true); 
+
+              const data = [...new Set(resp.data.map( (item:any) => item.description))] as string[];
+              JsonHelpers.setSubFieldDropdown(
+                this.formFields,
+                'breakdown_items',
+                ['item_description'],
+                [ data.map( (x:any) => 
+                  {
+                    return {
+                      key : x,
+                      value : x
+                    }
+                  }
+                )],
+              )
+            }
+          }
+        })
+      }
+    }
+    if(item.subform == "breakdown_items" && item.key == "item_description"){
+      JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_description',item.value);
+      let category1 = item.form.get('item_category')?.value;
+      let category2 = item.form.get('item_subcategory')?.value;
+      if(category1 != undefined && category2 != undefined && !!item.value && item.value.length > 0){
+        console.log('description changed')
+        this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2, "description" : item.value }).subscribe({
+          next : (resp : any) => {
+            if(resp.query){
+              JsonHelpers.setSubFieldValue(
+                this.formFields,
+                'breakdown_items',
+                'item_price',
+                resp.data && resp.data.length > 0 ? resp.data[0].price : 0
+              )
+            }
+          }
+        })
+      }
+    }
+  }
 }

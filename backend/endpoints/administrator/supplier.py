@@ -14,7 +14,7 @@ class GetPostSupplier(Resource):
 
     @cross_origin()
     def post(self):
-        return BaseCrud.create('Supplier',request.get_json())
+        return BaseCrud.create('Supplier',json.loads(request.form.to_dict()['data']), request.files.to_dict())
 
 @api.route("/<int:page>/<int:size>", methods=['GET','POST'])
 @api.route("/<int:page>/<int:size>/<string:sort>/<string:sortColumn>", methods=['GET','POST'])
@@ -36,7 +36,7 @@ class PutDeleteSupplier(Resource):
 
     @cross_origin()
     def put(self, id):
-        return BaseCrud.update('Supplier', id, request.get_json())
+        return BaseCrud.update('Supplier', id, json.loads(request.form.to_dict()['data']), request.files.to_dict())
 
 
     @cross_origin()

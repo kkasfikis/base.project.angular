@@ -22,5 +22,9 @@
 
     [hasFilters]="false"
 
+    [beforeCreateActions]="beforeCreateUpdateActions"
+    [beforeUpdateActions]="beforeCreateUpdateActions"
+
     (onFormChange)="onFormChange($event)"
+    (onSubFormChange)="onSubFormChange($event)"
 ></app-dynamic-crud>

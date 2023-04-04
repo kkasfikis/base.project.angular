@@ -98,7 +98,7 @@ class PutDeleteCaptainCall(Resource):
     @cross_origin()
     def put(self, id):
         item : any
-        data = request.get_json()
+        data = json.loads(request.form.to_dict()['data'])
 
         if '_id' in data:
             data.pop('_id')

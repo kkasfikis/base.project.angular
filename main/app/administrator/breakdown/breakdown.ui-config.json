@@ -264,7 +264,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -279,7 +279,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 15,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -294,7 +294,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -304,22 +304,22 @@
                     "type": "Select",
                     "label": "Subcategory",
                     "options": [],
-                    "enabled": true,
+                    "enabled": false,
                     "required": false,
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 15,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "item_description",
                     "order": 50,
-                    "type": "TextBox",
+                    "type": "Select",
                     "label": "Description",
                     "options": [],
-                    "enabled": true,
+                    "enabled": false,
                     "required": false,
                     "minLength": 0,
                     "maxLength": 255,
@@ -339,7 +339,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -354,22 +354,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
-                    "innerWidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "item_remark",
-                    "order": 80,
-                    "type": "TextArea",
-                    "label": "Remarks",
-                    "options": [],
-                    "enabled": true,
-                    "required": false,
-                    "minLength": 0,
-                    "maxLength": 255,
-                    "regexPattern": "",
-                    "width": 40,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -384,7 +369,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -399,7 +384,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -414,7 +399,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 5,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -429,7 +414,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 10,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -444,7 +429,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 30,
+                    "width": 25,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -459,7 +444,22 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 40,
+                    "width": 50,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_remark",
+                    "order": 150,
+                    "type": "TextArea",
+                    "label": "Remarks",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 50,
                     "innerWidth": 98,
                     "align": "center center"
                 }
@@ -714,7 +714,7 @@
                     "order": 10,
                     "label": "Date",
                     "type": "Text",
-                    "width": 30,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -723,7 +723,7 @@
                     "order": 20,
                     "label": "Status",
                     "type": "Text",
-                    "width": 30,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -732,7 +732,7 @@
                     "order": 30,
                     "label": "Category",
                     "type": "Text",
-                    "width": 30,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -741,7 +741,7 @@
                     "order": 40,
                     "label": "Subcategory",
                     "type": "Text",
-                    "width": 30,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -750,7 +750,7 @@
                     "order": 50,
                     "label": "Description",
                     "type": "Text",
-                    "width": 40,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -759,7 +759,7 @@
                     "order": 60,
                     "label": "Order",
                     "type": "Text",
-                    "width": 10,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -768,16 +768,7 @@
                     "order": 70,
                     "label": "Price",
                     "type": "Text",
-                    "width": 20,
-                    "innerwidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "item_remark",
-                    "order": 80,
-                    "label": "Remarks",
-                    "type": "Text",
-                    "width": 40,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -786,7 +777,7 @@
                     "order": 90,
                     "label": "Credit",
                     "type": "Text",
-                    "width": 20,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -795,7 +786,7 @@
                     "order": 100,
                     "label": "Debit",
                     "type": "Text",
-                    "width": 20,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -804,16 +795,17 @@
                     "order": 110,
                     "label": "QTY",
                     "type": "Text",
-                    "width": 10,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
+
                 {
                     "key": "item_amount",
                     "order": 120,
                     "label": "Amount",
                     "type": "Text",
-                    "width": 30,
+                    "width": 25,
                     "innerwidth": 98,
                     "align": "center center"
                 },
@@ -822,16 +814,25 @@
                     "order": 130,
                     "label": "Actual",
                     "type": "Text",
-                    "width": 30,
+                    "width": 25,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },                
+                {
+                    "key": "item_remark",
+                    "order": 140,
+                    "label": "Remarks",
+                    "type": "Text",
+                    "width": 50,
                     "innerwidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "item_link",
-                    "order": 140,
+                    "order": 150,
                     "label": "Relative Documents",
                     "type": "Image",
-                    "width": 40,
+                    "width": 50,
                     "innerwidth": 98,
                     "align": "center center"
                 }

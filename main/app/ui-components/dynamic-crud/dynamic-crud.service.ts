@@ -9,15 +9,22 @@ export class DynamicCrudService {
 
   constructor(private http: HttpClient) { }
 
-  create(url:string, item : any){
-    let options = {
-      headers : new HttpHeaders({'Content-Type' : 'application/json'})
-    }
-    let data : any = {};
-    Object.keys(item).forEach( (key) => {
-      data[key] = item[key];
+  async create(url:string, item : any){
+    
+    let formData = new FormData();
+    
+    await Promise.all( Object.keys(item).map( async (key : string) => {
+      console.log('key',key)
+      if(key.includes('_file')){
+        const blob = await fetch(`${item[key]}`).then(res => res.blob());
+        formData.append(key, blob)
+        delete item[key]
+      }
+    })).then( () => {
+      formData.append('data', JSON.stringify(item));
     })
-    return this.http.post(url, data, {...options});
+
+    return this.http.post(url, formData);
   }
 
   read(url:string){
@@ -56,20 +63,15 @@ export class DynamicCrudService {
 
     let formData = new FormData();
     
-    await Promise.all( Object.keys(item).map( async (key : string) => {
+   await Promise.all( Object.keys(item).map( async (key : string) => {
       console.log('key',key)
       if(key.includes('_file')){
-        console.log('file',key)
         const blob = await fetch(`${item[key]}`).then(res => res.blob());
-        console.log('BLOOOOOB',blob)
-        formData.append(key, blob, 'AAAA.pdf')
-      }
-      else{
-        console.log('value',key)
-        formData.append(key,item[key]);
+        formData.append(key, blob)
+        delete item[key]
       }
     })).then( () => {
-      console.log('FORM DATA',Array.from(formData.entries()))
+      formData.append('data', JSON.stringify(item));
     })
     
     return this.http.put(url + '/' + item[identifier], formData);

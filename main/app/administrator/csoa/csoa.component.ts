@@ -16,6 +16,8 @@ import * as data from './csoa.ui-config.json'
 })
 export class CSOAComponent implements OnInit {
 
+  beforeCreateUpdateActions = this.initMods.bind(this);
+
   constructor(private crudService : DynamicCrudService) { }
 
   
@@ -34,13 +36,13 @@ export class CSOAComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
 
-  initMods(){
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     this.crudService.getAttributeWithId('Client','name').subscribe(
       (clientResp : any) => {
-        JsonHelpers.setReferenceFieldDropdown(this.formFields,'client','name',clientResp.data)
+        JsonHelpers.setReferenceFieldDropdown(formFields,'client','name',clientResp.data)
       }
     );
   }

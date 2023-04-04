@@ -15,7 +15,7 @@ class GetPostBankSOA(Resource):
 
     @cross_origin()
     def post(self):
-        return BaseCrud.create('StatementOfAccount',request.get_json())
+        return BaseCrud.create('StatementOfAccount',json.loads(request.form.to_dict()['data']), request.files.to_dict())
 
 @api.route("/<int:page>/<int:size>", methods=['GET','POST'])
 @api.route("/<int:page>/<int:size>/<string:sort>/<string:sortColumn>", methods=['GET','POST'])
@@ -37,7 +37,7 @@ class PutDeleteSOA(Resource):
 
     @cross_origin()
     def put(self, id):
-        return BaseCrud.update('StatementOfAccount', id, request.get_json())
+        return BaseCrud.update('StatementOfAccount', id, json.loads(request.form.to_dict()['data']), request.files.to_dict())
 
 
     @cross_origin()

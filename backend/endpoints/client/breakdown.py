@@ -87,34 +87,34 @@ class PutDeleteCaptainCall(Resource):
                 'message' : 'An error occured: ' + str(e)
             },200
 
-        item : any
-        data = request.get_json()
+        # item : any
+        # data = request.get_json()
 
-        if '_id' in data:
-            data.pop('_id')
+        # if '_id' in data:
+        #     data.pop('_id')
 
-        HelperFunctions.convertDatesFromISO(data)
-        try:
-            item = Call.objects(pk = id).first()
-            for key in ['terminal_pisch_rate','terminal_specs','terminal_maintenance_schedule','port_recent_accident',
-                        'pilots_availability','other_port_restrictions','military_exercises','warehouse_conditions','ice_concentration',
-                        'fog_status','typhoons_expected','holidays','port_document','fishing_boat_risk_status']:
-                item[key] = data[key]
-            item.validate()
-        except svc.db.ValidationError as e:
-            return {
-                'updated' : False,
-                'message' : 'There are validation errors: ' + str(e) 
-            },200
+        # HelperFunctions.convertDatesFromISO(data)
+        # try:
+        #     item = Call.objects(pk = id).first()
+        #     for key in ['terminal_pisch_rate','terminal_specs','terminal_maintenance_schedule','port_recent_accident',
+        #                 'pilots_availability','other_port_restrictions','military_exercises','warehouse_conditions','ice_concentration',
+        #                 'fog_status','typhoons_expected','holidays','port_document','fishing_boat_risk_status']:
+        #         item[key] = data[key]
+        #     item.validate()
+        # except svc.db.ValidationError as e:
+        #     return {
+        #         'updated' : False,
+        #         'message' : 'There are validation errors: ' + str(e) 
+        #     },200
         
-        try:    
-            item.save()
-            return {
-                'updated' : True,
-                'message' : f'Call successfully updated'
-            },200
-        except Exception as e:
-            return {
-                'updated' : False,
-                'message' : 'An error occured: ' + str(e)
-            },200
+        # try:    
+        #     item.save()
+        #     return {
+        #         'updated' : True,
+        #         'message' : f'Call successfully updated'
+        #     },200
+        # except Exception as e:
+        #     return {
+        #         'updated' : False,
+        #         'message' : 'An error occured: ' + str(e)
+        #     },200

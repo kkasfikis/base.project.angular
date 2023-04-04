@@ -22,6 +22,8 @@ export class AgentComponent implements OnInit {
   infoFields : (InfoField|SubFormInfo)[] = []
   filterFields : FilterField[] = []
 
+  beforeCreateUpdateActions = this.initMods.bind(this);
+
   ngOnInit(): void {
     console.log('Converting Vessel fields from JSON ....')
     let result = JsonHelpers.convertFromJson(data);
@@ -29,14 +31,13 @@ export class AgentComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
 
-  initMods(){
-    
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     this.crudService.qyeryByValue('User',{ role : 'agent' }).subscribe({
       next : (resp : any) => {
-        JsonHelpers.setReferenceFieldDropdown(this.formFields,'agent_user','full_name',resp.data)
+        JsonHelpers.setReferenceFieldDropdown(formFields,'agent_user','full_name',resp.data)
       }
     })
   }

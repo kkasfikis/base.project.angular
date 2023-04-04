@@ -100,6 +100,14 @@ export class DynamicSubFormComponent implements OnInit {
     let data = subform.tableData.map((item :any,index: number)=>{
       let newItem = Object.assign({},item);
       let actions : TableAction[] = [];
+      
+      // Object.keys(item).forEach( (key:string) => {
+      //   console.log(key,item[key])
+      //   if(typeof item[key] === 'object' && '$date' in item[key]){
+      //     item[key] = new Date(item[key]['$date']).toString();
+      //   }
+      // });
+
       if(subform.hasDelete){
         actions.push(
           {

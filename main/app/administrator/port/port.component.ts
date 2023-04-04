@@ -14,6 +14,8 @@ import * as data from './port.ui-config.json'
 })
 export class PortComponent implements OnInit {
 
+  
+
   constructor() { }
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
 

@@ -15,7 +15,7 @@ class GetPostVessel(Resource):
 
     @cross_origin()
     def post(self):
-        return BaseCrud.create('Vessel',request.get_json())
+        return BaseCrud.create('Vessel', json.loads(request.form.to_dict()['data']), request.files.to_dict())
 
 @api.route("/<int:page>/<int:size>", methods=['GET','POST'])
 @api.route("/<int:page>/<int:size>/<string:sort>/<string:sortColumn>", methods=['GET','POST'])
@@ -37,7 +37,7 @@ class PutDeleteVessel(Resource):
 
     @cross_origin()
     def put(self, id):
-        return BaseCrud.update('Vessel', id, request.get_json())
+        return BaseCrud.update('Vessel', id, json.loads(request.form.to_dict()['data']), request.files.to_dict())
 
 
     @cross_origin()

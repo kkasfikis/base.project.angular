@@ -34,7 +34,7 @@ class PutDeleteUserManagement(Resource):
 
     @cross_origin()
     def put(self, id):
-        data = request.form.to_dict()#request.get_json()
+        data = json.loads(request.form.to_dict()['data'])
         try:
             
             item = User.objects(pk = id).first()

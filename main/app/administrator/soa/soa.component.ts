@@ -16,6 +16,8 @@ import * as data from './soa.ui-config.json'
 })
 export class SOAComponent implements OnInit {
 
+  beforeCreateUpdateActions = this.initMods.bind(this)
+
   constructor(private crudService : DynamicCrudService) { }
 
   
@@ -34,19 +36,19 @@ export class SOAComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
 
-  initMods(){
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     forkJoin([
       this.crudService.getAttributeWithId('Call','estimated_date,client_name,client_alias,port_name,vessel_name,agent_name'),
       this.crudService.getAttributeWithId('Breakdown','breakdown_entry,breakdown_info,breakdown_status'),
       this.crudService.getAttributeWithId('Client','name'),
     ]).subscribe(
     ([callResp,breakdownResp,clientResp] : any[]) => {
-      JsonHelpers.setReferenceFieldDropdown(this.formFields,'client','name',clientResp.data)
-      JsonHelpers.setReferenceFieldDropdown(this.formFields,'call','estimated_date,client_name,client_alias,port_name,vessel_name,agent_name',callResp.data)
-      JsonHelpers.setReferenceFieldDropdown(this.formFields,'breakdown','breakdown_entry,breakdown_info,breakdown_status',breakdownResp.data)
+      JsonHelpers.setReferenceFieldDropdown(formFields,'client','name',clientResp.data)
+      JsonHelpers.setReferenceFieldDropdown(formFields,'call','estimated_date,client_name,client_alias,port_name,vessel_name,agent_name',callResp.data)
+      JsonHelpers.setReferenceFieldDropdown(formFields,'breakdown','breakdown_entry,breakdown_info,breakdown_status',breakdownResp.data)
     });
   }
 

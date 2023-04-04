@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { FormAction, FormFieldBase, SubForm } from '../dynamic-form/dynamic-form.models';
 import { DynamicInfoDialogComponent } from '../dialogs/dynamic-info-dialog/dynamic-info-dialog.component';
 import { InfoField, SubFormInfo } from '../dynamic-info/dynamic-info.models';
@@ -29,6 +29,15 @@ export class DynamicCrudComponent implements OnInit {
   @Input() hasInfo : boolean = true;
   @Input() hasReport : boolean = true;
 
+  @Input() isUpdateCustom : boolean = false;
+  @Input() isCreateCustom : boolean = false;
+  @Input() isDeleteCustom : boolean = false;
+  @Input() isInfoCustom : boolean = false;
+  @Input() customFinished : Subject<void> = new Subject<void>()
+
+  @Input() beforeCreateActions : (args:any) => void = () => {}
+  @Input() beforeUpdateActions : (args:any) => void = () => {}
+  
   @Input() reportTitle : string = 'FORCE MARINE';
   @Input() reportHeader : string = '<h1>THIS IS A TEST</h1>';
 
@@ -50,8 +59,13 @@ export class DynamicCrudComponent implements OnInit {
   @Output() onFormChange : EventEmitter<any> = new EventEmitter<any>();
   @Output() onSubFormChange : EventEmitter<any> = new EventEmitter<any>();
 
-  originalCreateFormFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = [];
-  originalUpdateFormFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = [];
+  @Output() onCreate : EventEmitter<any> = new EventEmitter<any>();
+  @Output() onUpdate : EventEmitter<any> = new EventEmitter<any>();
+  @Output() onDelete : EventEmitter<any> = new EventEmitter<any>();
+  @Output() onInfo : EventEmitter<any> = new EventEmitter<any>();
+
+  originalCreateFormFields : (FormFieldBase|SubForm)[] = [];
+  originalUpdateFormFields : (FormFieldBase|SubForm)[] = [];
 
   isOnCreateMode : boolean = false;
   isOnUpdateMode : boolean = false;
@@ -110,8 +124,35 @@ export class DynamicCrudComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableColumnSubject.next(this.tableColumns);
-    this.originalCreateFormFields = this.createFormFields;
-    this.originalUpdateFormFields = this.updateFormFields;
+    
+    this.originalCreateFormFields = [];
+    this.createFormFields.forEach( ( x : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)) => {
+      if(x.getValue() instanceof FormFieldBase){
+        this.originalCreateFormFields.push( new FormFieldBase( JSON.parse( JSON.stringify(x.getValue()) )))
+      }
+      else{
+        let subform : SubForm = new SubForm( JSON.parse( JSON.stringify(x.getValue()) ) )
+        subform.fields = subform.fields.map( (x:any) => { return new FormFieldBase(x) })
+        subform.infoFields = subform.infoFields.map( (x:any) => {return new InfoField(x)} )
+        subform.tableColumns = subform.tableColumns.map( (x:any) => {return new TableColumn(x)} )
+      }
+    });
+
+    this.originalUpdateFormFields = [];
+    this.createFormFields.forEach( ( x : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)) => {
+      if(x.getValue() instanceof FormFieldBase){
+        this.originalUpdateFormFields.push( new FormFieldBase( JSON.parse( JSON.stringify(x.getValue()) )))
+      }
+      else{
+        let subform : SubForm = new SubForm( JSON.parse( JSON.stringify(x.getValue()) ) )
+        subform.fields = subform.fields.map( (x:any) => { return new FormFieldBase(x) })
+        subform.infoFields = subform.infoFields.map( (x:any) => {return new InfoField(x)} )
+        subform.tableColumns = subform.tableColumns.map( (x:any) => {return new TableColumn(x)} )
+      }
+    });
+    
+    this.customFinished.subscribe( () => {this.switchMode('read'); } )
+
     this.size = this.pageSize;
     this.switchMode('read')
   }
@@ -298,15 +339,23 @@ export class DynamicCrudComponent implements OnInit {
 
   cleanForm(isCreate:boolean){
     if(isCreate){
-      this.createFormFields = this.originalCreateFormFields;
+      this.originalCreateFormFields.forEach( (item:any) => {
+        this.createFormFields.find( (x:any) => x.getValue().key == item.key )?.next(item);
+      });
     }
     else {
-      this.updateFormFields = this.originalUpdateFormFields;
+      this.originalUpdateFormFields.forEach( (item:any) => {
+        this.updateFormFields.find( (x:any) => x.getValue().key == item.key )?.next(item);
+      });
     }
   }
 
 
   crudInfo(payload : any){
+    if(this.isInfoCustom){
+      this.onInfo.emit({ _id : this.tableData[payload.internalId], internalId : payload.internalId });
+      return;
+    }
     this.infoElement = {};
     this.loadingService.setLoading(true);
     this.crudService.info(this.endpoint, this.tableData[payload.internalId], this.identifierKey).subscribe({
@@ -324,6 +373,10 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   crudUpdate(payload : any){
+    if(this.isUpdateCustom){
+      this.onUpdate.emit({ _id : this.tableData[payload.internalId], internalId : payload.internalId });
+      return;
+    }
     this.cleanForm(false);
     this.loadingService.setLoading(true);
     this.crudService.info(this.endpoint,this.tableData[payload.internalId],this.identifierKey).subscribe({
@@ -356,13 +409,21 @@ export class DynamicCrudComponent implements OnInit {
               else{
                 let sField = field.getValue();
                 if(sField.key == key){
-                  sField.value = obj[key];
+                  console.log(key,obj[key])
+                  if(typeof obj[key] === 'object' && '_id' in obj[key]){
+                    sField.value = obj[key]['_id'];
+                  }
+                  else{
+                    sField.value = obj[key];
+                  }
                   field.next(sField);
                 }
               }
           })
         })
         this.loadingService.setLoading(false);
+        this.beforeUpdateActions(this.updateFormFields)
+        console.log('After update actions')
         this.switchMode('update')
       } 
     })
@@ -391,6 +452,11 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   crudDelete(item : {internalId : number}){
+    if(this.isUpdateCustom){
+      this.onDelete.emit({ _id : this.tableData[item.internalId], internalId : item.internalId });
+      return;
+    }
+
     const message = `Are you sure you want to do this?`;
     const dialogData = new ConfirmationDialogModel("Confirm Action", message);
 
@@ -428,12 +494,17 @@ export class DynamicCrudComponent implements OnInit {
   }
 
   crudCreate(){
+    if(this.isUpdateCustom){
+      this.onDelete.emit();
+      return;
+    }
     this.cleanForm(true)
+    this.beforeCreateActions(this.createFormFields);
     this.switchMode('create')
   }
 
-  crudCreateSubmit( payload : any){
-    this.crudService.create(  this.endpoint, payload).subscribe({
+  async crudCreateSubmit( payload : any){
+    (await this.crudService.create(  this.endpoint, payload)).subscribe({
       next: (response : any) => {
         if(!response.created){
           this.toastr.warning(response['message'],'Warning')
@@ -453,8 +524,6 @@ export class DynamicCrudComponent implements OnInit {
   cancelCreateUpdate(){
     this.switchMode('read');
   }
-
-    
 
   filterSumbit( payload : any){
     this.page = 0;

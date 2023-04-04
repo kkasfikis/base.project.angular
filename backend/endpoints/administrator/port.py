@@ -17,7 +17,8 @@ class GetPostPort(Resource):
 
     @cross_origin()
     def post(self):
-        return BaseCrud.create('Port',request.get_json())
+        print(json.loads(request.form.to_dict()['data']))
+        return BaseCrud.create('Port', json.loads(request.form.to_dict()['data']), request.files.to_dict())
 
 @api.route("/<int:page>/<int:size>", methods=['GET','POST'])
 @api.route("/<int:page>/<int:size>/<string:sort>/<string:sortColumn>", methods=['GET','POST'])
@@ -31,7 +32,7 @@ class PaginatedPort(Resource):
         try:
         
             ports = []
-            data = request.get_json()
+            data = json.loads(request.form.to_dict()['data'])
 
             count = Port.objects.count()
             overflow = False
@@ -77,7 +78,7 @@ class PutDeletePort(Resource):
     def put(self, id):
         try:
             print('FILES',request.files.to_dict())
-            return BaseCrud.update('Port', id, request.form.to_dict(), request.files.to_dict())
+            return BaseCrud.update('Port', id, json.loads(request.form.to_dict()['data']), request.files.to_dict())
         except Exception as e:
             print('EXCEPTION',str(e))
 

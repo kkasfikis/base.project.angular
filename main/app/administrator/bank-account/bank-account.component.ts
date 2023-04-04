@@ -16,8 +16,9 @@ import * as data from './bank-account.ui-config.json'
 })
 export class BankAccountComponent implements OnInit {
 
-  constructor(private crudService : DynamicCrudService) { }
+  beforeCreateUpdateActions = this.initMods.bind(this);
 
+  constructor(private crudService : DynamicCrudService) { }
   
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
 
@@ -34,14 +35,14 @@ export class BankAccountComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
 
 
-  initMods(){
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     this.crudService.read('admin/predefined').subscribe({
       next : (resp : any) => {
-        JsonHelpers.setFieldDropdown(this.formFields,'currency',resp.data.find( (x : any) => x.key == 'currencies').values);
+        JsonHelpers.setFieldDropdown(formFields,'currency',resp.data.find( (x : any) => x.key == 'currencies').values);
       }
     })
   }

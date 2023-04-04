@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BehaviorSubject, delay, Subject, Subscription, takeUntil } from 'rxjs';
@@ -27,7 +28,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   disabled : boolean = false;
 
   enabledSub! : Subscription;
-  constructor (private formService : DynamicFormService, private changeDetector : ChangeDetectorRef) { 
+  constructor (private formService : DynamicFormService, private changeDetector : ChangeDetectorRef,public datepipe: DatePipe) { 
     
   }
   private ngUnsubscribe = new Subject<void>();
@@ -105,7 +106,14 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
     this.formFields.forEach( (field : BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>) => {
       if(field.getValue() instanceof  FormFieldBase){
         let fieldBase = field.getValue() as FormFieldBase;
-        obj[fieldBase.key] = this.form.getRawValue()[fieldBase.key];
+
+        if(fieldBase.type == FormFieldType.DatePicker){
+          console.log('$$$$$$$$$',fieldBase.key,this.form.getRawValue()[fieldBase.key],typeof this.form.getRawValue()[fieldBase.key])
+          obj[fieldBase.key] = this.datepipe.transform(this.form.getRawValue()[fieldBase.key], 'yyyy-MM-dd');
+        }
+        else{
+          obj[fieldBase.key] = this.form.getRawValue()[fieldBase.key];
+        }
       }
       else{
         let subform = (field as BehaviorSubject<SubForm>).getValue() as SubForm;

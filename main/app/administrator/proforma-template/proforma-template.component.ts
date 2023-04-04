@@ -16,6 +16,9 @@ import  * as data from './proforma-template.ui-config.json'
 })
 export class ProformaTemplateComponent implements OnInit {
 
+  beforeCreateUpdateActions = this.initMods.bind(this)
+  
+
   constructor(private crudService : DynamicCrudService) { }
 
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
@@ -30,14 +33,14 @@ export class ProformaTemplateComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
 
-  initMods(){
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     this.crudService.read('admin/charge').subscribe({
       next : (chargeResp : any) => {
         JsonHelpers.setSubFieldDropdown(
-          this.formFields,
+          formFields,
           'template_items',
           ['item_category1'],
           [ ([...new Set(chargeResp.data.map( (item:any) => item.category1))] as string[])

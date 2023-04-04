@@ -20,6 +20,10 @@
     [pageSize]="10"
 
     [hasFilters]="false"
+
+    [beforeCreateActions]="beforeCreateUpdateActions"
+    [beforeUpdateActions]="beforeCreateUpdateActions"
+    
     [filterFields]="filterFields"
 
     (onFormChange)="onFormChange($event)"

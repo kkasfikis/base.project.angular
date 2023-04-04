@@ -31,10 +31,6 @@ export class PredefinedComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods()
   }
 
-  initMods(){
-    
-  }
 }

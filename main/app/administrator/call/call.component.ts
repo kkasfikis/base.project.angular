@@ -18,6 +18,8 @@ import * as data from './call.ui-config.json'
 })
 export class CallComponent implements OnInit, OnDestroy{
 
+  beforeCreateUpdateActions = this.initMods.bind(this);
+
   constructor(private crudService : DynamicCrudService,private elementRef : ElementRef) { }
 
 
@@ -43,10 +45,10 @@ export class CallComponent implements OnInit, OnDestroy{
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
 
-  initMods(){
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     forkJoin([
         this.crudService.read('admin/predefined'),
         this.crudService.getAttributeWithId('Port','name'),
@@ -91,33 +93,33 @@ export class CallComponent implements OnInit, OnDestroy{
           let callStatus = data.find( (x:any) => x.key == 'callStatus').values;
           let callTypes = data.find( (x:any) => x.key == 'callTypes').values;
           let ports = portResp.data;  
-          JsonHelpers.setReferenceFieldDropdown(this.formFields,'port', 'name', ports)
+          JsonHelpers.setReferenceFieldDropdown(formFields,'port', 'name', ports)
           let clients = clientResp.data;
-          JsonHelpers.setReferenceFieldDropdown(this.formFields,'client', 'name', clients)
+          JsonHelpers.setReferenceFieldDropdown(formFields,'client', 'name', clients)
           let vessels = vesselResp.data;
-          JsonHelpers.setReferenceFieldDropdown(this.formFields,'vessel','vessel_name',vessels)
+          JsonHelpers.setReferenceFieldDropdown(formFields,'vessel','vessel_name',vessels)
           let agents = agentResp.data;
-          JsonHelpers.setReferenceFieldDropdown(this.formFields,'agent','agent_name',agents)
+          JsonHelpers.setReferenceFieldDropdown(formFields,'agent','agent_name',agents)
 
         
 
-          JsonHelpers.setFieldDropdown(this.formFields,'call_status',callStatus)
-          JsonHelpers.setFieldDropdown(this.formFields,'call_type',callTypes)
+          JsonHelpers.setFieldDropdown(formFields,'call_status',callStatus)
+          JsonHelpers.setFieldDropdown(formFields,'call_type',callTypes)
           
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq1',['first_hotel','second_hotel','position','departure_airport'],[hotels,hotels,positions,airports]);
-          JsonHelpers.setSubReferenceFieldDropdown(this.formFields,'inq1',['arrival_port'],[ports])
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq2',['rank','hotel','signin_signoff'],[crewRanks,hotels,[{value:'ON'},{value:'OFF'}]]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq3',['hotel','hotel_referrer'],[hotels,hotelArrangedBy]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq4',['position','medical_type','medical_status'],[hotels,medicalAttendanceTypes,medicalAttendanceStatus]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq5',['offland_description','offland_destination','offland_status','offland_forward_method'],[offlandItemDescriptions,offlandDestinations,offlandStatus,offlandForwardMethods]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq6',['power_supply_status','power_supply_delivery_method'],[powerSupplyStatus,powerSupplyDeliveryMethods]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq7',['domestic_shipment_type','domestic_shipment_status'],[domesticShipmentTypes,domesticShipmentStatus]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq8',['overseas_shipment_type','overseas_shipment_status'],[overseasShipmentTypes,overseasShipmentStatus]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq9',['store_provision_type','store_provision_supplier','store_provision_status','store_provision_delivery_method'],[storeProvisionTypes,storeProvisionSuppliers,storeProvisionStatus,storeProvisionDeliveryMethods]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq10',['bunker_type','bunker_supplier_type','details','bunker_status','bunker_delivery_method'],[bunkerTypes,bunkerSupplierTypes,bunkerDetails,bunkerStatus,bunkerDeliveryMethods]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq11',['ship_pollutant_service','ship_pollutant_status'],[shipPollutantServices,shipPollutantStatus]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq12',['status'],[variousInquiriesStatus]);
-          JsonHelpers.setSubFieldDropdown(this.formFields,'inq13',['ctm_operation','currency'],[ctmOperations,currencies]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq1',['first_hotel','second_hotel','position','departure_airport'],[hotels,hotels,positions,airports]);
+          JsonHelpers.setSubReferenceFieldDropdown(formFields,'inq1',['arrival_port'],[ports])
+          JsonHelpers.setSubFieldDropdown(formFields,'inq2',['rank','hotel','signin_signoff'],[crewRanks,hotels,[{value:'ON'},{value:'OFF'}]]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq3',['hotel','hotel_referrer'],[hotels,hotelArrangedBy]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq4',['position','medical_type','medical_status'],[hotels,medicalAttendanceTypes,medicalAttendanceStatus]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq5',['offland_description','offland_destination','offland_status','offland_forward_method'],[offlandItemDescriptions,offlandDestinations,offlandStatus,offlandForwardMethods]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq6',['power_supply_status','power_supply_delivery_method'],[powerSupplyStatus,powerSupplyDeliveryMethods]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq7',['domestic_shipment_type','domestic_shipment_status'],[domesticShipmentTypes,domesticShipmentStatus]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq8',['overseas_shipment_type','overseas_shipment_status'],[overseasShipmentTypes,overseasShipmentStatus]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq9',['store_provision_type','store_provision_supplier','store_provision_status','store_provision_delivery_method'],[storeProvisionTypes,storeProvisionSuppliers,storeProvisionStatus,storeProvisionDeliveryMethods]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq10',['bunker_type','bunker_supplier_type','details','bunker_status','bunker_delivery_method'],[bunkerTypes,bunkerSupplierTypes,bunkerDetails,bunkerStatus,bunkerDeliveryMethods]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq11',['ship_pollutant_service','ship_pollutant_status'],[shipPollutantServices,shipPollutantStatus]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq12',['status'],[variousInquiriesStatus]);
+          JsonHelpers.setSubFieldDropdown(formFields,'inq13',['ctm_operation','currency'],[ctmOperations,currencies]);
         } 
       }
     )

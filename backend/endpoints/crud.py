@@ -94,8 +94,8 @@ class BaseCrud:
                         if type(titem[key][skey]) == bson.objectid.ObjectId :
                             titem[key][skey] = str(titem[key][skey])
                     
-                if type(titem[key]) == dict and '$date' in titem[key]:
-                    titem[key] = datetime.fromtimestamp(titem[key]['$date'] / 1000 ).isoformat()
+                # if type(titem[key]) == dict and '$date' in titem[key]:
+                #     titem[key] = datetime.fromtimestamp(titem[key]['$date'] / 1000 ).isoformat()
             return titem
         except Exception as e:
             return None
@@ -119,6 +119,8 @@ class BaseCrud:
                             if type(titem[key][skey]) == bson.objectid.ObjectId :
                                 titem[key][skey] = str(titem[key][skey])
                  
+                # if type(titem[key]) == dict and '$date' in titem[key]:
+                #     titem[key] = datetime.fromtimestamp(titem[key]['$date'] / 1000 ).isoformat()
             return {
                 'info' : True,
                 'data' : titem
@@ -131,13 +133,17 @@ class BaseCrud:
             },200
 
     @staticmethod
-    def create(class_name : str, data : dict):
+    def create(class_name : str, data : dict, files = None):
         item : any
         collection = getattr(models,class_name)
         if '_id' in data:
             data.pop('_id')
         
         HelperFunctions.convertDatesFromISO(data)
+
+        if files is not None: 
+            for key in files.keys():
+                data[key] = files[key]
 
         try:
             item = collection(**data)

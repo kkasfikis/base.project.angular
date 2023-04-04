@@ -15,6 +15,8 @@ import * as data from './vessel.ui-config.json'
 })
 export class VesselComponent implements OnInit {
 
+  beforeCreateUpdateActions = this.initMods.bind(this);
+
   constructor(private crudService : DynamicCrudService) { }
 
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
@@ -29,10 +31,10 @@ export class VesselComponent implements OnInit {
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    this.initMods();
+    this.initMods(this.formFields);
   }
 
-  initMods(){
+  initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     forkJoin([
         this.crudService.read('admin/predefined'),
         this.crudService.qyeryByValue('User',{ role : 'captain' })
@@ -43,10 +45,10 @@ export class VesselComponent implements OnInit {
           let vesselFlags = data.find( (x:any) => x.key=='vesselFlags').values;
           let vesselTypes = data.find( (x:any) => x.key=='vesselTypes').values;
         
-          JsonHelpers.setFieldDropdown(this.formFields,'flag',vesselFlags);
-          JsonHelpers.setFieldDropdown(this.formFields,'vessel_type',vesselTypes);
+          JsonHelpers.setFieldDropdown(formFields,'flag',vesselFlags);
+          JsonHelpers.setFieldDropdown(formFields,'vessel_type',vesselTypes);
 
-          JsonHelpers.setReferenceFieldDropdown(this.formFields,'captain_user','full_name',userResp.data)
+          JsonHelpers.setReferenceFieldDropdown(formFields,'captain_user','full_name',userResp.data)
         } 
       }
     )
