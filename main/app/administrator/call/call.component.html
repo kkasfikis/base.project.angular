@@ -1,0 +1,29 @@
+<app-dynamic-crud
+    [title]="'Calls'"
+    [hasCreate]="true"
+    [hasUpdate]="true"
+    [hasDelete]="true"
+    [hasInfo]="false"
+
+    [endpoint]="'admin/call'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+    
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="true"
+    [filterFields]="filterFields"
+
+    [beforeCreateActions]="beforeCreateUpdateActions"
+    [beforeUpdateActions]="beforeCreateUpdateActions"
+
+    (onFormChange) = "onFormChange($event)"
+></app-dynamic-crud>

@@ -1,0 +1,15 @@
+==============Dynamic CRUD================
+-> Implement Service with CRUD Endpoints  ==> SIMPLIFY IT -- ONLY GET/POST/PUT/DELETE (CHECK)
+-> Info from Endpoint
+-> Add "Cancel Update/Create" actions to forms (CHECK)
+-> Add Toastr Notifications (CHECK)
+
+==============Dynamic Form================
+-> Create Method to extract an object with all posted fields (CHECK)
+-> Add Hidden fields to form (their values dont change but is passed 
+to the sumbit object) (CHECK)
+-> OnSubmit Subform Validation Function returning boolean
+
+==============App Loading Service=========
+-> Create Service Handling App Loading
+

@@ -1,0 +1,151 @@
+{
+    "fields": [
+        {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
+            "key": "name",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Port Name",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        },
+        {
+            "key": "anchorage",
+            "order": 20,
+            "type": "TextBox",
+            "label": "Anchorages",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 10000,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        },
+        {
+            "key": "agent",
+            "order": 30,
+            "type": "TextBox",
+            "label": "Agent",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 100,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        },
+        {
+            "key": "weather_link_file",
+            "order": 40,
+            "type": "PDF",
+            "label": "Port Weather",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 0,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        },
+        {
+            "key": "notes",
+            "order": 50,
+            "type": "TextArea",
+            "label": "Notes",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 1000,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        }
+    ],
+    "subforms": [],
+    "filters": [
+        {
+            "key": "name",
+            "label": "Port Name",
+            "order": 10,
+            "fieldType": "Select",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "name",
+            "order": 10,
+            "label": "Port Name",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 50,
+            "align": "center center"
+        },
+        {
+            "key": "anchorage",
+            "order": 20,
+            "label": "Anchorages",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 100,
+            "align": "center center"
+        },
+        {
+            "key": "agent",
+            "order": 30,
+            "label": "Agent in Port",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 50,
+            "align": "center center"
+        },
+        {
+            "key": "weather_link_file",
+            "order": 50,
+            "label": "Port Wheather",
+            "type": "PDF",
+            "width": 100,
+            "innerwidth": 100,
+            "align": "center center"
+        },
+        {
+            "key": "notes",
+            "order": 50,
+            "label": "Notes",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 100,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [],
+    "columns": [
+        {
+            "key": "name",
+            "text": "Port Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 100
+        }
+    ]
+}

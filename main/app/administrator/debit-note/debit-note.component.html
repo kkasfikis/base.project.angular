@@ -1,0 +1,33 @@
+
+
+<app-dynamic-crud
+    [title]="'DEBIT  NOTES'"
+    [hasCreate]="true"
+    [hasUpdate]="true"
+    [hasDelete]="true"
+    [hasInfo]="true"
+
+    [endpoint]="'admin/debit'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="true"
+
+    [beforeCreateActions]="beforeCreateUpdateActions"
+    [beforeUpdateActions]="beforeCreateUpdateActions"
+
+    [filterFields]="filterFields"
+
+    (onFormChange)="onFormChange($event)"
+    (onSubFormChange)="onSubFormChange($event)"
+></app-dynamic-crud>

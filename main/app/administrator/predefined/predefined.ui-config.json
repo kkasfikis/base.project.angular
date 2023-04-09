@@ -1,0 +1,135 @@
+{
+    "fields": [
+        {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
+            "key": "key",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
+            "key": "name",
+            "order": 10,
+            "type": "TextBox",
+            "label": "List Name",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subforms": [
+        {
+            "key" : "values",
+            "label" : "Values",
+            "order" : 100,
+            "enabled" : true,
+            "fields" : [
+                {
+                    "key": "value",
+                    "order": 20,
+                    "type": "TextBox",
+                    "label": "Value",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "fore_color",
+                    "order": 30,
+                    "type": "ColorPicker",
+                    "label": "Text Color",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "back_color",
+                    "order": 40,
+                    "type": "ColorPicker",
+                    "label": "Background Color",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                }
+            ], 
+            "tableColumns": [
+                {
+                    "key": "value",
+                    "text": "Value",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                }, {
+                    "key": "fore_color",
+                    "text": "Foreground",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                }, {
+                    "key": "back_color",
+                    "text": "Background",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                }
+            ],
+            "infoFields":[],
+            "hasDelete" : false,
+            "hasUpdate" : true,
+            "hasInfo" : false,
+            "identifierKey" : "_id",
+            "width" : 100,
+            "innerWidth" : 100,
+            "align" : "center center",
+            "isTagged" : false,
+            "tagSeperator" : ""
+        }
+    ],
+    "filters": [
+        {
+            "key": "name",
+            "label": "List Name",
+            "order": 10,
+            "fieldType": "TextBox",
+            "options": []
+        }
+    ],
+    "infos": [],
+    "subinfos": [],
+    "columns": [
+        {
+            "key": "name",
+            "text": "List Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 80
+        }
+    ]
+}

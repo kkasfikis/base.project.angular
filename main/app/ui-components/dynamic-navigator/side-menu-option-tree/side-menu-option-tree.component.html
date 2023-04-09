@@ -1,0 +1,24 @@
+
+    <div *ngIf="item && item.subMenus && item.subMenus.length > 0">
+        <mat-list-item (click)="toggleSubMenu()">
+            <mat-icon matListIcon>{{item.icon}}</mat-icon>
+            {{item.label}}
+            <mat-icon fxLayoutAlign="flex-end" class="menu-button" [ngClass]="{'rotated':showSubMenu}">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded':showSubMenu}">
+            <app-side-menu-option-tree *ngFor="let item of item.subMenus" [item]="item"></app-side-menu-option-tree>
+        </div>
+    </div>
+    
+    <div *ngIf="item && (!item.subMenus || item.subMenus.length == 0)">
+        <!-- option is link to router page -->
+        <a mat-list-item *ngIf="!item.isFunction" [routerLink]="[item.link]">
+            <mat-icon matListIcon>{{item.icon}}</mat-icon>
+            {{item.label}}
+        </a>
+        <!-- option should call function on click -->
+        <a mat-list-item *ngIf="item.isFunction" (click)="item.func(item.funcParams)">
+            <mat-icon matListIcon>{{item.icon}}</mat-icon>
+            {{item.label}}
+        </a>
+    </div>

@@ -1,0 +1,213 @@
+{
+    "fields": [
+        {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
+            "key": "category1",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Category",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        },
+        {
+            "key": "category_order",
+            "order": 15,
+            "type": "Number",
+            "label": "Order on Documents",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        },
+        {
+            "key": "category2",
+            "order": 20,
+            "type": "TextBox",
+            "label": "Sub Category",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        },
+        {
+            "key": "description",
+            "order": 40,
+            "type": "TextBox",
+            "label": "Charge Description",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        },
+        {
+            "key": "price",
+            "order": 50,
+            "type": "Number",
+            "label": "Price",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        },
+        {
+            "key": "notes",
+            "order": 99,
+            "type": "TextArea",
+            "label": "Remarks",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 10000,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "left center"
+        }
+    ],    
+    "infoFields": [
+                {
+                    "key": "description",
+                    "order": 10,
+                    "label": "Charge Description",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "port_name",
+                    "order": 20,
+                    "label": "Port",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "price",
+                    "order": 30,
+                    "label": "Price",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+    ],
+    "subforms": [],
+    "filters": [
+        {
+            "key": "category1",
+            "label": "Category",
+            "order": 10,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "category2",
+            "label": "Sub Category 1",
+            "order": 30,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "description",
+            "label": "Description",
+            "order": 40,
+            "fieldType": "TextBox",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "category1",
+            "order": 10,
+            "label": "Charge Category",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "category_order",
+            "order": 35,
+            "label": "Charge Category Order",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "category2",
+            "order": 30,
+            "label": "Charge Subcategory",
+            "type": "Text",
+            "width": 25,
+            "innerwidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "notes",
+            "order": 50,
+            "label": "Notes",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "left center"
+        }
+    ],
+    "columns": [
+        {
+            "key": "category1",
+            "text": "Category",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 15
+        },
+        {
+            "key": "category2",
+            "text": "Sub Category 1",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 15
+        },
+        {
+            "key": "description",
+            "text": "Description",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 35
+        }
+    ]
+}

@@ -1,0 +1,694 @@
+{
+    "fields": [
+        {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
+            "key": "disbursement_date",
+            "order": 30,
+            "type": "DatePicker",
+            "label": "Credit Note Date",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "disbursement_no",
+            "order": 25,
+            "type": "TextBox",
+            "label": "Credit Note No",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "client",
+            "order": 50,
+            "type": "Select",
+            "label": "Client Name",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "client_alias",
+            "order": 60,
+            "type": "Select",
+            "label": "Client Alias Name",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "client_address",
+            "order": 60,
+            "type": "TextArea",
+            "label": "Client Address",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "call",
+            "order": 110,
+            "type": "Select",
+            "label": "Call Info",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left"
+        },
+        {
+            "key": "disbursement_amount",
+            "order": 120,
+            "type": "Number",
+            "label": "Total Amount",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        }
+    ],
+    "subforms": [
+        {
+            "key": "disbursement_items",
+            "title": "ITEM DESCRIPTION",
+            "order":1000,
+            "fields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "type": "DatePicker",
+                    "label": "Date",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_category",
+                    "order": 10,
+                    "type": "Select",
+                    "label": "Category",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_description",
+                    "order": 20,
+                    "type": "TextBox",
+                    "label": "Description",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 50,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_order",
+                    "order": 40,
+                    "type": "Number",
+                    "label": "Order",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_price",
+                    "order": 40,
+                    "type": "Number",
+                    "label": "Price",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_qty",
+                    "order": 50,
+                    "type": "Number",
+                    "label": "QTY",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width":33,
+                    "innerWidth": 98,
+                    "value": 1,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_amount",
+                    "order": 60,
+                    "type": "Number",
+                    "label": "Amount",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_value",
+                    "order": 70,
+                    "type": "Number",
+                    "label": "Discount",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_percent",
+                    "order": 80,
+                    "type": "Number",
+                    "label": "Discount(%)",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_total",
+                    "order": 100,
+                    "type": "Number",
+                    "label": "Subtotal",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                }
+            ],
+            "tableColumns": [
+                {
+                    "key": "item_description",
+                    "text": "Description",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                },
+                
+                {
+                    "key": "item_price",
+                    "text": "Price",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 10
+                },
+                {
+                    "key": "item_qty",
+                    "text": "QTY",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 5
+                },
+                {
+                    "key": "item_amount",
+                    "text": "Amount",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 10
+                },
+                {
+                    "key": "item_discount_value",
+                    "text": "Discount",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 10
+                },
+                {
+                    "key": "item_discount_percent",
+                    "text": "Discount(%)",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 5
+                },
+                
+                {
+                    "key": "item_total",
+                    "text": "Subtotal",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 10
+                }
+            ],
+            "infoFields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "label": "Date",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_description",
+                    "order": 20,
+                    "label": "Description",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_order",
+                    "order": 30,
+                    "label": "Order",
+                    "type": "Hidden",
+                    "width": 0,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_price",
+                    "order": 40,
+                    "label": "Price",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_qty",
+                    "order": 50,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_amount",
+                    "order": 60,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_value",
+                    "order": 70,
+                    "label": "Discount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_percent",
+                    "order": 80,
+                    "label": "Discount(%)",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "discount_amount",
+                    "order": 90,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "discount_total",
+                    "order": 100,
+                    "label": "Final",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ],
+            "hasInfo": false,
+            "width": 100,
+            "innerWidth": 100,
+            "align": "center center",
+            "isTagged": false,
+            "tagSeparator": ""
+        }
+    ],
+    "filters": [
+        {
+            "key": "proforma_no",
+            "label": "Ref. Number",
+            "order": 30,
+            "fieldType": "Select",
+            "options": []
+        },
+        {
+            "key": "proforma_date",
+            "label": "Document Issue Date",
+            "order": 30,
+            "fieldType": "Select",
+            "options": []
+        },
+        {
+            "key": "client",
+            "label": "Client",
+            "order": 90,
+            "fieldType": "Select",
+            "options": []
+        },
+        {
+            "key": "client_alias",
+            "label": "Client Alias",
+            "order": 100,
+            "fieldType": "Select",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "proforma_type",
+            "order": 10,
+            "label": "Document Type",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "proforma_balance",
+            "order": 20,
+            "label": "Balance",
+            "type": "Text",
+            "width": 10,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "proforma_date",
+            "order": 30,
+            "label": "Document Issue Date",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "proforma_seria",
+            "order": 40,
+            "label": "Document Seria",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "proforma_no",
+            "order": 50,
+            "label": "Document Number",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "call_id",
+            "order": 60,
+            "label": "Call Reference",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "break_id",
+            "order": 70,
+            "label": "Breakdown Reference",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "proforma_title",
+            "order": 80,
+            "label": "Title",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "proforma_client_name",
+            "order": 90,
+            "label": "Client Name",
+            "type": "Text",
+            "width": 60,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "proforma_client_alias",
+            "order": 100,
+            "label": "Client Alias",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "proforma_client_info",
+            "order": 110,
+            "label": "General Info",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "proforma_total_amount",
+            "order": 120,
+            "label": "Total Amount",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 98,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [
+        {
+            "key": "",
+            "order": 1000,
+            "label": "ITEM DESCRIPTION",
+            "fields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "label": "Date",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_description",
+                    "order": 20,
+                    "label": "Description",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_order",
+                    "order": 30,
+                    "label": "Order",
+                    "type": "Text",
+                    "width": 0,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_price",
+                    "order": 40,
+                    "label": "Price",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_qty",
+                    "order": 50,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 5,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_amount",
+                    "order": 60,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_value",
+                    "order": 70,
+                    "label": "Discount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_percent",
+                    "order": 80,
+                    "label": "Discount(%)",
+                    "type": "Text",
+                    "width": 5,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "discount_amount",
+                    "order": 90,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "discount_total",
+                    "order": 100,
+                    "label": "Final",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        }
+    ],
+    "columns": [
+        {
+            "key": "proforma_date",
+            "text": "Date",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 10
+        },
+        {
+            "key": "proforma_client_name",
+            "text": "Client Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 20
+        },
+        {
+            "key": "proforma_client_alias",
+            "text": "Client Alias",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 10
+        },
+        {
+            "key": "proforma_no`",
+            "text": "Ref. Number",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 10
+        }
+    ]
+}

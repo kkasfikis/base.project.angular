@@ -1,0 +1,530 @@
+{
+    "administratorNavbar" : [
+        {
+            "key": "myfm",
+            "label": "    myForceMarine    ",
+            "icon": "menu",
+            "isFunction": false,
+            "subMenus": []
+        },
+        {
+        "key": "qa",
+        "label": "    Q & A    ",
+        "icon": "menu",
+        "isFunction": false,
+        "subMenus": [
+            {
+            "key": "question",
+            "label": "Questions",
+            "icon": "menu",
+            "isFunction": false,
+            "subMenus": []
+            }
+        ]
+        },
+        {
+        "key": "chat",
+        "label": "  Live Chat  ",
+        "icon": "menu",
+        "isFunction": false,
+        "subMenus": []
+        }
+    ],
+    "administratorDrawer" : [
+          {
+            "icon": "home",
+            "label": "File",
+            "options": [
+              {
+                "key": "file",
+                "label": "File",
+                "icon": "folder",
+                "isFunction": false,
+                "subMenus": [
+                  {
+                    "key": "clients",
+                    "label": "Clients",
+                    "icon": "person",
+                    "link": "/admin/client",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "agent",
+                    "label": "Agents",
+                    "icon": "person",
+                    "isFunction": false,
+                    "link": "/admin/agent"
+                  },
+                  {
+                    "key": "supplier",
+                    "label": "Suppliers",
+                    "icon": "person",
+                    "isFunction": false,
+                    "link": "/admin/supplier"
+                  },
+                  {
+                    "key": "port",
+                    "label": "Ports",
+                    "icon": "anchor",
+                    "link": "/admin/port",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "vessel",
+                    "label": "Vessels",
+                    "icon": "sailing",
+                    "link": "/admin/vessel",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "charges",
+                    "label": "Charges",
+                    "icon": "settings",
+                    "link": "/admin/charge",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "expenses",
+                    "label": "Expenses",
+                    "icon": "payments",
+                    "link": "/admin/expense",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "staff",
+                    "label": "Staff",
+                    "icon": "boy",
+                    "link": "/admin/staff",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "bankAccount",
+                    "label": "Bank Accounts",
+                    "icon": "paid",
+                    "link": "/admin/bankAccount",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "predefined",
+                    "label": "List Values",
+                    "icon": "menu",
+                    "link": "/admin/predefined",
+                    "isFunction": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "icon": "home",
+            "label": "CRM",
+            "options": [
+              {
+                "key": "agency",
+                "label": "CRM",
+                "icon": "folder",
+                "isFunction": false,
+                "subMenus": [
+                  {
+                    "key": "proformaTemplates",
+                    "label": "Proforma Templates",
+                    "icon": "menu",
+                    "link": "/admin/proformaTemplate",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "proforma",
+                    "label": "Proformas",
+                    "icon": "menu",
+                    "link": "/admin/proforma",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "call",
+                    "label": "Calls",
+                    "icon": "menu",
+                    "link": "/admin/call",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "breakdown",
+                    "label": "Breakdown Lists",
+                    "icon": "menu",
+                    "link": "/admin/breakdown",
+                    "isFunction": false
+                  }
+    
+    
+                ] 
+              }
+            ]
+          },
+          {
+            "icon": "home",
+            "label": "Audit",
+            "options": [
+              {
+                "key": "invoicing",
+                "label": "Audit",
+                "icon": "folder",
+                "isFunction": false,
+                "subMenus": [
+                  {
+                    "key": "dn",
+                    "label": "Debit Notes",
+                    "icon": "menu",
+                    "link": "/admin/debit",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "da",
+                    "label": "Disbursement Accounts",
+                    "icon": "menu",
+                    "link": "/admin/disbursement",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "cn",
+                    "label": "Credit Notes",
+                    "icon": "menu",
+                    "link": "/admin/credit",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "soa",
+                    "label": "Final D/A's",
+                    "icon": "menu",
+                    "link": "/admin/soa",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "csoa",
+                    "label": "Consolidated SOA",
+                    "icon": "menu",
+                    "link": "/admin/csoa",
+                    "isFunction": false,
+                    "subMenus": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "icon": "home",
+            "label": "Reports",
+            "options": [
+              {
+                "key": "reporting",
+                "label": "Reports",
+                "icon": "folder",
+                "isFunction": false,
+                "subMenus": []
+              }
+            ]
+          },
+          {
+            "icon": "home",
+            "label": "Users",
+            "options": [
+              {
+                "key": "account",
+                "label": "Users",
+                "icon": "folder",
+                "isFunction": false,
+                "subMenus": [
+                  {
+                    "key": "userManagement",
+                    "label": "User Management",
+                    "icon": "person",
+                    "link": "/admin/userManagement",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "changePassword",
+                    "label": "Change Password",
+                    "icon": "person",
+                    "link": "/changePassword",
+                    "isFunction": false
+                  }
+                ]
+              }
+            ]
+          }
+    ],
+
+    "agentNavbar" : [
+        {
+            "key": "fm",
+            "label": "    Agent Force Marine Area    ",
+            "icon": "menu",
+            "isFunction": false,
+            "subMenus": []
+        },
+        {
+            "key": "qa",
+            "label": "  Agent  Q & A    ",
+            "icon": "menu",
+            "isFunction": false,
+            "subMenus": [
+                {
+                    "key": "question",
+                    "label": "Questions",
+                    "icon": "menu",
+                    "isFunction": false,
+                    "subMenus": []
+                }
+            ]
+        }
+    ],
+    "agentDrawer" : [
+        {
+            "icon": "home",
+            "label": "CRM",
+            "options": [
+                {
+                    "key": "agency",
+                    "label": "CRM",
+                    "icon": "folder",
+                    "isFunction": false,
+                    "subMenus": [
+                        {
+                            "key": "call",
+                            "label": "Calls",
+                            "icon": "menu",
+                            "link": "/agent/call",
+                            "isFunction": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "icon": "home",
+            "label": "Users",
+            "options": [
+                {
+                    "key": "account",
+                    "label": "Users",
+                    "icon": "folder",
+                    "isFunction": false,
+                    "subMenus": [
+                        {
+                            "key": "changePassword",
+                            "label": "Change Password",
+                            "icon": "person",
+                            "link": "/changePassword",
+                            "isFunction": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+    "supplierNavbar" : [
+        {
+            "key": "fm",
+            "label": "    Supplier Force Marine Area    ",
+            "icon": "menu",
+            "isFunction": false,
+            "subMenus": []
+        },
+        {
+            "key": "qa",
+            "label": "  Supplier  Q & A    ",
+            "icon": "menu",
+            "isFunction": false,
+            "subMenus": [
+                {
+                    "key": "question",
+                    "label": "Questions",
+                    "icon": "menu",
+                    "isFunction": false,
+                    "subMenus": []
+                }
+            ]
+        }
+    ],
+    "supplierDrawer" : [
+        
+    ],
+
+    "clientNavbar" : [
+
+    ],
+    "clientDrawer" : [
+      {
+        "key": "clients",
+        "label": "Clients",
+        "icon": "person",
+        "link": "/admin/client",
+        "isFunction": false
+      },
+      {
+        "icon": "home",
+        "label": "CRM",
+        "options": [
+          {
+            "key": "agency",
+            "label": "CRM",
+            "icon": "folder",
+            "isFunction": false,
+            "subMenus": [
+              {
+                "key": "proforma",
+                "label": "Proformas",
+                "icon": "menu",
+                "link": "/client/proforma",
+                "isFunction": false
+              },
+              {
+                "key": "breakdown",
+                "label": "Breakdown Lists",
+                "icon": "menu",
+                "link": "/client/breakdown",
+                "isFunction": false
+              }
+            ] 
+          }
+        ]
+    },
+    {
+        "icon": "home",
+        "label": "Users",
+        "options": [
+          {
+            "key": "account",
+            "label": "Users",
+            "icon": "folder",
+            "isFunction": false,
+            "subMenus": [
+              {
+                "key": "changePassword",
+                "label": "Change Password",
+                "icon": "person",
+                "link": "/changePassword",
+                "isFunction": false
+              }
+            ]
+          }
+        ]
+      }
+    
+    ],
+
+    "captainNavbar" : [
+        {
+            "key": "fm",
+            "label": "    Vessel Owner Force Marine Area    ",
+            "icon": "menu",
+            "isFunction": false,
+            "subMenus": []
+        },
+        {
+            "key": "qa",
+            "label": "  Vessel Owner Q & A    ",
+            "icon": "menu",
+            "isFunction": false,
+            "subMenus": [
+                {
+                    "key": "question",
+                    "label": "Questions",
+                    "icon": "menu",
+                    "isFunction": false,
+                    "subMenus": []
+                }
+            ]
+        }
+    ],  
+    "captainDrawer" : [
+        {
+            "icon": "home",
+            "label": "CRM",
+            "options": [
+              {
+                "key": "agency",
+                "label": "CRM",
+                "icon": "folder",
+                "isFunction": false,
+                "subMenus": [
+                  {
+                    "key": "call",
+                    "label": "Calls",
+                    "icon": "menu",
+                    "link": "/captain/call",
+                    "isFunction": false
+                  }   
+                ] 
+              }
+            ]
+        },
+        {
+            "icon": "home",
+            "label": "Users",
+            "options": [
+              {
+                "key": "account",
+                "label": "Users",
+                "icon": "folder",
+                "isFunction": false,
+                "subMenus": [
+                  {
+                    "key": "changePassword",
+                    "label": "Change Password",
+                    "icon": "person",
+                    "link": "/changePassword",
+                    "isFunction": false
+                  }
+                ]
+              }
+            ]
+          }
+        
+    ],
+    "anonNavbar" : [
+        {
+            "key": "about",
+            "label": "About",
+            "icon": "menu",
+            "isFunction": false,
+            "subMenus": []
+        }
+    ],
+    "anonDrawer" : [
+        {
+            "icon": "home",
+            "label": "Users",
+            "options": [
+              {
+                "key": "account",
+                "label": "Users",
+                "icon": "folder",
+                "isFunction": false,
+                "subMenus": [
+                  {
+                    "key": "login",
+                    "label": "Login",
+                    "icon": "person",
+                    "link": "/changePassword",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "register",
+                    "label": "Register",
+                    "icon": "person",
+                    "link": "/register",
+                    "isFunction": false
+                  }
+                ]
+              }
+            ]
+          }
+        
+    ]
+}

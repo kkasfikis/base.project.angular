@@ -1,0 +1,24 @@
+<app-dynamic-crud
+    [title]="'List Values'"
+    [hasCreate]="true"
+    [hasUpdate]="true"
+    [hasDelete]="true"
+    [hasInfo]="false"
+    
+    [endpoint]="'admin/predefined'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+    
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="true"
+    [filterFields]="filterFields"
+></app-dynamic-crud>

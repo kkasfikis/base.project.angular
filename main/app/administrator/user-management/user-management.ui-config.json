@@ -1,0 +1,163 @@
+{
+    "fields":[
+        {
+            "key":"_id",
+            "type":"Hidden"
+        },
+        {
+            "key": "username",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Username",
+            "options": [],
+            "enabled": false,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "flex-start"
+        },
+        {
+            "key": "full_name",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Full Name",
+            "options": [],
+            "enabled": false,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "flex-start"
+        },
+        {
+            "key": "email",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Email",
+            "options": [],
+            "enabled": false,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "flex-start"
+        },
+        {
+            "key": "role",
+            "order": 10,
+            "type": "Select",
+            "label": "Role",
+            "options": [
+                {
+                    "key" : "administrator",
+                    "value" : "administrator",
+                    "foreColor" : "",
+                    "backColor" : ""
+                },
+                {
+                    "key" : "captain",
+                    "value" : "captain",
+                    "foreColor" : "",
+                    "backColor" : ""
+                },
+                {
+                    "key" : "agent",
+                    "value" : "agent",
+                    "foreColor" : "",
+                    "backColor" : ""
+                },
+                {
+                    "key" : "client",
+                    "value" : "client",
+                    "foreColor" : "",
+                    "backColor" : ""
+                }
+            ],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "flex-start"
+        }   
+    ],
+    "subforms":[],
+    "infos": [
+        {
+            "key": "username",
+            "order": 10,
+            "label": "Username",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "full_name",
+            "order": 20,
+            "label": "Full Name",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "email",
+            "order": 30,
+            "label": "Email",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "role",
+            "order": 40,
+            "label": "Role",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 36,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [],
+    "columns": [
+        {
+            "key": "username",
+            "text": "Username",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 20
+        },
+        {
+            "key": "full_name",
+            "text": "Full Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 20
+        },
+        {
+            "key": "email",
+            "text": "Email",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 20
+        },
+        {
+            "key": "role",
+            "text": "Role",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 20
+        }
+    ]
+}

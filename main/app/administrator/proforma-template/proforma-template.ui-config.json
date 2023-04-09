@@ -1,0 +1,424 @@
+{
+    "fields": [
+        {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
+            "key": "template_name",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Template Name",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 50,
+            "align": "center center"
+        }
+    ],
+    "subforms": [
+        {
+            "key": "template_items",
+            "title": "ITEM DESCRIPTION",
+            "order":1000,
+            "fields": [
+                {
+                    "key": "item_category1",
+                    "order": 10,
+                    "type": "Select",
+                    "label": "Category",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_category2",
+                    "order": 11,
+                    "type": "Select",
+                    "label": "Sub Category 1",
+                    "options": [],
+                    "enabled": false,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_description",
+                    "order": 20,
+                    "type": "Select",
+                    "label": "Description",
+                    "options": [],
+                    "enabled": false,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_order",
+                    "order": 30,
+                    "type": "Hidden"
+                },
+                {
+                    "key": "item_price",
+                    "order": 40,
+                    "type": "Number",
+                    "label": "Price",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_qty",
+                    "order": 50,
+                    "type": "Number",
+                    "label": "QTY",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width":33,
+                    "innerWidth": 98,
+                    "value": 1,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_amount",
+                    "order": 60,
+                    "type": "Number",
+                    "label": "Amount",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_value",
+                    "order": 70,
+                    "type": "Number",
+                    "label": "Discount",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_percent",
+                    "order": 80,
+                    "type": "Number",
+                    "label": "Discount(%)",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_total",
+                    "order": 100,
+                    "type": "Number",
+                    "label": "Subtotal",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 33,
+                    "innerWidth": 98,
+                    "align": "center center"
+                }
+            ],
+            "tableColumns": [
+                {
+                    "key": "item_category1",
+                    "text": "Charge Category",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                },
+                {
+                    "key": "item_category2",
+                    "text": "Sub Category",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                },
+                {
+                    "key": "item_description",
+                    "text": "Description",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                },
+                
+                {
+                    "key": "item_price",
+                    "text": "Price",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 10
+                }
+            ],
+            "infoFields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "label": "Date",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_description",
+                    "order": 20,
+                    "label": "Description",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_order",
+                    "order": 30,
+                    "label": "Order",
+                    "type": "Hidden",
+                    "width": 0,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_price",
+                    "order": 40,
+                    "label": "Price",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_qty",
+                    "order": 50,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_amount",
+                    "order": 60,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_value",
+                    "order": 70,
+                    "label": "Discount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_percent",
+                    "order": 80,
+                    "label": "Discount(%)",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "discount_amount",
+                    "order": 90,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "discount_total",
+                    "order": 100,
+                    "label": "Final",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ],
+            "hasInfo": false,
+            "width": 100,
+            "innerWidth": 100,
+            "align": "center center",
+            "isTagged": false,
+            "tagSeparator": ""
+        }
+    ],
+    "filters": [
+    ],
+    "infos": [
+        {
+            "key": "template_name",
+            "order": 10,
+            "label": "Tempalte Name",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 50,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [
+        {
+            "key": "",
+            "order": 1000,
+            "label": "ITEM DESCRIPTION",
+            "fields": [
+                {
+                    "key": "item_date",
+                    "order": 10,
+                    "label": "Date",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_description",
+                    "order": 20,
+                    "label": "Description",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_order",
+                    "order": 30,
+                    "label": "Order",
+                    "type": "Text",
+                    "width": 0,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_price",
+                    "order": 40,
+                    "label": "Price",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_qty",
+                    "order": 50,
+                    "label": "QTY",
+                    "type": "Text",
+                    "width": 5,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_amount",
+                    "order": 60,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_value",
+                    "order": 70,
+                    "label": "Discount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "item_discount_percent",
+                    "order": 80,
+                    "label": "Discount(%)",
+                    "type": "Text",
+                    "width": 5,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "discount_amount",
+                    "order": 90,
+                    "label": "Amount",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "discount_total",
+                    "order": 100,
+                    "label": "Final",
+                    "type": "Text",
+                    "width": 10,
+                    "innerwidth": 98,
+                    "align": "center center"
+                }
+            ]
+        }
+    ],
+    "columns": [
+        {
+            "key": "template_name",
+            "text": "Template Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 80
+        }
+    ]
+}

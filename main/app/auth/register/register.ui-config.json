@@ -1,0 +1,68 @@
+{
+    "fields" : [
+        
+        {
+            "key": "username",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Username",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        
+        {
+            "key": "full_name",
+            "order": 20,
+            "type": "TextBox",
+            "label": "Full Name",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        
+        {
+            "key": "password",
+            "order": 40,
+            "type": "Password",
+            "label": "Password",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        
+        {
+            "key": "email",
+            "order": 50,
+            "type": "TextBox",
+            "label": "Email",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 3,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 100,
+            "innerWidth": 98,
+            "align": "center center"
+        }
+    ]
+}

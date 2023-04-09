@@ -1,0 +1,25 @@
+<app-dynamic-crud
+    [title]="'Port Info'"
+    [hasCreate]="true"
+    [hasUpdate]="true"
+    [hasDelete]="true"
+    [hasInfo]="false"
+
+    [endpoint]="'admin/port'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="true"
+    
+    [filterFields]="filterFields"
+></app-dynamic-crud>

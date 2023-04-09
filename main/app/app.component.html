@@ -1,0 +1,20 @@
+
+<app-dynamic-navigator
+  [title] = "'Force Marine'"
+  [subTitle] = "'Agency ERP'"
+  [isLoggedIn] = "loggedIn"
+  [drawerOptions] = "drawerOptions"
+  [navbarOptions] = "navbarOptions"
+  [isDrawerEnabled]= "true"
+  [isDrawerCategorized]= "true"
+  [isDrawerFixed]="true"
+  [userName] = "userName"
+  [photo] = "image"
+  [isThemeSelectEnabled]="true"
+  [isDrawerEnabled]="true"
+  (themeChanged)="toggleTheme($event)"
+  (loginSelected)="login()"
+  (registerSelected)="register()"
+  (logoutSelected)="logout()" 
+></app-dynamic-navigator>
+

@@ -1,0 +1,88 @@
+<mat-card fxFlex="100" fxLayout="column"  *ngIf=" !label || label.length == 0 || isTagged">
+    <div fxFlex="100" fxLayout="column" *ngIf="label && label.length>0">
+        <h3>{{label}}</h3>
+        <mat-divider></mat-divider>
+    </div>
+    <br/>
+    <form [formGroup]="form" [fxLayoutAlign]="formAlign">
+        <mat-card-content fxFlex="100" fxLayout="row wrap">
+            <div *ngFor="let ff of sortByOrder(formField.fields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="ff.width" [fxLayoutAlign]="ff.align">
+                <app-dynamic-form-field
+                    [formField]="ff"
+                    [form]="form"
+                    [fxFlex]="ff.innerWidth"
+                    (onFieldChange)="handleFieldChange($event)"
+                ></app-dynamic-form-field>
+            </div>
+        </mat-card-content>
+    </form>
+    
+    <mat-card-actions fxFlex="100" fxLayoutAlign="flex-end" fxLayoutGap="5">
+        <button mat-raised-button *ngFor="let action of formActions" [ngStyle]="{'background-color' : action.color}" (click)="action.func(action.funcParams)">
+            <mat-icon>{{action.icon}}</mat-icon> &nbsp; {{action.text}}
+        </button> 
+        <button mat-raised-button [disabled]="disabled" (click)="handleFormSubmit()" color="primary">Submit</button>
+    </mat-card-actions>
+    
+    <br *ngIf="!isTagged"/>
+    
+    <app-dynamic-table *ngIf="!isTagged"
+        [tableColumns]="columnSubject"
+        [tableData]="dataSubject"
+        [hasActions]="true"
+    ></app-dynamic-table>
+
+    <div *ngIf="isTagged && tags && tags.length > 0" fxFlex="100">
+        <div class="tags-input-wrapper" fxFlex="100">
+            <span *ngFor="let tag of tags" class="tag"><span class="tag-content">{{tag}}</span><a class="delete" (click)="deleteTag(tag)">×</a></span>
+        </div>
+    </div>
+</mat-card>
+
+<mat-accordion  *ngIf="label && label.length>0 && !isTagged">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{label}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <br/>
+      <div fxFlex="100" fxLayout="column">
+        <form [formGroup]="form" [fxLayoutAlign]="formAlign">
+            <mat-card-content fxFlex="100" fxLayout="row wrap">
+                <div *ngFor="let ff of sortByOrder(formField.fields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="ff.width" [fxLayoutAlign]="ff.align">
+                    <app-dynamic-form-field
+                        [formField]="ff"
+                        [form]="form"
+                        [fxFlex]="ff.innerWidth"
+                        (onFieldChange)="handleFieldChange($event)"
+                    ></app-dynamic-form-field>
+                </div>
+            </mat-card-content>
+        </form>
+        
+        <div fxFlex="100" fxLayoutAlign="flex-end" fxLayoutGap="5">
+            <button mat-raised-button *ngFor="let action of formActions" [ngStyle]="{'background-color' : action.color}" (click)="action.func(action.funcParams)">
+                <mat-icon>{{action.icon}}</mat-icon> &nbsp; {{action.text}}
+            </button> 
+            <button mat-raised-button [disabled]="disabled" (click)="handleFormSubmit()" color="primary">Submit</button>
+        </div>
+        
+        <br/>
+
+        <app-dynamic-table *ngIf="!isTagged"
+            [tableColumns]="columnSubject"
+            [tableData]="dataSubject"
+            [hasActions]="true"
+        ></app-dynamic-table>
+        
+        <div *ngIf="isTagged && tags && tags.length > 0" fxFlex="100">
+            <div class="tags-input-wrapper" fxFlex="100">
+                <span *ngFor="let tag of tags" class="tag"><span class="tag-content">{{tag}}</span><a class="delete" (click)="deleteTag(tag)">×</a></span>
+            </div>
+        </div>
+    </div>
+      
+    </mat-expansion-panel>
+</mat-accordion>
+

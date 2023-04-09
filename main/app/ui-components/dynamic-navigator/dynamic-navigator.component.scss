@@ -1,0 +1,39 @@
+.content{
+    min-height: calc(100vh - 100px);
+}
+
+a {
+    text-decoration: none;
+    color:white;
+}
+
+a:hover,a:active{
+    color:lightgray
+}
+
+.menu-items{
+    margin:0px;
+    padding:0px;
+    list-style: none;
+}
+
+.navbar-user-photo{
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    border: 0px solid rgba(255,255,255,255);
+    margin-left: 10px;
+    margin-right : 50px;
+}
+
+.sidemenu-user-photo{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border: 0px solid rgba(255,255,255,255);
+    margin-left: 10px;
+    margin-right : 50px;
+}
+

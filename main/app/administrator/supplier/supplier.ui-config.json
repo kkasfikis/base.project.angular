@@ -1,0 +1,924 @@
+{
+    "fields": [
+        {
+            "key": "_id",
+            "order": 0,
+            "type": "Hidden"
+        },
+        {
+            "key": "supplier_name",
+            "order": 10,
+            "type": "TextBox",
+            "label": "Supplier Name",
+            "options": [],
+            "enabled": true,
+            "required": true,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "category",
+            "order": 20,
+            "type": "Select",
+            "label": "Category",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "status",
+            "order": 30,
+            "type": "Select",
+            "label": "Status",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "supplier_object",
+            "order": 15,
+            "type": "Select",
+            "label": "Object",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "vat_no",
+            "order": 50,
+            "type": "TextBox",
+            "label": "VAT No",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "doy",
+            "order": 51,
+            "type": "TextBox",
+            "label": "Fiscal office",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "fpa",
+            "order": 52,
+            "type": "TextBox",
+            "label": "Tax (%)",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "mail",
+            "order": 37,
+            "type": "TextBox",
+            "label": "eMail",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "phone",
+            "order": 36,
+            "type": "TextBox",
+            "label": "Phone",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "fax",
+            "order": 38,
+            "type": "TextBox",
+            "label": "Fax",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "country",
+            "order": 33,
+            "type": "Select",
+            "label": "Country",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "town",
+            "order": 32,
+            "type": "TextBox",
+            "label": "Town",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "address",
+            "order": 31,
+            "type": "TextBox",
+            "label": "Address",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "zip",
+            "order": 34,
+            "type": "TextBox",
+            "label": "ZIP",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "resp",
+            "order": 35,
+            "type": "TextBox",
+            "label": "Contact Person",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "priority",
+            "order": 39,
+            "type": "Select",
+            "label": "Priority",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "payment_method",
+            "order": 40,
+            "type": "Select",
+            "label": "Payment Way",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "bank",
+            "order": 41,
+            "type": "Select",
+            "label": "Bank",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "account",
+            "order": 42,
+            "type": "TextBox",
+            "label": "Bank Account",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "entry_date",
+            "order": 55,
+            "type": "DatePicker",
+            "label": "Entry Date",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "notes",
+            "order": 210,
+            "type": "TextArea",
+            "label": "Notes",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 10000,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        },
+        {
+            "key": "ports",
+            "order": 220,
+            "type": "TextArea",
+            "label": "Ports",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 10000,
+            "regexPattern": "",
+            "width": 50,
+            "innerWidth": 98,
+            "align": "left center"
+        }
+    ],
+    "subforms": [
+        {
+            "key": "supplier_pic",
+            "label": "Supplier People In Charge",
+            "order": 1000,
+            "fields": [
+                {
+                    "key": "pic_name",
+                    "order": 300,
+                    "type": "TextBox",
+                    "label": "PiC Name",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 15,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "position",
+                    "order": 400,
+                    "type": "TextBox",
+                    "label": "Position",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 10,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "title",
+                    "order": 299,
+                    "type": "TextBox",
+                    "label": "Title",
+                    "options": [],
+                    "enabled": true,
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 5,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "phone",
+                    "order": 500,
+                    "type": "TextBox",
+                    "label": "Phone",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 10,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "mobile",
+                    "order": 600,
+                    "type": "TextBox",
+                    "label": "Mobile",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 10,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "email",
+                    "order": 700,
+                    "type": "TextBox",
+                    "label": "eMail",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 10,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "fax",
+                    "order": 800,
+                    "type": "TextBox",
+                    "label": "Fax",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 10,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "internal_number",
+                    "order": 550,
+                    "type": "TextBox",
+                    "label": "Int. No",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 5,
+                    "innerWidth": 98,
+                    "align": "center center"
+                },
+                {
+                    "key": "notes",
+                    "order": 900,
+                    "type": "TextBox",
+                    "label": "Notes",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 10000,
+                    "regexPattern": "",
+                    "width": 25,
+                    "innerWidth": 98,
+                    "align": "center center"
+                }
+            ],
+            "tableColumns": [
+                {
+                    "key": "pic_name",
+                    "text": "PiC Name",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 30
+                },
+                {
+                    "key": "position",
+                    "text": "Position",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 20
+                },
+                {
+                    "key": "title",
+                    "text": "Title",
+                    "isFilterable": true,
+                    "isSortable": true,
+                    "width": 10
+                }
+            ],
+            "infoFields": [
+                {
+                    "key": "pic_name",
+                    "order": 30,
+                    "label": "PiC Name",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 46,
+                    "align": "center center"
+                },
+                {
+                    "key": "position",
+                    "order": 40,
+                    "label": "Position",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 26,
+                    "align": "center center"
+                },
+                {
+                    "key": "title",
+                    "order": 20,
+                    "label": "Title",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 16,
+                    "align": "center center"
+                },
+                {
+                    "key": "phone",
+                    "order": 50,
+                    "label": "Phone",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 36,
+                    "align": "center center"
+                },
+                {
+                    "key": "mobile",
+                    "order": 60,
+                    "label": "Mobile",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 36,
+                    "align": "center center"
+                },
+                {
+                    "key": "email",
+                    "order": 70,
+                    "label": "eMail",
+                    "type": "Text",
+                    "width": 60,
+                    "innerwidth": 56,
+                    "align": "center center"
+                },
+                {
+                    "key": "fax",
+                    "order": 80,
+                    "label": "Fax",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 36,
+                    "align": "center center"
+                },
+                {
+                    "key": "internal_number",
+                    "order": 55,
+                    "label": "Int. No",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 16,
+                    "align": "center center"
+                },
+                {
+                    "key": "notes",
+                    "order": 100,
+                    "label": "Notes",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 96,
+                    "align": "center center"
+                }
+            ],
+            "hasInfo": false,
+            "width": 100,
+            "innerWidth": 100,
+            "align": "center center",
+            "isTagged": false,
+            "tagSeparator": ""
+        }
+    ],
+    "filters": [
+        {
+            "key": "supplier_name",
+            "label": "Supplier Name",
+            "order": 10,
+            "fieldType": "TextBox",
+            "options": []
+        },
+        {
+            "key": "country",
+            "label": "Country",
+            "order": 20,
+            "fieldType": "TextBox",
+            "options": []
+        }
+    ],
+    "infos": [
+        {
+            "key": "supplier_name",
+            "order": 10,
+            "label": "Supplier Name",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 96,
+            "align": "center center"
+        },
+        {
+            "key": "category",
+            "order": 20,
+            "label": "Category",
+            "type": "Text",
+            "width": 45,
+            "innerwidth": 41,
+            "align": "center center"
+        },
+        {
+            "key": "status",
+            "order": 30,
+            "label": "Status",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 36,
+            "align": "center center"
+        },
+        {
+            "key": "supplier_object",
+            "order": 40,
+            "label": "Object",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 36,
+            "align": "center center"
+        },
+        {
+            "key": "vat_no",
+            "order": 50,
+            "label": "VAT No",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 16,
+            "align": "center center"
+        },
+        {
+            "key": "doy",
+            "order": 60,
+            "label": "Fiscal office",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 16,
+            "align": "center center"
+        },
+        {
+            "key": "fpa",
+            "order": 70,
+            "label": "Tax (%)",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 16,
+            "align": "center center"
+        },
+        {
+            "key": "mail",
+            "order": 80,
+            "label": "eMail",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 36,
+            "align": "center center"
+        },
+        {
+            "key": "phone",
+            "order": 90,
+            "label": "Phone",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 26,
+            "align": "center center"
+        },
+        {
+            "key": "fax",
+            "order": 100,
+            "label": "Fax",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 26,
+            "align": "center center"
+        },
+        {
+            "key": "country",
+            "order": 110,
+            "label": "Country",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 36,
+            "align": "center center"
+        },
+        {
+            "key": "town",
+            "order": 120,
+            "label": "Town",
+            "type": "Text",
+            "width": 40,
+            "innerwidth": 36,
+            "align": "center center"
+        },
+        {
+            "key": "address",
+            "order": 140,
+            "label": "Address",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 96,
+            "align": "center center"
+        },
+        {
+            "key": "zip",
+            "order": 130,
+            "label": "ZIP",
+            "type": "Text",
+            "width": 20,
+            "innerwidth": 16,
+            "align": "center center"
+        },
+        {
+            "key": "resp",
+            "order": 150,
+            "label": "RSP",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 96,
+            "align": "center center"
+        },
+        {
+            "key": "priority",
+            "order": 160,
+            "label": "Priority",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 46,
+            "align": "center center"
+        },
+        {
+            "key": "payment_method",
+            "order": 170,
+            "label": "Payment Way",
+            "type": "Text",
+            "width": 50,
+            "innerwidth": 46,
+            "align": "center center"
+        },
+        {
+            "key": "bank",
+            "order": 180,
+            "label": "Bank",
+            "type": "Text",
+            "width": 30,
+            "innerwidth": 26,
+            "align": "center center"
+        },
+        {
+            "key": "account",
+            "order": 190,
+            "label": "Bank Account",
+            "type": "Text",
+            "width": 70,
+            "innerwidth": 66,
+            "align": "center center"
+        },
+        {
+            "key": "entry_date",
+            "order": 35,
+            "label": "Entry Date",
+            "type": "Text",
+            "width": 15,
+            "innerwidth": 11,
+            "align": "center center"
+        },
+        {
+            "key": "notes",
+            "order": 210,
+            "label": "Notes",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 96,
+            "align": "center center"
+        },
+        {
+            "key": "ports",
+            "order": 220,
+            "label": "Ports",
+            "type": "Text",
+            "width": 100,
+            "innerwidth": 96,
+            "align": "center center"
+        }
+    ],
+    "subinfos": [
+        {
+            "key": "",
+            "order": 100,
+            "label": "People In Charge",
+            "fields": [
+                {
+                    "key": "pic_name",
+                    "order": 30,
+                    "label": "PiC Name",
+                    "type": "Text",
+                    "width": 50,
+                    "innerwidth": 46,
+                    "align": "center center"
+                },
+                {
+                    "key": "position",
+                    "order": 40,
+                    "label": "Position",
+                    "type": "Text",
+                    "width": 30,
+                    "innerwidth": 26,
+                    "align": "center center"
+                },
+                {
+                    "key": "title",
+                    "order": 20,
+                    "label": "Title",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 16,
+                    "align": "center center"
+                },
+                {
+                    "key": "phone",
+                    "order": 50,
+                    "label": "Phone",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 36,
+                    "align": "center center"
+                },
+                {
+                    "key": "mobile",
+                    "order": 60,
+                    "label": "Mobile",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 36,
+                    "align": "center center"
+                },
+                {
+                    "key": "email",
+                    "order": 70,
+                    "label": "eMail",
+                    "type": "Text",
+                    "width": 60,
+                    "innerwidth": 56,
+                    "align": "center center"
+                },
+                {
+                    "key": "fax",
+                    "order": 80,
+                    "label": "Fax",
+                    "type": "Text",
+                    "width": 40,
+                    "innerwidth": 36,
+                    "align": "center center"
+                },
+                {
+                    "key": "internal_number",
+                    "order": 55,
+                    "label": "Int. No",
+                    "type": "Text",
+                    "width": 20,
+                    "innerwidth": 16,
+                    "align": "center center"
+                },
+                {
+                    "key": "notes",
+                    "order": 100,
+                    "label": "Notes",
+                    "type": "Text",
+                    "width": 100,
+                    "innerwidth": 96,
+                    "align": "center center"
+                }
+            ]
+        }
+    ],
+    "columns": [
+        {
+            "key": "supplier_name",
+            "text": "Supplier Name",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 50
+        },
+        {
+            "key": "category",
+            "text": "Category",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 15
+        },
+        {
+            "key": "status",
+            "text": "Status",
+            "isFilterable": true,
+            "isSortable": true,
+            "width": 15
+        }
+    ]
+}

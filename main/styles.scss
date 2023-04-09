@@ -1,0 +1,31 @@
+@use '@angular/material' as mat;
+@include mat.core();
+$project-primary: mat.define-palette(mat.$indigo-palette);
+$project-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$project-warn: mat.define-palette(mat.$red-palette);
+
+$project-theme: mat.define-light-theme((
+  color: (
+    primary: $project-primary,
+    accent: $project-accent,
+    warn: $project-warn,
+  )
+));
+
+$project-dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $project-primary,
+    accent: $project-accent,
+    warn: $project-warn,
+  )
+));
+@import 'ngx-toastr/toastr';
+@import './app/ui-components/dynamic-table/responsive-dynamic-table/responsive-dynamic-table.directive.scss';
+
+@include mat.all-component-themes($project-theme);
+.darkMode{
+  @include mat.all-component-colors($project-dark-theme);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,25 @@
+<app-dynamic-crud
+    [title]="'Calls'"
+    [hasCreate]="false"
+    [hasUpdate]="true"
+    [hasDelete]="false"
+    [hasInfo]="true"
+
+    [endpoint]="'captain/call'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+    
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="true"
+    [filterFields]="filterFields"
+
+></app-dynamic-crud>

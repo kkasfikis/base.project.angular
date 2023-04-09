@@ -1,0 +1,24 @@
+<app-dynamic-crud
+    [title]="'User Management'"
+    [hasCreate]="false"
+    [hasUpdate]="true"
+    [hasDelete]="true"
+    [hasInfo]="true"
+
+    [endpoint]="'admin/userManagement'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+
+    [isPaginated]="true"
+    [pageSize]="10"
+
+    [hasFilters]="false"
+    [filterFields]="filterFields"
+></app-dynamic-crud>

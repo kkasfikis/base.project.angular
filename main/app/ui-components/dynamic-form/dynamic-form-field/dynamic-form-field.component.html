@@ -1,0 +1,96 @@
+<div [formGroup]="form"  fxLayout="column" fxFlex="100">
+    <div [ngSwitch]="localFormField.type" fxFlex="100" id="{{localFormField.key}}" [ngClass]="localFormField.key">
+        
+        <mat-form-field *ngSwitchCase="localFormFieldType.TextBox" appearance="fill" fxFlex="100">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input matInput [formControlName]="localFormField.key" (change)="contentChange()">
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.Password" appearance="fill" fxFlex="100">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input matInput [formControlName]="localFormField.key" type="password" (change)="contentChange()">
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.ColorPicker" appearance="fill" fxFlex="100">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input matInput  [formControlName]="localFormField.key" type="color" (change)="contentChange()">
+       </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.Number" appearance="fill" fxFlex="100">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input matInput [formControlName]="localFormField.key" type="number" (change)="contentChange()">
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.TextArea" appearance="fill" fxFlex="100">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <textarea matInput [formControlName]="localFormField.key" (change)="contentChange()"></textarea>
+        </mat-form-field>
+
+        <div *ngSwitchCase="localFormFieldType.Image">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input type="file" accept="localFormField.allowedFileTypes" (change)="onFileSelected($event)">
+            <img [src]="localFormField.value" width="300">
+        </div>
+
+        <div *ngSwitchCase="localFormFieldType.PDF">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input type="file" accept=".pdf" (change)="onFileSelected($event)">
+            <iframe  [src]="selectedFilePath" width="100%" height="500"></iframe>
+        </div>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.Select" appearance="fill" fxFlex="100" >
+            <mat-label>{{localFormField.label}}</mat-label>
+            <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()" >
+                <mat-option *ngFor="let opt of localFormField.options" [value]="opt.key" >
+                    <span  [ngStyle]="{ 'position':'absolute','top':'0px','left':'0px','right':'0px','font-size':'15px','background-color': opt.backColor}"> 
+                        <p [ngStyle]="{'color' : opt.foreColor}">{{ opt.value }}</p>
+                    </span>      
+                </mat-option>
+            </mat-select> 
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.MultiSelect" appearance="fill" fxFlex="100">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <mat-select [formControlName]="localFormField.key" (selectionChange)="contentChange()" multiple>
+                <mat-option *ngFor="let opt of localFormField.options" [value]="opt.key">
+                    <span> 
+                        <p>{{ opt.value }}</p>
+                    </span> 
+                </mat-option>
+            </mat-select> 
+        </mat-form-field>
+
+        <section class="mySection" *ngSwitchCase="localFormFieldType.CheckBox" fxFlex="100">
+            <mat-checkbox [formControlName]="localFormField.key" (change)="contentChange()">{{localFormField.label}}</mat-checkbox>
+        </section>
+
+        <section class="mySection" *ngSwitchCase="localFormFieldType.RadioBox" fxLayout="column" fxFlex="100">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <mat-radio-group fxLayoutGap="10" [formControlName]="localFormField.key" (change)="contentChange()">
+                <mat-radio-button *ngFor="let opt of localFormField.options" [value]="opt.key">{{opt.value}}</mat-radio-button>
+            </mat-radio-group>
+        </section>
+
+        <mat-form-field *ngSwitchCase="localFormFieldType.DatePicker" appearance="fill" fxFlex="100">
+            <mat-label>{{localFormField.label}}</mat-label>
+            <input matInput [matDatepicker]="picker" [formControlName]="localFormField.key" (dateChange)="contentChange()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+    <div fxLayoutAlign="center">
+        <mat-error *ngIf="form.controls[this.localFormField.key].errors?.['required']">
+            
+        </mat-error>
+        <mat-error *ngIf="form.controls[this.localFormField.key].errors?.['maxLength']">
+            Field must be at most {{localFormField.minLength}} characters long
+        </mat-error>
+        <mat-error *ngIf="form.controls[this.localFormField.key].errors?.['minLength']">
+            Field must be at least {{localFormField.minLength}} characters long
+        </mat-error>
+        <mat-error *ngIf="form.controls[this.localFormField.key].errors?.['minLength']">
+            Field does not have the correct regex pattern : {{localFormField.regexPattern}}
+        </mat-error>
+    </div>
+</div>

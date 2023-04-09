@@ -1,0 +1,27 @@
+<app-dynamic-crud
+    [title]="'Agents'"
+    [hasCreate]="true"
+    [hasUpdate]="true"
+    [hasDelete]="true"
+    [hasInfo]="false"
+
+    [endpoint]="'admin/agent'"
+
+    [identifierKey]="'_id'"
+
+    [createFormFields]="formFields"
+    [updateFormFields]="formFields"
+
+    [tableColumns]="tableColumns"
+
+    [infoFields]="infoFields"
+
+    [isPaginated]="true"
+    [pageSize]="10"
+
+
+    [beforeCreateActions]="beforeCreateUpdateActions"
+    
+    [hasFilters]="true"
+    [filterFields]="filterFields"
+></app-dynamic-crud>

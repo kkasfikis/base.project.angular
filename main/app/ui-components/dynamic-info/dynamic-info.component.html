@@ -1,0 +1,16 @@
+<div fxFlex="100" fxLayout="row wrap" [fxLayoutGap]="infoGap" [fxLayoutAlign]="infoAlign">
+    <div *ngFor="let infoField of sortByOrder(infoFields)" [fxFlex]="isSubForm(infoField) ? '100' : infoField.width" [fxLayoutAlign]="infoField.align">
+        
+        <app-dynamic-info-field *ngIf="!isSubForm(infoField)"
+            [infoField]="infoField"
+            [value]="infoField.key.includes('.') ? obj[infoField.key.split('.')[0]][infoField.key.split('.')[1]] : obj[infoField.key]"
+            [fxFlex]="infoField.innerWidth"
+        ></app-dynamic-info-field>
+
+        <app-dynamic-sub-form-info *ngIf="isSubForm(infoField)" fxFlex="100"
+            [title]="infoField.label"
+            [infoFields]="infoField.fields"
+            [objArray]="obj[infoField.key]"
+        ></app-dynamic-sub-form-info>
+    </div>
+</div>
