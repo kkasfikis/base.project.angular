@@ -16,22 +16,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "csoa_seria",
-            "order": 30,
-            "type": "TextBox",
-            "label": "Seria",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 20,
+            "width": 50,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -46,22 +31,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "csoa_title",
-            "order": 70,
-            "type": "TextBox",
-            "label": "Title",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 100,
+            "width": 50,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -76,22 +46,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 60,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "client_info",
-            "order": 100,
-            "type": "TextBox",
-            "label": "General Info",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 40,
+            "width": 50,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -106,7 +61,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
+            "width": 15,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -121,7 +76,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 30,
+            "width": 15,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -136,7 +91,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 40,
+            "width": 20,
             "innerWidth": 98,
             "align": "center center"
         }
@@ -181,21 +136,6 @@
                     "key": "item_debit",
                     "order": 30,
                     "type": "Number",
-                    "label": "Price",
-                    "options": [],
-                    "enabled": true,
-                    "required": false,
-                    "minLength": 0,
-                    "maxLength": 255,
-                    "regexPattern": "",
-                    "width": 10,
-                    "innerWidth": 98,
-                    "align": "center center"
-                },
-                {
-                    "key": "item_credit",
-                    "order": 40,
-                    "type": "Number",
                     "label": "Debit",
                     "options": [],
                     "enabled": true,
@@ -208,8 +148,8 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_balance",
-                    "order": 50,
+                    "key": "item_credit",
+                    "order": 40,
                     "type": "Number",
                     "label": "Credit",
                     "options": [],
@@ -222,6 +162,7 @@
                     "innerWidth": 98,
                     "align": "center center"
                 }
+                
             ],
             "tableColumns": [
                 {
@@ -240,25 +181,19 @@
                 },
                 {
                     "key": "item_debit",
-                    "text": "Price",
-                    "isFilterable": false,
-                    "isSortable": false,
-                    "width": 10
-                },
-                {
-                    "key": "item_credit",
                     "text": "Debit",
                     "isFilterable": false,
                     "isSortable": false,
                     "width": 20
                 },
                 {
-                    "key": "item_balance",
+                    "key": "item_credit",
                     "text": "Credit",
                     "isFilterable": false,
                     "isSortable": false,
                     "width": 20
                 }
+              
             ],
             "infoFields": [
                 {
@@ -317,29 +252,8 @@
     ],
     "filters": [
         {
-            "key": "csoa_date",
-            "label": "Date",
-            "order": 20,
-            "fieldType": "Select",
-            "options": []
-        },
-        {
-            "key": "csoa_seria",
-            "label": "Seria",
-            "order": 30,
-            "fieldType": "Select",
-            "options": []
-        },
-        {
-            "key": "csoa_title",
-            "label": "Title",
-            "order": 70,
-            "fieldType": "Select",
-            "options": []
-        },
-        {
-            "key": "inv_client_info",
-            "label": "General Info",
+            "key": "csoa_client",
+            "label": "Client Name",
             "order": 100,
             "fieldType": "Select",
             "options": []
@@ -351,79 +265,63 @@
             "order": 20,
             "label": "Date",
             "type": "Text",
-            "width": 40,
+            "width": 10,
             "innerwidth": 98,
             "align": "center center"
         },
+       
         {
-            "key": "csoa_seria",
-            "order": 30,
-            "label": "Seria",
+            "key": "csoa_no",
+            "order": 40,
+            "label": "No",
+            "type": "Text",
+            "width": 15,
+            "innerwidth": 98,
+            "align": "center center"
+        },
+        
+        {
+            "key": "client_name",
+            "order": 80,
+            "label": "Client Name",
             "type": "Text",
             "width": 20,
             "innerwidth": 98,
             "align": "center center"
         },
         {
-            "key": "csoa_no",
-            "order": 40,
-            "label": "No",
-            "type": "Text",
-            "width": 40,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "csoa_title",
-            "order": 70,
-            "label": "Title",
-            "type": "Text",
-            "width": 100,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "inv_client_name",
-            "order": 80,
-            "label": "Client Name",
-            "type": "Text",
-            "width": 60,
-            "innerwidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "inv_client_info",
+            "key": "client_alias",
             "order": 100,
-            "label": "General Info",
+            "label": "Client Alias Name",
             "type": "Text",
-            "width": 40,
+            "width": 20,
             "innerwidth": 98,
             "align": "center center"
         },
         {
-            "key": "inv_debit_amount",
+            "key": "soa_debit_amount",
             "order": 110,
             "label": "Debit",
             "type": "Text",
-            "width": 30,
+            "width": 10,
             "innerwidth": 98,
             "align": "center center"
         },
         {
-            "key": "inv_credit_tamount",
+            "key": "soa_credit_amount",
             "order": 120,
             "label": "Credit",
             "type": "Text",
-            "width": 30,
+            "width": 10,
             "innerwidth": 98,
             "align": "center center"
         },
         {
-            "key": "inv_balance_amount",
-            "order": 130,
+            "key": "soa_balance_amount",
+            "order": 120,
             "label": "Balance",
             "type": "Text",
-            "width": 40,
+            "width": 10,
             "innerwidth": 98,
             "align": "center center"
         }
@@ -453,7 +351,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_debit",
+                    "key": "soa_debit_amount",
                     "order": 30,
                     "label": "Price",
                     "type": "Text",
@@ -462,7 +360,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_credit",
+                    "key": "soa_credit_amount",
                     "order": 40,
                     "label": "Debit",
                     "type": "Text",
@@ -471,7 +369,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_balance",
+                    "key": "soa_balance_amount",
                     "order": 50,
                     "label": "Credit",
                     "type": "Text",
@@ -488,28 +386,35 @@
             "text": "Date",
             "isFilterable": true,
             "isSortable": true,
-            "width": 40
+            "width": 10
         },
         {
-            "key": "csoa_seria",
-            "text": "Seria",
+            "key": "client",
+            "text": "Client Name",
             "isFilterable": true,
             "isSortable": true,
             "width": 20
         },
         {
-            "key": "csoa_title",
-            "text": "Title",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 100
+            "key": "csoa_debit_amount",
+            "Text": "Debit",
+            "isFilterable": false,
+            "isSortable": false,
+            "width": 20
         },
         {
-            "key": "inv_client_info",
-            "text": "General Info",
-            "isFilterable": true,
-            "isSortable": true,
-            "width": 40
+            "key": "csoa_credit_amount",
+            "Text": "Credit",
+            "isFilterable": false,
+            "isSortable": false,
+            "width": 20
+        },
+        {
+            "key": "csoa_balance_amount",
+            "Text": "Balance",
+            "isFilterable": false,
+            "isSortable": false,
+            "width": 20
         }
     ]
 }

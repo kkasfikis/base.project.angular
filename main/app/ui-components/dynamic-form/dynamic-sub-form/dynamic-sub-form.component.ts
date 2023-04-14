@@ -30,6 +30,8 @@ export class DynamicSubFormComponent implements OnInit {
 
   @Output() onFormChange : EventEmitter<any> = new EventEmitter<any>();
 
+  subformFields : FormFieldBase[] = [];
+
   formField! : SubForm;
   formActions : FormAction[] = [];
 
@@ -67,10 +69,12 @@ export class DynamicSubFormComponent implements OnInit {
     this.formField.fields = [...subForm.fields];
     this.form = this.formService.toFormGroup(subForm.fields as FormFieldBase[]);
     
-    subForm.fields.forEach( (field : FormFieldBase) => {
-      if (field.enabled) { this.form.controls[field.key].enable() } else { this.form.controls[field.key].disable() };
-      this.form.controls[field.key].patchValue(field.value, {onlySelf: false, emitEvent: true});
-    })
+    this.subformFields = []
+    setTimeout( () => { 
+      this.subformFields = []
+      subForm.fields.forEach( (field : FormFieldBase) => {
+      this.subformFields.push(field) 
+    })});
 
     this.isTagged ? this.tags = subForm.tableData : this.dataSubject.next(this.mapData(subForm))
 
@@ -83,7 +87,7 @@ export class DynamicSubFormComponent implements OnInit {
     else{
       this.subformField.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
         next : (field : SubForm) => {
-
+          console.log('New subform value')
           this.initSubForm(field)
         }
       })
@@ -149,15 +153,21 @@ export class DynamicSubFormComponent implements OnInit {
     let subform = ((this.subformField instanceof SubForm) 
       ? this.subformField : this.subformField.getValue()) as SubForm;
     let obj = subform.tableData[item.internalId];
+    
     Object.keys(obj).forEach( (key : string) => {
       subform.fields.forEach( (field : FormFieldBase) => {
         if(field.key == key){
-          field.value = obj[key];
+          if(field.type == FormFieldType.DatePicker){
+            field.value = new Date(obj[key]);
+          }
+          else{
+            field.value = obj[key];
+          }
         }
       });
-      (this.subformField instanceof SubForm) 
-        ? this.subformField = subform : (this.subformField).next(subform);
-    })
+    });
+
+    (this.subformField instanceof SubForm) ? this.subformField = subform : (this.subformField as BehaviorSubject<SubForm>).next(subform);
     this.editInternalId = item.internalId;
     this.formActions = [
       {
@@ -203,18 +213,30 @@ export class DynamicSubFormComponent implements OnInit {
       this.tags = tData;
     }
     else{
+
+      let rawFormData = this.form.getRawValue();
+      let formData : any = {}
+      Object.keys(rawFormData).forEach( (key:string) => {
+        if(this.subformFields.find( x => x.key == key)?.type == FormFieldType.DatePicker){
+          formData[key] = rawFormData[key].toISOString().split('.')[0];
+        }
+        else{
+          formData[key] = rawFormData[key];
+        }
+      })
+
       if(this.editInternalId >= 0){
         let tData : any[] = subform.tableData;
         
         (tData.length > 1) ? tData.splice(this.editInternalId,1) : tData = [];
-        tData.push(this.form.getRawValue());
+        tData.push(formData);
         subform.tableData = tData;
         this.editInternalId = -1;
         this.formActions = [];
       } 
       else{
         let tData : any[] = subform.tableData;
-        tData.push(this.form.getRawValue());
+        tData.push(formData);
         subform.tableData = tData;
       }
     }

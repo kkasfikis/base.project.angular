@@ -6,7 +6,7 @@
     <br/>
     <form [formGroup]="form" [fxLayoutAlign]="formAlign">
         <mat-card-content fxFlex="100" fxLayout="row wrap">
-            <div *ngFor="let ff of sortByOrder(formField.fields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="ff.width" [fxLayoutAlign]="ff.align">
+            <div *ngFor="let ff of sortByOrder(subformFields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="ff.width" [fxLayoutAlign]="ff.align">
                 <app-dynamic-form-field
                     [formField]="ff"
                     [form]="form"
@@ -50,7 +50,7 @@
       <div fxFlex="100" fxLayout="column">
         <form [formGroup]="form" [fxLayoutAlign]="formAlign">
             <mat-card-content fxFlex="100" fxLayout="row wrap">
-                <div *ngFor="let ff of sortByOrder(formField.fields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="ff.width" [fxLayoutAlign]="ff.align">
+                <div *ngFor="let ff of sortByOrder(subformFields)" fxFlex="100" fxLayout="row wrap" [fxFlex]="ff.width" [fxLayoutAlign]="ff.align">
                     <app-dynamic-form-field
                         [formField]="ff"
                         [form]="form"

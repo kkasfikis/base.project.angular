@@ -39,13 +39,7 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
     let validators : ValidatorFn[] = [];
 
     if(field.type == FormFieldType.DatePicker){
-      if(!!field.value && '$date' in field.value){
-        field.value = new Date(field.value['$date']);
-      }
-      else{
-        field.value = new Date();
-      }
-      console.log(this.localFormField.key,field.value,field.value instanceof Date)
+      field.value = new Date(field.value)
     }
 
     if(field.required){ validators.push(Validators.required); }
@@ -55,8 +49,9 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
     if(field.enabled) {this.form.get(this.localFormField.key)?.enable();} else { this.form.get(this.localFormField.key)?.disable(); }
     this.form.get(this.localFormField.key)?.addValidators(validators);
     this.form.controls[this.localFormField.key].patchValue(field.value, {onlySelf: false, emitEvent: true});
-    
+    console.log('FILE PDF',this.localFormField.key,this.localFormField.value)
     if(this.localFormField.type == FormFieldType.PDF && !!this.localFormField.value){
+      
       let contentType = ''
       contentType = 'data:application/pdf;base64,'
       this.localFormField.value = contentType + this.localFormField.value

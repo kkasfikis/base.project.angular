@@ -7,18 +7,110 @@ from service import svc
 from helperFunctions import HelperFunctions
 from datetime import datetime
 class BaseCrud:
+
     @staticmethod
-    def read(class_name : str):
+    def _handle_key(item : dict , key : str) -> None:
+        if type(item[key]) == bson.objectid.ObjectId :
+            item[key] = str(item[key])
+        elif '$oid' in item[key]:
+            item[key] = item[key]['$oid']
+    @staticmethod
+    def _handle_read_reference_field(item : dict, original : any, load : bool = True) -> None:
+        for key in item.keys():
+            if (type(item[key]) == bson.objectid.ObjectId) or (type(item[key]) == dict and '$oid' in item[key] and '_file' not in key):
+                if load == True:
+                    orig = original[key].to_mongo()
+                    item[key] = orig.to_dict()
+                    BaseCrud._handle_key(item[key],'_id')
+                    BaseCrud._handle_read_date(item[key])
+                    BaseCrud._handle_read_reference_field(item[key],orig,False)
+                    #item[key][skey] = item[key][skey]['$oid']
+                else:
+                    BaseCrud._handle_key(item,key)
+        
+    @staticmethod
+    def _handle_read_file(item : dict, original : any, read : bool = True) -> None:
+        for key in item.keys():
+            if type(item[key]) == dict and '$oid' in item[key] and '_file' in key:
+                if read:
+                    item[key] = base64.b64encode(original[key].read()).decode('ascii')
+                else:
+                    item[key] = ''
+
+    def _handle_read_list(item : dict, original : any) -> None:
+        for key in item.keys():
+            if type(item[key]) == list:
+                index = 0
+                for i in item[key]:
+                    if type(i) is not str:
+                        BaseCrud._handle_read_date(i)
+                        BaseCrud._handle_read_file(i,original[key][index])
+                        BaseCrud._handle_read_reference_field(i,original[key][index])
+                    index = index + 1
+    @staticmethod
+    def _handle_read_date(item : dict) -> None:
+        for key in item.keys():
+            if type(item[key]) == dict and '$date' in item[key]:
+                item[key] = datetime.fromtimestamp( item[key]['$date'] / 1000 ).isoformat()
+
+
+    @staticmethod
+    def _handle_write_date(item : dict):
+        for key in item.keys():
+            if '_file' not in key:
+                print(key,item[key])
+            if type(item[key]) == str :
+                try:
+                    item[key] = datetime.fromisoformat(item[key].split('.')[0]) if '.' in item[key] else datetime.fromisoformat(item[key])
+                except:
+                    continue
+    
+    @staticmethod
+    def _handle_write_reference_field(item : dict):
+        pass
+    
+    @staticmethod
+    def _handle_write_file(item : dict, files : any = None) -> None:
+        subform_files = []
+        if files is not None: 
+            for key in files.keys():
+                
+                if '.' in key:
+                    key_parts = key.split('.')
+                    subform_files.append({
+                        'subform' : key_parts[0],
+                        'index' : int(key_parts[1]),
+                        'field' : key_parts[2],
+                        'file' : files[key]
+                    })
+                else:
+                    item[key] = files[key]
+        return subform_files
+           
+    @staticmethod
+    def _handle_write_list(item : dict):
+        for key in item.keys():
+            if type(item[key]) == list:
+                index = 0
+                for i in item[key]:
+                    if type(i) is not str:
+                        BaseCrud._handle_write_date(item[key][index])
+                    index = index + 1  
+    
+    @staticmethod
+    def read(class_name : str, load : bool = True, read_file : bool = True):
         try:
             collection = getattr(models,class_name)
             items = []
             for item in collection.objects:
                 titem = json.loads(item.to_json())
-                for key in titem.keys():
-                    if type(titem[key]) == dict and '$oid' in titem[key]:
-                        titem[key] = titem[key]['$oid']
-                    if type(titem[key]) == dict and '$date' in titem[key]:
-                        titem[key] = datetime.fromtimestamp(titem[key]['$date'] / 1000 ).isoformat()
+
+                BaseCrud._handle_key(titem, '_id')
+                BaseCrud._handle_read_file(titem, item, read_file)
+                BaseCrud._handle_read_date(titem)
+                BaseCrud._handle_read_reference_field(titem, item, load)
+                BaseCrud._handle_read_list(titem,item)
+                
                 items.append(titem)                    
             return {
                 'read' : True,
@@ -31,7 +123,7 @@ class BaseCrud:
             },200
 
     @staticmethod
-    def paginated(class_name : str, page : int, size : int, sort : str = None, sort_column : str = None):
+    def paginated(class_name : str, page : int, size : int, sort : str = None, sort_column : str = None, load : bool = True, read_file : bool = True):
         try:
             collection = getattr(models,class_name)
             items = []
@@ -43,21 +135,13 @@ class BaseCrud:
                 
             for item in collection.objects.skip(page*size).limit(size):
                 titem = json.loads(item.to_json())
-                for key in titem.keys():
-                    if type(titem[key]) == dict and '$oid' in titem[key]:
-                        if key != '_id' and '_file' not in key:
-                            titem[key] = item[key].to_mongo().to_dict()
-                            for skey in titem[key].keys():
-                                if type(titem[key][skey]) == bson.objectid.ObjectId :
-                                    titem[key][skey] = str(titem[key][skey])    
-                        else:
-                            if key == '_id':
-                                titem['_id'] = titem['_id']['$oid']
-                            else:
-                                titem[key] = base64.b64encode(item[key].read()).decode('ascii')
-                                print('b64',titem[key][0:100])
-                    if type(titem[key]) == dict and '$date' in titem[key]:
-                        titem[key] = datetime.fromtimestamp( titem[key]['$date'] / 1000 ).isoformat()
+                
+                BaseCrud._handle_key(titem,'_id')
+                BaseCrud._handle_read_file(titem, item, read_file)
+                BaseCrud._handle_read_date(titem)
+                BaseCrud._handle_read_reference_field(titem, item, load)
+                BaseCrud._handle_read_list(titem,item)
+
                 items.append(titem)
             
             if sort is not None and sort == 'desc' and sort_column is not None:
@@ -70,7 +154,7 @@ class BaseCrud:
                 'overflow' : overflow
             }, 200
         except Exception as e:
-            print('PAGINATED EXCEPTION',str(e))
+            print(str(e))
             return {
                 'read' : False,
                 'message' : 'There are validation errors: ' + str(e) 
@@ -81,56 +165,23 @@ class BaseCrud:
         pass
 
     @staticmethod
-    def recordItem(class_name : str, id : str):
+    def record(class_name : str, id : str, load : bool = True, read_file : bool = True):
         try:
             collection = getattr(models,class_name)
             item = collection.objects(pk = id).first()
             titem = json.loads(item.to_json()) 
-            titem['_id'] = titem['_id']['$oid']
-            for key in titem.keys():
-                if type(titem[key]) == dict and '$oid' in titem[key]:
-                    titem[key] = item[key].to_mongo().to_dict()
-                    for skey in titem[key].keys():
-                        if type(titem[key][skey]) == bson.objectid.ObjectId :
-                            titem[key][skey] = str(titem[key][skey])
-                    
-            return titem
-        except Exception as e:
-            return None
-
-    @staticmethod
-    def record(class_name : str, id : str):
-        try:
-            collection = getattr(models,class_name)
-            item = collection.objects(pk = id).first()
-            titem = json.loads(item.to_json()) 
-            titem['_id'] = titem['_id']['$oid']
-            for key in titem.keys():
-                print(type(titem[key]))
-                if '_file' in key:
-                    print('file in read',key)
-                    titem[key] = base64.b64encode(item[key].read()).decode('ascii')
-                    print('b64',titem[key][0:100]) 
-                elif type(titem[key]) == list: #check if array
-                    index = 0
-                    for tmp in titem[key]:
-                        if type(tmp) == dict:
-                            for k in tmp.keys():
-                                if '_file' in k:
-                                    titem[key][index][k] = base64.b64encode(item[key][index][k].read()).decode('ascii')
-                        index = index + 1
-                else:
-                    if type(titem[key]) == dict and '$oid' in titem[key]:
-                        titem[key] = item[key].to_mongo().to_dict()
-                        for skey in titem[key].keys():
-                            if type(titem[key][skey]) == bson.objectid.ObjectId :
-                                titem[key][skey] = str(titem[key][skey])
+            
+            BaseCrud._handle_key(titem,'_id')
+            BaseCrud._handle_read_file(titem, item, read_file)
+            BaseCrud._handle_read_date(titem)
+            BaseCrud._handle_read_reference_field(titem, item, load)
+            BaseCrud._handle_read_list(titem,item)
+            
             return {
                 'info' : True,
                 'data' : titem
             },200
         except Exception as e:
-            print('READ EXCEPTION',str(e))
             return {
                 'updated' : False,
                 'message' : 'An error occured: ' + str(e)
@@ -143,27 +194,14 @@ class BaseCrud:
         if '_id' in data:
             data.pop('_id')
         
-        HelperFunctions.convertDatesFromISO(data)
-
-        subform_files = []
-
-        if files is not None: 
-            for key in files.keys():
-                if '.' in key:
-                    key_parts = key.split('.')
-                    subform_files.append({
-                        'subform' : key_parts[0],
-                        'subform_index' : int(key_parts[1]),
-                        'subform_field' : key_parts[2],
-                        'file_value' : files[key]
-                    })
-                else:
-                    data[key] = files[key]
+        BaseCrud._handle_write_list(data)
+        BaseCrud._handle_write_date(data)
+        subform_files = BaseCrud._handle_write_file(data,files)
 
         try:
             item = collection(**data)
             for file in subform_files:
-                item[file['subform']][file['subform_index']][file['subform_field']].put(file['file_value'])
+                item[file['subform']][file['index']][file['field']].put(file['file'])
             item.validate()
         except svc.db.ValidationError as e:
             return {
@@ -189,21 +227,17 @@ class BaseCrud:
         item : any
         item_data : any
         collection = getattr(models,class_name)
+
         if '_id' in data:
             data.pop('_id')
 
-        HelperFunctions.convertDatesFromISO(data)
-        
-        if files is not None: 
-            for key in files.keys():
-                if '.' in key:
-                    key_parts = key.split('.')
-                    data[key_parts[0]][int(key_parts[1])][key_parts[2]] = files[key]
-                else:
-                    data[key] = files[key]
-
+        BaseCrud._handle_write_list(data)
+        BaseCrud._handle_write_date(data)
+        subform_files = BaseCrud._handle_write_file(data,files)
         try:
             item_data = collection(**data)
+            for file in subform_files:
+                item_data[file['subform']][file['index']][file['field']].put(file['file'])
             item_data.validate()
         except svc.db.ValidationError as e:
             return {

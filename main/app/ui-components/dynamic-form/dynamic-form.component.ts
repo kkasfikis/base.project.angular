@@ -108,8 +108,7 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
         let fieldBase = field.getValue() as FormFieldBase;
 
         if(fieldBase.type == FormFieldType.DatePicker){
-          console.log('$$$$$$$$$',fieldBase.key,this.form.getRawValue()[fieldBase.key],typeof this.form.getRawValue()[fieldBase.key])
-          obj[fieldBase.key] = this.datepipe.transform(this.form.getRawValue()[fieldBase.key], 'yyyy-MM-dd');
+          obj[fieldBase.key] = (this.form.controls[fieldBase.key].value as Date).toISOString()//this.datepipe.transform(, 'yyyy-MM-dd');
         }
         else{
           obj[fieldBase.key] = this.form.getRawValue()[fieldBase.key];

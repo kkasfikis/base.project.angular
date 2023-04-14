@@ -128,7 +128,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 33,
+                    "width": 10,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -143,7 +143,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 33,
+                    "width": 10,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -158,14 +158,14 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 50,
+                    "width": 20,
                     "innerWidth": 98,
                     "align": "center center"
                 },
                 {
                     "key": "item_order",
                     "order": 40,
-                    "type": "Number",
+                    "type": "Hidden",
                     "label": "Order",
                     "options": [],
                     "enabled": true,
@@ -188,7 +188,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 33,
+                    "width": 10,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -203,7 +203,7 @@
                     "minLength": 1,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width":33,
+                    "width":5,
                     "innerWidth": 98,
                     "value": 1,
                     "align": "center center"
@@ -219,7 +219,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 33,
+                    "width": 10,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -234,7 +234,7 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 33,
+                    "width": 10,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -242,14 +242,14 @@
                     "key": "item_discount_percent",
                     "order": 80,
                     "type": "Number",
-                    "label": "Discount(%)",
+                    "label": "Dis(%)",
                     "options": [],
                     "enabled": true,
                     "required": false,
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 33,
+                    "width": 5,
                     "innerWidth": 98,
                     "align": "center center"
                 },
@@ -264,12 +264,26 @@
                     "minLength": 0,
                     "maxLength": 255,
                     "regexPattern": "",
-                    "width": 33,
+                    "width": 10,
                     "innerWidth": 98,
                     "align": "center center"
                 }
             ],
             "tableColumns": [
+                {
+                    "key": "item_date",
+                    "text": "Date",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 10
+                },
+                {
+                    "key": "item_category",
+                    "text": "Category",
+                    "isFilterable": false,
+                    "isSortable": false,
+                    "width": 20
+                },
                 {
                     "key": "item_description",
                     "text": "Description",
@@ -308,7 +322,7 @@
                 },
                 {
                     "key": "item_discount_percent",
-                    "text": "Discount(%)",
+                    "text": "Dis(%)",
                     "isFilterable": false,
                     "isSortable": false,
                     "width": 5
