@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angu
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { FormAction, FormFieldBase, SubForm } from '../dynamic-form/dynamic-form.models';
+import { FormAction, FormFieldBase, FormFieldType, SubForm } from '../dynamic-form/dynamic-form.models';
 import { DynamicInfoDialogComponent } from '../dialogs/dynamic-info-dialog/dynamic-info-dialog.component';
 import { InfoField, SubFormInfo } from '../dynamic-info/dynamic-info.models';
 import { TableAction, TableColumn, TableData } from '../dynamic-table/dynamic-table.models';
@@ -55,6 +55,8 @@ export class DynamicCrudComponent implements OnInit {
 
   @Input() isPaginated : boolean = false;
   @Input() pageSize : number = 5;
+
+  @Input() tableActions : TableAction[] = [];
 
   @Output() onFormChange : EventEmitter<any> = new EventEmitter<any>();
   @Output() onSubFormChange : EventEmitter<any> = new EventEmitter<any>();
@@ -173,6 +175,11 @@ export class DynamicCrudComponent implements OnInit {
     return new TableData(page,size,count,tableData.map((item :any,index: number)=>{
       let actions : TableAction[] = [];
       
+      this.tableActions.forEach( (x : TableAction) => {
+        x['params'] = item;
+        actions.push(x);
+      })
+
       if(this.hasInfo){
         actions.push(
           {
@@ -359,7 +366,7 @@ export class DynamicCrudComponent implements OnInit {
 
   crudInfo(payload : any){
     if(this.isInfoCustom){
-      this.onInfo.emit({ _id : this.tableData[payload.internalId], internalId : payload.internalId });
+      this.onInfo.emit({ _id : this.tableData[payload.internalId][this.identifierKey], internalId : payload.internalId });
       return;
     }
     this.infoElement = {};
@@ -380,7 +387,7 @@ export class DynamicCrudComponent implements OnInit {
 
   crudUpdate(payload : any){
     if(this.isUpdateCustom){
-      this.onUpdate.emit({ _id : this.tableData[payload.internalId], internalId : payload.internalId });
+      this.onUpdate.emit({ _id : this.tableData[payload.internalId][this.identifierKey], internalId : payload.internalId });
       return;
     }
     this.cleanForm(false);
@@ -418,6 +425,9 @@ export class DynamicCrudComponent implements OnInit {
                   console.log(key,obj[key])
                   if(typeof obj[key] === 'object' && '_id' in obj[key]){
                     sField.value = obj[key]['_id'];
+                  }
+                  else if(sField.type == FormFieldType.DatePicker){
+                    sField.value = new Date(obj[key]);
                   }
                   else{
                     sField.value = obj[key];
@@ -459,7 +469,7 @@ export class DynamicCrudComponent implements OnInit {
 
   crudDelete(item : {internalId : number}){
     if(this.isUpdateCustom){
-      this.onDelete.emit({ _id : this.tableData[item.internalId], internalId : item.internalId });
+      this.onDelete.emit({ _id : this.tableData[item.internalId][this.identifierKey], internalId : item.internalId });
       return;
     }
 

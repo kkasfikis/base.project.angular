@@ -1,4 +1,4 @@
-<mat-card fxFlex="100" fxLayout="column"  *ngIf=" !label || label.length == 0 || isTagged">
+<mat-card fxFlex="100" fxLayout="column"  *ngIf="visible && (!label || label.length == 0 || isTagged)">
     <div fxFlex="100" fxLayout="column" *ngIf="label && label.length>0">
         <h3>{{label}}</h3>
         <mat-divider></mat-divider>
@@ -39,7 +39,7 @@
     </div>
 </mat-card>
 
-<mat-accordion  *ngIf="label && label.length>0 && !isTagged">
+<mat-accordion  *ngIf="visible && (label && label.length>0 && !isTagged)">
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>

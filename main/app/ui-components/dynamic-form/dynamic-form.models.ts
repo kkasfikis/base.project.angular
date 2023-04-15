@@ -62,6 +62,7 @@ export class SubForm{
     hasDelete : boolean = true;
     hasUpdate : boolean = true;
     hasInfo : boolean = true; 
+    visible : boolean = true;
     identifierKey : string = '_id';
     width : number = 100;
     innerWidth : number = 100;

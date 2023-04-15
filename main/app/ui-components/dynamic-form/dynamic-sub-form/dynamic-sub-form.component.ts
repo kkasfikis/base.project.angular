@@ -27,6 +27,8 @@ export class DynamicSubFormComponent implements OnInit {
   isTagged : boolean = false;
   tagSeperator : string = '';
   identifierKey : string = '';
+  
+  visible : boolean = true;
 
   @Output() onFormChange : EventEmitter<any> = new EventEmitter<any>();
 
@@ -61,6 +63,7 @@ export class DynamicSubFormComponent implements OnInit {
     this.formAlign = subForm.align ? subForm.align : 'center center';
     this.hasDelete = subForm.hasDelete;
     this.hasUpdate = subForm.hasUpdate;
+    this.visible = subForm.visible;
     this.isTagged = subForm.isTagged;
     this.tagSeperator = subForm.tagSeperator;
     this.identifierKey = subForm.identifierKey ? subForm.identifierKey : '';
