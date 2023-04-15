@@ -70,14 +70,23 @@ export class DynamicSubFormComponent implements OnInit {
     this.columnSubject.next(subForm.tableColumns)
     this.formField = subForm;
     this.formField.fields = [...subForm.fields];
-    this.form = this.formService.toFormGroup(subForm.fields as FormFieldBase[]);
+
+    if(!this.form){
+      this.form = this.formService.toFormGroup(subForm.fields as FormFieldBase[]);
+    }
     
     this.subformFields = []
     setTimeout( () => { 
       this.subformFields = []
       subForm.fields.forEach( (field : FormFieldBase) => {
-      this.subformFields.push(field) 
-    })});
+        let control = this.form.get(field.key);
+        if (control){
+          field.value = control.value;
+        }
+        this.subformFields.push(field) 
+      });
+      this.form = this.formService.toFormGroup(subForm.fields as FormFieldBase[]);
+    });
 
     this.isTagged ? this.tags = subForm.tableData : this.dataSubject.next(this.mapData(subForm))
 
