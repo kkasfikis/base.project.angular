@@ -79,9 +79,11 @@ export class DynamicSubFormComponent implements OnInit {
     setTimeout( () => { 
       this.subformFields = []
       subForm.fields.forEach( (field : FormFieldBase) => {
-        let control = this.form.get(field.key);
-        if (control){
-          field.value = control.value;
+        if(!field.value){
+          let control = this.form.get(field.key);
+          if (control){
+            field.value = control.value;
+          }
         }
         this.subformFields.push(field) 
       });
