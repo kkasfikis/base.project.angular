@@ -224,7 +224,129 @@
                 "label": "Reports",
                 "icon": "folder",
                 "isFunction": false,
-                "subMenus": []
+                "subMenus": [
+                  {
+                    "key": "r_bank",
+                    "label": "Bank Accounts Movements",
+                    "icon": "menu",
+                    "link": "/admin/rbank",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "r_client",
+                    "label": "Client Movements",
+                    "icon": "menu",
+                    "link": "/admin/rclient",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "r_income",
+                    "label": "Incomes Diary",
+                    "icon": "menu",
+                    "link": "/admin/rincome",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "r_expense",
+                    "label": "Expenses Diary",
+                    "icon": "menu",
+                    "link": "/admin/rexpense",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "r_inout",
+                    "label": "Incomes / Expenses Diary",
+                    "icon": "menu",
+                    "link": "/admin/rinout",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "r_running",
+                    "label": "Running Balance",
+                    "icon": "menu",
+                    "link": "/admin/rrunning",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "r_clientbalance",
+                    "label": "Client Balance",
+                    "icon": "menu",
+                    "link": "/admin/rclientbalance",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "r_supplierbalance",
+                    "label": "Supplier Balance",
+                    "icon": "menu",
+                    "link": "/admin/rsupplierbalance",
+                    "isFunction": false,
+                    "subMenus": []
+                  },
+                  {
+                    "key": "r_cashflow",
+                    "label": "Cash Flow",
+                    "icon": "menu",
+                    "link": "/admin/rCashflow",
+                    "isFunction": false,
+                    "subMenus": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "icon": "home",
+            "label": "Utilities",
+            "options": [
+              {
+                "key": "utilities",
+                "label": "Utilities",
+                "icon": "folder",
+                "isFunction": false,
+                "subMenus": [
+                  {
+                    "key": "u_cashadvance",
+                    "label": "Cash Advance Alerts",
+                    "icon": "person",
+                    "link": "/admin/ucashadvance",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "u_aging",
+                    "label": "Balance Aging",
+                    "icon": "person",
+                    "link": "/admin/uaging",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "u_pendingbd",
+                    "label": "Pending Breakdows",
+                    "icon": "person",
+                    "link": "/admin/upendingbd",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "u_callaccount",
+                    "label": "Call Bill Issue",
+                    "icon": "person",
+                    "link": "/admin/ucallaccount",
+                    "isFunction": false
+                  },
+                  {
+                    "key": "u_mailadmin",
+                    "label": "eMail Settings",
+                    "icon": "person",
+                    "link": "/admin/uemailadmin",
+                    "isFunction": false
+                  }
+                ]
               }
             ]
           },
