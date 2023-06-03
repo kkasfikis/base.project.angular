@@ -1,6 +1,7 @@
 from service import svc
 from models.client import Client
 
+from models import Call
 class DebitItem(svc.db.EmbeddedDocument):
     item_date = svc.db.DateTimeField()  
     item_category1 = svc.db.StringField(min_length=0, max_length= 255)  
@@ -22,6 +23,6 @@ class DebitNote(svc.db.Document):
     client = svc.db.ReferenceField(Client, reverse_delete_rule=1)                             #	T   from Call
     client_alias = svc.db.StringField(min_length=0, max_length= 255)                              #	T   from Call
     client_address = svc.db.StringField(min_length=0, max_length= 255)                               #	T   From Client
-    call_info = svc.db.StringField(min_length=0, max_length= 255) 
+    call = svc.db.ReferenceField(Call, reverse_delete_rule=1)
     debit_amount = svc.db.FloatField(min_value=0)                              #	N
     debit_items = svc.db.ListField(svc.db.EmbeddedDocumentField(DebitItem))                     #	T

@@ -142,6 +142,21 @@
             "align": "center center"
         },
         {
+            "key": "breakdown_no",
+            "order": 19,
+            "type": "TextBox",
+            "label": "Breakdown Number",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
             "key": "breakdown_entry",
             "order": 19,
             "type": "DatePicker",
@@ -152,7 +167,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
+            "width": 25,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -167,7 +182,22 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
+            "width": 25,
+            "innerWidth": 98,
+            "align": "center center"
+        },
+        {
+            "key": "breakdown_debit_amount",
+            "order": 29,
+            "type": "TextBox",
+            "label": "Total Debit",
+            "options": [],
+            "enabled": true,
+            "required": false,
+            "minLength": 0,
+            "maxLength": 255,
+            "regexPattern": "",
+            "width": 25,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -182,7 +212,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
+            "width": 50,
             "innerWidth": 98,
             "align": "center center"
         },
@@ -197,22 +227,7 @@
             "minLength": 0,
             "maxLength": 255,
             "regexPattern": "",
-            "width": 20,
-            "innerWidth": 98,
-            "align": "center center"
-        },
-        {
-            "key": "breakdown_debit_amount",
-            "order": 51,
-            "type": "TextBox",
-            "label": "Total Debit",
-            "options": [],
-            "enabled": true,
-            "required": false,
-            "minLength": 0,
-            "maxLength": 255,
-            "regexPattern": "",
-            "width": 20,
+            "width": 50,
             "innerWidth": 98,
             "align": "center center"
         }
@@ -316,7 +331,6 @@
                     "innerWidth": 98,
                     "align": "center center"
                 },
-                
                 {
                     "key": "item_debit",
                     "order": 72,
@@ -347,8 +361,6 @@
                     "innerWidth": 98,
                     "align": "center center"
                 },
-                
-                
                 {
                     "key": "item_link_file",
                     "order": 140,
@@ -357,8 +369,6 @@
                     "options": [],
                     "enabled": true,
                     "required": false,
-                    "minLength": 0,
-                    "maxLength": 255,
                     "regexPattern": "",
                     "width": 50,
                     "innerWidth": 98,
@@ -649,15 +659,6 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_status",
-                    "order": 20,
-                    "label": "Status",
-                    "type": "Text",
-                    "width": 25,
-                    "innerwidth": 98,
-                    "align": "center center"
-                },
-                {
                     "key": "item_category",
                     "order": 30,
                     "label": "Category",
@@ -761,7 +762,7 @@
                     "key": "item_link",
                     "order": 150,
                     "label": "Relative Documents",
-                    "type": "Image",
+                    "type": "PDF",
                     "width": 50,
                     "innerwidth": 98,
                     "align": "center center"

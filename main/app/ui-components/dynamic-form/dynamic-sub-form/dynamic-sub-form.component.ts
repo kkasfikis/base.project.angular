@@ -199,8 +199,13 @@ export class DynamicSubFormComponent implements OnInit {
     let subform = ((this.subformField instanceof SubForm) 
       ? this.subformField : this.subformField.getValue()) as SubForm;
     subform.tableData.splice(item.internalId,1);
-    (this.subformField instanceof SubForm) 
-      ? this.subformField = subform : (this.subformField).next(subform);
+    if(this.subformField instanceof SubForm){
+      this.subformField = subform;
+      this.initSubForm(this.subformField);
+    }
+    else{
+      this.subformField.next(subform);
+    }
   }
 
   infoSubRecord(item : {internalId : number}){
@@ -211,6 +216,14 @@ export class DynamicSubFormComponent implements OnInit {
 
   handleFormSubmit(){
     if(this.form.invalid){
+      const invalid = [];
+      const controls = this.form.controls;
+      for (const name in controls) {
+          if (controls[name].invalid) {
+              invalid.push(name);
+          }
+      }
+      console.log('VALIDATION ERROR !',invalid,this.form)
       return;
     }
     let subform = ((this.subformField instanceof SubForm) 
@@ -225,40 +238,68 @@ export class DynamicSubFormComponent implements OnInit {
       tData.push(item);
       //subform.tableData = tData;
       this.tags = tData;
+
+      subform.fields.forEach( (field: FormFieldBase, index : number) => {
+        field.value = '';
+      });
+
+      if(this.subformField instanceof SubForm){
+        this.subformField = subform;
+        this.initSubForm(this.subformField);
+      }
+      else{
+        this.subformField.next(subform);
+      }
     }
     else{
 
       let rawFormData = this.form.getRawValue();
-      let formData : any = {}
-      Object.keys(rawFormData).forEach( (key:string) => {
-        if(this.subformFields.find( x => x.key == key)?.type == FormFieldType.DatePicker){
-          formData[key] = rawFormData[key].toISOString().split('.')[0];
+      ( (subform.beforeSubmitActions != undefined) ? 
+          subform.beforeSubmitActions(rawFormData) 
+          : Promise.resolve(true) 
+      ).then( (x:boolean) => {
+        if(!x){
+          return;
         }
         else{
-          formData[key] = rawFormData[key];
+          let formData : any = {}
+          Object.keys(rawFormData).forEach( (key:string) => {
+            if(this.subformFields.find( x => x.key == key)?.type == FormFieldType.DatePicker){
+              formData[key] = rawFormData[key].toISOString().split('.')[0];
+            }
+            else{
+              formData[key] = rawFormData[key];
+            }
+          })
+    
+          if(this.editInternalId >= 0){
+            let tData : any[] = subform.tableData;
+            
+            (tData.length > 1) ? tData.splice(this.editInternalId,1) : tData = [];
+            tData.push(formData);
+            subform.tableData = tData;
+            this.editInternalId = -1;
+            this.formActions = [];
+          } 
+          else{
+            let tData : any[] = subform.tableData;
+            tData.push(formData);
+            subform.tableData = tData;
+          }
         }
-      })
-
-      if(this.editInternalId >= 0){
-        let tData : any[] = subform.tableData;
-        
-        (tData.length > 1) ? tData.splice(this.editInternalId,1) : tData = [];
-        tData.push(formData);
-        subform.tableData = tData;
-        this.editInternalId = -1;
-        this.formActions = [];
-      } 
-      else{
-        let tData : any[] = subform.tableData;
-        tData.push(formData);
-        subform.tableData = tData;
-      }
+        subform.fields.forEach( (field : FormFieldBase, index : number) => {
+          field.value = '';
+        });
+          
+        if(this.subformField instanceof SubForm){
+          this.subformField = subform;
+          this.initSubForm(this.subformField);
+        }
+        else{
+          this.subformField.next(subform);
+        }
+      });
     }
-    subform.fields.forEach( (field : FormFieldBase, index : number) => {
-      field.value = '';
-    });
-    (this.subformField instanceof SubForm) 
-      ? this.subformField = subform : (this.subformField).next(subform);
   }
 
   cancelUpdate(){

@@ -69,6 +69,8 @@ export class SubForm{
     align : string = 'center';
     isTagged : boolean = false;
     tagSeperator : string = ':';
+    beforeSubmitActions : ( (args:any) => Promise<boolean> ) 
+        | undefined = undefined;
 
     constructor(init?:Partial<SubForm>) {
         Object.assign(this, init);

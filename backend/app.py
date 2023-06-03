@@ -31,6 +31,7 @@ from endpoints.captain.call import api as captainCall
 from endpoints.client.breakdown import api as clientBreakdown
 from endpoints.client.proforma import api as clientProforma
 
+from endpoints.report.generate import api as report
 
 if __name__ == '__main__':
     svc.api.add_namespace(agent)
@@ -58,5 +59,6 @@ if __name__ == '__main__':
     svc.api.add_namespace(credit)
     svc.api.add_namespace(debit)
     svc.api.add_namespace(disbursement)
+    svc.api.add_namespace(report)
     svc.app.run(port=8081, debug=True)
 

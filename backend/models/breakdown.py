@@ -12,7 +12,7 @@ class BreakdownItem(svc.db.EmbeddedDocument):
     item_remark = svc.db.StringField(min_length=0, max_length= 255)                                      #	T
     item_debit = svc.db.FloatField(min_value=0)                                       #	N
     item_qty = svc.db.IntField(min_value=0)                                         #	N
-    item_link_file = svc.db.StringField(min_length=0, max_length= 255)      
+    item_link_file = svc.db.FileField(required=False)    
 
 class Breakdown(svc.db.Document):
     proforma = svc.db.ReferenceField(Proforma, reverse_delete_rule=1)

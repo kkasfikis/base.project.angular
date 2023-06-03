@@ -81,16 +81,14 @@ export class BreakdownComponent implements OnInit {
         JsonHelpers.setReferenceFieldDropdown(formFields,'proforma','proforma_no,client.name,client_alias',proformas)
 
         let serviceStatus = predefinedResp.data.find( ( x:any ) => x.key == 'serviceStatus' ).values;
-        JsonHelpers.setFieldDropdown(formFields,'breakdown_status' , predefinedResp.data.find( ( x:any ) => x.key == 'breakdownStatus' ).values );
-        JsonHelpers.setSubFieldDropdown(formFields, 'breakdown_items', ['item_status'],[serviceStatus] )
-      
+        JsonHelpers.setFieldDropdown(formFields,'breakdown_status' , predefinedResp.data.find( ( x:any ) => x.key == 'breakdownStatus' ).values );      
       } 
     });
 
 
   }
 
-  onFormChange(item : {mode : string, key : string, value : string, form : FormGroup}){
+  onFormChange(item : {mode : string, key : string, value : any, form : FormGroup}){
     if(item.key == 'proforma'){
       this.crudService.infoById('admin/proforma',item.value).subscribe({
         next : (resp : any) => {
@@ -115,7 +113,7 @@ export class BreakdownComponent implements OnInit {
     }
   }
 
-  onSubFormChange(item : {subform : string, key : string, value: string, form : FormGroup} ){
+  onSubFormChange(item : {subform : string, key : string, value: any, form : FormGroup} ){
     if(item.subform == "breakdown_items" && item.key == "item_category"){
       JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_category',item.value);
       if(!!item.value && item.value.length > 0){
@@ -193,9 +191,35 @@ export class BreakdownComponent implements OnInit {
                 'item_price',
                 resp.data && resp.data.length > 0 ? resp.data[0].price : 0
               )
+              JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_debit', (resp.data[0].price).toFixed(2));
+              JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_qty', 1);
             }
           }
         })
+      }
+    }
+    if(item.subform == "breakdown_items" && (item.key == "item_price" || item.key == "item_qty") ){
+      if(item.key == "item_price"){
+        let quantity = item.form.get('item_qty')?.value;
+        JsonHelpers.setSubFieldValue(
+          this.formFields,
+          'breakdown_items',
+          'item_debit',
+          quantity * item.value
+        )
+        JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_price',item.value);
+        JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_debit', (quantity * item.value).toFixed(2));
+      }
+      else{
+        let price = item.form.get('item_price')?.value;
+        JsonHelpers.setSubFieldValue(
+          this.formFields,
+          'breakdown_items',
+          'item_debit',
+          price * item.value
+        )
+        JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_qty',item.value);
+        JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_debit', (price * item.value).toFixed(2));
       }
     }
   }

@@ -23,10 +23,32 @@ class BaseCrud:
                     item[key] = orig.to_dict()
                     BaseCrud._handle_key(item[key],'_id')
                     BaseCrud._handle_read_date(item[key])
+                    
+                    
+                    file_keys_to_pop = []
+                    for kkey in item[key].keys():
+                        if type(item[key][kkey]) == list:
+                            for i in item[key][kkey]:
+                                file_keys_to_pop_from_subform = []
+                                for kkkey in i.keys():
+                                    if '_file' in kkkey:
+                                        file_keys_to_pop_from_subform.append(kkkey)
+                                for kkkey in file_keys_to_pop_from_subform:
+                                    i.pop(kkkey)
+                        if '_file' in kkey:
+                            file_keys_to_pop.append(kkey)
+                    
+                    for kkey in file_keys_to_pop:
+                        item[key].pop(kkey)
+
+                    #print('Modified reference object',item[key])
+
                     BaseCrud._handle_read_reference_field(item[key],orig,False)
                     #item[key][skey] = item[key][skey]['$oid']
                 else:
                     BaseCrud._handle_key(item,key)
+
+            
         
     @staticmethod
     def _handle_read_file(item : dict, original : any, read : bool = True) -> None:

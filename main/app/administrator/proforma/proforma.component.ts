@@ -65,7 +65,7 @@ export class ProformaComponent implements OnInit {
     });
   }
 
-  onFormChange( item : {mode : string, key : string, value : string, form : FormGroup}){
+  onFormChange( item : {mode : string, key : string, value : any, form : FormGroup}){
     if(item.key == 'client'){
       this.crudService.infoById('admin/client',item.value).subscribe({
         next : (resp : any) => {
@@ -83,7 +83,7 @@ export class ProformaComponent implements OnInit {
     }
   }
 
-  onSubFormChange(item : {subform : string, key : string, value: string, form : FormGroup} ){
+  onSubFormChange(item : {subform : string, key : string, value: any, form : FormGroup} ){
     if(item.subform == "proforma_items" && item.key == "item_category1"){
       JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_category1',item.value);
       if(!!item.value && item.value.length > 0){
@@ -165,12 +165,72 @@ export class ProformaComponent implements OnInit {
               JsonHelpers.setSubFieldValue(
                 this.formFields,
                 'proforma_items',
+                'item_amount',
+                resp.data && resp.data.length > 0 ? resp.data[0].price : 'aaaaaaaaaaa'
+              )
+              JsonHelpers.setSubFieldValue(
+                this.formFields,
+                'proforma_items',
                 'item_order',
                 resp.data && resp.data.length > 0 ? resp.data[0].category_order : 0
               )
+              JsonHelpers.setSubFieldValue(
+                this.formFields,
+                'proforma_items',
+                'item_remarks',
+                resp.data && resp.data.length > 0 ? resp.data[0].remarks : 0
+              )
+              
+              JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_discount_percent',0);
+              JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_discount_value',0);
+              JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_total',resp.data[0].price);
             }
           }
         })
+      }
+    }
+    if(item.subform == "proforma_items" && (item.key == "item_price" || item.key == "item_qty") ){
+      if(item.key == "item_price"){
+        let quantity = item.form.get('item_qty')?.value;
+        JsonHelpers.setSubFieldValue(
+          this.formFields,
+          'proforma_items',
+          'item_amount',
+          quantity * item.value
+        )
+        JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_price',item.value);
+        JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_total', (quantity * item.value).toFixed(2));
+      }
+      else{
+        let price = item.form.get('item_price')?.value;
+        JsonHelpers.setSubFieldValue(
+          this.formFields,
+          'proforma_items',
+          'item_amount',
+          price * item.value
+        )
+        JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_qty',item.value);
+        JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_total', (price * item.value).toFixed(2));
+      }
+      JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_discount_percent',0);
+      JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_discount_value', 0);
+    }
+
+    if(item.subform == "proforma_items" && item.key == "item_discount_value"){
+      let amount : number = item.form.get('item_amount')?.value;
+      if(item.value <= amount){
+        JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_discount_value',item.value);
+        JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_discount_percent', ((item.value * 100)/amount).toFixed(2));
+        JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_total', (amount - item.value).toFixed(2));
+      }
+    }
+
+    if(item.subform == "proforma_items" && item.key == "item_discount_percent"){
+      let amount : number = item.form.get('item_amount')?.value;
+      if(item.value <= 100){
+        JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_discount_percent',item.value);
+        JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_discount_value', ((amount * item.value)/100).toFixed(2));
+        JsonHelpers.setSubFieldValue(this.formFields,'proforma_items','item_total', (amount - ((amount * item.value)/100)).toFixed(2));
       }
     }
   }

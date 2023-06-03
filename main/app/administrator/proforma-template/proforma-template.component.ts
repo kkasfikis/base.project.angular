@@ -36,9 +36,15 @@ export class ProformaTemplateComponent implements OnInit {
     this.initMods(this.formFields);
   }
 
+
+  
+
   initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     this.crudService.read('admin/charge').subscribe({
       next : (chargeResp : any) => {
+        console.log('ASAAAAAAAAAAAAAAAAA', ([...new Set(chargeResp.data.map( (item:any) => item.category1))] as string[])
+        
+      )
         JsonHelpers.setSubFieldDropdown(
           formFields,
           'template_items',
@@ -67,7 +73,7 @@ export class ProformaTemplateComponent implements OnInit {
     }
   }
 
-  onSubFormChange(item : {subform : string, key : string, value: string, form : FormGroup} ){
+  onSubFormChange(item : {subform : string, key : string, value: any, form : FormGroup} ){
     if(item.subform == "template_items" && item.key == "item_category1"){
       JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_category1',item.value);
       this.crudService.qyeryByValue('Charge',{ "category1" : item.value }).subscribe({
@@ -132,11 +138,18 @@ export class ProformaTemplateComponent implements OnInit {
         this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2, "description" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){
+              console.log('ITEM',resp.data)
               JsonHelpers.setSubFieldValue(
                 this.formFields,
                 'template_items',
                 'item_price',
-                resp.data && resp.data.length > 0 ? resp.data[0].price : 0
+                resp.data && resp.data.length > 0 ? resp.data[0].price : 'aaaaaaaaaaa'
+              )
+              JsonHelpers.setSubFieldValue(
+                this.formFields,
+                'template_items',
+                'item_amount',
+                resp.data && resp.data.length > 0 ? resp.data[0].price : 'aaaaaaaaaaa'
               )
               JsonHelpers.setSubFieldValue(
                 this.formFields,
@@ -144,10 +157,66 @@ export class ProformaTemplateComponent implements OnInit {
                 'item_order',
                 resp.data && resp.data.length > 0 ? resp.data[0].category_order : 0
               )
+              JsonHelpers.setSubFieldValue(
+                this.formFields,
+                'template_items',
+                'item_remarks',
+                resp.data && resp.data.length > 0 ? resp.data[0].notes : ''
+              )
+              
+              JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_discount_percent',0);
+              JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_discount_value',0);
+              JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_total',resp.data[0].price);
             }
           }
         })
       }
     }
+    if(item.subform == "template_items" && (item.key == "item_price" || item.key == "item_qty") ){
+      if(item.key == "item_price"){
+        let quantity = item.form.get('item_qty')?.value;
+        JsonHelpers.setSubFieldValue(
+          this.formFields,
+          'template_items',
+          'item_amount',
+          quantity * item.value
+        )
+        JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_price',item.value);
+        JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_total', (quantity * item.value).toFixed(2));
+      }
+      else{
+        let price = item.form.get('item_price')?.value;
+        JsonHelpers.setSubFieldValue(
+          this.formFields,
+          'template_items',
+          'item_amount',
+          price * item.value
+        )
+        JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_qty',item.value);
+        JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_total', (price * item.value).toFixed(2));
+      }
+      JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_discount_percent',0);
+      JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_discount_value', 0);
+    }
+
+    if(item.subform == "template_items" && item.key == "item_discount_value"){
+      let amount : number = item.form.get('item_amount')?.value;
+      if(item.value <= amount){
+        JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_discount_value',item.value);
+        JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_discount_percent', ((item.value * 100)/amount).toFixed(2));
+        JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_total', (amount - item.value).toFixed(2));
+      }
+    }
+
+    if(item.subform == "template_items" && item.key == "item_discount_percent"){
+      let amount : number = item.form.get('item_amount')?.value;
+      if(item.value <= 100){
+        JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_discount_percent',item.value);
+        JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_discount_value', ((amount * item.value)/100).toFixed(2));
+        JsonHelpers.setSubFieldValue(this.formFields,'template_items','item_total', (amount - ((amount * item.value)/100)).toFixed(2));
+      }
+    }
+
   }
+  
 }

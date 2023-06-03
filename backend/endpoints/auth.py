@@ -61,6 +61,7 @@ def login():
                 'token' : token 
             }, 200
     except Exception as e:
+        print('AUTH EXCEPTION',str(e))
         return {
             'login' : False,
             'message' : 'An error occured: ' + str(e) 

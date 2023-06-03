@@ -294,6 +294,21 @@
                     "width": 33,
                     "innerWidth": 98,
                     "align": "center center"
+                },
+                {
+                    "key": "item_remarks",
+                    "order": 100,
+                    "type": "TextBox",
+                    "label": "Remarks",
+                    "options": [],
+                    "enabled": true,
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 255,
+                    "regexPattern": "",
+                    "width": 100,
+                    "innerWidth": 98,
+                    "align": "center center"
                 }
             ],
             "tableColumns": [

@@ -164,7 +164,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_debosit_bank",
+                    "key": "item_deposit_bank",
                     "order": 60,
                     "type": "TextBox",
                     "label": "Deposit Bank",
