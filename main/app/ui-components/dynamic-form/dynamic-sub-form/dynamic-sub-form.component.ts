@@ -168,6 +168,9 @@ export class DynamicSubFormComponent implements OnInit {
           }
           else{
             field.value = obj[key];
+            if(field.type != FormFieldType.PDF){
+              console.log('key',key,'value',obj[key])
+            }
           }
         }
       });

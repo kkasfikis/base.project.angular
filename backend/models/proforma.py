@@ -11,7 +11,8 @@ class ProformaItem(svc.db.EmbeddedDocument):
     item_amount = svc.db.FloatField(min_value=0)                                    #	N
     item_discount_value = svc.db.FloatField(min_value=0)                           #	N
     item_discount_percent = svc.db.FloatField(min_value=0)                            #	N
-    item_total = svc.db.FloatField(min_value=0)         
+    item_total = svc.db.FloatField(min_value=0)       
+    item_remarks = svc.db.StringField()  
 
 class Proforma(svc.db.Document):
     proforma_type = svc.db.StringField(required = True, min_length=0, max_length= 255)   #	T   "Proforma","Debit Note", "Credit Note", "Disbursement Account"
