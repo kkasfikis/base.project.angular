@@ -36,14 +36,6 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
   
   ngOnInit(): void {
     this.form = this.formService.toFormGroup(this.formFields)
-    // this.formFields
-    //   .forEach( (x:BehaviorSubject<FormFieldBase> | BehaviorSubject<SubForm>) => {
-    //     if(x instanceof BehaviorSubject && x.getValue() instanceof FormFieldBase){
-    //       let ff = x.getValue() as FormFieldBase;
-    //       console.log('Setting value for :', ff.key, ff.value)
-    //       this.form.controls[ff.key].patchValue(ff.value, {onlySelf: false, emitEvent: true});
-    //     }
-    //   })
     this.enabledSub = this.enabled.pipe(takeUntil(this.ngUnsubscribe)).subscribe({
       next : (enabled : boolean) => {
           if(enabled){
@@ -71,10 +63,8 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
               invalid.push(name);
           }
       }
-      console.log('VALIDATION ERROR !',invalid,this.form)
       return;
     }
-    console.log('Submitted Data : ', JSON.stringify(this.getFormData()))
     this.onFormSubmit.emit(this.getFormData());
   }
 
@@ -119,7 +109,6 @@ export class DynamicFormComponent implements OnInit,OnDestroy {
         obj[subform.key] = subform.tableData;
       }
     })    
-    console.log('submitted form',obj)
     return obj;
   }
 }

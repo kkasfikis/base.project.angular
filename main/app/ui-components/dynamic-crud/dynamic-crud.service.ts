@@ -38,9 +38,8 @@ export class DynamicCrudService {
     let formData = new FormData();
     
     await Promise.all( Object.keys(item).map( async (key : string) => {
-      console.log('key',key)
       if(key.includes('_file') && !!item[key] && item[key].length > 0){
-        const blob =  this.b64toBlob(item[key])//await fetch(`${item[key]}`).then(res => res.blob());
+        const blob =  this.b64toBlob(item[key])
         formData.append(key, blob)
         delete item[key]
       }
@@ -98,9 +97,7 @@ export class DynamicCrudService {
     let formData = new FormData();
     
    await Promise.all( Object.keys(item).map( async (key : string) => {
-      console.log('key',key)
       if(key.includes('_file') && !!item[key] && item[key].length > 0){
-        
         const blob = this.b64toBlob(item[key])
         formData.append(key, blob)
         delete item[key]

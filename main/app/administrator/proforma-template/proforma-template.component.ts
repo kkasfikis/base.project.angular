@@ -27,7 +27,6 @@ export class ProformaTemplateComponent implements OnInit {
   filterFields : FilterField[] = []
 
   ngOnInit(): void {
-    console.log('Converting Proforma fields from JSON ....')
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;
@@ -42,9 +41,6 @@ export class ProformaTemplateComponent implements OnInit {
   initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     this.crudService.read('admin/charge').subscribe({
       next : (chargeResp : any) => {
-        console.log('ASAAAAAAAAAAAAAAAAA', ([...new Set(chargeResp.data.map( (item:any) => item.category1))] as string[])
-        
-      )
         JsonHelpers.setSubFieldDropdown(
           formFields,
           'template_items',
@@ -138,7 +134,6 @@ export class ProformaTemplateComponent implements OnInit {
         this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2, "description" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){
-              console.log('ITEM',resp.data)
               JsonHelpers.setSubFieldValue(
                 this.formFields,
                 'template_items',

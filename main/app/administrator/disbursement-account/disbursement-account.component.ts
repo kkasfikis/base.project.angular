@@ -27,7 +27,6 @@ export class DisbursementAccountComponent implements OnInit {
   filterFields : FilterField[] = []
 
   ngOnInit(): void {
-    console.log('Converting Proforma fields from JSON ....')
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;

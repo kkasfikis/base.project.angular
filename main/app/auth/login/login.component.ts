@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
-    console.log('Form fields:', this.formFields)
   }
 
   login(data : any){

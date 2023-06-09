@@ -25,9 +25,7 @@ export class PortComponent implements OnInit {
 
   filterFields : FilterField[] = []
 
-  ngOnInit(): void {
-    console.log('Converting Port fields from JSON ....')
-    
+  ngOnInit(): void {    
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;

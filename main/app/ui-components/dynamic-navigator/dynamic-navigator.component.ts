@@ -47,7 +47,6 @@ export class DynamicNavigatorComponent implements OnInit,AfterViewInit,OnDestroy
       else{
         this.isLoading = true;
       }
-      console.log('set loading',this.isLoading);
     })
   }
 

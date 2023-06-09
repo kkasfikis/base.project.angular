@@ -78,6 +78,22 @@ import { DatePipe } from '@angular/common';
 import { CreditNoteComponent } from './administrator/credit-note/credit-note.component';
 import { DebitNoteComponent } from './administrator/debit-note/debit-note.component';
 import { DisbursementAccountComponent } from './administrator/disbursement-account/disbursement-account.component';
+
+
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+
+@Pipe({
+  name: 'safe'
+})
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url : string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,7 +140,8 @@ import { DisbursementAccountComponent } from './administrator/disbursement-accou
     ClientBreakdownComponent,
     CreditNoteComponent,
     DebitNoteComponent,
-    DisbursementAccountComponent
+    DisbursementAccountComponent,
+    SafePipe 
   ],
   imports: [
     BrowserModule,
@@ -166,3 +183,4 @@ import { DisbursementAccountComponent } from './administrator/disbursement-accou
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

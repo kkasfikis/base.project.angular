@@ -25,7 +25,6 @@ export class VesselComponent implements OnInit {
   filterFields : FilterField[] = []
 
   ngOnInit(): void {
-    console.log('Converting Vessel fields from JSON ....')
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;

@@ -352,7 +352,6 @@ export class DynamicCrudComponent implements OnInit {
     if(isCreate){
       this.originalCreateFormFields.forEach( (item:any) => {
         let x = this.createFormFields.find( (x:any) => x.getValue().key == item.key )
-        console.log('clean create',x);
         x?.next(item);
       });
     }
@@ -422,7 +421,6 @@ export class DynamicCrudComponent implements OnInit {
               else{
                 let sField = field.getValue();
                 if(sField.key == key){
-                  console.log(key,obj[key])
                   if(typeof obj[key] === 'object' && '_id' in obj[key]){
                     sField.value = obj[key]['_id'];
                   }
@@ -439,7 +437,6 @@ export class DynamicCrudComponent implements OnInit {
         })
         this.loadingService.setLoading(false);
         this.beforeUpdateActions(this.updateFormFields)
-        console.log('After update actions')
         this.switchMode('update')
       } 
     })
@@ -556,29 +553,5 @@ export class DynamicCrudComponent implements OnInit {
     this.read();
   }
 
-  generatePDF(){
-    // const doc = document.implementation.createHTMLDocument();
-    // doc.head.innerHTML = this.reportHeader
-    // doc.body.title = this.reportTitle
-    // doc.body.innerHTML = document.getElementById('infoContainer')?.innerHTML!;
-    // console.log('generating report',doc.body.innerHTML)
-    // const blob = new Blob([doc.documentElement.outerHTML], { type: 'application/pdf' });
-    // this.reportUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blob));
-    // console.log('Generated blob : ',blob)
-  
-
-    let DATA: any = document.getElementById('infoContainer');
-    html2canvas(DATA).then((canvas) => {
-      let fileWidth = 208;
-      let fileHeight = (canvas.height * fileWidth) / canvas.width;
-      const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage('./assets/images/user.jpg','PNG',0, 0 ,50,50)
-      PDF.addImage(FILEURI, 'PNG', 0, 60, fileWidth, fileHeight);
-    
-      PDF.save('angular-demo.pdf');
-    });
-  }
 
 }

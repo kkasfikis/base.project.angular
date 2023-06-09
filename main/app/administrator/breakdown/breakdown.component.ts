@@ -30,7 +30,6 @@ export class BreakdownComponent implements OnInit {
   filterFields : FilterField[] = []
 
   ngOnInit(): void {
-    console.log('Converting CSOA fields from JSON ....')
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;
@@ -101,13 +100,12 @@ export class BreakdownComponent implements OnInit {
       this.crudService.infoById('admin/call',item.value).subscribe({
         next : (resp:any) => {
           let call = resp.data
-          console.log(resp.data)
           JsonHelpers.setFieldValue(this.formFields,'call_estimated_date',call.estimated_date);
-          JsonHelpers.setFieldValue(this.formFields,'call_vessel',call.vessel);
-          JsonHelpers.setFieldValue(this.formFields,'call_client',call.client);
+          JsonHelpers.setFieldValue(this.formFields,'call_vessel',call.vessel._id);
+          JsonHelpers.setFieldValue(this.formFields,'call_client',call.client._id);
           JsonHelpers.setFieldValue(this.formFields,'call_client_alias',call.client_alias);
           JsonHelpers.setFieldValue(this.formFields,'call_vessel_flag',call.vessel_flag);
-          JsonHelpers.setFieldValue(this.formFields,'call_port',call.port);
+          JsonHelpers.setFieldValue(this.formFields,'call_port',call.port._id);
         }
       })
     }
@@ -121,7 +119,6 @@ export class BreakdownComponent implements OnInit {
           next : (resp : any) => {
             if(resp.query){
               const data = [...new Set(resp.data.map( (item:any) => item.category2))] as string[]; 
-              console.log(this.formFields)
               JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_subcategory','');  
               JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_description',''); 
               JsonHelpers.setSubFieldEnabled(this.formFields,'breakdown_items','item_subcategory',true); 
@@ -149,7 +146,6 @@ export class BreakdownComponent implements OnInit {
       JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_subcategory',item.value);
       let category = item.form.get('item_category')?.value;
       if(category != undefined && !!item.value  && item.value.length > 0){
-        console.log('categorry1 changed')
         this.crudService.qyeryByValue('Charge',{ "category1" : category, "category2" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){
@@ -181,7 +177,6 @@ export class BreakdownComponent implements OnInit {
       let category1 = item.form.get('item_category')?.value;
       let category2 = item.form.get('item_subcategory')?.value;
       if(category1 != undefined && category2 != undefined && !!item.value && item.value.length > 0){
-        console.log('description changed')
         this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2, "description" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){

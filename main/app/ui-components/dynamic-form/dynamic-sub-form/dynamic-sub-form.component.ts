@@ -101,7 +101,6 @@ export class DynamicSubFormComponent implements OnInit {
     else{
       this.subformField.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
         next : (field : SubForm) => {
-          console.log('New subform value')
           this.initSubForm(field)
         }
       })
@@ -119,13 +118,6 @@ export class DynamicSubFormComponent implements OnInit {
       let newItem = Object.assign({},item);
       let actions : TableAction[] = [];
       
-      // Object.keys(item).forEach( (key:string) => {
-      //   console.log(key,item[key])
-      //   if(typeof item[key] === 'object' && '$date' in item[key]){
-      //     item[key] = new Date(item[key]['$date']).toString();
-      //   }
-      // });
-
       if(subform.hasDelete){
         actions.push(
           {
@@ -181,7 +173,14 @@ export class DynamicSubFormComponent implements OnInit {
       });
     });
 
-    (this.subformField instanceof SubForm) ? this.subformField = subform : (this.subformField as BehaviorSubject<SubForm>).next(subform);
+    if(this.subformField instanceof SubForm){
+      this.subformField = subform;
+      this.initSubForm(this.subformField);
+    }
+    else{
+      this.subformField.next(subform);
+    }
+
     this.editInternalId = item.internalId;
     this.formActions = [
       {
@@ -223,7 +222,6 @@ export class DynamicSubFormComponent implements OnInit {
               invalid.push(name);
           }
       }
-      console.log('VALIDATION ERROR !',invalid,this.form)
       return;
     }
     let subform = ((this.subformField instanceof SubForm) 

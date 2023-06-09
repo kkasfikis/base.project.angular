@@ -24,7 +24,6 @@ export class StaffComponent implements OnInit {
   filterFields : FilterField[] = []
 
   ngOnInit(): void {
-    console.log('Converting Staff fields from JSON ....')
     this.convertFromJson();
   }
 

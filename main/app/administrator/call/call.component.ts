@@ -39,7 +39,6 @@ export class CallComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-    console.log('Converting Call fields from JSON ....')
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;
@@ -129,8 +128,6 @@ export class CallComponent implements OnInit, OnDestroy{
     if(item.key == 'port'){
       this.crudService.infoById('admin/port',item.value).subscribe({
         next : (resp : any) => {
-
-          console.log('PORT RESPONSE',resp)
           JsonHelpers.setFieldValue(this.formFields,'port_anchorage',resp.data.anchorage)
         }
       });
@@ -161,7 +158,6 @@ export class CallComponent implements OnInit, OnDestroy{
     if(item.key == 'agent'){
       this.crudService.infoById('admin/agent',item.value).subscribe({
         next : (resp : any) => {
-          console.log('AGENT',resp)
           JsonHelpers.setFieldDropdown(
             this.formFields,
             'agent_person_in_charge',

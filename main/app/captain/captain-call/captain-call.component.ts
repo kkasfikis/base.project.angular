@@ -33,7 +33,6 @@ export class CaptainCallComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Converting Call fields from JSON ....')
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, ElementRef, ViewChild, Renderer2, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output, OnDestroy, ElementRef, ViewChild, Renderer2, AfterViewInit, OnChanges, SimpleChanges, SecurityContext } from '@angular/core';
 import { FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { BehaviorSubject, Subject, Subscription, takeUntil } from 'rxjs';
@@ -19,7 +19,7 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
   localFormField! : FormFieldBase;
   localFormFieldType : typeof FormFieldType = FormFieldType
 
-  selectedFilePath : SafeResourceUrl = '';
+  selectedFilePath : string = '';
 
   private ngUnsubscribe = new Subject<void>();
   constructor(private elementRef : ElementRef,private renderer: Renderer2,public sanitizer: DomSanitizer,) { }
@@ -49,13 +49,13 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
     if(field.enabled) {this.form.get(this.localFormField.key)?.enable();} else { this.form.get(this.localFormField.key)?.disable(); }
     this.form.get(this.localFormField.key)?.addValidators(validators);
     this.form.controls[this.localFormField.key].patchValue(field.value, {onlySelf: false, emitEvent: true});
-    console.log('FILE PDF',this.localFormField.key,this.localFormField.value)
+
     if(this.localFormField.type == FormFieldType.PDF && !!this.localFormField.value){
-      
       let contentType = ''
       contentType = 'data:application/pdf;base64,'
-      this.localFormField.value = contentType + this.localFormField.value
-      this.selectedFilePath = this.sanitizer.bypassSecurityTrustResourceUrl(this.localFormField.value);
+      
+      this.localFormField.value = (this.localFormField.value.includes('data:application/pdf;base64,')) ? this.localFormField.value : contentType + this.localFormField.value
+      this.selectedFilePath = this.sanitizer.sanitize(SecurityContext.RESOURCE_URL, this.sanitizer.bypassSecurityTrustResourceUrl(this.localFormField.value))!;
     }
     
     if(this.localFormField.type == FormFieldType.Select && this.localFormField.value != undefined && this.localFormField.value.length > 0){      
@@ -123,8 +123,6 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
   }
 
   onFileSelected(event: any) {
-
-    console.log('on file selected', this.form.controls)
     const file: File = event.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -137,7 +135,7 @@ export class DynamicFormFieldComponent implements OnInit, OnDestroy,AfterViewIni
          this.form.controls[this.localFormField.key].setValue(fileData)
       };
       reader.readAsDataURL(file);
-      this.selectedFilePath = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
+      this.selectedFilePath = this.sanitizer.sanitize(SecurityContext.RESOURCE_URL, this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file)))!;//this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
     }
     this.onFieldChange.emit( {key: this.localFormField.key, value: this.localFormField.value, form: this.form})
   }

@@ -60,7 +60,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   setMenuOptions(){
     if(this.loggedIn){
       let role = this.authService.getUser()?.role;
-      console.log('ROLE',this.authService.getUser()?.role)
       if(!!role && role.length > 0){
         let result = JsonHelpers.initNavigatorFromJson(data,role)
         this.navbarOptions = result.navbar;

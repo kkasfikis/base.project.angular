@@ -27,7 +27,6 @@ export class DebitNoteComponent implements OnInit {
   filterFields : FilterField[] = []
 
   ngOnInit(): void {
-    console.log('Converting Proforma fields from JSON ....')
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;
@@ -77,12 +76,10 @@ export class DebitNoteComponent implements OnInit {
     if(item.subform == "debit_items" && item.key == "item_category1"){
       JsonHelpers.setSubFieldValue(this.formFields,'debit_items','item_category1',item.value);
       if(!!item.value && item.value.length > 0){
-        console.log('categorry changed')
         this.crudService.qyeryByValue('Charge',{ "category1" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){
               const data = [...new Set(resp.data.map( (item:any) => item.category2))] as string[]; 
-              console.log(this.formFields)
               JsonHelpers.setSubFieldValue(this.formFields,'debit_items','item_category2','');  
               JsonHelpers.setSubFieldValue(this.formFields,'debit_items','item_description',''); 
               JsonHelpers.setSubFieldEnabled(this.formFields,'debit_items','item_category2',true); 
@@ -110,7 +107,6 @@ export class DebitNoteComponent implements OnInit {
       JsonHelpers.setSubFieldValue(this.formFields,'debit_items','item_category2',item.value);
       let category = item.form.get('item_category1')?.value;
       if(category != undefined && !!item.value  && item.value.length > 0){
-        console.log('categorry1 changed')
         this.crudService.qyeryByValue('Charge',{ "category1" : category, "category2" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){
@@ -142,7 +138,6 @@ export class DebitNoteComponent implements OnInit {
       let category1 = item.form.get('item_category1')?.value;
       let category2 = item.form.get('item_category2')?.value;
       if(category1 != undefined && category2 != undefined && !!item.value && item.value.length > 0){
-        console.log('description changed')
         this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2, "description" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){
@@ -152,7 +147,6 @@ export class DebitNoteComponent implements OnInit {
                 'item_price',
                 resp.data && resp.data.length > 0 ? resp.data[0].price : 0
               );
-              console.log('RESP DATA',resp.data)
               JsonHelpers.setSubFieldValue(
                 this.formFields,
                 'debit_items',

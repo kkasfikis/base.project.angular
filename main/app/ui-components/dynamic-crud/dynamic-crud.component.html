@@ -33,10 +33,7 @@
     
     <div *ngIf="isOnInfoMode"  fxLayout="column">
         <div fxFlex="100" fxLayoutAlign="center center" fxLayoutAlign="flex-end">
-            <div fxLayoutAlign="flex-end" *ngIf="hasReport">
-                <button *ngIf="!reportUrl" mat-raised-button color="primary" style="margin-right:10px" (click)="generatePDF()"><mat-icon>report</mat-icon>&nbsp;Generate Report</button>
-                <a *ngIf="reportUrl" [href]="reportUrl" download="fm_report.pdf">Download PDF</a>
-            </div>
+            
             <div fxLayoutAlign="flex-end" *ngIf="hasCreate">
                 <button mat-raised-button color="warn" (click)="switchMode('read')"><mat-icon>cancel</mat-icon>&nbsp;Cancel</button>
             </div>
