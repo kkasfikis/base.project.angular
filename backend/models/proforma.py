@@ -17,7 +17,6 @@ class ProformaItem(svc.db.EmbeddedDocument):
 class Proforma(svc.db.Document):
     proforma_type = svc.db.StringField(required = True, min_length=0, max_length= 255)   #	T   "Proforma","Debit Note", "Credit Note", "Disbursement Account"
     proforma_title = svc.db.StringField(min_length=0, max_length= 255)    
-    proforma_balance = svc.db.FloatField(min_value=0)                 #	N	-1,0,1 
     proforma_date = svc.db.DateTimeField()                     #	D
     proforma_no = svc.db.StringField(unique = True, min_length=0, max_length= 255)       #	N	invno+1
     client = svc.db.ReferenceField(Client, reverse_delete_rule=1)                             #	T   from Call

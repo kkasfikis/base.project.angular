@@ -4,7 +4,7 @@ import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.mo
 import { DynamicCrudService } from 'main/app/ui-components/dynamic-crud/dynamic-crud.service';
 import { FormFieldBase, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { InfoField, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
-import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
+import { TableAction, TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
 import { JsonHelpers } from 'main/app/ui-components/scripts/json-helpers';
 import { BehaviorSubject, forkJoin } from 'rxjs';
 import  * as data from './proforma-template.ui-config.json'
@@ -36,7 +36,6 @@ export class ProformaTemplateComponent implements OnInit {
   }
 
 
-  
 
   initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     this.crudService.read('admin/charge').subscribe({

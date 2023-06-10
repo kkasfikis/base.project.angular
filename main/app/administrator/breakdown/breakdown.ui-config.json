@@ -257,7 +257,7 @@
                 },
                
                 {
-                    "key": "item_category",
+                    "key": "item_category1",
                     "order": 30,
                     "type": "Select",
                     "label": "Category",
@@ -272,7 +272,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_subcategory",
+                    "key": "item_category2",
                     "order": 40,
                     "type": "Select",
                     "label": "Subcategory",
@@ -375,7 +375,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_remark",
+                    "key": "item_remarks",
                     "order": 150,
                     "type": "TextArea",
                     "label": "Remarks",

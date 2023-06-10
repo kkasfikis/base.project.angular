@@ -4,12 +4,12 @@ from models.call import Call
 
 class BreakdownItem(svc.db.EmbeddedDocument):
     item_date = svc.db.DateTimeField()                          #	D
-    item_category = svc.db.StringField(min_length=0, max_length= 255)                                    #	T
-    item_subcategory = svc.db.StringField(min_length=0, max_length= 255)                                 #	T
+    item_category1 = svc.db.StringField(min_length=0, max_length= 255)                                    #	T
+    item_category2 = svc.db.StringField(min_length=0, max_length= 255)                                 #	T
     item_description = svc.db.StringField(min_length=0, max_length= 255)                                 #	T
     item_order = svc.db.IntField(min_value=0)                                       #	N
     item_price = svc.db.FloatField(min_value=0)                                       #	N
-    item_remark = svc.db.StringField(min_length=0, max_length= 255)                                      #	T
+    item_remarks = svc.db.StringField(min_length=0, max_length= 255)                                      #	T
     item_debit = svc.db.FloatField(min_value=0)                                       #	N
     item_qty = svc.db.IntField(min_value=0)                                         #	N
     item_link_file = svc.db.FileField(required=False)    

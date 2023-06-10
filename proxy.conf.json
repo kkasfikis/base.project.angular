@@ -254,5 +254,13 @@
             "^/admin/disbursement" : ""
         },
         "changeOrigin" : true
+    },
+    "/report/generate":{
+        "target" : "http://localhost:8081/report/generate",
+        "secure" : false,
+        "pathRewrite" : {
+            "^/report/generate" : ""
+        },
+        "changeOrigin" : true
     }
 }

@@ -172,4 +172,8 @@ export class DynamicCrudService {
     }
     return this.http.post('queryByValue', data, {...options});
   }
+
+  generateReport(collection:string, id : string){
+    return this.http.get('report/generate/' + collection + "/" + id, {headers:{"Accept": "application/pdf"}, responseType: "blob"} )
+  }
 }

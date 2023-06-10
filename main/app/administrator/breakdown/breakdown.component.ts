@@ -3,7 +3,7 @@ import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.mo
 import { DynamicCrudService } from 'main/app/ui-components/dynamic-crud/dynamic-crud.service';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
 import { InfoField, InfoType, SubFormInfo } from 'main/app/ui-components/dynamic-info/dynamic-info.models';
-import { TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
+import { TableAction, TableColumn } from 'main/app/ui-components/dynamic-table/dynamic-table.models';
 import { BehaviorSubject, forkJoin } from 'rxjs';
 import * as data from './breakdown.ui-config.json'
 import { JsonHelpers } from 'main/app/ui-components/scripts/json-helpers';
@@ -28,7 +28,29 @@ export class BreakdownComponent implements OnInit {
   infoFields : (InfoField|SubFormInfo)[] = []
 
   filterFields : FilterField[] = []
-
+  tableActions = [
+    {
+      icon : 'file_copy',
+      text : '',
+      tooltip : '',
+      color : 'blue',
+      callbackFunc : this.generateReport.bind(this),
+      params : {}
+    } as TableAction
+  ]
+  
+  generateReport(payload : any){
+    console.log('PAYLOAD',payload)
+    this.crudService.generateReport('Breakdown',payload._id).subscribe({
+      next : (resp : any) => {
+        console.log('response',resp)
+        const fileURL = URL.createObjectURL(resp);
+        window.open(fileURL, '_blank');
+      }
+    });
+    //window.open('report/generate/Proforma/' + payload._id, '_blank');
+  }
+  
   ngOnInit(): void {
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;

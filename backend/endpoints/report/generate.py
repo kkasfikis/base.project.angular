@@ -6,7 +6,7 @@ from ..crud import BaseCrud
 from flask_jwt_extended import create_access_token,jwt_required, get_jwt_identity
 import json
 from datetime import datetime
-from models.report import CreditNoteReport
+from models.report import Report
 from fpdf import fpdf
 
 api = Namespace('report/generate',description = 'Report Generation')
@@ -17,15 +17,39 @@ class Generate(Resource):
 
     @cross_origin()
     def get(self, report_type : str, id : str):
-        #data = request.get_json()
-        pdf = self._generate_debit_note_report()
-        response = make_response(pdf.output(dest='S').encode('latin-1'))
-        response.headers.set('Content-Disposition','attachment',filename = 'report.pdf')
-        response.headers.set('Content-Type','application/pdf')
+        try:
+            
+            pdf = Report()
+            record = BaseCrud.record(report_type,id)[0]['data']
+            if report_type == 'Proforma':
+                pdf.generate_proforma_report(record)
+            elif report_type == 'Breakdown': 
+                pdf.generate_breakdown_report(record)  
+            elif report_type == 'CreditNote':
+                pdf.generate_credit_note_report(record)
+            elif report_type == 'DebitNote':
+                pdf.generate_debit_note_report(record)
+         
+            response = make_response(pdf.output(dest='S').encode('latin-1'))
+            response.headers.set('Content-Disposition','attachment',filename = 'report.pdf')
+            response.headers.set('Content-Type','application/pdf')
+            return response
+            
+        except Exception as e:
+            return {
+                'report' : False,
+                'message' : str(e)
+            },200
+        
+    def _generate_breakdown_report(self):
+        pass
 
-        return response
-    
-    
+    def _generate_proforma_report(self):
+        pass
+
+    def _generate_credit_note_report(self):
+        pass
+
     def _generate_debit_note_report(self):
         credit_items = [
             {
