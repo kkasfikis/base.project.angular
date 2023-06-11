@@ -188,7 +188,6 @@ class Report(FPDF):
 
         def _display_table(items : list):
             self.set_font('Arial', '', 10)
-            remaining_height = self.h - self.y - 10
             #_table_headers()
             
             self.set_y(self.y + 20)
@@ -196,8 +195,10 @@ class Report(FPDF):
             self.set_y(self.y + 10)
             
             for item in items:
-                if (self.get_string_height(item["item_description"], 150)  \
-                    + self.get_string_height(item["item_remarks"], 150) + 30 > remaining_height) :
+                remaining_height = self.h - self.y - 10
+                print(self.get_string_height(item["item_description"], 150),self.get_string_height(item["item_remarks"], 150),remaining_height,self.y,self.h)
+                if (self.get_string_height(item["item_description"], 150) + self.get_string_height(item["item_remarks"], 150) + 30 > remaining_height) :
+                    print('changing page')
                     self.page_number += 1
                     self.add_page()
                     self.ln()
@@ -285,17 +286,16 @@ class Report(FPDF):
 
         def _display_table(items : list):
             self.set_font('Arial', '', 10)
-            remaining_height = self.h - self.y - 10
             #_table_headers()
             self.set_y(self.y + 20)
-            self.cell(50,5, 'Breakdown Items:')
+            self.cell(50, 5, 'Breakdown Items:')
             self.set_y(self.y + 10)
             
 
             for item in items:
-
+                remaining_height = self.h - self.y - 10
                 print(self.get_string_height(item["item_description"], 150),self.get_string_height(item["item_remarks"], 150),remaining_height,self.y,self.h)
-                if (self.y + self.get_string_height(item["item_description"], 150) + self.get_string_height(item["item_remarks"], 150) + 40 > remaining_height) :
+                if (self.get_string_height(item["item_description"], 150) + self.get_string_height(item["item_remarks"], 150) + 30 > remaining_height) :
                     print('changing page')
                     self.page_number += 1
                     self.add_page()
