@@ -59,7 +59,47 @@ export class ProformaComponent implements OnInit {
     this.initMods(this.formFields);
   }
 
+  async subformBeforeUpdate(payload : any){
+    console.log('PAYLOAD',payload)
+    let subform = payload.subform;
+    let subformValue = subform.getValue();
+    let item = payload.item;
+
+    let category1 = item.item_category1;
+    let category2 = item.item_category2;
+    let description = item.item_description;
+
+    forkJoin([
+      this.crudService.qyeryByValue('Charge',{ "category1" : category1 }),
+      this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2 })
+    ]).subscribe(
+    ([categoryResp, descriptionResp] : any[]) => {
+      let category2Field = subformValue.fields.find((x:any)=> x.key == 'item_category2');
+      let descriptionField = subformValue.fields.find((x:any)=> x.key == 'item_description');
+
+      category2Field.options = ([...new Set(categoryResp.data.map( (item:any) => item.category2))] as string[]).map( (x:string) => { return { key : x, value : x} } );
+      category2Field.value = category2;
+      category2Field.enabled = true;
+      category2Field.required = true;
+
+      descriptionField.options = ([...new Set(descriptionResp.data.map( (item:any) => item.description))] as string[]).map( (x:string) => { return { key : x, value : x} } );
+      descriptionField.value = description;
+      descriptionField.enabled = true;
+      descriptionField.required = true;
+
+      subform.next(subformValue);
+    });
+
+    return true;
+  }
+
   initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
+    
+    let subform : BehaviorSubject<SubForm> = formFields.find( (x:any) => x.getValue().key == 'proforma_items') as BehaviorSubject<SubForm>;
+    let subformValue : SubForm = subform?.getValue();
+    subformValue.beforeUpdateActions = this.subformBeforeUpdate.bind(this);
+    subform.next(subformValue);
+
     forkJoin([
       this.crudService.read('admin/predefined'),
       this.crudService.getAttributeWithId('Client','name'),

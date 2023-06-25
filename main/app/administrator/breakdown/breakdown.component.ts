@@ -14,7 +14,7 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './breakdown.component.html',
   styleUrls: ['./breakdown.component.scss']
 })
-export class BreakdownComponent implements OnInit,AfterViewInit {
+export class BreakdownComponent implements OnInit {
 
   beforeCreateUpdateActions = this.initMods.bind(this);
  
@@ -44,39 +44,58 @@ export class BreakdownComponent implements OnInit,AfterViewInit {
         window.open(fileURL, '_blank');
       }
     });
-    //window.open('report/generate/Proforma/' + payload._id, '_blank');
   }
   
   ngOnInit(): void {
-    let subform : any = data.fields.find((x:any) => x.id == 'breakdown_items')
-    subform.beforeUpdateActions = this.subformBeforeUpdate.bind(this);
-    console.log('DATAAAA',data); 
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
-    console.log('FORM FIELDS AFTER INITIALIZATION 111111',this.formFields)
     this.initMods(this.formFields);
-    console.log('FORM FIELDS AFTER INITIALIZATION',this.formFields)
-  }
-
-  ngAfterViewInit(): void {
-    //let subformSubject = this.formFields.find( (x:any) => x.getValue().key == 'breakdown_items')! as BehaviorSubject<SubForm>;
-    //let subform  : SubForm = this.formFields.find( (x:any) => x.getValue().key == 'breakdown_items')!.getValue() as SubForm;
-    //subform = JSON.parse(JSON.stringify(subform));
-    //subform.beforeUpdateActions = this.subformBeforeUpdate.bind(this);
-    //console.log('SUBFORM BEFORE PROPAGATE',subform)
-    //subformSubject.next(JSON.parse(JSON.stringify(subform))) 
-    //console.log('AFTER SUBFORM INITIALIZATION', subform,new BehaviorSubject<SubForm>(subform),subformSubject.getValue())
   }
 
   async subformBeforeUpdate(payload : any){
     console.log('PAYLOAD',payload)
+    let subform = payload.subform;
+    let subformValue = subform.getValue();
+    let item = payload.item;
+
+    let category1 = item.item_category1;
+    let category2 = item.item_category2;
+    let description = item.item_description;
+
+    forkJoin([
+      this.crudService.qyeryByValue('Charge',{ "category1" : category1 }),
+      this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2 })
+    ]).subscribe(
+    ([categoryResp, descriptionResp] : any[]) => {
+      let category2Field = subformValue.fields.find((x:any)=> x.key == 'item_category2');
+      let descriptionField = subformValue.fields.find((x:any)=> x.key == 'item_description');
+
+      category2Field.options = ([...new Set(categoryResp.data.map( (item:any) => item.category2))] as string[]).map( (x:string) => { return { key : x, value : x} } );
+      category2Field.value = category2;
+      category2Field.enabled = true;
+      category2Field.required = true;
+
+      descriptionField.options = ([...new Set(descriptionResp.data.map( (item:any) => item.description))] as string[]).map( (x:string) => { return { key : x, value : x} } );
+      descriptionField.value = description;
+      descriptionField.enabled = true;
+      descriptionField.required = true;
+
+      subform.next(subformValue);
+    });
+
     return true;
   }
   
   initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
+    
+    let subform : BehaviorSubject<SubForm> = formFields.find( (x:any) => x.getValue().key == 'breakdown_items') as BehaviorSubject<SubForm>;
+    let subformValue : SubForm = subform?.getValue();
+    subformValue.beforeUpdateActions = this.subformBeforeUpdate.bind(this);
+    subform.next(subformValue);
+
     forkJoin([
       this.crudService.read('admin/predefined'),
       this.crudService.read('admin/charge'),
@@ -84,12 +103,13 @@ export class BreakdownComponent implements OnInit,AfterViewInit {
       this.crudService.getAttributeWithId('Client','name'),
       this.crudService.getAttributeWithId('Vessel','vessel_name'),
       this.crudService.getAttributeWithId('Call','estimated_date,vessel,vessel_flag,client,client_alias,port'),
-      this.crudService.getAttributeWithId('Proforma','proforma_no,client,client_alias')
+      this.crudService.getAttributeWithId('Proforma','proforma_no,client,client_alias'),
+      this.crudService.infoById('admin/call',(formFields.find( (x:any) => x.getValue().key == 'call' )!.getValue() as FormFieldBase).value)
     ]).subscribe(
-    ([predefinedResp,chargeResp,portResp,clientResp,vesselResp,callResp,proformaResp] : any[]) => {
+    ([predefinedResp,chargeResp,portResp,clientResp,vesselResp,callResp,proformaResp,selectedCallResp] : any[]) => {
       if(predefinedResp.read){
-        
-        console.log('AAAAAAAAAAAA',portResp,clientResp,vesselResp,callResp,proformaResp)
+
+        let selectedCall = selectedCallResp.data;
         JsonHelpers.setSubFieldDropdown(
           formFields,
           'breakdown_items',
@@ -104,16 +124,30 @@ export class BreakdownComponent implements OnInit,AfterViewInit {
             }
           )],
         )
+        let calls = callResp.data;
+        JsonHelpers.setReferenceFieldDropdown(formFields,'call', 'estimated_date,vessel.vessel_name,vessel_flag,client.name,client_alias,port.name', calls)
+
         let ports = portResp.data;  
         JsonHelpers.setReferenceFieldDropdown(formFields,'call_port', 'name', ports)
+
         let clients = clientResp.data;
         JsonHelpers.setReferenceFieldDropdown(formFields,'call_client', 'name', clients)
+        
         let vessels = vesselResp.data;
         JsonHelpers.setReferenceFieldDropdown(formFields,'call_vessel','vessel_name',vessels)
-        let calls = callResp.data;
-        JsonHelpers.setReferenceFieldDropdown(formFields,'call','estimated_date,vessel.vessel_name,vessel_flag,client.name,client_alias,port.name',calls)
+        
         let proformas = proformaResp.data;
         JsonHelpers.setReferenceFieldDropdown(formFields,'proforma','proforma_no,client.name,client_alias',proformas)
+
+        if(selectedCall){
+          JsonHelpers.setFieldValue(formFields,'call',selectedCall._id);
+          JsonHelpers.setFieldValue(formFields,'call_estimated_date',selectedCall.estimated_date);
+          JsonHelpers.setFieldValue(formFields,'call_port',selectedCall.port._id);
+          JsonHelpers.setFieldValue(formFields,'call_client',selectedCall.client._id);
+          JsonHelpers.setFieldValue(formFields,'call_client_alias',selectedCall.client_alias);
+          JsonHelpers.setFieldValue(formFields,'call_vessel',selectedCall.vessel._id);
+          JsonHelpers.setFieldValue(formFields,'call_vessel_flag',selectedCall.vessel_flag);
+        }
 
         let serviceStatus = predefinedResp.data.find( ( x:any ) => x.key == 'serviceStatus' ).values;
         JsonHelpers.setFieldDropdown(formFields,'breakdown_status' , predefinedResp.data.find( ( x:any ) => x.key == 'breakdownStatus' ).values );      
