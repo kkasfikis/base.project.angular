@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FilterField } from 'main/app/ui-components/dynamic-crud/dynamic-crud.models';
 import { DynamicCrudService } from 'main/app/ui-components/dynamic-crud/dynamic-crud.service';
 import { FormFieldBase, FormFieldType, SubForm } from 'main/app/ui-components/dynamic-form/dynamic-form.models';
@@ -14,19 +14,15 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './breakdown.component.html',
   styleUrls: ['./breakdown.component.scss']
 })
-export class BreakdownComponent implements OnInit {
+export class BreakdownComponent implements OnInit,AfterViewInit {
 
   beforeCreateUpdateActions = this.initMods.bind(this);
-
+ 
   constructor(private crudService : DynamicCrudService) { }
 
-
   formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[] = []
-
   tableColumns : TableColumn[] = []
-
   infoFields : (InfoField|SubFormInfo)[] = []
-
   filterFields : FilterField[] = []
   tableActions = [
     {
@@ -52,15 +48,33 @@ export class BreakdownComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    let subform : any = data.fields.find((x:any) => x.id == 'breakdown_items')
+    subform.beforeUpdateActions = this.subformBeforeUpdate.bind(this);
+    console.log('DATAAAA',data); 
     let result = JsonHelpers.convertFromJson(data);
     this.formFields = result.fields;
     this.filterFields = result.filters;
     this.infoFields = result.infos;
     this.tableColumns = result.columns;
+    console.log('FORM FIELDS AFTER INITIALIZATION 111111',this.formFields)
     this.initMods(this.formFields);
+    console.log('FORM FIELDS AFTER INITIALIZATION',this.formFields)
   }
 
+  ngAfterViewInit(): void {
+    //let subformSubject = this.formFields.find( (x:any) => x.getValue().key == 'breakdown_items')! as BehaviorSubject<SubForm>;
+    //let subform  : SubForm = this.formFields.find( (x:any) => x.getValue().key == 'breakdown_items')!.getValue() as SubForm;
+    //subform = JSON.parse(JSON.stringify(subform));
+    //subform.beforeUpdateActions = this.subformBeforeUpdate.bind(this);
+    //console.log('SUBFORM BEFORE PROPAGATE',subform)
+    //subformSubject.next(JSON.parse(JSON.stringify(subform))) 
+    //console.log('AFTER SUBFORM INITIALIZATION', subform,new BehaviorSubject<SubForm>(subform),subformSubject.getValue())
+  }
 
+  async subformBeforeUpdate(payload : any){
+    console.log('PAYLOAD',payload)
+    return true;
+  }
   
   initMods(formFields : (BehaviorSubject<FormFieldBase>|BehaviorSubject<SubForm>)[]){
     forkJoin([
@@ -74,11 +88,12 @@ export class BreakdownComponent implements OnInit {
     ]).subscribe(
     ([predefinedResp,chargeResp,portResp,clientResp,vesselResp,callResp,proformaResp] : any[]) => {
       if(predefinedResp.read){
-
+        
+        console.log('AAAAAAAAAAAA',portResp,clientResp,vesselResp,callResp,proformaResp)
         JsonHelpers.setSubFieldDropdown(
           formFields,
           'breakdown_items',
-          ['item_category'],
+          ['item_category1'],
           [ ([...new Set(chargeResp.data.map( (item:any) => item.category1))] as string[])
             .map( (x: string) => 
             {
@@ -89,7 +104,6 @@ export class BreakdownComponent implements OnInit {
             }
           )],
         )
-
         let ports = portResp.data;  
         JsonHelpers.setReferenceFieldDropdown(formFields,'call_port', 'name', ports)
         let clients = clientResp.data;
@@ -134,21 +148,21 @@ export class BreakdownComponent implements OnInit {
   }
 
   onSubFormChange(item : {subform : string, key : string, value: any, form : FormGroup} ){
-    if(item.subform == "breakdown_items" && item.key == "item_category"){
-      JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_category',item.value);
+    if(item.subform == "breakdown_items" && item.key == "item_category1"){
+      JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_category1',item.value);
       if(!!item.value && item.value.length > 0){
         this.crudService.qyeryByValue('Charge',{ "category1" : item.value }).subscribe({
           next : (resp : any) => {
             if(resp.query){
               const data = [...new Set(resp.data.map( (item:any) => item.category2))] as string[]; 
-              JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_subcategory','');  
+              JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_category2','');  
               JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_description',''); 
-              JsonHelpers.setSubFieldEnabled(this.formFields,'breakdown_items','item_subcategory',true); 
+              JsonHelpers.setSubFieldEnabled(this.formFields,'breakdown_items','item_category2',true); 
               JsonHelpers.setSubFieldEnabled(this.formFields,'breakdown_items','item_description',false);             
               JsonHelpers.setSubFieldDropdown(
                 this.formFields,
                 'breakdown_items',
-                ['item_subcategory'],
+                ['item_category2'],
                 [ data.map( (x:any) => 
                   {
                     return {
@@ -164,9 +178,9 @@ export class BreakdownComponent implements OnInit {
       }
       
     }
-    if(item.subform == "breakdown_items" && item.key == "item_subcategory"){
-      JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_subcategory',item.value);
-      let category = item.form.get('item_category')?.value;
+    if(item.subform == "breakdown_items" && item.key == "item_category2"){
+      JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_category2',item.value);
+      let category = item.form.get('item_category1')?.value;
       if(category != undefined && !!item.value  && item.value.length > 0){
         this.crudService.qyeryByValue('Charge',{ "category1" : category, "category2" : item.value }).subscribe({
           next : (resp : any) => {
@@ -196,8 +210,8 @@ export class BreakdownComponent implements OnInit {
     }
     if(item.subform == "breakdown_items" && item.key == "item_description"){
       JsonHelpers.setSubFieldValue(this.formFields,'breakdown_items','item_description',item.value);
-      let category1 = item.form.get('item_category')?.value;
-      let category2 = item.form.get('item_subcategory')?.value;
+      let category1 = item.form.get('item_category1')?.value;
+      let category2 = item.form.get('item_category2')?.value;
       if(category1 != undefined && category2 != undefined && !!item.value && item.value.length > 0){
         this.crudService.qyeryByValue('Charge',{ "category1" : category1, "category2" : category2, "description" : item.value }).subscribe({
           next : (resp : any) => {

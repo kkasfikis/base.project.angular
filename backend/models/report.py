@@ -273,7 +273,7 @@ class Report(FPDF):
         
         def _blank_fill_dict():
             form_keys = ['breakdown_entry','breakdown_status','breakdown_comment','breakdown_info','breakdown_debit_amount','breakdown_no']
-            subform_keys = ['item_date','item_category','item_subcategory','item_description','item_order','item_price',
+            subform_keys = ['item_date','item_category1','item_category2','item_description','item_order','item_price',
                             'item_remark','item_debit','item_qty']
             for key in form_keys:
                 if key not in breakdown:

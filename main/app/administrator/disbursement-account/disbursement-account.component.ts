@@ -48,7 +48,7 @@ export class DisbursementAccountComponent implements OnInit {
       JsonHelpers.setSubFieldDropdown(
         formFields,
         'disbursement_items',
-        ['item_category'],
+        ['item_category1'],
         [ ([...new Set(chargeResp.data.map( (item:any) => item.category1))] as string[])
           .map( (x: string) => 
           {

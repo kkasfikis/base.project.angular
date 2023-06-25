@@ -58,6 +58,7 @@ export class DynamicSubFormComponent implements OnInit {
   constructor(private formService : DynamicFormService,public dialog : MatDialog) { }
 
   initSubForm(subForm : SubForm){
+    
     this.label = subForm.label ? subForm.label : '';
     this.enabled = subForm.enabled;
     this.formAlign = subForm.align ? subForm.align : 'center center';
@@ -70,7 +71,9 @@ export class DynamicSubFormComponent implements OnInit {
     this.columnSubject.next(subForm.tableColumns)
     this.formField = subForm;
     this.formField.fields = [...subForm.fields];
-
+    console.log('INIT SBUFORM',subForm)
+    this.formField.beforeSubmitActions = subForm.beforeSubmitActions;
+    this.formField.beforeUpdateActions = subForm.beforeUpdateActions; 
     if(!this.form){
       this.form = this.formService.toFormGroup(subForm.fields as FormFieldBase[]);
     }
@@ -101,6 +104,7 @@ export class DynamicSubFormComponent implements OnInit {
     else{
       this.subformField.pipe(takeUntil(this._unsubscribeSignal$)).subscribe({
         next : (field : SubForm) => {
+          console.log('RECEIVED FIELD',field)
           this.initSubForm(field)
         }
       })
@@ -156,45 +160,60 @@ export class DynamicSubFormComponent implements OnInit {
   }
 
   updateSubRecord(item : {internalId : number}){
+    
     let subform = ((this.subformField instanceof SubForm) 
       ? this.subformField : this.subformField.getValue()) as SubForm;
-    let obj = subform.tableData[item.internalId];
+
+    let beforeUpdate : Promise<boolean> = (subform.beforeUpdateActions != undefined) ? 
+          subform.beforeUpdateActions({subform : this.subformField, item : subform.tableData[item.internalId], id : item.internalId}) 
+          : Promise.resolve(true) 
+
+    console.log('before Update', this.subformField,beforeUpdate)
+
+    beforeUpdate.then( (update : boolean) => {
+      if( !update ){
+        return;
+      }
+      else{
+        let obj = subform.tableData[item.internalId];
     
-    Object.keys(obj).forEach( (key : string) => {
-      subform.fields.forEach( (field : FormFieldBase) => {
-        if(field.key == key){
-          if(field.type == FormFieldType.DatePicker){
-            field.value = new Date(obj[key]);
-          }
-          else{
-            field.value = obj[key];
-            if(field.type != FormFieldType.PDF){
-              console.log('key',key,'value',obj[key])
+        Object.keys(obj).forEach( (key : string) => {
+          subform.fields.forEach( (field : FormFieldBase) => {
+            if(field.key == key){
+              if(field.type == FormFieldType.DatePicker){
+                field.value = new Date(obj[key]);
+              }
+              else{
+                field.value = obj[key];
+                if(field.type != FormFieldType.PDF){
+                  console.log('key',key,'value',obj[key])
+                }
+              }
             }
-          }
+          });
+        });
+    
+        if(this.subformField instanceof SubForm){
+          this.subformField = subform;
+          this.initSubForm(this.subformField);
         }
-      });
-    });
-
-    if(this.subformField instanceof SubForm){
-      this.subformField = subform;
-      this.initSubForm(this.subformField);
-    }
-    else{
-      this.subformField.next(subform);
-    }
-
-    this.editInternalId = item.internalId;
-    this.formActions = [
-      {
-        key : 'cancelUpdate',
-        icon : 'cancel',
-        text : 'Cancel Update',
-        color : 'red',
-        func : this.cancelUpdateFunc,
-        funcParams : {}
-      } as FormAction
-    ] as FormAction[]
+        else{
+          this.subformField.next(subform);
+        }
+    
+        this.editInternalId = item.internalId;
+        this.formActions = [
+          {
+            key : 'cancelUpdate',
+            icon : 'cancel',
+            text : 'Cancel Update',
+            color : 'red',
+            func : this.cancelUpdateFunc,
+            funcParams : {}
+          } as FormAction
+        ] as FormAction[]
+      }
+    } )
   }
 
   deleteSubRecord(item : {internalId : number}){

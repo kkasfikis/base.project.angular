@@ -71,9 +71,14 @@ export class SubForm{
     tagSeperator : string = ':';
     beforeSubmitActions : ( (args:any) => Promise<boolean> ) 
         | undefined = undefined;
-
+    beforeUpdateActions : ( (args:any) => Promise<boolean> )
+        | undefined = undefined;
+    
     constructor(init?:Partial<SubForm>) {
+        console.log('Initial Subform',init)
         Object.assign(this, init);
+        this.beforeSubmitActions = init?.beforeSubmitActions;
+        this.beforeUpdateActions = init?.beforeUpdateActions;
     }
 }
 

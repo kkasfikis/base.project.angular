@@ -399,14 +399,14 @@
                     "width": 10
                 },
                 {
-                    "key": "item_category",
+                    "key": "item_category1",
                     "text": "Category",
                     "isFilterable": false,
                     "isSortable": false,
                     "width": 10
                 },
                 {
-                    "key": "item_subcategory",
+                    "key": "item_category2",
                     "text": "Subcategory",
                     "isFilterable": false,
                     "isSortable": false,
@@ -461,7 +461,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_category",
+                    "key": "item_category1",
                     "order": 30,
                     "label": "Category",
                     "type": "Text",
@@ -659,7 +659,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_category",
+                    "key": "item_category1",
                     "order": 30,
                     "label": "Category",
                     "type": "Text",
@@ -668,7 +668,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_subcategory",
+                    "key": "item_category2",
                     "order": 40,
                     "label": "Subcategory",
                     "type": "Text",

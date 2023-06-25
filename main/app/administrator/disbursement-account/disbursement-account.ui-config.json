@@ -133,7 +133,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_category",
+                    "key": "item_category1",
                     "order": 10,
                     "type": "Select",
                     "label": "Category",
@@ -278,7 +278,7 @@
                     "width": 10
                 },
                 {
-                    "key": "item_category",
+                    "key": "item_category1",
                     "text": "Category",
                     "isFilterable": false,
                     "isSortable": false,

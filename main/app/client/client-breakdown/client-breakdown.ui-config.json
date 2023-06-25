@@ -92,7 +92,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_category",
+                    "key": "item_category1",
                     "order": 30,
                     "label": "Category",
                     "type": "Text",
@@ -101,7 +101,7 @@
                     "align": "center center"
                 },
                 {
-                    "key": "item_subcategory",
+                    "key": "item_category2",
                     "order": 40,
                     "label": "Subcategory",
                     "type": "Text",

@@ -53,11 +53,6 @@
             "align": "left center"
         },
         {
-            "key": "proforma_balance",
-            "order": 20,
-            "type": "Hidden"
-        },
-        {
             "key": "proforma_no",
             "order": 25,
             "type": "TextBox",
