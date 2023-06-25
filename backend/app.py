@@ -33,7 +33,7 @@ from endpoints.client.proforma import api as clientProforma
 
 from endpoints.report.generate import api as report
 
-if __name__ == '__main__':
+def main():
     svc.api.add_namespace(agent)
     svc.api.add_namespace(port)
     svc.api.add_namespace(client)
@@ -60,5 +60,10 @@ if __name__ == '__main__':
     svc.api.add_namespace(debit)
     svc.api.add_namespace(disbursement)
     svc.api.add_namespace(report)
+
+main()
+app = svc.app
+
+if __name__ == '__main__':
     svc.app.run(port=8081, debug=True)
 
